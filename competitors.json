@@ -1,0 +1,339 @@
+{
+  "metadata": {
+    "generatedDate": "2026-04-03",
+    "market": "Bergen County, NJ (Wyckoff focus)",
+    "targetDemo": "Affluent women 28-55, Bergen County NJ",
+    "totalCompetitors": 20
+  },
+  "competitors": [
+    {
+      "category": "directCompetitor",
+      "name": "Abma's Farm Greenhouse Workshops",
+      "url": "https://www.abmasfarm.com/greenhouse-workshops/",
+      "location": "Wyckoff, NJ",
+      "description": "Family farm offering seasonal make-and-take floral and garden craft workshops in their greenhouse, plus a summer pick-and-arrange flower field experience.",
+      "standout": "Hyper-local Wyckoff presence with generational trust and a charming farm aesthetic. Weakness: very seasonal, farm-oriented branding lacks luxury polish, website is dated and utilitarian.",
+      "priceRange": "$35-$75 per workshop (estimated)",
+      "designQuality": 4,
+      "instagramHandle": "@abmasfarm",
+      "instagramFollowers": "~5K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "Blue Jasmine Floral",
+      "url": "https://bluejasminefloral.com/",
+      "location": "Berkeley Heights, NJ (30 min from Wyckoff)",
+      "description": "High-end floral design studio by Paulina Nieliwocki offering editorial florals, weddings, and professional-level multi-day design workshops priced at $600-$1200+.",
+      "standout": "Strong editorial brand, 143K Instagram following, featured on The Flower Podcast. Studio workshops feel exclusive and aspirational. Weakness: pricing targets pros/serious students rather than casual luxury consumers; location is outside Bergen County.",
+      "priceRange": "$450 (1-on-1 Zoom) to $1,200+ (group install workshop)",
+      "designQuality": 9,
+      "instagramHandle": "@bluejasminefloral",
+      "instagramFollowers": "143K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "Bloomie Flower Studio",
+      "url": "https://bloomieflowers.com/",
+      "location": "Hoboken, NJ",
+      "description": "Boutique floral studio offering small bouquet workshops, flower bar experiences for events, wedding florals, and a DIY bridal workshop.",
+      "standout": "Clean modern branding, accessible pricing starting at $90, strong event/party workshop model (bridal showers, corporate). Weakness: Hoboken location is 45 min from Bergen County; website is functional but not cinematic.",
+      "priceRange": "$90-$150 per person",
+      "designQuality": 7,
+      "instagramHandle": "@bloomie_flower_studio",
+      "instagramFollowers": "~6K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "The Flower (Ridgefield, NJ)",
+      "url": "https://www.theflowernyc.com/",
+      "location": "Ridgefield, NJ (Bergen County)",
+      "description": "Full-service florist offering structured floral design classes (4-week, 12-week, and advanced courses) plus customizable group workshops for 7-15 people.",
+      "standout": "Only Bergen County florist offering structured multi-week curriculum. Dual NYC/NJ branding adds cachet. Weakness: traditional florist website, not lifestyle-driven; workshop page lacks visual appeal.",
+      "priceRange": "$150+ per person (group workshops)",
+      "designQuality": 5,
+      "instagramHandle": "@theflowernyc",
+      "instagramFollowers": "~3K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "Wild Nomad Flower Co.",
+      "url": "https://www.wildnomadflowerco.com/",
+      "location": "NJ / NY / Las Vegas",
+      "description": "Modern floral studio specializing in brand activations, bloom bars, subscriptions, workshops, and mentorships with a bohemian-nostalgic aesthetic.",
+      "standout": "Strong lifestyle brand positioning with modern Shopify site. Bloom Bar mobile concept is innovative. Offers subscriptions and mentorship tiers. Weakness: spread thin across three markets; brand feels more boho than luxury.",
+      "priceRange": "Not publicly listed",
+      "designQuality": 7,
+      "instagramHandle": "@wildnomadflowerco",
+      "instagramFollowers": "~4K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "Wyckoff Florist & Gifts",
+      "url": "https://wyckoffflorist.com/",
+      "location": "Wyckoff, NJ",
+      "description": "Family-owned full-service florist since 1964 serving Wyckoff and surrounding areas with delivery, arrangements, and gift items.",
+      "standout": "60+ years of local trust and name recognition in Wyckoff. Weakness: no workshops, zero experiential offerings, dated website with stock-photo aesthetic, no lifestyle brand whatsoever. Represents the old guard DreamersJoy can disrupt.",
+      "priceRange": "$50-$150 arrangements",
+      "designQuality": 3,
+      "instagramHandle": "@wyckofffloristandgifts",
+      "instagramFollowers": "<1K"
+    },
+    {
+      "category": "directCompetitor",
+      "name": "Denny Wiggers Gardenscapes",
+      "url": "https://www.dennywiggersgardenscapes.com/",
+      "location": "Paramus, NJ (Bergen County)",
+      "description": "Full-service garden center and landscaping company offering floral arrangements, delivery, and garden supplies across Bergen County for 30 years.",
+      "standout": "Strong Bergen County presence and commercial accounts. Weakness: garden center brand, not boutique floral; no workshops or experiences; website is heavily utilitarian.",
+      "priceRange": "$40-$200 arrangements",
+      "designQuality": 3,
+      "instagramHandle": "N/A",
+      "instagramFollowers": "N/A"
+    },
+    {
+      "category": "aspirationalBrand",
+      "name": "Elan Flowers",
+      "url": "https://elanflowers.com/",
+      "location": "Tribeca, NYC",
+      "description": "Luxury Tribeca florist offering bespoke seasonal arrangements starting at $100, editorial event design, private workshops for up to 25, and corporate gifting programs.",
+      "standout": "Tribeca cachet, clean editorial website with strong brand photography, workshop-as-luxury-experience model. Weakness: no public workshop calendar or pricing online, feels exclusive to the point of being opaque.",
+      "priceRange": "$100+ (arrangements); workshops by inquiry",
+      "designQuality": 9,
+      "instagramHandle": "@elanflowers",
+      "instagramFollowers": "12K"
+    },
+    {
+      "category": "aspirationalBrand",
+      "name": "Tinge Floral (Ashley Beyer)",
+      "url": "https://www.tingefloral.com/",
+      "location": "Salt Lake City, UT",
+      "description": "Color-driven luxury floral design studio by Ashley Beyer (named top florist by Martha Stewart Weddings), offering destination weddings, editorials, and intimate retreat-style workshops in places like Park City.",
+      "standout": "Masterclass in color-as-brand-identity. Workshop retreats at luxury hotels create aspirational FOMO. Film & Flora workshops blend floral design with photography. 108K Instagram following. Weakness: very high price point limits accessibility; website could be more polished.",
+      "priceRange": "$800-$2,500+ (retreat workshops)",
+      "designQuality": 8,
+      "instagramHandle": "@tingefloral",
+      "instagramFollowers": "108K"
+    },
+    {
+      "category": "aspirationalBrand",
+      "name": "HART Floral (Madison Hartley)",
+      "url": "https://www.hartfloraldesign.com/",
+      "location": "Portland, OR (travels internationally)",
+      "description": "Concept-driven destination floral design studio by Madison Hartley offering imaginative event design worldwide and international floral workshops plus online courses.",
+      "standout": "Strongest artistic vision in the industry. Online education platform and print shop create multiple revenue streams. International workshop travel model. 125K followers. Weakness: very high-art positioning may not translate to casual workshop seekers.",
+      "priceRange": "$1,000-$3,000+ (workshop retreats); online courses vary",
+      "designQuality": 10,
+      "instagramHandle": "@hart_floral",
+      "instagramFollowers": "125K"
+    },
+    {
+      "category": "aspirationalBrand",
+      "name": "FLOWERBX",
+      "url": "https://www.flowerbx.com/us/",
+      "location": "London / NYC / LA / Dubai",
+      "description": "Luxury floral brand offering single-variety bouquet subscriptions, bespoke corporate installations, and fully customized private workshops for up to 20 guests.",
+      "standout": "Gold standard for luxury floral e-commerce. Minimalist mono-botanical aesthetic is instantly recognizable. B Corp certified. Subscription model from $300/week. Weakness: priced for ultra-luxury corporate market; workshop model is entirely bespoke/private.",
+      "priceRange": "$300-$10,000+/week (subscriptions); workshops by inquiry",
+      "designQuality": 10,
+      "instagramHandle": "@theflowerbx",
+      "instagramFollowers": "119K"
+    },
+    {
+      "category": "aspirationalBrand",
+      "name": "Putnam & Putnam",
+      "url": "https://putnamflowerchannel.com/",
+      "location": "NYC (transitioning to Rosandich Studios)",
+      "description": "NYC's preeminent editorial floral designers (Vogue, Harper's Bazaar, Bergdorf Goodman) offering fashion-level installations, workshops, tutorials, and their own Putnam Flower Channel streaming service.",
+      "standout": "Created an entirely new content/media model for floristry with streaming video channel. Celebrity client roster. Published authors. Weakness: transitioning brand identity may create confusion; extremely high-end positioning.",
+      "priceRange": "Premium/editorial pricing; streaming channel subscription",
+      "designQuality": 10,
+      "instagramHandle": "@putnamflowers",
+      "instagramFollowers": "~200K+"
+    },
+    {
+      "category": "workshopExperience",
+      "name": "Board & Brush Creative Studio (Ramsey)",
+      "url": "https://boardandbrush.com/ramsey/",
+      "location": "Ramsey, NJ (Bergen County)",
+      "description": "Instructor-led DIY wood sign workshops where participants distress, sand, stain, paint and customize decor pieces. BYOB environment.",
+      "standout": "Proven franchise model that captures the exact same affluent-woman-GNO market DreamersJoy targets. BYOB creates social atmosphere. Consistent $73 price point is accessible. Weakness: franchise feel lacks artisanal authenticity; Instagram engagement modest despite follower count.",
+      "priceRange": "$73-$78 per project",
+      "designQuality": 5,
+      "instagramHandle": "@boardandbrushramsey",
+      "instagramFollowers": "3.7K"
+    },
+    {
+      "category": "workshopExperience",
+      "name": "The Wortendyke Pottery Studio",
+      "url": "https://wortendykestudio.com/",
+      "location": "Midland Park, NJ (Bergen County)",
+      "description": "Pottery studio in an 1865 railroad station offering 12-week clay classes for all levels, wine night events, pottery parties, and private instruction.",
+      "standout": "Historic venue creates an atmospheric, Instagram-worthy backdrop. Wine night events show social programming instinct. Weakness: very small operation, dated website, minimal social presence (385 followers), no online booking visible.",
+      "priceRange": "$385 per 12-week session",
+      "designQuality": 4,
+      "instagramHandle": "@wortendykestudio",
+      "instagramFollowers": "385"
+    },
+    {
+      "category": "workshopExperience",
+      "name": "The Art School at Old Church (TASOC)",
+      "url": "https://www.tasoc.org/",
+      "location": "Demarest, NJ (Bergen County)",
+      "description": "Non-profit art school and gallery since 1974 offering four-semester-year classes in painting, ceramics, jewelry, printmaking, photography, and more across four studios.",
+      "standout": "Institutional credibility and 50-year legacy. Four modern studios and two galleries. Broad class catalog appeals to serious hobbyists. Weakness: non-profit/educational positioning feels institutional rather than experiential; website is functional but uninspiring.",
+      "priceRange": "$200-$500 per semester course",
+      "designQuality": 5,
+      "instagramHandle": "N/A",
+      "instagramFollowers": "~1K"
+    },
+    {
+      "category": "workshopExperience",
+      "name": "Sunshine Pottery & Paint",
+      "url": "https://sunshinepotterynj.com/",
+      "location": "Englewood, NJ (Bergen County)",
+      "description": "Walk-in DIY studio offering pottery painting, canvas painting, fused glass, candle making, pottery wheel classes, and glow-in-the-dark parties.",
+      "standout": "Walk-in model is low-commitment and family-friendly. Multi-medium offerings (candle, glass, pottery, canvas). Weakness: heavily family/kids oriented, lacks the elevated adult-experience positioning; basic website and branding.",
+      "priceRange": "$30-$65 per session",
+      "designQuality": 4,
+      "instagramHandle": "@sunshinepotterynj",
+      "instagramFollowers": "683"
+    },
+    {
+      "category": "luxuryLifestyle",
+      "name": "Felina Restaurant & Bar",
+      "url": "https://felinarestaurant.com/",
+      "location": "Ridgewood, NJ",
+      "description": "Upscale Italian-inspired fine dining restaurant with rooftop bar La Terrazza, Wine Spectator award-winning wine list, and event hosting. Rated 4.7 stars on OpenTable.",
+      "standout": "Defines the luxury lifestyle ceiling in Ridgewood. Beautiful interior design, strong Instagram presence (24K followers), rooftop bar creates aspirational social moments. Exactly where DreamersJoy's target customer dines. Weakness: restaurant, not experiential/workshop -- but sets the aesthetic bar.",
+      "priceRange": "$80-$200 per person dining",
+      "designQuality": 9,
+      "instagramHandle": "@felinarestaurants",
+      "instagramFollowers": "24K"
+    },
+    {
+      "category": "luxuryLifestyle",
+      "name": "The Bar Method Ridgewood",
+      "url": "https://barmethod.com/locations/ridgewood/",
+      "location": "Ridgewood, NJ",
+      "description": "Premium barre fitness studio since 2012 with two workout rooms, locker room with showers, luxury spa products, childcare, and retail boutique.",
+      "standout": "Captures the exact same affluent Bergen County woman in her self-care/social routine. Premium amenities (towel service, spa products, childcare) signal luxury. Community-driven with strong local loyalty. Weakness: franchise brand, but locally well-executed.",
+      "priceRange": "$26/class; $225/10-class pack",
+      "designQuality": 7,
+      "instagramHandle": "@barmethodridgewood",
+      "instagramFollowers": "~2K"
+    },
+    {
+      "category": "luxuryLifestyle",
+      "name": "Araya Rebirth Spa",
+      "url": "https://www.arayarebirth.com/",
+      "location": "Ridgewood, NJ",
+      "description": "Award-winning holistic spa offering facials, massages, reflexology, crystal healing, chemical peels, and dermaplaning in an intimate, calming atmosphere.",
+      "standout": "Strong local reputation and intimate positioning. Holistic/wellness angle resonates with the target demo. Located in Ridgewood's walkable village center. Weakness: small operation, website lacks sophistication for the market it serves.",
+      "priceRange": "$75-$200 per treatment",
+      "designQuality": 5,
+      "instagramHandle": "@arayarebirth",
+      "instagramFollowers": "~1.5K"
+    },
+    {
+      "category": "luxuryLifestyle",
+      "name": "Wellnessesity",
+      "url": "https://wellnessesity.life/",
+      "location": "Wyckoff, NJ (and Closter, NJ)",
+      "description": "Modern medspa and biohacking center offering Emsculpt NEO, IV therapy, stretch therapy, semaglutide programs, and hormone-balancing wellness plans.",
+      "standout": "Located ON Franklin Ave in Wyckoff -- literally next door to DreamersJoy's market. Modern wellness positioning with biohacking/longevity angle captures the affluent health-conscious woman. Weakness: medical/clinical feel lacks warmth and community.",
+      "priceRange": "$100-$500+ per treatment",
+      "designQuality": 7,
+      "instagramHandle": "@wellnessesity",
+      "instagramFollowers": "~2K"
+    }
+  ],
+  "nicheOpportunities": [
+    {
+      "opportunity": "Luxury Floral Workshop Studio in Bergen County -- The Gap Is Wide Open",
+      "detail": "There is NO dedicated boutique floral workshop studio in Bergen County. The closest direct competitor (Blue Jasmine) is 30+ minutes away in Berkeley Heights and targets professionals at $600-$1200. Abma's Farm does seasonal workshops but with a farm/family brand. The entire affluent corridor from Ridgewood to Ramsey has zero floral experience studios. DreamersJoy would be the first."
+    },
+    {
+      "opportunity": "The $85-$175 Sweet Spot for Social Floral Experiences",
+      "detail": "Board & Brush proves Bergen County women will pay $73 for a DIY social experience. Blue Jasmine charges $600+. There is a massive white space between $75 and $600 for a curated, luxury-feeling floral workshop at $85-$175 that feels like a night out, not a professional course. This is the Goldilocks zone."
+    },
+    {
+      "opportunity": "Floral Subscription + Workshop Hybrid Model",
+      "detail": "No Bergen County florist offers a subscription service paired with workshop access. Wild Nomad does this in a bohemian way, but nobody is doing a premium weekly/biweekly arrangement subscription ($65-$95/delivery) where subscribers also get priority access and discounts on monthly workshops. This creates recurring revenue AND community."
+    },
+    {
+      "opportunity": "Corporate/Team Wellness Workshops for Bergen County Businesses",
+      "detail": "With major corporate offices in Paramus, Mahwah, and Saddle Brook, and the rise of wellness-as-benefit culture, there is no Bergen County business offering polished corporate floral team-building workshops. Bloomie does this in Hoboken. DreamersJoy could own this segment locally with $150-$200/person corporate packages."
+    },
+    {
+      "opportunity": "Mother-Daughter and Seasonal Experience Programming",
+      "detail": "Abma's Farm does a children's Mother's Day workshop but nothing elevated. There is no Bergen County business offering curated mother-daughter floral experiences, seasonal wreath-making series, or holiday pop-up workshops with a luxury aesthetic. The seasonal programming calendar is wide open."
+    }
+  ],
+  "marketGaps": [
+    {
+      "gap": "No Bergen County florist has a cinematic, editorial-quality website",
+      "detail": "Every Bergen County florist and workshop studio has either a dated template site (Wyckoff Florist, Abma's Farm), a basic Squarespace (Wortendyke), or a functional-but-uninspiring layout. None approach the visual storytelling of Elan Flowers, HART Floral, or FLOWERBX. A cinematic site alone would immediately differentiate DreamersJoy."
+    },
+    {
+      "gap": "Zero online booking / seamless digital experience for floral workshops in Bergen County",
+      "detail": "Most Bergen County creative workshops still use email or phone to book. Board & Brush has online booking but it is franchise-templated. No local studio offers the kind of seamless Squarespace/Acuity or custom booking experience with waitlists, gift cards, and instant confirmation that national brands use."
+    },
+    {
+      "gap": "No floral brand in Bergen County leverages video content or behind-the-scenes storytelling",
+      "detail": "Putnam & Putnam created a streaming channel. HART Floral sells online courses. Tinge does Film & Flora retreats. In Bergen County, not a single floral business is creating tutorial content, process videos, or seasonal design series. DreamersJoy could build an audience and establish authority through short-form video content before anyone else."
+    },
+    {
+      "gap": "No local competitor has a gift-experience or gift-card-forward business model",
+      "detail": "Workshop gift cards are one of the highest-margin products in experiential retail. No Bergen County floral or creative studio prominently sells beautifully packaged workshop gift experiences online. This is a massive missed revenue stream, especially for holidays, Mother's Day, Valentine's Day, bridal showers, and birthdays."
+    },
+    {
+      "gap": "No Bergen County business combines flowers with food/wine in a curated experience",
+      "detail": "Wortendyke does 'wine nights' with pottery. Board & Brush is BYOB. But no one is doing a polished 'Blooms & Bubbles' or 'Petals & Prosecco' branded experience that pairs floral design with curated wine/cheese/charcuterie in a luxury setting. Felina proves Bergen County women will pay premium for an elevated social evening."
+    }
+  ],
+  "designTrends": [
+    {
+      "trend": "Cinematic Full-Bleed Photography as Homepage Hero",
+      "detail": "The top floral studios nationally (Elan, FLOWERBX, HART, Putnam) all use full-screen editorial photography as their homepage entry point -- no clutter, no text-heavy layouts. Bergen County has zero florists doing this. DreamersJoy should lead with cinematic imagery that feels more like a fashion editorial than a flower shop.",
+      "examplesDoingItWell": ["elanflowers.com", "flowerbx.com", "hartfloraldesign.com"]
+    },
+    {
+      "trend": "Single-Variety / Mono-Botanical Aesthetic",
+      "detail": "FLOWERBX built a global brand around the power of single-flower arrangements. The 2026 trend forecast emphasizes repetition and restraint -- one species as a minimalist statement. This is the opposite of the cluttered mixed-bouquet look that Bergen County florists all default to.",
+      "examplesDoingItWell": ["flowerbx.com"]
+    },
+    {
+      "trend": "Workshop-as-Luxury-Experience (Not Just a Class)",
+      "detail": "The best studios nationally frame workshops as curated experiences: exclusive studio access, retail-value arrangements to take home ($250+ at ACME), photography-ready setups, artisanal refreshments. They sell the experience and the lifestyle, not just instruction.",
+      "examplesDoingItWell": ["acmefloral.com", "the-flower-garage.com", "tingefloral.com"]
+    },
+    {
+      "trend": "Floral Education Content as Brand Authority",
+      "detail": "Putnam & Putnam launched a streaming channel. HART sells online courses. Tinge combines florals with film photography workshops. Blue Jasmine appears on industry podcasts. The national leaders all use education content to build authority and create secondary revenue. Nobody in Bergen County produces any floral content.",
+      "examplesDoingItWell": ["putnamflowerchannel.com", "hartfloraleducation.com", "tingefloral.com"]
+    },
+    {
+      "trend": "Texture-Forward and Sculptural Design Language",
+      "detail": "2026 floral trends move away from garden-style looseness toward intentional, architectural arrangements. Preserved elements (dried palms, pampas) mixed with fresh blooms. Flowers as sculpture, not just decoration. This trend has not reached Bergen County retail floristry at all.",
+      "examplesDoingItWell": ["hartfloraldesign.com", "tingefloral.com", "bluejasminefloral.com"]
+    },
+    {
+      "trend": "Subscription + Community Membership Model",
+      "detail": "FLOWERBX, Wild Nomad, and several DTC floral brands offer subscription tiers. The best combine product delivery with community access (priority booking, member-only workshops, seasonal previews). This recurring-revenue model is standard nationally but nonexistent in Bergen County.",
+      "examplesDoingItWell": ["flowerbx.com", "wildnomadflowerco.com"]
+    }
+  ],
+  "strategicSummary": {
+    "competitiveLandscape": "Bergen County has a significant gap in the boutique floral experience market. Existing florists are traditional delivery/arrangement shops with dated branding. Creative workshop competitors (Board & Brush, pottery studios) prove the demand exists but lack the luxury aesthetic. The affluent women of Wyckoff/Ridgewood/Franklin Lakes currently have to travel to Hoboken, Berkeley Heights, or NYC for any kind of elevated floral experience.",
+    "primaryOpportunity": "DreamersJoy has the chance to be the FIRST luxury boutique floral workshop studio in Bergen County -- combining the social accessibility of Board & Brush ($73 price anchoring) with the editorial aesthetic of Blue Jasmine/Elan Flowers, at a sweet-spot price of $95-$175 per experience.",
+    "websiteImperative": "A cinematic, editorial-quality website would ALONE differentiate DreamersJoy from every competitor within 30 miles. No Bergen County floral or creative workshop business has invested in visual storytelling online. The website should function as a luxury brand experience, not a service listing.",
+    "keyDifferentiators": [
+      "Only dedicated floral workshop studio in Bergen County",
+      "Cinematic website with editorial photography and seamless booking",
+      "Curated experiences pairing florals with wine/food",
+      "Gift-experience-forward business model with beautiful digital gifting",
+      "Video content and seasonal programming calendar",
+      "Subscription + workshop membership hybrid model"
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "client": {
+    "slug": "dreamersjoy-floral-studio",
+    "name": "DreamersJoy Floral Studio",
+    "sourceUrl": "https://www.dreamersjoystudio.com",
+    "instagramUrl": "https://www.instagram.com/dreamersjoy",
+    "businessType": "creative",
+    "founder": "Sarah De Jesus",
+    "location": "Wyckoff, New Jersey",
+    "region": "Northern Bergen County, NJ",
+    "tagline": "Refined Floral Design for Intimate Gatherings"
+  },
+  "status": { "phase": "competitive-analysis" },
+  "competitive": {},
+  "brand": {
+    "identity": "Modern Minimal Luxury + Editorial Contemporary",
+    "coreEnergy": "Quiet confidence. Contained joy. Refined, intentional creativity.",
+    "positioning": "Refined. Focused. Intentional.",
+    "notThisBrand": [
+      "Event production company",
+      "Wedding factory",
+      "Party decorator",
+      "Budget decor",
+      "Large-scale events"
+    ],
+    "thisBrand": [
+      "Boutique floral design studio",
+      "Intimate gatherings",
+      "Drop-off floral design",
+      "Small curated workshops",
+      "Design-forward",
+      "Calm and controlled in scale"
+    ],
+    "idealClient": "Affluent women in Wyckoff, Franklin Lakes, Ridgewood, and surrounding Bergen County towns who value aesthetics and prefer intimate experiences",
+    "offerings": {
+      "workshops": {
+        "description": "Seasonal Floral Workshops",
+        "capacity": "10-14 women per session",
+        "pricing": "$125-$225 per seat",
+        "frequency": "1 per month seasonal (May-October + Holiday)"
+      },
+      "privateGatherings": {
+        "description": "Private Floral Gatherings",
+        "types": ["Birthday floral nights", "Mom's night out", "Small corporate sessions", "Client appreciation"]
+      },
+      "studioDesign": {
+        "description": "Studio Floral Design (Drop-Off Model)",
+        "types": ["Dinner party florals", "Open house florals", "Holiday centerpieces", "Mother's Day & Valentine's pre-orders", "Custom bouquets"]
+      }
+    },
+    "floralStyle": {
+      "aesthetic": "Elevated, editorial but organic, intentional negative space, textural sculptural movement, understated luxury",
+      "signatureStems": ["Ranunculus", "Butterfly ranunculus", "Hellebores", "Anemone", "Fritillaria", "Scabiosa", "Nigella", "Sweet pea", "French/parrot tulips", "Clematis vine", "Quince branches", "Olive branches", "Astilbe"]
+    },
+    "logo": {
+      "style": "Circular stamp with serif D center, DREAMERSJOY arched top, FLORAL STUDIO arched bottom, two decorative dots",
+      "primaryColor": "#334155",
+      "file": "assets/logo.png"
+    },
+    "colors": {
+      "primary": "#334155",
+      "primaryName": "Studio Slate",
+      "secondary": "#F5F0EB",
+      "secondaryName": "Warm Linen",
+      "accent1": "#8B7355",
+      "accent1Name": "Antique Bronze",
+      "accent2": "#C9B8A8",
+      "accent2Name": "Soft Chamois",
+      "accent3": "#6B7C6E",
+      "accent3Name": "Sage Garden",
+      "accent4": "#D4B8A0",
+      "accent4Name": "Dusty Rose",
+      "dark": "#1A1A2E",
+      "darkName": "Midnight",
+      "light": "#FAFAF8",
+      "lightName": "Studio White"
+    },
+    "typography": {
+      "display": "Cormorant Garamond",
+      "displayWeight": "300, 400, 600",
+      "body": "Jost",
+      "bodyWeight": "300, 400, 500",
+      "accent": "Libre Caslon Display"
+    },
+    "content": {
+      "headline": "Refined Floral Design for Intimate Gatherings",
+      "subheadline": "Boutique workshops, curated installations & editorial floral artistry in Bergen County, NJ",
+      "aboutTitle": "The Studio",
+      "aboutText": "DreamersJoy Floral Studio is a boutique floral design studio built around intention, creative expression, and intimate scale. We create florals that feel refined, romantic, intentional, and elevated but approachable. Founded by Sarah De Jesus in Wyckoff, New Jersey, our studio focuses on seasonal workshops, private floral gatherings, and design-forward drop-off arrangements for discerning clients across Bergen County.",
+      "workshopTitle": "Seasonal Workshops",
+      "workshopText": "Intimate gatherings of 10-14 guests in our curated home studio. Wine, music, elevated stems, and guided instruction in sculptural floral composition. Each seasonal session features premium stems like ranunculus, hellebores, and French tulips. Every guest leaves with an editorial-quality arrangement and professional photographs.",
+      "galleryTitle": "Our Work",
+      "privateTitle": "Private Gatherings",
+      "privateText": "Birthday floral nights, mom's night out, corporate creative sessions, and client appreciation events. We provide flowers, tools, guidance, and a beautiful aesthetic setup. Design, deliver, elevate.",
+      "dropoffTitle": "Studio Floral Design",
+      "dropoffText": "Dinner party florals, open house styling, holiday centerpieces, and custom bouquet orders. Our drop-off model means we design, deliver, and leave — no on-site event management required.",
+      "ctaText": "Book Your Experience",
+      "address": "Wyckoff, New Jersey",
+      "phone": "",
+      "email": "",
+      "instagram": "@dreamersjoy",
+      "website": "www.dreamersjoystudio.com",
+      "hours": "By Appointment | Seasonal Workshops May-October"
+    }
+  },
+  "hero": {},
+  "site": {
+    "sections": [
+      "hero-scroll-video",
+      "text-mask-reveal",
+      "about",
+      "workshops",
+      "gallery-grid",
+      "private-gatherings",
+      "studio-design",
+      "founder",
+      "testimonials",
+      "booking-cta",
+      "contact",
+      "footer"
+    ]
+  },
+  "voiceAgent": {}
+}
