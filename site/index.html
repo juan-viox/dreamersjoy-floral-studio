@@ -469,22 +469,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 2px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(160deg, var(--secondary) 0%, var(--accent2) 50%, var(--accent4) 100%);
-}
-.about-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(107,124,110,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 70%, rgba(139,115,85,0.15) 0%, transparent 50%);
-}
-.about-visual::after {
-  content: '';
-  position: absolute;
-  inset: 20%;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 50%;
+  background-image: url(assets/images/about-studio.png); background-size: cover; background-position: center;
 }
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; }
@@ -528,6 +513,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   box-shadow: 0 24px 60px rgba(51,65,85,0.1);
 }
+.stack-preview-state { position: relative; }
+.stack-preview-state::before { content: ''; position: absolute; inset: 0; background: rgba(26,26,46,0.4); border-radius: inherit; z-index: 0; }
+.stack-preview-state .preview-icon, .stack-preview-state .preview-stems { position: relative; z-index: 1; }
 .stack-preview-state {
   position: absolute;
   inset: 0;
@@ -1040,7 +1028,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 2px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(150deg, var(--accent2) 0%, var(--secondary) 50%, var(--accent4) 100%);
+  background-image: url(assets/images/founder-sarah.png); background-size: cover; background-position: center top;
 }
 .founder-image::after {
   content: 'S';
@@ -1480,19 +1468,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="stack-container">
       <div class="stack-visual">
         <div class="stack-preview">
-          <div class="stack-preview-state active" data-state="1" style="background: linear-gradient(135deg, #D4B8A0 0%, #C9B8A8 40%, #F5F0EB 100%);">
+          <div class="stack-preview-state active" data-state="1" style="background-image: url(assets/images/workshop-spring.png); background-size: cover; background-position: center;">
             <div class="preview-icon">I</div>
             <div class="preview-stems">Ranunculus . Tulips<br>Sweet Pea . Hellebores</div>
           </div>
-          <div class="stack-preview-state" data-state="2" style="background: linear-gradient(135deg, #6B7C6E 0%, #8B7355 50%, #C9B8A8 100%);">
+          <div class="stack-preview-state" data-state="2" style="background-image: url(assets/images/workshop-summer.png); background-size: cover; background-position: center;">
             <div class="preview-icon">II</div>
             <div class="preview-stems">Garden Roses . Dahlias<br>Clematis . Scabiosa</div>
           </div>
-          <div class="stack-preview-state" data-state="3" style="background: linear-gradient(135deg, #8B7355 0%, #D4B8A0 40%, #6B7C6E 100%);">
+          <div class="stack-preview-state" data-state="3" style="background-image: url(assets/images/workshop-autumn.png); background-size: cover; background-position: center;">
             <div class="preview-icon">III</div>
             <div class="preview-stems">Chrysanthemums . Branches<br>Berries . Quince</div>
           </div>
-          <div class="stack-preview-state" data-state="4" style="background: linear-gradient(135deg, #1A1A2E 0%, #334155 40%, #6B7C6E 100%);">
+          <div class="stack-preview-state" data-state="4" style="background-image: url(assets/images/workshop-winter.png); background-size: cover; background-position: center;">
             <div class="preview-icon">IV</div>
             <div class="preview-stems">Evergreen . Amaryllis<br>Pine . Olive Branch</div>
           </div>
@@ -1539,49 +1527,49 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
     <div class="gallery-grid">
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #D4B8A0 0%, #C9B8A8 50%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-spring-workshop.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Workshop</span>
         <span class="gallery-item-label">Spring Ranunculus Session</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(160deg, #6B7C6E 0%, #8B7355 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-birthday.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Private Gathering</span>
         <span class="gallery-item-label">Birthday Floral Night</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #8B7355 0%, #D4B8A0 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-openhouse.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Open House</span>
         <span class="gallery-item-label">Ridgewood Home Styling</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(180deg, #C9B8A8 0%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-centerpiece.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Custom</span>
         <span class="gallery-item-label">Dinner Party Centerpiece</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #334155 0%, #6B7C6E 60%, #C9B8A8 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-summer-workshop.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Workshop</span>
         <span class="gallery-item-label">Summer Dahlia Collection</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(160deg, #D4B8A0 0%, #6B7C6E 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-valentines.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Custom</span>
         <span class="gallery-item-label">Valentine's Bouquet</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #1A1A2E 0%, #334155 50%, #6B7C6E 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-holiday-wreath.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Workshop</span>
         <span class="gallery-item-label">Holiday Wreath Workshop</span>
       </div>
       <div class="gallery-item fade-up">
-        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #8B7355 0%, #C9B8A8 50%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-bg" style="background-image: url(assets/images/gallery-corporate.png); background-size: cover; background-position: center;"></div>
         <div class="gallery-item-overlay"></div>
         <span class="gallery-item-cat">Private Gathering</span>
         <span class="gallery-item-label">Corporate Creative Session</span>
