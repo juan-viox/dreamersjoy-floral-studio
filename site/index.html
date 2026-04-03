@@ -164,8 +164,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
 .nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
 .nav-cta::after { display: none !important; }
-.nav-logo svg { height: 100px; width: 100px; fill: rgba(245,240,235,0.9); transition: fill 0.4s var(--ease-smooth), transform 0.3s var(--ease-out); shape-rendering: geometricPrecision; }
-.nav.scrolled .nav-logo svg { fill: var(--primary); }
+.nav-logo svg { height: 100px; width: 100px; fill: var(--accent4); transition: fill 0.4s var(--ease-smooth), transform 0.3s var(--ease-out); shape-rendering: geometricPrecision; }
+.nav.scrolled .nav-logo svg { fill: var(--dark); }
 
 /* Hamburger */
 .nav-hamburger {
@@ -733,36 +733,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   overflow: hidden;
 }
-/* Theater curtain fabric effect — flat navy with fabric folds via repeating shadows */
 .curtain-left {
   left: 0;
   justify-content: flex-end;
   padding-right: 40px;
-  background: #1B2A4A;
-  border-right: 3px solid rgba(193,168,120,0.3);
-  box-shadow:
-    inset -8px 0 12px rgba(0,0,0,0.25),
-    inset 80px 0 40px -30px rgba(255,255,255,0.02),
-    inset 180px 0 30px -20px rgba(0,0,0,0.08),
-    inset 280px 0 40px -30px rgba(255,255,255,0.02),
-    inset 400px 0 30px -20px rgba(0,0,0,0.06),
-    inset 520px 0 40px -30px rgba(255,255,255,0.015),
-    inset 650px 0 30px -20px rgba(0,0,0,0.05);
+  background: var(--dark);
 }
 .curtain-right {
   right: 0;
   justify-content: flex-start;
   padding-left: 40px;
-  background: #1B2A4A;
-  border-left: 3px solid rgba(193,168,120,0.3);
-  box-shadow:
-    inset 8px 0 12px rgba(0,0,0,0.25),
-    inset -80px 0 40px -30px rgba(255,255,255,0.02),
-    inset -180px 0 30px -20px rgba(0,0,0,0.08),
-    inset -280px 0 40px -30px rgba(255,255,255,0.02),
-    inset -400px 0 30px -20px rgba(0,0,0,0.06),
-    inset -520px 0 40px -30px rgba(255,255,255,0.015),
-    inset -650px 0 30px -20px rgba(0,0,0,0.05);
+  background: var(--dark);
 }
 .curtain-left h2, .curtain-right h2 {
   font-family: var(--font-display);
@@ -770,11 +751,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 300;
   font-style: italic;
   letter-spacing: -0.02em;
-  color: rgba(245,240,235,0.9);
+  color: var(--light);
   line-height: 0.95;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 2;
 }
 .experience-content {
   position: absolute;
@@ -1544,7 +1522,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Wyckoff, New Jersey</p>
       <h1>Refined Floral Design for <em>Intimate</em> Gatherings</h1>
       <p class="hero-sub">Boutique workshops, curated installations & editorial floral artistry in Bergen County, NJ</p>
       <div class="hero-cta-row">
@@ -1640,10 +1617,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="mask-sticky">
     <div class="mask-bg"></div>
     <div class="mask-overlay">
-      <div class="mask-text">Bloom</div>
+      <div class="mask-text" style="display:flex;flex-direction:column;align-items:center;line-height:0.95;"><span style="font-size:clamp(48px,10vw,120px);font-weight:400;letter-spacing:0.08em;">DREAMERSJOY</span><span style="font-size:clamp(14px,2.5vw,28px);font-weight:300;letter-spacing:0.35em;margin-top:0.3em;display:flex;align-items:center;gap:0.5em;"><span style="display:inline-block;width:clamp(20px,4vw,50px);height:1px;background:currentColor;opacity:0.5;"></span>FLORAL STUDIO<span style="display:inline-block;width:clamp(20px,4vw,50px);height:1px;background:currentColor;opacity:0.5;"></span></span></div>
     </div>
     <div class="mask-reveal">
-      <div class="mask-text-filled">Bloom</div>
+      <div class="mask-text-filled" style="display:flex;flex-direction:column;align-items:center;line-height:0.95;"><span style="font-size:clamp(48px,10vw,120px);font-weight:400;letter-spacing:0.08em;">DREAMERSJOY</span><span style="font-size:clamp(14px,2.5vw,28px);font-weight:300;letter-spacing:0.35em;margin-top:0.3em;display:flex;align-items:center;gap:0.5em;"><span style="display:inline-block;width:clamp(20px,4vw,50px);height:1px;background:currentColor;opacity:0.5;"></span>FLORAL STUDIO<span style="display:inline-block;width:clamp(20px,4vw,50px);height:1px;background:currentColor;opacity:0.5;"></span></span></div>
     </div>
     <div class="mask-subtext">
       <p>Every arrangement begins with intention. Every petal placed with purpose. This is floral design as art form.</p>
@@ -2280,8 +2257,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   );
 
   // ─── HERO ENTRANCE ANIMATIONS ───
-  gsap.from('.hero-eyebrow', { opacity: 0, y: 10, duration: 0.8, delay: 0.5, ease: 'power2.out' });
-  gsap.from('.hero h1', { opacity: 0, y: 30, duration: 1, delay: 0.7, ease: 'power2.out' });
+  gsap.from('.hero h1', { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power2.out' });
   gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 0.8, delay: 1.0, ease: 'power2.out' });
   gsap.from('.hero-cta-row', { opacity: 0, y: 20, duration: 0.8, delay: 1.2, ease: 'power2.out' });
   gsap.from('#scrollIndicator', { opacity: 0, duration: 0.6, delay: 1.5, ease: 'power2.out' });
