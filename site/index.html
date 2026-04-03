@@ -705,20 +705,65 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   top: 0;
   bottom: 0;
   width: 50%;
-  background: var(--dark);
   z-index: 2;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
+/* Theater curtain fabric effect */
 .curtain-left {
   left: 0;
   justify-content: flex-end;
   padding-right: 40px;
+  background:
+    linear-gradient(95deg,
+      #1a2744 0%, #243556 8%, #1d2d4e 12%,
+      #2a3d62 20%, #1f3358 24%, #263a5e 30%,
+      #1c2e50 40%, #253b60 48%, #1e3054 55%,
+      #2c4068 65%, #213558 72%, #283e64 80%,
+      #1b2d4f 88%, #24385c 94%, #1a2744 100%);
+  border-right: 3px solid rgba(193,168,120,0.35);
+  box-shadow: inset -30px 0 60px rgba(0,0,0,0.4), inset 20px 0 40px rgba(42,61,98,0.3);
 }
 .curtain-right {
   right: 0;
   justify-content: flex-start;
   padding-left: 40px;
+  background:
+    linear-gradient(85deg,
+      #1a2744 0%, #263a5e 6%, #1e3054 12%,
+      #2c4068 18%, #213558 24%, #283e64 32%,
+      #1b2d4f 40%, #24385c 50%, #1d2d4e 58%,
+      #2a3d62 66%, #1f3358 74%, #253b60 82%,
+      #1c2e50 90%, #243556 96%, #1a2744 100%);
+  border-left: 3px solid rgba(193,168,120,0.35);
+  box-shadow: inset 30px 0 60px rgba(0,0,0,0.4), inset -20px 0 40px rgba(42,61,98,0.3);
+}
+/* Curtain top valance drape */
+.curtain-left::before, .curtain-right::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(26,39,68,0.9), transparent);
+  z-index: 1;
+}
+/* Subtle fabric sheen */
+.curtain-left::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 60%;
+  background: linear-gradient(160deg, transparent 0%, rgba(60,85,130,0.08) 30%, rgba(80,110,160,0.06) 50%, transparent 70%);
+  pointer-events: none;
+}
+.curtain-right::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 60%;
+  background: linear-gradient(200deg, transparent 0%, rgba(60,85,130,0.08) 30%, rgba(80,110,160,0.06) 50%, transparent 70%);
+  pointer-events: none;
 }
 .curtain-left h2, .curtain-right h2 {
   font-family: var(--font-display);
@@ -726,8 +771,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 300;
   font-style: italic;
   letter-spacing: -0.02em;
-  color: var(--light);
+  color: rgba(245,240,235,0.9);
   line-height: 0.95;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 2;
 }
 .experience-content {
   position: absolute;
