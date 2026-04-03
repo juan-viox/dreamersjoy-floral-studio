@@ -226,7 +226,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(26,26,46,0.3) 0%, rgba(26,26,46,0.15) 40%, rgba(26,26,46,0.5) 100%);
+  background: linear-gradient(to bottom, rgba(26,26,46,0.45) 0%, rgba(26,26,46,0.55) 30%, rgba(26,26,46,0.65) 100%);
 }
 .hero-content {
   position: relative;
@@ -242,7 +242,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   text-transform: uppercase;
   color: rgba(245,240,235,0.8);
   margin-bottom: 28px;
-  opacity: 0;
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -252,7 +251,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.01em;
   color: var(--light);
   margin-bottom: 24px;
-  opacity: 0;
   text-shadow: 0 2px 40px rgba(0,0,0,0.3);
 }
 .hero h1 em {
@@ -267,7 +265,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   max-width: 50ch;
   margin: 0 auto 40px;
   line-height: 1.7;
-  opacity: 0;
   text-shadow: 0 1px 20px rgba(0,0,0,0.2);
 }
 .hero-cta-row {
@@ -275,7 +272,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  opacity: 0;
 }
 .btn-primary {
   display: inline-block;
@@ -1975,15 +1971,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
     }
 
-    // Preload all frames
-    for (var i = 1; i <= frameCount; i++) {
-      var img = new Image();
-      img.src = framePath(i);
-      img.onload = function() {
-        loaded++;
-        if (loaded === 1) { resize(); drawFrame(0); }
-      };
-      frames.push(img);
+    // Preload first frame immediately for instant hero display
+    var firstImg = new Image();
+    firstImg.src = framePath(1);
+    firstImg.onload = function() {
+      frames[0] = firstImg;
+      loaded++;
+      resize();
+      drawFrame(0);
+    };
+    frames.push(firstImg);
+
+    // Preload remaining frames
+    for (var i = 2; i <= frameCount; i++) {
+      (function(idx) {
+        var img = new Image();
+        img.src = framePath(idx);
+        img.onload = function() { loaded++; };
+        frames.push(img);
+      })(i);
     }
 
     window.addEventListener('resize', resize);
@@ -2008,8 +2014,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       }
     });
 
-    // Draw first frame immediately
-    setTimeout(function() { resize(); drawFrame(0); }, 100);
+    // Fallback: keep trying to draw first frame until it renders
+    var firstFrameInterval = setInterval(function() {
+      if (frames[0] && frames[0].complete) {
+        resize();
+        drawFrame(0);
+        clearInterval(firstFrameInterval);
+      }
+    }, 50);
   })();
 
   // ─── BOOKING MESH GRADIENT (Canvas) ───
@@ -2052,19 +2064,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   );
 
   // ─── HERO ENTRANCE ANIMATIONS ───
-  // Set initial states FIRST
-  gsap.set('.hero-eyebrow', { opacity: 0 });
-  gsap.set('.hero h1', { opacity: 0, y: 30 });
-  gsap.set('.hero-sub', { opacity: 0, y: 20 });
-  gsap.set('.hero-cta-row', { opacity: 0, y: 20 });
-  gsap.set('#scrollIndicator', { opacity: 0 });
-  // Then animate in
-  var heroTl = gsap.timeline({ delay: 0.3 });
-  heroTl.to('.hero-eyebrow', { opacity: 1, duration: 0.8, ease: 'power2.out' })
-    .to('.hero h1', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.4')
-    .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
-    .to('.hero-cta-row', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4')
-    .to('#scrollIndicator', { opacity: 1, duration: 0.6 }, '-=0.2');
+  gsap.from('.hero-eyebrow', { opacity: 0, y: 10, duration: 0.8, delay: 0.5, ease: 'power2.out' });
+  gsap.from('.hero h1', { opacity: 0, y: 30, duration: 1, delay: 0.7, ease: 'power2.out' });
+  gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 0.8, delay: 1.0, ease: 'power2.out' });
+  gsap.from('.hero-cta-row', { opacity: 0, y: 20, duration: 0.8, delay: 1.2, ease: 'power2.out' });
+  gsap.from('#scrollIndicator', { opacity: 0, duration: 0.6, delay: 1.5, ease: 'power2.out' });
 
   // ─── TEXT MASK REVEAL ───
   var maskSection = document.querySelector('.mask-section');
