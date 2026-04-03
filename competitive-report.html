@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Analysis — DreamersJoy Floral Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #334155;
+    --accent: #8B7355;
+    --accent2: #C9B8A8;
+    --sage: #6B7C6E;
+    --rose: #D4B8A0;
+    --dark: #0F1117;
+    --dark-surface: #161922;
+    --dark-card: #1C1F2E;
+    --dark-border: #2A2D3E;
+    --light: #FAFAF8;
+    --linen: #F5F0EB;
+    --text: #E8E6E3;
+    --text-muted: #9B9A97;
+    --gold: #C9A96E;
+    --green: #4ADE80;
+    --red: #F87171;
+    --blue: #60A5FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+
+  /* Cover Page */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(139,115,85,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(107,124,110,0.06) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+  }
+  .cover-badge {
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .cover h1 {
+    position: relative;
+    z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--linen);
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .cover-sub {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 3rem;
+  }
+  .cover-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 3rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+  }
+  .cover-meta span { opacity: 0.7; }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Section */
+  section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--dark-border);
+  }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--linen);
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  /* Executive Summary */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .exec-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .exec-card:hover { border-color: var(--accent); }
+  .exec-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .exec-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Competitor Grid */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+  .comp-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .comp-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .comp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+  .comp-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--linen);
+    line-height: 1.3;
+  }
+  .comp-score {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+  .score-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .score-max {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .comp-location {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .comp-desc {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .comp-standout {
+    font-size: 0.8rem;
+    color: var(--sage);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+  .comp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--dark-border);
+    font-size: 0.75rem;
+  }
+  .comp-price {
+    color: var(--accent2);
+  }
+  .comp-ig {
+    color: var(--text-muted);
+  }
+  .comp-category {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--dark-card);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.75rem;
+    border-bottom-left-radius: 8px;
+    color: var(--text-muted);
+  }
+  .cat-direct { color: var(--red); background: rgba(248,113,113,0.1); }
+  .cat-aspirational { color: var(--gold); background: rgba(201,169,110,0.1); }
+  .cat-workshop { color: var(--blue); background: rgba(96,165,250,0.1); }
+  .cat-lifestyle { color: var(--sage); background: rgba(107,124,110,0.15); }
+
+  /* Score Bar */
+  .score-bar-wrap {
+    height: 4px;
+    background: var(--dark-border);
+    border-radius: 2px;
+    margin-top: 0.75rem;
+    overflow: hidden;
+  }
+  .score-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+  .score-low { background: var(--red); }
+  .score-mid { background: var(--gold); }
+  .score-high { background: var(--green); }
+
+  /* Opportunity Cards */
+  .opp-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .opp-card {
+    background: linear-gradient(135deg, rgba(139,115,85,0.08) 0%, rgba(107,124,110,0.06) 100%);
+    border: 1px solid rgba(139,115,85,0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+  }
+  .opp-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 3px 0 0 3px;
+  }
+  .opp-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    opacity: 0.4;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+  .opp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--linen);
+    margin-bottom: 0.75rem;
+    max-width: 85%;
+  }
+  .opp-detail {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Market Gaps */
+  .gap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .gap-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .gap-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--linen);
+    margin-bottom: 0.75rem;
+  }
+  .gap-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Design Trends */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+  .trend-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .trend-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--linen);
+    margin-bottom: 0.75rem;
+  }
+  .trend-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .trend-examples {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .trend-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(107,124,110,0.15);
+    color: var(--sage);
+    letter-spacing: 0.05em;
+  }
+
+  /* Pricing Landscape */
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  .pricing-table th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid var(--dark-border);
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+  }
+  .pricing-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--dark-border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .pricing-table tr:hover td {
+    background: var(--dark-surface);
+  }
+  .pricing-table .name-col {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--linen);
+  }
+  .price-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .price-low { background: rgba(74,222,128,0.1); color: var(--green); }
+  .price-mid { background: rgba(201,169,110,0.1); color: var(--gold); }
+  .price-high { background: rgba(248,113,113,0.1); color: var(--red); }
+
+  /* Key Differentiators */
+  .diff-list {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+  .diff-list li {
+    padding: 1.25rem 1.5rem;
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .diff-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(139,115,85,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* Landscape Section */
+  .landscape-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .ls-stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+  }
+  .ls-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .ls-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Footer */
+  .report-footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .report-footer .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #222; }
+    .cover { min-height: auto; padding: 3rem 2rem; background: #fff; }
+    .cover h1, .section-title, .comp-name, .opp-title, .gap-card h4, .trend-card h4 { color: #222; }
+    .cover-badge, .section-label { color: var(--accent); }
+    .exec-card, .comp-card, .opp-card, .gap-card, .trend-card, .ls-stat, .diff-list li {
+      background: #f8f8f8;
+      border-color: #ddd;
+      box-shadow: none;
+    }
+    .comp-card:hover { transform: none; box-shadow: none; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .comp-grid { grid-template-columns: 1fr; }
+    .cover-meta { flex-direction: column; gap: 0.5rem; }
+    .pricing-table { font-size: 0.75rem; }
+    .pricing-table th, .pricing-table td { padding: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-badge">VioX AI &middot; Cinematic Sites</div>
+  <h1>Competitive <em>Analysis</em><br>DreamersJoy Floral Studio</h1>
+  <p class="cover-sub">A comprehensive analysis of 20 competitors across Bergen County, the tri-state area, and national aspirational brands &mdash; revealing the white space where DreamersJoy will lead.</p>
+  <div class="cover-meta">
+    <span>April 2026</span>
+    <span>Bergen County, NJ</span>
+    <span>20 Competitors Analyzed</span>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<section>
+  <div class="container">
+    <div class="section-label">01 &mdash; Executive Summary</div>
+    <h2 class="section-title">The Opportunity Is Wide Open</h2>
+    <p class="section-intro">Bergen County has a significant gap in the boutique floral experience market. Existing florists are traditional delivery and arrangement shops with dated branding. Creative workshop competitors prove the demand exists but lack the luxury aesthetic. The affluent women of Wyckoff, Ridgewood, and Franklin Lakes currently have to travel to Hoboken, Berkeley Heights, or NYC for any kind of elevated floral experience.</p>
+    <div class="exec-grid">
+      <div class="exec-card">
+        <div class="exec-number">0</div>
+        <div class="exec-label">Luxury floral workshop studios in Bergen County</div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-number">0</div>
+        <div class="exec-label">Bergen County florists with cinematic websites</div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-number">$85-175</div>
+        <div class="exec-label">Sweet spot price gap (between $73 Board &amp; Brush and $600+ Blue Jasmine)</div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-number">20</div>
+        <div class="exec-label">Competitors analyzed across 4 categories</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(139,115,85,0.1), rgba(107,124,110,0.08)); border: 1px solid rgba(139,115,85,0.2); border-radius: 12px;">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--linen); margin-bottom: 1rem;">Primary Opportunity</h3>
+      <p style="font-size: 0.95rem; color: var(--text); line-height: 1.8;">DreamersJoy has the chance to be the <strong style="color: var(--accent);">first luxury boutique floral workshop studio in Bergen County</strong> &mdash; combining the social accessibility of Board &amp; Brush ($73 price anchoring) with the editorial aesthetic of Blue Jasmine and Elan Flowers, at a sweet-spot price of $95&ndash;$175 per experience. A cinematic, editorial-quality website would alone differentiate DreamersJoy from every competitor within 30 miles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Competitor Grid -->
+<section>
+  <div class="container">
+    <div class="section-label">02 &mdash; Competitive Landscape</div>
+    <h2 class="section-title">20 Competitors Analyzed</h2>
+    <p class="section-intro">We analyzed direct competitors, aspirational national brands, workshop experience providers, and luxury lifestyle businesses that serve the same affluent Bergen County demographic.</p>
+    <div class="comp-grid">
+
+      <!-- Direct Competitors -->
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Abma's Farm Greenhouse Workshops</div>
+          <div class="comp-score"><span class="score-value">4</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Wyckoff, NJ</div>
+        <div class="comp-desc">Family farm offering seasonal make-and-take floral and garden craft workshops in their greenhouse.</div>
+        <div class="comp-standout">Hyper-local presence with generational trust. Weakness: farm branding lacks luxury polish, dated website.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$35&ndash;$75/workshop</span>
+          <span class="comp-ig">@abmasfarm &middot; ~5K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-low" style="width:40%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Blue Jasmine Floral</div>
+          <div class="comp-score"><span class="score-value">9</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Berkeley Heights, NJ (30 min from Wyckoff)</div>
+        <div class="comp-desc">High-end floral design studio offering editorial florals, weddings, and professional-level multi-day design workshops.</div>
+        <div class="comp-standout">Strong editorial brand, 143K Instagram. Weakness: pricing targets pros at $600&ndash;$1,200+; outside Bergen County.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$450&ndash;$1,200+</span>
+          <span class="comp-ig">@bluejasminefloral &middot; 143K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:90%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Bloomie Flower Studio</div>
+          <div class="comp-score"><span class="score-value">7</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Hoboken, NJ</div>
+        <div class="comp-desc">Boutique floral studio offering small bouquet workshops, flower bar experiences, and wedding florals.</div>
+        <div class="comp-standout">Clean modern branding, accessible pricing from $90. Weakness: Hoboken is 45 min away; site is functional but not cinematic.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$90&ndash;$150/person</span>
+          <span class="comp-ig">@bloomie_flower_studio &middot; ~6K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:70%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">The Flower (Ridgefield, NJ)</div>
+          <div class="comp-score"><span class="score-value">5</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Ridgefield, NJ (Bergen County)</div>
+        <div class="comp-desc">Full-service florist offering structured floral design classes (4-week, 12-week, advanced courses) plus group workshops.</div>
+        <div class="comp-standout">Only Bergen County florist with structured multi-week curriculum. Weakness: traditional website, not lifestyle-driven.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$150+/person</span>
+          <span class="comp-ig">@theflowernyc &middot; ~3K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:50%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Wild Nomad Flower Co.</div>
+          <div class="comp-score"><span class="score-value">7</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">NJ / NY / Las Vegas</div>
+        <div class="comp-desc">Modern floral studio specializing in brand activations, bloom bars, subscriptions, workshops, and mentorships.</div>
+        <div class="comp-standout">Strong lifestyle positioning, innovative Bloom Bar mobile concept. Weakness: spread thin across three markets; more boho than luxury.</div>
+        <div class="comp-meta">
+          <span class="comp-price">Not listed</span>
+          <span class="comp-ig">@wildnomadflowerco &middot; ~4K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:70%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Wyckoff Florist &amp; Gifts</div>
+          <div class="comp-score"><span class="score-value">3</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Wyckoff, NJ</div>
+        <div class="comp-desc">Family-owned full-service florist since 1964 serving Wyckoff with delivery and arrangements.</div>
+        <div class="comp-standout">60+ years of local trust. Weakness: no workshops, no experiential offerings, dated website. The old guard DreamersJoy can disrupt.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$50&ndash;$150</span>
+          <span class="comp-ig">@wyckofffloristandgifts &middot; &lt;1K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-low" style="width:30%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-direct">Direct</span>
+        <div class="comp-header">
+          <div class="comp-name">Denny Wiggers Gardenscapes</div>
+          <div class="comp-score"><span class="score-value">3</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Paramus, NJ (Bergen County)</div>
+        <div class="comp-desc">Full-service garden center and landscaping company offering arrangements and delivery across Bergen County.</div>
+        <div class="comp-standout">Strong Bergen County presence, 30 years. Weakness: garden center brand, not boutique; no workshops; utilitarian website.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$40&ndash;$200</span>
+          <span class="comp-ig">N/A</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-low" style="width:30%"></div></div>
+      </div>
+
+      <!-- Aspirational Brands -->
+      <div class="comp-card">
+        <span class="comp-category cat-aspirational">Aspirational</span>
+        <div class="comp-header">
+          <div class="comp-name">Elan Flowers</div>
+          <div class="comp-score"><span class="score-value">9</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Tribeca, NYC</div>
+        <div class="comp-desc">Luxury Tribeca florist offering bespoke seasonal arrangements, editorial event design, and private workshops for up to 25.</div>
+        <div class="comp-standout">Tribeca cachet, clean editorial website, strong photography. Weakness: opaque pricing and workshop availability.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$100+ &middot; workshops by inquiry</span>
+          <span class="comp-ig">@elanflowers &middot; 12K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:90%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-aspirational">Aspirational</span>
+        <div class="comp-header">
+          <div class="comp-name">Tinge Floral</div>
+          <div class="comp-score"><span class="score-value">8</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Salt Lake City, UT</div>
+        <div class="comp-desc">Color-driven luxury floral design studio by Ashley Beyer, offering destination weddings and retreat-style workshops.</div>
+        <div class="comp-standout">Masterclass in color-as-brand-identity. Film &amp; Flora workshops create aspirational FOMO. 108K Instagram. Weakness: very high price point.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$800&ndash;$2,500+</span>
+          <span class="comp-ig">@tingefloral &middot; 108K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:80%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-aspirational">Aspirational</span>
+        <div class="comp-header">
+          <div class="comp-name">HART Floral</div>
+          <div class="comp-score"><span class="score-value">10</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Portland, OR (international)</div>
+        <div class="comp-desc">Concept-driven destination floral design by Madison Hartley with international workshops and online courses.</div>
+        <div class="comp-standout">Strongest artistic vision in the industry. Multiple revenue streams (workshops, online, print shop). 125K followers.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$1,000&ndash;$3,000+</span>
+          <span class="comp-ig">@hart_floral &middot; 125K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:100%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-aspirational">Aspirational</span>
+        <div class="comp-header">
+          <div class="comp-name">FLOWERBX</div>
+          <div class="comp-score"><span class="score-value">10</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">London / NYC / LA / Dubai</div>
+        <div class="comp-desc">Luxury floral brand offering single-variety bouquet subscriptions and bespoke corporate installations.</div>
+        <div class="comp-standout">Gold standard for luxury floral e-commerce. Minimalist mono-botanical aesthetic. B Corp certified. Subscriptions from $300/week.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$300&ndash;$10,000+/wk</span>
+          <span class="comp-ig">@theflowerbx &middot; 119K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:100%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-aspirational">Aspirational</span>
+        <div class="comp-header">
+          <div class="comp-name">Putnam &amp; Putnam</div>
+          <div class="comp-score"><span class="score-value">10</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">NYC (Rosandich Studios)</div>
+        <div class="comp-desc">NYC's preeminent editorial floral designers (Vogue, Harper's Bazaar) with their own streaming channel.</div>
+        <div class="comp-standout">Created a new content/media model for floristry with Putnam Flower Channel. Celebrity clients. Published authors. 200K+ followers.</div>
+        <div class="comp-meta">
+          <span class="comp-price">Premium editorial pricing</span>
+          <span class="comp-ig">@putnamflowers &middot; 200K+</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:100%"></div></div>
+      </div>
+
+      <!-- Workshop Experience -->
+      <div class="comp-card">
+        <span class="comp-category cat-workshop">Workshop</span>
+        <div class="comp-header">
+          <div class="comp-name">Board &amp; Brush (Ramsey)</div>
+          <div class="comp-score"><span class="score-value">5</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Ramsey, NJ (Bergen County)</div>
+        <div class="comp-desc">Instructor-led DIY wood sign workshops. BYOB environment capturing the affluent woman GNO market.</div>
+        <div class="comp-standout">Proven franchise model at DreamersJoy's exact target demo. BYOB creates social atmosphere. Weakness: franchise feel lacks artisanal authenticity.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$73&ndash;$78/project</span>
+          <span class="comp-ig">@boardandbrushramsey &middot; 3.7K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:50%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-workshop">Workshop</span>
+        <div class="comp-header">
+          <div class="comp-name">Wortendyke Pottery Studio</div>
+          <div class="comp-score"><span class="score-value">4</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Midland Park, NJ (Bergen County)</div>
+        <div class="comp-desc">Pottery studio in an 1865 railroad station offering 12-week clay classes and wine night events.</div>
+        <div class="comp-standout">Historic venue creates atmospheric, Instagram-worthy backdrop. Wine nights show social programming instinct. Weakness: tiny operation, dated website.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$385/12-week session</span>
+          <span class="comp-ig">@wortendykestudio &middot; 385</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-low" style="width:40%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-workshop">Workshop</span>
+        <div class="comp-header">
+          <div class="comp-name">TASOC Art School</div>
+          <div class="comp-score"><span class="score-value">5</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Demarest, NJ (Bergen County)</div>
+        <div class="comp-desc">Non-profit art school since 1974 with classes in painting, ceramics, jewelry, printmaking, and photography.</div>
+        <div class="comp-standout">50-year legacy, four modern studios. Weakness: institutional rather than experiential positioning; uninspiring website.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$200&ndash;$500/semester</span>
+          <span class="comp-ig">~1K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:50%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-workshop">Workshop</span>
+        <div class="comp-header">
+          <div class="comp-name">Sunshine Pottery &amp; Paint</div>
+          <div class="comp-score"><span class="score-value">4</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Englewood, NJ (Bergen County)</div>
+        <div class="comp-desc">Walk-in DIY studio offering pottery painting, canvas, fused glass, candle making, and pottery wheel classes.</div>
+        <div class="comp-standout">Walk-in model is low-commitment and family-friendly. Weakness: heavily kids-oriented, lacks elevated adult positioning; basic branding.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$30&ndash;$65/session</span>
+          <span class="comp-ig">@sunshinepotterynj &middot; 683</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-low" style="width:40%"></div></div>
+      </div>
+
+      <!-- Luxury Lifestyle -->
+      <div class="comp-card">
+        <span class="comp-category cat-lifestyle">Lifestyle</span>
+        <div class="comp-header">
+          <div class="comp-name">Felina Restaurant &amp; Bar</div>
+          <div class="comp-score"><span class="score-value">9</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Ridgewood, NJ</div>
+        <div class="comp-desc">Upscale Italian fine dining with rooftop bar La Terrazza and Wine Spectator-winning wine list.</div>
+        <div class="comp-standout">Defines the luxury lifestyle ceiling in Ridgewood. Beautiful design, 24K followers. Where DreamersJoy's target customer dines.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$80&ndash;$200/person</span>
+          <span class="comp-ig">@felinarestaurants &middot; 24K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-high" style="width:90%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-lifestyle">Lifestyle</span>
+        <div class="comp-header">
+          <div class="comp-name">The Bar Method Ridgewood</div>
+          <div class="comp-score"><span class="score-value">7</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Ridgewood, NJ</div>
+        <div class="comp-desc">Premium barre fitness studio with luxury amenities, childcare, and retail boutique.</div>
+        <div class="comp-standout">Captures the same affluent Bergen County woman in her self-care routine. Premium amenities signal luxury. Strong local loyalty.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$26/class &middot; $225/10-pack</span>
+          <span class="comp-ig">@barmethodridgewood &middot; ~2K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:70%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-lifestyle">Lifestyle</span>
+        <div class="comp-header">
+          <div class="comp-name">Araya Rebirth Spa</div>
+          <div class="comp-score"><span class="score-value">5</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Ridgewood, NJ</div>
+        <div class="comp-desc">Award-winning holistic spa offering facials, massages, reflexology, and crystal healing.</div>
+        <div class="comp-standout">Strong local reputation, wellness angle resonates with target demo. Weakness: website lacks sophistication for its market.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$75&ndash;$200/treatment</span>
+          <span class="comp-ig">@arayarebirth &middot; ~1.5K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:50%"></div></div>
+      </div>
+
+      <div class="comp-card">
+        <span class="comp-category cat-lifestyle">Lifestyle</span>
+        <div class="comp-header">
+          <div class="comp-name">Wellnessesity</div>
+          <div class="comp-score"><span class="score-value">7</span><span class="score-max">/10</span></div>
+        </div>
+        <div class="comp-location">Wyckoff, NJ</div>
+        <div class="comp-desc">Modern medspa and biohacking center offering Emsculpt NEO, IV therapy, and wellness plans.</div>
+        <div class="comp-standout">Located on Franklin Ave in Wyckoff &mdash; literally next door to DreamersJoy's market. Modern wellness positioning. Weakness: clinical, lacks warmth.</div>
+        <div class="comp-meta">
+          <span class="comp-price">$100&ndash;$500+</span>
+          <span class="comp-ig">@wellnessesity &middot; ~2K</span>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar score-mid" style="width:70%"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Market Gap Analysis -->
+<section>
+  <div class="container">
+    <div class="section-label">03 &mdash; Market Gaps</div>
+    <h2 class="section-title">Where the Market Falls Short</h2>
+    <p class="section-intro">Five critical gaps exist in the Bergen County market that DreamersJoy is uniquely positioned to fill.</p>
+    <div class="gap-grid">
+      <div class="gap-card">
+        <h4>No Cinematic, Editorial-Quality Website</h4>
+        <p>Every Bergen County florist has either a dated template site, a basic Squarespace, or a functional-but-uninspiring layout. None approach the visual storytelling of Elan Flowers, HART Floral, or FLOWERBX. A cinematic site alone would immediately differentiate DreamersJoy.</p>
+      </div>
+      <div class="gap-card">
+        <h4>Zero Online Booking for Floral Workshops</h4>
+        <p>Most Bergen County creative workshops still use email or phone to book. No local studio offers seamless booking with waitlists, gift cards, and instant confirmation that national brands use.</p>
+      </div>
+      <div class="gap-card">
+        <h4>No Video Content or Behind-the-Scenes Storytelling</h4>
+        <p>In Bergen County, not a single floral business creates tutorial content, process videos, or seasonal design series. DreamersJoy could build an audience and establish authority through short-form video before anyone else.</p>
+      </div>
+      <div class="gap-card">
+        <h4>No Gift-Experience Business Model</h4>
+        <p>Workshop gift cards are one of the highest-margin products in experiential retail. No Bergen County floral or creative studio prominently sells beautifully packaged workshop gift experiences online. A massive missed revenue stream.</p>
+      </div>
+      <div class="gap-card">
+        <h4>No Flowers + Food/Wine Curated Experience</h4>
+        <p>Nobody is doing a polished "Blooms &amp; Bubbles" or "Petals &amp; Prosecco" branded experience that pairs floral design with curated wine/cheese in a luxury setting. Felina proves Bergen County women will pay premium for an elevated social evening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 Niche Opportunities -->
+<section>
+  <div class="container">
+    <div class="section-label">04 &mdash; Niche Opportunities</div>
+    <h2 class="section-title">Five Strategic Opportunities</h2>
+    <p class="section-intro">These are the highest-impact opportunities identified from our competitive analysis &mdash; each represents a clear path to market leadership.</p>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <span class="opp-number">01</span>
+        <h3 class="opp-title">Luxury Floral Workshop Studio in Bergen County &mdash; The Gap Is Wide Open</h3>
+        <p class="opp-detail">There is NO dedicated boutique floral workshop studio in Bergen County. The closest direct competitor (Blue Jasmine) is 30+ minutes away and targets professionals at $600&ndash;$1,200. Abma's Farm does seasonal workshops but with a farm/family brand. The entire affluent corridor from Ridgewood to Ramsey has zero floral experience studios. DreamersJoy would be the first.</p>
+      </div>
+      <div class="opp-card">
+        <span class="opp-number">02</span>
+        <h3 class="opp-title">The $85&ndash;$175 Sweet Spot for Social Floral Experiences</h3>
+        <p class="opp-detail">Board &amp; Brush proves Bergen County women will pay $73 for a DIY social experience. Blue Jasmine charges $600+. There is a massive white space between $75 and $600 for a curated, luxury-feeling floral workshop at $85&ndash;$175 that feels like a night out, not a professional course. This is the Goldilocks zone.</p>
+      </div>
+      <div class="opp-card">
+        <span class="opp-number">03</span>
+        <h3 class="opp-title">Floral Subscription + Workshop Hybrid Model</h3>
+        <p class="opp-detail">No Bergen County florist offers a subscription service paired with workshop access. A premium weekly/biweekly arrangement subscription ($65&ndash;$95/delivery) where subscribers get priority access and discounts on monthly workshops creates recurring revenue AND community.</p>
+      </div>
+      <div class="opp-card">
+        <span class="opp-number">04</span>
+        <h3 class="opp-title">Corporate/Team Wellness Workshops</h3>
+        <p class="opp-detail">With major corporate offices in Paramus, Mahwah, and Saddle Brook, and the rise of wellness-as-benefit culture, there is no Bergen County business offering polished corporate floral team-building workshops. DreamersJoy could own this segment with $150&ndash;$200/person packages.</p>
+      </div>
+      <div class="opp-card">
+        <span class="opp-number">05</span>
+        <h3 class="opp-title">Mother-Daughter &amp; Seasonal Experience Programming</h3>
+        <p class="opp-detail">There is no Bergen County business offering curated mother-daughter floral experiences, seasonal wreath-making series, or holiday pop-up workshops with a luxury aesthetic. The seasonal programming calendar is wide open.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Design Trends -->
+<section>
+  <div class="container">
+    <div class="section-label">05 &mdash; Design Trends</div>
+    <h2 class="section-title">What the Best Studios Do</h2>
+    <p class="section-intro">Design patterns from the top national floral studios that should inform the DreamersJoy cinematic website.</p>
+    <div class="trend-grid">
+      <div class="trend-card">
+        <h4>Cinematic Full-Bleed Photography as Hero</h4>
+        <p>The top studios nationally use full-screen editorial photography as their homepage entry point. No clutter, no text-heavy layouts. Bergen County has zero florists doing this.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">elanflowers.com</span>
+          <span class="trend-tag">flowerbx.com</span>
+          <span class="trend-tag">hartfloraldesign.com</span>
+        </div>
+      </div>
+      <div class="trend-card">
+        <h4>Single-Variety / Mono-Botanical Aesthetic</h4>
+        <p>FLOWERBX built a global brand around single-flower arrangements. The 2026 trend emphasizes repetition and restraint &mdash; the opposite of the cluttered mixed-bouquet look Bergen County florists default to.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">flowerbx.com</span>
+        </div>
+      </div>
+      <div class="trend-card">
+        <h4>Workshop-as-Luxury-Experience</h4>
+        <p>The best studios frame workshops as curated experiences: exclusive studio access, retail-value arrangements, photography-ready setups, artisanal refreshments. They sell the experience and the lifestyle, not just instruction.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">acmefloral.com</span>
+          <span class="trend-tag">the-flower-garage.com</span>
+          <span class="trend-tag">tingefloral.com</span>
+        </div>
+      </div>
+      <div class="trend-card">
+        <h4>Floral Education Content as Brand Authority</h4>
+        <p>Putnam &amp; Putnam launched a streaming channel. HART sells online courses. Tinge combines florals with film photography. The national leaders all use education content to build authority and secondary revenue.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">putnamflowerchannel.com</span>
+          <span class="trend-tag">hartfloraleducation.com</span>
+          <span class="trend-tag">tingefloral.com</span>
+        </div>
+      </div>
+      <div class="trend-card">
+        <h4>Texture-Forward &amp; Sculptural Design Language</h4>
+        <p>2026 trends move away from garden-style looseness toward intentional, architectural arrangements. Flowers as sculpture, not just decoration. This trend has not reached Bergen County retail floristry.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">hartfloraldesign.com</span>
+          <span class="trend-tag">tingefloral.com</span>
+          <span class="trend-tag">bluejasminefloral.com</span>
+        </div>
+      </div>
+      <div class="trend-card">
+        <h4>Subscription + Community Membership Model</h4>
+        <p>FLOWERBX and Wild Nomad offer subscription tiers combining product delivery with community access (priority booking, member-only workshops). This recurring-revenue model is standard nationally but nonexistent in Bergen County.</p>
+        <div class="trend-examples">
+          <span class="trend-tag">flowerbx.com</span>
+          <span class="trend-tag">wildnomadflowerco.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bergen County Landscape -->
+<section>
+  <div class="container">
+    <div class="section-label">06 &mdash; Bergen County Landscape</div>
+    <h2 class="section-title">The Local Market at a Glance</h2>
+    <p class="section-intro">Bergen County's affluent corridors represent a market hungry for elevated creative experiences. Here is the current competitive landscape.</p>
+    <div class="landscape-stats">
+      <div class="ls-stat">
+        <div class="ls-stat-value">7</div>
+        <div class="ls-stat-label">Direct Competitors</div>
+      </div>
+      <div class="ls-stat">
+        <div class="ls-stat-value">5</div>
+        <div class="ls-stat-label">Aspirational Brands Studied</div>
+      </div>
+      <div class="ls-stat">
+        <div class="ls-stat-value">4</div>
+        <div class="ls-stat-label">Workshop Experience Providers</div>
+      </div>
+      <div class="ls-stat">
+        <div class="ls-stat-value">4</div>
+        <div class="ls-stat-label">Luxury Lifestyle Benchmarks</div>
+      </div>
+      <div class="ls-stat">
+        <div class="ls-stat-value">5.4</div>
+        <div class="ls-stat-label">Average Design Quality (Local)</div>
+      </div>
+      <div class="ls-stat">
+        <div class="ls-stat-value">0</div>
+        <div class="ls-stat-label">Local Cinematic Websites</div>
+      </div>
+    </div>
+    <div style="padding: 2rem; background: var(--dark-surface); border: 1px solid var(--dark-border); border-radius: 12px;">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--linen); margin-bottom: 1rem;">Strategic Summary</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem;">Existing florists are traditional delivery/arrangement shops with dated branding. Creative workshop competitors (Board &amp; Brush, pottery studios) prove the demand exists but lack the luxury aesthetic. The affluent women of Wyckoff, Ridgewood, and Franklin Lakes currently have no local option for an elevated floral experience.</p>
+      <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">DreamersJoy's positioning &mdash; "Refined Floral Design for Intimate Gatherings" &mdash; fills the exact gap between the $73 DIY sign-making franchise and the $600+ professional floral course. The website imperative is clear: a cinematic, editorial-quality website would alone differentiate DreamersJoy from every competitor within 30 miles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Landscape -->
+<section>
+  <div class="container">
+    <div class="section-label">07 &mdash; Pricing Landscape</div>
+    <h2 class="section-title">Price Positioning Map</h2>
+    <p class="section-intro">Where each competitor sits on the pricing spectrum &mdash; revealing the sweet spot DreamersJoy should occupy.</p>
+    <div style="overflow-x:auto;">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th>Category</th>
+          <th>Price Range</th>
+          <th>Tier</th>
+          <th>Design Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name-col">Sunshine Pottery &amp; Paint</td>
+          <td>Workshop</td>
+          <td>$30&ndash;$65</td>
+          <td><span class="price-badge price-low">Budget</span></td>
+          <td>4/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">Abma's Farm</td>
+          <td>Direct</td>
+          <td>$35&ndash;$75</td>
+          <td><span class="price-badge price-low">Budget</span></td>
+          <td>4/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">Board &amp; Brush</td>
+          <td>Workshop</td>
+          <td>$73&ndash;$78</td>
+          <td><span class="price-badge price-low">Budget</span></td>
+          <td>5/10</td>
+        </tr>
+        <tr style="background: rgba(139,115,85,0.08);">
+          <td class="name-col" style="color: var(--accent);">DreamersJoy (Target)</td>
+          <td style="color: var(--accent);">Sweet Spot</td>
+          <td style="color: var(--accent); font-weight: 500;">$95&ndash;$175</td>
+          <td><span class="price-badge" style="background: rgba(139,115,85,0.2); color: var(--accent);">Sweet Spot</span></td>
+          <td style="color: var(--accent);">Target: 9+</td>
+        </tr>
+        <tr>
+          <td class="name-col">Bloomie Flower Studio</td>
+          <td>Direct</td>
+          <td>$90&ndash;$150</td>
+          <td><span class="price-badge price-mid">Mid</span></td>
+          <td>7/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">The Flower NYC</td>
+          <td>Direct</td>
+          <td>$150+</td>
+          <td><span class="price-badge price-mid">Mid</span></td>
+          <td>5/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">TASOC Art School</td>
+          <td>Workshop</td>
+          <td>$200&ndash;$500</td>
+          <td><span class="price-badge price-mid">Mid</span></td>
+          <td>5/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">Wortendyke Pottery</td>
+          <td>Workshop</td>
+          <td>$385/session</td>
+          <td><span class="price-badge price-mid">Mid</span></td>
+          <td>4/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">Blue Jasmine Floral</td>
+          <td>Direct</td>
+          <td>$450&ndash;$1,200+</td>
+          <td><span class="price-badge price-high">Premium</span></td>
+          <td>9/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">Tinge Floral</td>
+          <td>Aspirational</td>
+          <td>$800&ndash;$2,500+</td>
+          <td><span class="price-badge price-high">Ultra</span></td>
+          <td>8/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">HART Floral</td>
+          <td>Aspirational</td>
+          <td>$1,000&ndash;$3,000+</td>
+          <td><span class="price-badge price-high">Ultra</span></td>
+          <td>10/10</td>
+        </tr>
+        <tr>
+          <td class="name-col">FLOWERBX</td>
+          <td>Aspirational</td>
+          <td>$300&ndash;$10,000+/wk</td>
+          <td><span class="price-badge price-high">Luxury</span></td>
+          <td>10/10</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- Recommendation Summary -->
+<section>
+  <div class="container">
+    <div class="section-label">08 &mdash; Recommendations</div>
+    <h2 class="section-title">Key Differentiators for DreamersJoy</h2>
+    <p class="section-intro">Based on our comprehensive competitive analysis, these are the strategic differentiators that will position DreamersJoy as the market leader.</p>
+    <ul class="diff-list">
+      <li>
+        <div class="diff-icon">1</div>
+        <div><strong style="color: var(--linen);">Only dedicated floral workshop studio in Bergen County.</strong> No competitor currently occupies this position. DreamersJoy will be first to market.</div>
+      </li>
+      <li>
+        <div class="diff-icon">2</div>
+        <div><strong style="color: var(--linen);">Cinematic website with editorial photography and seamless booking.</strong> A site that functions as a luxury brand experience, not a service listing &mdash; the only one of its kind within 30 miles.</div>
+      </li>
+      <li>
+        <div class="diff-icon">3</div>
+        <div><strong style="color: var(--linen);">Curated experiences pairing florals with wine and food.</strong> "Blooms &amp; Bubbles" branded workshops that feel like an elevated social evening, not a class.</div>
+      </li>
+      <li>
+        <div class="diff-icon">4</div>
+        <div><strong style="color: var(--linen);">Gift-experience-forward business model.</strong> Beautifully packaged digital gift cards and workshop gift experiences positioned for holidays, Mother's Day, birthdays, and bridal showers.</div>
+      </li>
+      <li>
+        <div class="diff-icon">5</div>
+        <div><strong style="color: var(--linen);">Video content and seasonal programming calendar.</strong> Short-form content, process videos, and seasonal design series to build authority and audience.</div>
+      </li>
+      <li>
+        <div class="diff-icon">6</div>
+        <div><strong style="color: var(--linen);">Subscription + workshop membership hybrid model.</strong> Recurring arrangement delivery paired with priority workshop access and member-only events, creating community and recurring revenue.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="report-footer">
+  <div class="logo-text">DreamersJoy Floral Studio</div>
+  <p>Competitive Analysis Report &middot; Prepared by VioX AI &middot; April 2026</p>
+  <p style="margin-top: 0.5rem; opacity: 0.5;">Confidential &mdash; Prepared for Sarah De Jesus</p>
+</div>
+
+</body>
+</html>

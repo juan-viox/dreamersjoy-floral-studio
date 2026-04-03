@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamersJoy Floral Studio | Refined Floral Design for Intimate Gatherings</title>
+<meta name="description" content="Boutique floral workshops, curated installations & editorial floral artistry in Bergen County, NJ. Founded by Sarah De Jesus in Wyckoff, New Jersey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DreamersJoy Floral Studio — Cinematic Website
+   Identity: Modern Minimal Luxury + Editorial Contemporary
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --primary: #334155;
+  --secondary: #F5F0EB;
+  --accent1: #8B7355;
+  --accent2: #C9B8A8;
+  --accent3: #6B7C6E;
+  --accent4: #D4B8A0;
+  --dark: #1A1A2E;
+  --light: #FAFAF8;
+  --white: #ffffff;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--primary);
+  background: var(--light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ─── Utility ─── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 20px;
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--primary);
+}
+.fade-up { opacity: 0; transform: translateY(40px); }
+
+/* ═══════════════════════════════════════════════════════════
+   1. NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-smooth);
+}
+.nav.scrolled {
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 rgba(51, 65, 85, 0.06);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo svg { height: 78px; width: 78px; transition: transform 0.3s var(--ease-out); }
+.nav-logo:hover svg { transform: scale(1.05); }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent1);
+  transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--accent1); }
+.nav-cta {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 10px 24px;
+  border: 1px solid var(--primary);
+  border-radius: 0;
+  transition: all 0.3s var(--ease-out) !important;
+}
+.nav-cta:hover { background: var(--primary); color: var(--light) !important; }
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.nav-hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--primary);
+  transition: all 0.3s var(--ease-out);
+  transform-origin: center;
+}
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* Mobile menu */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--light);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.nav-mobile.open { opacity: 1; pointer-events: all; }
+.nav-mobile a {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-mobile { display: flex; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2. HERO SECTION
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--secondary);
+}
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px 24px;
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 28px;
+  opacity: 0;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--primary);
+  margin-bottom: 24px;
+  opacity: 0;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent3);
+}
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 300;
+  color: var(--accent1);
+  max-width: 50ch;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  opacity: 0;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--primary);
+  color: var(--light);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-out);
+}
+.btn-primary:hover { background: var(--dark); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid var(--accent2);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-out);
+}
+.btn-outline:hover { border-color: var(--primary); background: rgba(51,65,85,0.04); }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+}
+.scroll-indicator span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent2);
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: var(--accent2);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   3. TEXT MASK REVEAL
+   ═══════════════════════════════════════════════════════════ */
+.mask-section {
+  position: relative;
+  min-height: 250vh;
+  background: var(--light);
+}
+.mask-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--light);
+}
+.mask-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(212, 184, 160, 0.3) 0%,
+    rgba(107, 124, 110, 0.25) 30%,
+    rgba(201, 184, 168, 0.2) 60%,
+    rgba(139, 115, 85, 0.15) 100%);
+  background-size: 400% 400%;
+  animation: meshShift 12s ease infinite;
+}
+@keyframes meshShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.mask-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.mask-text {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 18vw, 280px);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(51, 65, 85, 0.12);
+  position: relative;
+  z-index: 2;
+}
+.mask-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  clip-path: inset(100% 0 0 0);
+}
+.mask-text-filled {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 18vw, 280px);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background: linear-gradient(135deg,
+    var(--accent3) 0%,
+    var(--accent1) 40%,
+    var(--accent4) 70%,
+    var(--accent3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.mask-subtext {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  z-index: 4;
+}
+.mask-subtext p {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 300;
+  color: var(--accent1);
+  max-width: 45ch;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   4. ABOUT / THE STUDIO
+   ═══════════════════════════════════════════════════════════ */
+.about {
+  padding: clamp(80px, 12vw, 160px) 0;
+  background: var(--light);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.about-text .section-label { margin-bottom: 16px; }
+.about-text .section-heading { margin-bottom: 28px; }
+.about-text .about-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(51, 65, 85, 0.75);
+  margin-bottom: 20px;
+}
+.about-text .about-signature {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--accent1);
+  margin-top: 32px;
+}
+.about-visual {
+  aspect-ratio: 4/5;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(160deg, var(--secondary) 0%, var(--accent2) 50%, var(--accent4) 100%);
+}
+.about-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(107,124,110,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(139,115,85,0.15) 0%, transparent 50%);
+}
+.about-visual::after {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { max-height: 400px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   5. WORKSHOPS — STICKY STACK
+   ═══════════════════════════════════════════════════════════ */
+.workshops {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--secondary);
+}
+.workshops-header {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.workshops-header .section-heading { margin-bottom: 16px; }
+.workshops-header p {
+  font-size: 16px;
+  color: rgba(51,65,85,0.65);
+  max-width: 50ch;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.stack-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.stack-visual {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+}
+.stack-preview {
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(51,65,85,0.1);
+}
+.stack-preview-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+.stack-preview-state.active { opacity: 1; }
+.stack-preview-state .preview-icon {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+}
+.stack-preview-state .preview-stems {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.stack-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 0;
+}
+.workshop-card {
+  padding: 36px 32px;
+  border-radius: 4px;
+  background: var(--light);
+  border: 1px solid rgba(201,184,168,0.3);
+  opacity: 0.4;
+  transform: translateY(6px);
+  transition: all 0.4s var(--ease-out);
+  cursor: default;
+}
+.workshop-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--accent1);
+  box-shadow: 0 8px 32px rgba(139,115,85,0.08);
+}
+.workshop-card .card-season {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent3);
+  margin-bottom: 10px;
+}
+.workshop-card h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.workshop-card p {
+  font-size: 14px;
+  color: rgba(51,65,85,0.6);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.workshop-card .card-price {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent1);
+}
+@media (max-width: 768px) {
+  .stack-container { grid-template-columns: 1fr; }
+  .stack-visual { position: relative; top: 0; }
+  .stack-preview { aspect-ratio: 16/10; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   6. GALLERY GRID — MAGNETIC STYLE
+   ═══════════════════════════════════════════════════════════ */
+.gallery {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--light);
+}
+.gallery-header {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 280px;
+  gap: 16px;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease-out);
+}
+.gallery-item:hover { transform: translateY(-4px); }
+.gallery-item-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s var(--ease-out);
+}
+.gallery-item:hover .gallery-item-bg { transform: scale(1.06); }
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,26,46,0.7) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+.gallery-item-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--light);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-out) 0.1s;
+}
+.gallery-item:hover .gallery-item-label { opacity: 1; transform: translateY(0); }
+.gallery-item-cat {
+  position: absolute;
+  bottom: 46px;
+  left: 20px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.6);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-out) 0.05s;
+}
+.gallery-item:hover .gallery-item-cat { opacity: 1; transform: translateY(0); }
+
+/* Masonry-like spans */
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(5) { grid-column: span 2; }
+.gallery-item:nth-child(8) { grid-column: span 2; }
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(8) { grid-column: span 1; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   7. THE EXPERIENCE — CURTAIN REVEAL
+   ═══════════════════════════════════════════════════════════ */
+.experience-section {
+  position: relative;
+  height: 300vh;
+  background: var(--dark);
+}
+.experience-sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.curtain-left, .curtain-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--dark);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.curtain-left {
+  left: 0;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+.curtain-right {
+  right: 0;
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+.curtain-left h2, .curtain-right h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 80px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--light);
+  line-height: 0.95;
+}
+.experience-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg,
+    rgba(26,26,46,0.95) 0%,
+    rgba(51,65,85,0.9) 50%,
+    rgba(107,124,110,0.85) 100%);
+  padding: 60px 40px;
+}
+.experience-inner {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+.experience-inner .section-label { color: var(--accent4); margin-bottom: 24px; }
+.experience-inner h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--light);
+  margin-bottom: 48px;
+}
+.experience-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.exp-step {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.exp-step .step-time {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent4);
+  margin-bottom: 8px;
+}
+.exp-step h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--light);
+  margin-bottom: 8px;
+}
+.exp-step p {
+  font-size: 13px;
+  color: rgba(250,250,248,0.5);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .experience-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .curtain-left h2, .curtain-right h2 { font-size: clamp(24px, 5vw, 48px); }
+}
+@media (max-width: 480px) {
+  .experience-steps { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   8. KINETIC MARQUEE
+   ═══════════════════════════════════════════════════════════ */
+.marquee-section {
+  padding: 40px 0;
+  overflow: hidden;
+  background: var(--secondary);
+  border-top: 1px solid rgba(201,184,168,0.2);
+  border-bottom: 1px solid rgba(201,184,168,0.2);
+}
+.marquee-row {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  padding: 16px 0;
+}
+.marquee-row .marquee-content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--primary);
+  padding: 0 24px;
+  letter-spacing: 0.02em;
+}
+.marquee-item .marquee-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent1);
+  margin: 0 24px;
+  opacity: 0.4;
+}
+.marquee-logo-inline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 24px;
+}
+.marquee-logo-inline svg {
+  height: 40px;
+  width: 40px;
+  opacity: 0.3;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   9. PRIVATE GATHERINGS
+   ═══════════════════════════════════════════════════════════ */
+.private {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--light);
+}
+.private-header {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.private-header p {
+  font-size: 16px;
+  color: rgba(51,65,85,0.6);
+  max-width: 50ch;
+  margin: 12px auto 0;
+  line-height: 1.7;
+}
+.private-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.flip-card {
+  perspective: 1000px;
+  height: 380px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s var(--ease-out);
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 32px;
+}
+.flip-card-front {
+  border: 1px solid rgba(201,184,168,0.3);
+  background: var(--light);
+}
+.flip-card-front .flip-icon {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent3);
+  margin-bottom: 20px;
+}
+.flip-card-front h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.flip-card-front p {
+  font-size: 14px;
+  color: rgba(51,65,85,0.5);
+}
+.flip-card-back {
+  background: var(--primary);
+  color: var(--light);
+  transform: rotateY(180deg);
+}
+.flip-card-back h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.flip-card-back p {
+  font-size: 14px;
+  color: rgba(250,250,248,0.65);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.flip-card-back .flip-link {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent4);
+  border-bottom: 1px solid var(--accent4);
+  padding-bottom: 2px;
+}
+@media (max-width: 768px) {
+  .private-cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   10. STUDIO FLORAL DESIGN
+   ═══════════════════════════════════════════════════════════ */
+.studio-design {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--secondary);
+}
+.studio-design-header {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.studio-design-header p {
+  font-size: 16px;
+  color: rgba(51,65,85,0.6);
+  max-width: 50ch;
+  margin: 12px auto 0;
+  line-height: 1.7;
+}
+.design-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.design-acc-item {
+  border-bottom: 1px solid rgba(201,184,168,0.3);
+}
+.design-acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+}
+.design-acc-trigger h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--primary);
+}
+.design-acc-trigger .acc-icon {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--accent1);
+  transition: transform 0.3s var(--ease-out);
+}
+.design-acc-item.open .acc-icon { transform: rotate(45deg); }
+.design-acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-out);
+}
+.design-acc-body-inner {
+  padding: 0 0 28px;
+}
+.design-acc-body-inner p {
+  font-size: 15px;
+  color: rgba(51,65,85,0.6);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   11. FOUNDER
+   ═══════════════════════════════════════════════════════════ */
+.founder {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--light);
+}
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.founder-image {
+  aspect-ratio: 3/4;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(150deg, var(--accent2) 0%, var(--secondary) 50%, var(--accent4) 100%);
+}
+.founder-image::after {
+  content: 'S';
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.12);
+  line-height: 1;
+}
+.founder-text .section-label { margin-bottom: 16px; }
+.founder-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.founder-text .founder-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 28px;
+}
+.founder-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(51,65,85,0.7);
+  margin-bottom: 16px;
+}
+.founder-text .founder-sig {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--accent1);
+  margin-top: 24px;
+}
+@media (max-width: 768px) {
+  .founder-grid { grid-template-columns: 1fr; }
+  .founder-image { max-height: 400px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   12. TESTIMONIALS MARQUEE
+   ═══════════════════════════════════════════════════════════ */
+.testimonials {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: var(--dark);
+  overflow: hidden;
+}
+.testimonials-label {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.testimonials-label .section-label { color: var(--accent4); }
+.testimonial-row {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+.testimonial-row .testimonial-content {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+.testimonial-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 400px;
+  max-width: 400px;
+  padding: 40px 36px;
+  margin: 0 12px;
+  border: 1px solid rgba(250,250,248,0.06);
+  border-radius: 4px;
+  white-space: normal;
+  background: rgba(250,250,248,0.02);
+}
+.testimonial-card .quote-mark {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--accent4);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.testimonial-card blockquote {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(250,250,248,0.75);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.testimonial-card .quote-author {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.35);
+}
+@media (max-width: 480px) {
+  .testimonial-card { min-width: 300px; max-width: 300px; padding: 28px 24px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   13. BOOKING CTA
+   ═══════════════════════════════════════════════════════════ */
+.booking-cta {
+  position: relative;
+  padding: clamp(100px, 14vw, 200px) 0;
+  overflow: hidden;
+}
+.booking-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.booking-cta-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.booking-cta-inner .section-label { color: var(--accent1); }
+.booking-cta-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+.booking-cta-inner p {
+  font-size: 16px;
+  color: rgba(51,65,85,0.6);
+  max-width: 45ch;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.booking-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.booking-btns .btn-primary { min-width: 200px; text-align: center; }
+.booking-btns .btn-outline { min-width: 200px; text-align: center; }
+
+/* ═══════════════════════════════════════════════════════════
+   14. CONTACT
+   ═══════════════════════════════════════════════════════════ */
+.contact {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--secondary);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.contact-info .section-heading { margin-bottom: 28px; }
+.contact-detail {
+  margin-bottom: 24px;
+}
+.contact-detail .detail-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 6px;
+}
+.contact-detail p {
+  font-size: 16px;
+  color: var(--primary);
+  line-height: 1.6;
+}
+.contact-detail a {
+  color: var(--primary);
+  border-bottom: 1px solid var(--accent2);
+  transition: border-color 0.3s;
+}
+.contact-detail a:hover { border-color: var(--primary); }
+.contact-map {
+  aspect-ratio: 16/10;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, var(--accent2) 0%, var(--secondary) 60%, rgba(107,124,110,0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-map .map-placeholder {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  opacity: 0.5;
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   15. FOOTER
+   ═══════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--dark);
+  padding: clamp(60px, 8vw, 100px) 0 40px;
+  color: var(--light);
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(250,250,248,0.06);
+}
+.footer-brand svg { height: 72px; width: 72px; margin-bottom: 20px; }
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(250,250,248,0.4);
+  line-height: 1.7;
+  max-width: 30ch;
+}
+.footer-col h4 {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.3);
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: rgba(250,250,248,0.55);
+  padding: 6px 0;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--light); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+}
+.footer-bottom p {
+  font-size: 12px;
+  color: rgba(250,250,248,0.2);
+}
+.footer-bottom .footer-social {
+  display: flex;
+  gap: 20px;
+}
+.footer-bottom .footer-social a {
+  font-size: 13px;
+  color: rgba(250,250,248,0.3);
+  transition: color 0.3s;
+}
+.footer-bottom .footer-social a:hover { color: var(--light); }
+@media (max-width: 768px) {
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 480px) {
+  .footer-main { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT WIDGET
+   ═══════════════════════════════════════════════════════════ */
+.voice-agent-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════ */
+@media print {
+  .nav, .scroll-indicator, .marquee-section, .voice-agent-wrapper { display: none !important; }
+  .hero, .mask-section, .experience-section { min-height: auto !important; height: auto !important; }
+  .mask-sticky, .experience-sticky { position: relative !important; }
+  .curtain-left, .curtain-right { display: none !important; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SVG LOGO DEFINITION (reusable)
+     ═══════════════════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <symbol id="dj-logo" viewBox="0 0 200 200">
+      <!-- Outer circle -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <!-- Inner circle -->
+      <circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width="1"/>
+      <!-- Center D -->
+      <text x="100" y="118" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="72" font-weight="600" fill="currentColor">D</text>
+      <!-- DREAMERSJOY arched on top -->
+      <path id="topArc" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+      <text font-family="'Jost', sans-serif" font-size="13" font-weight="500" letter-spacing="5" fill="currentColor">
+        <textPath href="#topArc" startOffset="50%" text-anchor="middle">DREAMERSJOY</textPath>
+      </text>
+      <!-- FLORAL STUDIO arched on bottom -->
+      <path id="bottomArc" d="M 32,108 A 70,70 0 0,0 168,108" fill="none"/>
+      <text font-family="'Jost', sans-serif" font-size="11" font-weight="400" letter-spacing="4" fill="currentColor">
+        <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">FLORAL STUDIO</textPath>
+      </text>
+      <!-- Decorative dots -->
+      <circle cx="36" cy="100" r="3" fill="currentColor"/>
+      <circle cx="164" cy="100" r="3" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═══════════════════════════════════════════════════════
+     1. NAVIGATION
+     ═══════════════════════════════════════════════════════ -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="DreamersJoy Floral Studio home">
+      <svg style="color: var(--primary)"><use href="#dj-logo"/></svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">The Studio</a></li>
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#private">Private</a></li>
+      <li><a href="#founder">Sarah</a></li>
+      <li><a href="#booking" class="nav-cta">Book</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#about" class="mobile-link">The Studio</a>
+  <a href="#workshops" class="mobile-link">Workshops</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#private" class="mobile-link">Private</a>
+  <a href="#founder" class="mobile-link">Sarah</a>
+  <a href="#booking" class="mobile-link">Book</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     2. HERO
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero-mesh" id="heroMesh"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Wyckoff, New Jersey</p>
+    <h1>Refined Floral Design for <em>Intimate</em> Gatherings</h1>
+    <p class="hero-sub">Boutique workshops, curated installations & editorial floral artistry in Bergen County, NJ</p>
+    <div class="hero-cta-row">
+      <a href="#workshops" class="btn-primary">Explore Workshops</a>
+      <a href="#booking" class="btn-outline">Book Private</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     3. TEXT MASK REVEAL
+     ═══════════════════════════════════════════════════════ -->
+<section class="mask-section" id="maskSection">
+  <div class="mask-sticky">
+    <div class="mask-bg"></div>
+    <div class="mask-overlay">
+      <div class="mask-text">Bloom</div>
+    </div>
+    <div class="mask-reveal">
+      <div class="mask-text-filled">Bloom</div>
+    </div>
+    <div class="mask-subtext">
+      <p>Every arrangement begins with intention. Every petal placed with purpose. This is floral design as art form.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     4. ABOUT / THE STUDIO
+     ═══════════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p class="section-label">The Studio</p>
+        <h2 class="section-heading">Where Intention Meets Artistry</h2>
+        <p class="about-body">DreamersJoy Floral Studio is a boutique floral design studio built around intention, creative expression, and intimate scale. We create florals that feel refined, romantic, intentional, and elevated but approachable.</p>
+        <p class="about-body">Founded by Sarah De Jesus in Wyckoff, New Jersey, our studio focuses on seasonal workshops, private floral gatherings, and design-forward drop-off arrangements for discerning clients across Bergen County.</p>
+        <p class="about-body">Every stem is selected with care. Every arrangement tells a story. This is not event production. This is editorial floral artistry.</p>
+        <p class="about-signature">Quiet confidence. Contained joy.</p>
+      </div>
+      <div class="about-visual fade-up" aria-label="Studio atmosphere placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     5. WORKSHOPS — STICKY STACK
+     ═══════════════════════════════════════════════════════ -->
+<section class="workshops" id="workshops">
+  <div class="container">
+    <div class="workshops-header fade-up">
+      <p class="section-label">Seasonal Workshops</p>
+      <h2 class="section-heading">Four Seasons of Bloom</h2>
+      <p>Intimate gatherings of 10-14 guests. Wine, music, elevated stems, and guided instruction in sculptural floral composition.</p>
+    </div>
+    <div class="stack-container">
+      <div class="stack-visual">
+        <div class="stack-preview">
+          <div class="stack-preview-state active" data-state="1" style="background: linear-gradient(135deg, #D4B8A0 0%, #C9B8A8 40%, #F5F0EB 100%);">
+            <div class="preview-icon">I</div>
+            <div class="preview-stems">Ranunculus . Tulips<br>Sweet Pea . Hellebores</div>
+          </div>
+          <div class="stack-preview-state" data-state="2" style="background: linear-gradient(135deg, #6B7C6E 0%, #8B7355 50%, #C9B8A8 100%);">
+            <div class="preview-icon">II</div>
+            <div class="preview-stems">Garden Roses . Dahlias<br>Clematis . Scabiosa</div>
+          </div>
+          <div class="stack-preview-state" data-state="3" style="background: linear-gradient(135deg, #8B7355 0%, #D4B8A0 40%, #6B7C6E 100%);">
+            <div class="preview-icon">III</div>
+            <div class="preview-stems">Chrysanthemums . Branches<br>Berries . Quince</div>
+          </div>
+          <div class="stack-preview-state" data-state="4" style="background: linear-gradient(135deg, #1A1A2E 0%, #334155 40%, #6B7C6E 100%);">
+            <div class="preview-icon">IV</div>
+            <div class="preview-stems">Evergreen . Amaryllis<br>Pine . Olive Branch</div>
+          </div>
+        </div>
+      </div>
+      <div class="stack-features">
+        <div class="workshop-card active" data-feature="1">
+          <div class="card-season">Spring</div>
+          <h3>Spring Collection</h3>
+          <p>The season of new beginnings. Work with ranunculus, butterfly ranunculus, French tulips, sweet pea, and hellebores. Soft, romantic, and endlessly photogenic.</p>
+          <div class="card-price">$125 - $175</div>
+        </div>
+        <div class="workshop-card" data-feature="2">
+          <div class="card-season">Summer</div>
+          <h3>Summer Garden</h3>
+          <p>Peak season abundance. Garden roses, dahlias, clematis vine, scabiosa, and astilbe. Lush, textural, and full of movement and life.</p>
+          <div class="card-price">$150 - $200</div>
+        </div>
+        <div class="workshop-card" data-feature="3">
+          <div class="card-season">Autumn</div>
+          <h3>Autumn Harvest</h3>
+          <p>The richness of the season. Chrysanthemums, quince branches, berries, olive branches, and dried botanicals. Sculptural and dramatic.</p>
+          <div class="card-price">$150 - $200</div>
+        </div>
+        <div class="workshop-card" data-feature="4">
+          <div class="card-season">Winter</div>
+          <h3>Holiday & Winter</h3>
+          <p>Festive and fragrant. Evergreen, amaryllis, pine, and seasonal accents. Create stunning holiday centerpieces and wreaths.</p>
+          <div class="card-price">$175 - $225</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     6. GALLERY GRID
+     ═══════════════════════════════════════════════════════ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-heading">A Study in Bloom</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #D4B8A0 0%, #C9B8A8 50%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Workshop</span>
+        <span class="gallery-item-label">Spring Ranunculus Session</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(160deg, #6B7C6E 0%, #8B7355 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Private Gathering</span>
+        <span class="gallery-item-label">Birthday Floral Night</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #8B7355 0%, #D4B8A0 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Open House</span>
+        <span class="gallery-item-label">Ridgewood Home Styling</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(180deg, #C9B8A8 0%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Custom</span>
+        <span class="gallery-item-label">Dinner Party Centerpiece</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #334155 0%, #6B7C6E 60%, #C9B8A8 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Workshop</span>
+        <span class="gallery-item-label">Summer Dahlia Collection</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(160deg, #D4B8A0 0%, #6B7C6E 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Custom</span>
+        <span class="gallery-item-label">Valentine's Bouquet</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #1A1A2E 0%, #334155 50%, #6B7C6E 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Workshop</span>
+        <span class="gallery-item-label">Holiday Wreath Workshop</span>
+      </div>
+      <div class="gallery-item fade-up">
+        <div class="gallery-item-bg" style="background: linear-gradient(135deg, #8B7355 0%, #C9B8A8 50%, #F5F0EB 100%);"></div>
+        <div class="gallery-item-overlay"></div>
+        <span class="gallery-item-cat">Private Gathering</span>
+        <span class="gallery-item-label">Corporate Creative Session</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     7. THE EXPERIENCE — CURTAIN REVEAL
+     ═══════════════════════════════════════════════════════ -->
+<section class="experience-section" id="experience">
+  <div class="experience-sticky">
+    <div class="experience-content">
+      <div class="experience-inner">
+        <p class="section-label">The Workshop Experience</p>
+        <h3>An Evening Curated for You</h3>
+        <div class="experience-steps">
+          <div class="exp-step">
+            <div class="step-time">15 min</div>
+            <h4>Arrival & Wine</h4>
+            <p>Settle in with a glass of wine, explore the stems, and find your creative flow</p>
+          </div>
+          <div class="exp-step">
+            <div class="step-time">20 min</div>
+            <h4>Instruction & Demo</h4>
+            <p>Learn techniques in sculptural composition, color theory, and stem placement</p>
+          </div>
+          <div class="exp-step">
+            <div class="step-time">60 min</div>
+            <h4>Hands-On Build</h4>
+            <p>Create your own editorial-quality arrangement with premium seasonal stems</p>
+          </div>
+          <div class="exp-step">
+            <div class="step-time">20 min</div>
+            <h4>Styling & Photos</h4>
+            <p>Professional photographs of you and your arrangement in our styled setting</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="curtain-left" id="curtainLeft"><h2>The</h2></div>
+    <div class="curtain-right" id="curtainRight"><h2>Experience</h2></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     8. KINETIC MARQUEE
+     ═══════════════════════════════════════════════════════ -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee-row" data-speed="1" data-direction="left">
+    <div class="marquee-content">
+      <span class="marquee-item">Refined<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Focused<span class="marquee-dot"></span></span>
+      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+      <span class="marquee-item">Intentional<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Intimate<span class="marquee-dot"></span></span>
+      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+      <span class="marquee-item">Editorial<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Elevated<span class="marquee-dot"></span></span>
+      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     9. PRIVATE GATHERINGS
+     ═══════════════════════════════════════════════════════ -->
+<section class="private" id="private">
+  <div class="container">
+    <div class="private-header fade-up">
+      <p class="section-label">Private Gatherings</p>
+      <h2 class="section-heading">Your Night, Your Blooms</h2>
+      <p>We provide flowers, tools, guidance, and a beautiful aesthetic setup. Design, deliver, elevate.</p>
+    </div>
+    <div class="private-cards">
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-icon">I</div>
+            <h3>Birthday Floral Nights</h3>
+            <p>Hover to learn more</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Birthday Floral Nights</h3>
+            <p>Celebrate with an intimate evening of floral design. We bring the premium stems, tools, and expertise to your gathering. Perfect for groups of 8-14 guests.</p>
+            <span class="flip-link">Inquire</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-icon">II</div>
+            <h3>Corporate Creative</h3>
+            <p>Hover to learn more</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Corporate Sessions</h3>
+            <p>Team building that actually inspires. Guided floral workshops for corporate retreats, client appreciation events, and creative off-sites.</p>
+            <span class="flip-link">Inquire</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-icon">III</div>
+            <h3>Client Appreciation</h3>
+            <p>Hover to learn more</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Client Appreciation</h3>
+            <p>Elevate your client relationships with an unforgettable floral experience. Perfect for realtors, designers, and professionals who value meaningful connections.</p>
+            <span class="flip-link">Inquire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     10. STUDIO FLORAL DESIGN
+     ═══════════════════════════════════════════════════════ -->
+<section class="studio-design" id="studio-design">
+  <div class="container">
+    <div class="studio-design-header fade-up">
+      <p class="section-label">Studio Floral Design</p>
+      <h2 class="section-heading">Design. Deliver. Elevate.</h2>
+      <p>Our drop-off model means we design, deliver, and leave. No on-site event management required.</p>
+    </div>
+    <div class="design-accordion">
+      <div class="design-acc-item fade-up">
+        <button class="design-acc-trigger" aria-expanded="false">
+          <h3>Dinner Party Florals</h3>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="design-acc-body"><div class="design-acc-body-inner">
+          <p>Elegant centerpieces and table runners designed to complement your tablescape. We consult on color palette and scale, then deliver arrangements ready to impress your guests. From intimate dinners of four to gatherings of twenty.</p>
+        </div></div>
+      </div>
+      <div class="design-acc-item fade-up">
+        <button class="design-acc-trigger" aria-expanded="false">
+          <h3>Open House Styling</h3>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="design-acc-body"><div class="design-acc-body-inner">
+          <p>Curated floral installations that elevate your listing. Strategic placement in entryways, dining areas, and primary suites. We work with realtors across Bergen County to make homes feel aspirational and lived-in at once.</p>
+        </div></div>
+      </div>
+      <div class="design-acc-item fade-up">
+        <button class="design-acc-trigger" aria-expanded="false">
+          <h3>Holiday Collections</h3>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="design-acc-body"><div class="design-acc-body-inner">
+          <p>Seasonal collections for Mother's Day, Valentine's Day, Thanksgiving, and the winter holidays. Pre-order premium arrangements with our signature editorial aesthetic. Limited quantities available each season.</p>
+        </div></div>
+      </div>
+      <div class="design-acc-item fade-up">
+        <button class="design-acc-trigger" aria-expanded="false">
+          <h3>Custom Orders</h3>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="design-acc-body"><div class="design-acc-body-inner">
+          <p>Bespoke floral designs for any occasion. Share your vision, color preferences, and the mood you want to create. We source premium stems and craft something uniquely yours. Delivery available across Bergen County.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     11. FOUNDER
+     ═══════════════════════════════════════════════════════ -->
+<section class="founder" id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-image fade-up" aria-label="Sarah De Jesus portrait placeholder"></div>
+      <div class="founder-text fade-up">
+        <p class="section-label">The Founder</p>
+        <h2>Sarah De Jesus</h2>
+        <p class="founder-title">Founder & Creative Director</p>
+        <p>What began as DreamersJoy Events & Design evolved into something more focused, more intentional, and more aligned with Sarah's creative vision. DreamersJoy Floral Studio was born from a desire to create intimate, design-forward floral experiences.</p>
+        <p>Sarah's approach to floral design is editorial and sculptural. She favors intentional negative space, textural movement, and understated luxury. Every arrangement reflects her belief that beauty lies in restraint.</p>
+        <p>Based in Wyckoff, New Jersey, she serves discerning clients across Franklin Lakes, Ridgewood, and the surrounding Bergen County communities.</p>
+        <p class="founder-sig">Sarah De Jesus</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     12. TESTIMONIALS
+     ═══════════════════════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-label">
+    <p class="section-label">Kind Words</p>
+  </div>
+  <div class="testimonial-row" data-speed="0.6" data-direction="left">
+    <div class="testimonial-content">
+      <div class="testimonial-card">
+        <div class="quote-mark">&ldquo;</div>
+        <blockquote>The most beautiful floral workshop I have ever attended. Every detail was thoughtful, from the wine selection to the stems. Truly an elevated experience.</blockquote>
+        <span class="quote-author">Lauren M. &mdash; Ridgewood, NJ</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">&ldquo;</div>
+        <blockquote>Sarah has an incredible eye for design. The arrangements feel like they belong in a magazine. I book every seasonal workshop now.</blockquote>
+        <span class="quote-author">Jessica R. &mdash; Franklin Lakes, NJ</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">&ldquo;</div>
+        <blockquote>We hosted a birthday floral night and it was absolute perfection. Our guests are still talking about it months later. The photos alone were worth it.</blockquote>
+        <span class="quote-author">Amanda K. &mdash; Wyckoff, NJ</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">&ldquo;</div>
+        <blockquote>I use DreamersJoy for all my open house staging. The florals elevate the entire space. My sellers love it and buyers notice the difference immediately.</blockquote>
+        <span class="quote-author">Catherine P. &mdash; Bergen County Realtor</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">&ldquo;</div>
+        <blockquote>The quality of the stems, the music, the atmosphere. Everything Sarah creates feels intentional and special. This is not your average flower class.</blockquote>
+        <span class="quote-author">Michelle D. &mdash; Ho-Ho-Kus, NJ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     13. BOOKING CTA
+     ═══════════════════════════════════════════════════════ -->
+<section class="booking-cta" id="booking">
+  <canvas class="booking-mesh" id="bookingMesh"></canvas>
+  <div class="container">
+    <div class="booking-cta-inner fade-up">
+      <p class="section-label">Reserve Your Seat</p>
+      <h2>Book Your Experience</h2>
+      <p>Whether it's a seasonal workshop, private gathering, or custom floral design, every experience begins with a conversation.</p>
+      <div class="booking-btns">
+        <a href="#workshops" class="btn-primary">Browse Workshops</a>
+        <a href="#private" class="btn-outline">Private Booking</a>
+        <a href="#studio-design" class="btn-outline">Custom Order</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     14. CONTACT
+     ═══════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-heading">Visit the Studio</h2>
+        <div class="contact-detail">
+          <p class="detail-label">Location</p>
+          <p>Wyckoff, New Jersey</p>
+        </div>
+        <div class="contact-detail">
+          <p class="detail-label">Instagram</p>
+          <p><a href="https://www.instagram.com/dreamersjoy" target="_blank" rel="noopener">@dreamersjoy</a></p>
+        </div>
+        <div class="contact-detail">
+          <p class="detail-label">Website</p>
+          <p><a href="https://www.dreamersjoystudio.com" target="_blank" rel="noopener">www.dreamersjoystudio.com</a></p>
+        </div>
+        <div class="contact-detail">
+          <p class="detail-label">Hours</p>
+          <p>By Appointment<br>Seasonal Workshops May &ndash; October</p>
+        </div>
+      </div>
+      <div class="contact-map fade-up">
+        <span class="map-placeholder">Wyckoff, NJ &mdash; Map</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     15. FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <svg style="color: var(--light)"><use href="#dj-logo"/></svg>
+        <p>Refined floral design for intimate gatherings. Boutique workshops & editorial floral artistry in Bergen County, NJ.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <a href="#about">The Studio</a>
+        <a href="#workshops">Workshops</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#founder">Sarah</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#private">Private Gatherings</a>
+        <a href="#studio-design">Floral Design</a>
+        <a href="#booking">Book</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.instagram.com/dreamersjoy" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.dreamersjoystudio.com" target="_blank" rel="noopener">Website</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 DreamersJoy Floral Studio. All rights reserved. Part of SD Collective.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dreamersjoy" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Voice Agent Widget -->
+<div class="voice-agent-wrapper">
+  <elevenlabs-convai agent-id="PLACEHOLDER"></elevenlabs-convai>
+</div>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT — ALL INLINE
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ─── NAV SCROLL ───
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ─── HAMBURGER ───
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('navMobile');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  hamburger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
+  });
+
+  // ─── HERO MESH GRADIENT (Canvas) ───
+  function initMesh(canvas, colors, speed, bgColor) {
+    var ctx = canvas.getContext('2d');
+    var blobs = colors.map(function(c) {
+      return { x: Math.random(), y: Math.random(), vx: (Math.random() - 0.5) * speed, vy: (Math.random() - 0.5) * speed, r: 0.3 + Math.random() * 0.25, color: c };
+    });
+    function resize() { canvas.width = canvas.offsetWidth * 2; canvas.height = canvas.offsetHeight * 2; }
+    resize();
+    window.addEventListener('resize', resize);
+    function draw() {
+      var w = canvas.width, h = canvas.height;
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, w, h);
+      blobs.forEach(function(b) {
+        b.x += b.vx / w;
+        b.y += b.vy / h;
+        if (b.x < -0.2 || b.x > 1.2) b.vx *= -1;
+        if (b.y < -0.2 || b.y > 1.2) b.vy *= -1;
+        var grd = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * Math.max(w, h));
+        grd.addColorStop(0, b.color);
+        grd.addColorStop(1, 'transparent');
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, w, h);
+        ctx.globalCompositeOperation = 'source-over';
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  // Hero mesh
+  initMesh(
+    document.getElementById('heroMesh'),
+    ['rgba(212,184,160,0.12)', 'rgba(107,124,110,0.1)', 'rgba(201,184,168,0.08)', 'rgba(139,115,85,0.06)'],
+    0.3,
+    '#F5F0EB'
+  );
+
+  // Booking mesh
+  initMesh(
+    document.getElementById('bookingMesh'),
+    ['rgba(212,184,160,0.15)', 'rgba(107,124,110,0.12)', 'rgba(201,184,168,0.1)', 'rgba(245,240,235,0.2)'],
+    0.25,
+    '#FAFAF8'
+  );
+
+  // ─── HERO ENTRANCE ANIMATIONS ───
+  // Set initial states FIRST
+  gsap.set('.hero-eyebrow', { opacity: 0 });
+  gsap.set('.hero h1', { opacity: 0, y: 30 });
+  gsap.set('.hero-sub', { opacity: 0, y: 20 });
+  gsap.set('.hero-cta-row', { opacity: 0, y: 20 });
+  gsap.set('#scrollIndicator', { opacity: 0 });
+  // Then animate in
+  var heroTl = gsap.timeline({ delay: 0.3 });
+  heroTl.to('.hero-eyebrow', { opacity: 1, duration: 0.8, ease: 'power2.out' })
+    .to('.hero h1', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.4')
+    .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
+    .to('.hero-cta-row', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4')
+    .to('#scrollIndicator', { opacity: 1, duration: 0.6 }, '-=0.2');
+
+  // ─── TEXT MASK REVEAL ───
+  var maskSection = document.querySelector('.mask-section');
+  gsap.to('.mask-reveal', {
+    clipPath: 'inset(0% 0 0 0)',
+    ease: 'none',
+    scrollTrigger: { trigger: maskSection, start: 'top top', end: '60% bottom', scrub: 0.3 }
+  });
+  gsap.to('.mask-subtext', {
+    opacity: 1, y: 0,
+    scrollTrigger: { trigger: maskSection, start: '55% top', end: '70% top', scrub: true }
+  });
+
+  // ─── STICKY STACK (Workshops) ───
+  var workshopCards = document.querySelectorAll('.workshop-card');
+  var previewStates = document.querySelectorAll('.stack-preview-state');
+  workshopCards.forEach(function(card) {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 60%',
+      end: 'bottom 40%',
+      onEnter: function() { activateWorkshop(card.dataset.feature); },
+      onEnterBack: function() { activateWorkshop(card.dataset.feature); }
+    });
+  });
+  function activateWorkshop(num) {
+    workshopCards.forEach(function(c) { c.classList.toggle('active', c.dataset.feature === num); });
+    previewStates.forEach(function(s) { s.classList.toggle('active', s.dataset.state === num); });
+  }
+
+  // ─── CURTAIN REVEAL (Experience) ───
+  var expSection = document.querySelector('.experience-section');
+  gsap.to('#curtainLeft', {
+    xPercent: -100, ease: 'power2.inOut',
+    scrollTrigger: { trigger: expSection, start: 'top top', end: '50% top', scrub: 0.5 }
+  });
+  gsap.to('#curtainRight', {
+    xPercent: 100, ease: 'power2.inOut',
+    scrollTrigger: { trigger: expSection, start: 'top top', end: '50% top', scrub: 0.5 }
+  });
+  // Stagger experience steps after curtain opens
+  gsap.utils.toArray('.exp-step').forEach(function(step, i) {
+    gsap.to(step, {
+      opacity: 1, y: 0, duration: 0.6, delay: i * 0.15, ease: 'power2.out',
+      scrollTrigger: { trigger: expSection, start: '40% top', toggleActions: 'play none none reverse' }
+    });
+  });
+
+  // ─── KINETIC MARQUEE ───
+  document.querySelectorAll('.marquee-row, .testimonial-row').forEach(function(row) {
+    var content = row.querySelector('.marquee-content, .testimonial-content');
+    if (!content) return;
+    var clone = content.cloneNode(true);
+    row.appendChild(clone);
+  });
+
+  var scrollVelocity = 0;
+  ScrollTrigger.create({
+    onUpdate: function(self) { scrollVelocity = Math.abs(self.getVelocity()); }
+  });
+
+  document.querySelectorAll('.marquee-row, .testimonial-row').forEach(function(row) {
+    var content = row.querySelector('.marquee-content, .testimonial-content');
+    if (!content) return;
+    var direction = row.dataset.direction === 'right' ? 1 : -1;
+    var speedMult = parseFloat(row.dataset.speed) || 1;
+    var baseSpeed = 60;
+    var contentWidth = content.offsetWidth;
+    var x = direction === -1 ? 0 : -contentWidth;
+
+    function animate() {
+      var speed = (baseSpeed + scrollVelocity * 0.1) * speedMult;
+      x += direction * -1 * speed / 60;
+      if (direction === -1 && x <= -contentWidth) x += contentWidth;
+      if (direction === 1 && x >= 0) x -= contentWidth;
+      row.style.transform = 'translateX(' + x + 'px)';
+      requestAnimationFrame(animate);
+    }
+    animate();
+  });
+
+  // ─── DESIGN ACCORDION ───
+  document.querySelectorAll('.design-acc-trigger').forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+      var item = trigger.parentElement;
+      var body = item.querySelector('.design-acc-body');
+      var isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.design-acc-item').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.design-acc-body').style.maxHeight = null;
+        el.querySelector('.design-acc-trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ─── SCROLL FADE-UPS ───
+  gsap.utils.toArray('.fade-up').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
