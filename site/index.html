@@ -113,10 +113,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: rgba(245,240,235,0.9);
   position: relative;
   transition: color 0.3s;
 }
+.nav.scrolled .nav-links a { color: var(--primary); }
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -131,12 +132,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 12px !important;
   font-weight: 500 !important;
   padding: 10px 24px;
-  border: 1px solid var(--primary);
+  border: 1px solid rgba(245,240,235,0.5);
+  color: rgba(245,240,235,0.9) !important;
   border-radius: 0;
   transition: all 0.3s var(--ease-out) !important;
 }
-.nav-cta:hover { background: var(--primary); color: var(--light) !important; }
+.nav-cta:hover { background: rgba(245,240,235,0.15); color: var(--light) !important; }
+.nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
+.nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
 .nav-cta::after { display: none !important; }
+.nav-logo svg { fill: rgba(245,240,235,0.9); transition: fill 0.4s var(--ease-smooth), transform 0.3s var(--ease-out); }
+.nav.scrolled .nav-logo svg { fill: var(--primary); }
 
 /* Hamburger */
 .nav-hamburger {
@@ -150,10 +156,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-hamburger span {
   display: block;
   height: 1.5px;
-  background: var(--primary);
+  background: rgba(245,240,235,0.9);
   transition: all 0.3s var(--ease-out);
   transform-origin: center;
 }
+.nav.scrolled .nav-hamburger span { background: var(--primary); }
 .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
@@ -193,18 +200,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  height: 300vh;
+  overflow: hidden;
+  background: var(--dark);
+}
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--secondary);
 }
-.hero-mesh {
+.hero-canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(26,26,46,0.3) 0%, rgba(26,26,46,0.15) 40%, rgba(26,26,46,0.5) 100%);
 }
 .hero-content {
   position: relative;
@@ -218,7 +240,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--accent1);
+  color: rgba(245,240,235,0.8);
   margin-bottom: 28px;
   opacity: 0;
 }
@@ -228,23 +250,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: clamp(40px, 6.5vw, 80px);
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--primary);
+  color: var(--light);
   margin-bottom: 24px;
   opacity: 0;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
 }
 .hero h1 em {
   font-style: italic;
-  color: var(--accent3);
+  color: var(--accent4);
 }
 .hero-sub {
   font-family: var(--font-body);
   font-size: clamp(15px, 1.8vw, 18px);
   font-weight: 300;
-  color: var(--accent1);
+  color: rgba(245,240,235,0.75);
   max-width: 50ch;
   margin: 0 auto 40px;
   line-height: 1.7;
   opacity: 0;
+  text-shadow: 0 1px 20px rgba(0,0,0,0.2);
 }
 .hero-cta-row {
   display: flex;
@@ -279,6 +303,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: all 0.3s var(--ease-out);
 }
 .btn-outline:hover { border-color: var(--primary); background: rgba(51,65,85,0.04); }
+.hero .btn-primary { background: rgba(245,240,235,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(245,240,235,0.3); color: var(--light); }
+.hero .btn-primary:hover { background: rgba(245,240,235,0.25); }
+.hero .btn-outline { border-color: rgba(245,240,235,0.4); color: var(--light); }
+.hero .btn-outline:hover { border-color: var(--light); background: rgba(245,240,235,0.1); }
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -297,12 +325,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent2);
+  color: rgba(245,240,235,0.6);
 }
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: var(--accent2);
+  background: rgba(245,240,235,0.5);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 @keyframes scrollPulse {
@@ -1387,19 +1415,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
      2. HERO
      ═══════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <canvas class="hero-mesh" id="heroMesh"></canvas>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Wyckoff, New Jersey</p>
-    <h1>Refined Floral Design for <em>Intimate</em> Gatherings</h1>
-    <p class="hero-sub">Boutique workshops, curated installations & editorial floral artistry in Bergen County, NJ</p>
-    <div class="hero-cta-row">
-      <a href="#workshops" class="btn-primary">Explore Workshops</a>
-      <a href="#booking" class="btn-outline">Book Private</a>
+  <div class="hero-sticky">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Wyckoff, New Jersey</p>
+      <h1>Refined Floral Design for <em>Intimate</em> Gatherings</h1>
+      <p class="hero-sub">Boutique workshops, curated installations & editorial floral artistry in Bergen County, NJ</p>
+      <div class="hero-cta-row">
+        <a href="#workshops" class="btn-primary">Explore Workshops</a>
+        <a href="#booking" class="btn-outline">Book Private</a>
+      </div>
     </div>
-  </div>
-  <div class="scroll-indicator" id="scrollIndicator">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </div>
 </section>
 
@@ -1916,7 +1947,72 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
   });
 
-  // ─── HERO MESH GRADIENT (Canvas) ───
+  // ─── SCROLL-DRIVEN VIDEO HERO (Canvas Frame Engine) ───
+  (function() {
+    var canvas = document.getElementById('heroCanvas');
+    var ctx = canvas.getContext('2d');
+    var frameCount = 121;
+    var currentFrame = 0;
+    var frames = [];
+    var loaded = 0;
+
+    function framePath(i) {
+      return 'assets/frames/frame_' + String(i).padStart(4, '0') + '.jpg';
+    }
+
+    function resize() {
+      canvas.width = canvas.offsetWidth * (window.devicePixelRatio > 1 ? 2 : 1);
+      canvas.height = canvas.offsetHeight * (window.devicePixelRatio > 1 ? 2 : 1);
+      drawFrame(currentFrame);
+    }
+
+    function drawFrame(idx) {
+      if (!frames[idx] || !frames[idx].complete) return;
+      var img = frames[idx];
+      var cw = canvas.width, ch = canvas.height;
+      var scale = Math.max(cw / img.width, ch / img.height);
+      var w = img.width * scale, h = img.height * scale;
+      ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+
+    // Preload all frames
+    for (var i = 1; i <= frameCount; i++) {
+      var img = new Image();
+      img.src = framePath(i);
+      img.onload = function() {
+        loaded++;
+        if (loaded === 1) { resize(); drawFrame(0); }
+      };
+      frames.push(img);
+    }
+
+    window.addEventListener('resize', resize);
+
+    // ScrollTrigger drives the frame index
+    gsap.to({ frame: 0 }, {
+      frame: frameCount - 1,
+      snap: 'frame',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.5
+      },
+      onUpdate: function() {
+        var f = Math.round(this.targets()[0].frame);
+        if (f !== currentFrame) {
+          currentFrame = f;
+          drawFrame(f);
+        }
+      }
+    });
+
+    // Draw first frame immediately
+    setTimeout(function() { resize(); drawFrame(0); }, 100);
+  })();
+
+  // ─── BOOKING MESH GRADIENT (Canvas) ───
   function initMesh(canvas, colors, speed, bgColor) {
     var ctx = canvas.getContext('2d');
     var blobs = colors.map(function(c) {
@@ -1947,15 +2043,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     draw();
   }
 
-  // Hero mesh
-  initMesh(
-    document.getElementById('heroMesh'),
-    ['rgba(212,184,160,0.12)', 'rgba(107,124,110,0.1)', 'rgba(201,184,168,0.08)', 'rgba(139,115,85,0.06)'],
-    0.3,
-    '#F5F0EB'
-  );
-
-  // Booking mesh
+  // Booking mesh only (hero is now video)
   initMesh(
     document.getElementById('bookingMesh'),
     ['rgba(212,184,160,0.15)', 'rgba(107,124,110,0.12)', 'rgba(201,184,168,0.1)', 'rgba(245,240,235,0.2)'],
