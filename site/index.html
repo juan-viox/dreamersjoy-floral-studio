@@ -795,6 +795,68 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ═══════════════════════════════════════════════════════════
    8. KINETIC MARQUEE
    ═══════════════════════════════════════════════════════════ */
+/* ─── HERO TRANSITION MARQUEE ─── */
+.hero-marquee {
+  padding: 60px 0;
+  overflow: hidden;
+  background: var(--dark);
+  position: relative;
+}
+.hero-marquee::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,115,85,0.3), transparent);
+}
+.hero-marquee::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,115,85,0.3), transparent);
+}
+.hero-marquee-row {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  padding: 12px 0;
+}
+.hero-marquee-row .marquee-content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.hero-marquee-word {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,235,0.85);
+  padding: 0 20px;
+  letter-spacing: 0.02em;
+}
+.hero-marquee-word.light {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: rgba(201,184,168,0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.hero-marquee-sep {
+  color: rgba(139,115,85,0.4);
+  font-size: clamp(20px, 3vw, 36px);
+  padding: 0 16px;
+}
+.hero-marquee-sep.light {
+  font-size: 10px;
+  color: rgba(139,115,85,0.3);
+}
+
 .marquee-section {
   padding: 40px 0;
   overflow: hidden;
@@ -1414,6 +1476,80 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="scroll-indicator" id="scrollIndicator">
       <span>Scroll</span>
       <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     2B. HERO TRANSITION MARQUEE
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero-marquee" aria-hidden="true">
+  <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
+    <div class="marquee-content">
+      <span class="hero-marquee-word">Workshops</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Editorial Florals</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Private Gatherings</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Seasonal Collections</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+    </div>
+    <div class="marquee-content">
+      <span class="hero-marquee-word">Workshops</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Editorial Florals</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Private Gatherings</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Seasonal Collections</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+    </div>
+  </div>
+  <div class="hero-marquee-row" data-speed="0.6" data-direction="right">
+    <div class="marquee-content">
+      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Anemone</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+    </div>
+    <div class="marquee-content">
+      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Anemone</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-sep light">&bull;</span>
     </div>
   </div>
 </section>
@@ -2106,7 +2242,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   });
 
   // ─── KINETIC MARQUEE ───
-  document.querySelectorAll('.marquee-row, .testimonial-row').forEach(function(row) {
+  document.querySelectorAll('.marquee-row, .hero-marquee-row, .testimonial-row').forEach(function(row) {
     var content = row.querySelector('.marquee-content, .testimonial-content');
     if (!content) return;
     var clone = content.cloneNode(true);
@@ -2118,7 +2254,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     onUpdate: function(self) { scrollVelocity = Math.abs(self.getVelocity()); }
   });
 
-  document.querySelectorAll('.marquee-row, .testimonial-row').forEach(function(row) {
+  document.querySelectorAll('.marquee-row, .hero-marquee-row, .testimonial-row').forEach(function(row) {
     var content = row.querySelector('.marquee-content, .testimonial-content');
     if (!content) return;
     var direction = row.dataset.direction === 'right' ? 1 : -1;
