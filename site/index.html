@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DreamersJoy Floral Studio | Refined Floral Design for Intimate Gatherings</title>
 <meta name="description" content="Boutique floral workshops, curated installations & editorial floral artistry in Bergen County, NJ. Founded by Sarah De Jesus in Wyckoff, New Jersey.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="DreamersJoy Floral Studio | Refined Floral Design for Intimate Gatherings">
+<meta property="og:description" content="Boutique floral workshops, curated installations & editorial floral artistry in Bergen County, NJ. Founded by Sarah De Jesus in Wyckoff, New Jersey.">
+<meta property="og:url" content="https://dreamersjoystudio.com">
+<meta property="og:image" content="https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:site_name" content="DreamersJoy Floral Studio">
+<meta property="og:locale" content="en_US">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DreamersJoy Floral Studio | Refined Floral Design">
+<meta name="twitter:description" content="Boutique floral workshops & editorial floral artistry in Bergen County, NJ">
+<meta name="twitter:image" content="https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png">
+<!-- Additional SEO -->
+<meta name="keywords" content="floral workshop Wyckoff NJ, Bergen County florist, luxury floral design, floral arrangement class, boutique floral studio, editorial florals New Jersey">
+<meta name="author" content="Sarah De Jesus">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dreamersjoystudio.com">
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='none' stroke='%23334155' stroke-width='5'/%3E%3Ccircle cx='100' cy='100' r='82' fill='none' stroke='%23334155' stroke-width='2'/%3E%3Ctext x='100' y='125' text-anchor='middle' font-family='serif' font-size='80' font-weight='600' fill='%23334155'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%23334155'/%3E%3Ctext x='100' y='130' text-anchor='middle' font-family='serif' font-size='100' font-weight='600' fill='%23F5F0EB'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1416,7 +1439,39 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .curtain-left, .curtain-right { display: none !important; }
   * { animation: none !important; transition: none !important; }
 }
+.signup-form { display: flex; gap: 0; flex-wrap: wrap; justify-content: center; }
+.signup-form input:focus { border-color: var(--primary); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FloristService",
+  "name": "DreamersJoy Floral Studio",
+  "description": "Boutique floral design studio specializing in intimate workshops, curated installations, and editorial floral artistry in Bergen County, NJ.",
+  "url": "https://dreamersjoystudio.com",
+  "image": "https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png",
+  "telephone": "+1-551-465-5200",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Wyckoff",
+    "addressRegion": "NJ",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.9984,
+    "longitude": -74.1718
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Sarah De Jesus"
+  },
+  "areaServed": ["Wyckoff", "Ridgewood", "Franklin Lakes", "Saddle River", "Glen Rock", "Allendale", "Ho-Ho-Kus", "Bergen County"],
+  "priceRange": "$125-$225",
+  "openingHours": "By Appointment",
+  "sameAs": ["https://www.instagram.com/dreamersjoy"]
+}
+</script>
 </head>
 <body>
 
@@ -1998,6 +2053,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <p><a href="https://www.instagram.com/dreamersjoy" target="_blank" rel="noopener">@dreamersjoy</a></p>
         </div>
         <div class="contact-detail">
+          <p class="detail-label">Phone</p>
+          <p><a href="tel:+15514655200">(551) 465-5200</a></p>
+        </div>
+        <div class="contact-detail">
           <p class="detail-label">Website</p>
           <p><a href="https://www.dreamersjoystudio.com" target="_blank" rel="noopener">www.dreamersjoystudio.com</a></p>
         </div>
@@ -2009,6 +2068,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="contact-map fade-up">
         <span class="map-placeholder">Wyckoff, NJ &mdash; Map</span>
       </div>
+    </div>
+    <div class="contact-signup fade-up">
+      <h4 style="font-family: var(--font-display); font-size: 24px; font-weight: 300; margin-bottom: 8px;">Stay in Bloom</h4>
+      <p style="font-size: 14px; color: var(--accent1); margin-bottom: 20px;">Be the first to know about seasonal workshops and studio updates.</p>
+      <form class="signup-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you!'; this.querySelector('input').disabled=true;">
+        <input type="email" placeholder="Your email address" required style="padding: 14px 20px; border: 1px solid var(--accent2); background: transparent; color: var(--primary); font-family: var(--font-body); font-size: 14px; width: 300px; max-width: 100%; outline: none; transition: border-color 0.3s;">
+        <button type="submit" style="padding: 14px 28px; background: var(--primary); color: var(--light); font-family: var(--font-body); font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; transition: background 0.3s;">Subscribe</button>
+      </form>
     </div>
   </div>
 </section>
@@ -2054,7 +2121,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 <!-- Voice Agent Widget -->
 <div class="voice-agent-wrapper">
-  <elevenlabs-convai agent-id="PLACEHOLDER"></elevenlabs-convai>
+  <elevenlabs-convai agent-id="agent_1401knafpnwce6svkh9m8814kjw1"></elevenlabs-convai>
 </div>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
