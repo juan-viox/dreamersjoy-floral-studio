@@ -2,5 +2,9 @@
   "buildCommand": null,
   "outputDirectory": "site",
   "installCommand": null,
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/crm", "destination": "https://dreamersjoy-crm.vercel.app/dashboard" },
+    { "source": "/crm/:path*", "destination": "https://dreamersjoy-crm.vercel.app/:path*" }
+  ]
 }
