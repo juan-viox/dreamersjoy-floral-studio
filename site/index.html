@@ -2036,9 +2036,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="contact-signup fade-up">
       <h4 style="font-family: var(--font-display); font-size: 24px; font-weight: 300; margin-bottom: 8px;">Stay in Bloom</h4>
       <p style="font-size: 14px; color: var(--accent1); margin-bottom: 20px;">Be the first to know about seasonal workshops and studio updates.</p>
-      <form class="signup-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you!'; this.querySelector('input').disabled=true;">
-        <input type="email" placeholder="Your email address" required style="padding: 14px 20px; border: 1px solid var(--accent2); background: transparent; color: var(--primary); font-family: var(--font-body); font-size: 14px; width: 300px; max-width: 100%; outline: none; transition: border-color 0.3s;">
-        <button type="submit" style="padding: 14px 28px; background: var(--primary); color: var(--light); font-family: var(--font-body); font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; transition: background 0.3s;">Subscribe</button>
+      <form class="signup-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Your email address" required style="padding: 14px 20px; border: 1px solid var(--accent2); background: transparent; color: var(--primary); font-family: var(--font-body); font-size: 14px; width: 300px; max-width: 100%; outline: none; transition: border-color 0.3s;">
+        <button type="submit" id="newsletterBtn" style="padding: 14px 28px; background: var(--primary); color: var(--light); font-family: var(--font-body); font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; transition: background 0.3s;">Subscribe</button>
       </form>
     </div>
   </div>
@@ -2357,6 +2357,51 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     gsap.to(el, {
       opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
       scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+  // ─── VIOX CRM INTEGRATION ───
+  var CRM = {
+    apiUrl: 'https://viox-crm.vercel.app/api/v1/ingest',
+    apiKey: '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
+  };
+
+  // Newsletter form → CRM
+  var nlForm = document.getElementById('newsletterForm');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletterEmail').value;
+      var btn = document.getElementById('newsletterBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      fetch(CRM.apiUrl + '/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        body: JSON.stringify({ email: email })
+      }).then(function() {
+        btn.textContent = 'Thank you!';
+        document.getElementById('newsletterEmail').disabled = true;
+      }).catch(function() {
+        btn.textContent = 'Subscribe';
+        btn.disabled = false;
+      });
+    });
+  }
+
+  // Booking buttons → CRM (track click as lead)
+  document.querySelectorAll('a[href="#booking"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      fetch(CRM.apiUrl + '/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        body: JSON.stringify({
+          firstName: 'Website',
+          lastName: 'Visitor',
+          description: 'Clicked Book button on ' + new Date().toLocaleDateString(),
+          source: 'Web Site'
+        })
+      }).catch(function() {});
     });
   });
 
