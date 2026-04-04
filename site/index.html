@@ -249,7 +249,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(26,26,46,0.45) 0%, rgba(26,26,46,0.55) 30%, rgba(26,26,46,0.65) 100%);
+  background: rgba(26,26,46,0.5);
 }
 .hero-content {
   position: relative;
@@ -378,13 +378,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mask-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
-    rgba(212, 184, 160, 0.3) 0%,
-    rgba(107, 124, 110, 0.25) 30%,
-    rgba(201, 184, 168, 0.2) 60%,
-    rgba(139, 115, 85, 0.15) 100%);
-  background-size: 400% 400%;
-  animation: meshShift 12s ease infinite;
+  background: var(--secondary);
 }
 @keyframes meshShift {
   0% { background-position: 0% 50%; }
@@ -433,11 +427,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  background: linear-gradient(135deg,
-    #1A1A2E 0%,
-    #1A1A2E 40%,
-    #1A1A2E 70%,
-    #1A1A2E 100%);
+  background: #1A1A2E;
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -659,7 +649,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .gallery-item-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(26,26,46,0.7) 0%, transparent 50%);
+  background: rgba(26,26,46,0.5);
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -761,10 +751,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg,
-    rgba(26,26,46,0.95) 0%,
-    rgba(51,65,85,0.9) 50%,
-    rgba(107,124,110,0.85) 100%);
+  background: rgba(26,26,46,0.95);
   padding: 60px 40px;
 }
 .experience-inner {
@@ -832,14 +819,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(139,115,85,0.3), transparent);
+  background: rgba(139,115,85,0.15);
 }
 .hero-marquee::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(139,115,85,0.3), transparent);
+  background: rgba(139,115,85,0.15);
 }
 .hero-marquee-row {
   display: flex;
@@ -1313,7 +1300,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 4px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, var(--accent2) 0%, var(--secondary) 60%, rgba(107,124,110,0.2) 100%);
+  background: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
