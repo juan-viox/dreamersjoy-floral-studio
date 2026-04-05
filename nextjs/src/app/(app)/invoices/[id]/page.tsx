@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import Link from 'next/link'
 import { ArrowLeft, Send, CheckCircle, XCircle, Loader2, Printer, FileDown, Mail } from 'lucide-react'
 import { formatCurrency, formatDate } from '@/lib/utils'
@@ -131,14 +132,17 @@ export default function InvoiceDetailPage() {
               if (!invoice.contact?.email) {
                 alert('No email address on contact. Activity logged.')
               }
+              const orgId = await getOrgId(supabase)
               await supabase.from('activities').insert({
+                organization_id: orgId,
                 contact_id: invoice.contact_id,
                 type: 'email',
                 title: `Invoice ${invoice.invoice_number} sent`,
                 description: invoice.contact?.email
                   ? `Invoice emailed to ${invoice.contact.email}`
                   : 'Invoice send attempted (no email configured)',
-                completed: true,
+                status: 'completed',
+                completed_at: new Date().toISOString(),
                 metadata: { invoice_id: invoice.id },
               })
               if (invoice.status === 'draft') {

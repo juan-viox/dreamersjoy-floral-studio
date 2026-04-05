@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { ArrowLeft, Plus, Save, Trash2, Loader2, X, Package, Pencil } from 'lucide-react'
-import { formatCurrency } from '@/lib/utils'
+import { formatCurrency, getOrgId } from '@/lib/utils'
 import type { Product } from '@/types'
 
 export default function ProductsPage() {
@@ -69,9 +69,10 @@ export default function ProductsPage() {
 
       if (updateError) { setError(updateError.message); setSaving(false); return }
     } else {
+      const orgId = await getOrgId(supabase)
       const { error: insertError } = await supabase
         .from('products')
-        .insert({ name, description: description || null, price, unit })
+        .insert({ organization_id: orgId, name, description: description || null, price, unit })
 
       if (insertError) { setError(insertError.message); setSaving(false); return }
     }

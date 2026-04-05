@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { ArrowLeft, Plus, Trash2, Loader2, Save } from 'lucide-react'
-import { formatCurrency } from '@/lib/utils'
+import { formatCurrency, getOrgId } from '@/lib/utils'
 import type { Contact, Product } from '@/types'
 
 interface LineItem {
@@ -107,9 +107,13 @@ export default function NewInvoicePage() {
     setError('')
 
     // Create invoice
+    const orgId = await getOrgId(supabase)
+    if (!orgId) { setError('Organization not found'); setSaving(false); return }
+
     const { data: invoice, error: invError } = await supabase
       .from('invoices')
       .insert({
+        organization_id: orgId,
         contact_id: contactId || null,
         invoice_number: invoiceNumber,
         issue_date: issueDate,

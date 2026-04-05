@@ -42,14 +42,20 @@ export async function POST(request: Request) {
       }
     }
 
+    // Get org from first org (admin client)
+    const { data: org } = await supabase.from('organizations').select('id').limit(1).single()
+    const orgId = org?.id
+
     // Log email as activity regardless of send status
     await supabase.from('activities').insert({
+      organization_id: orgId,
       contact_id: contactId || null,
       user_id: userId || null,
       type: 'email',
       title: `Email: ${subject}`,
       description: `To: ${to}\n\n${body.substring(0, 500)}`,
-      completed: true,
+      status: 'completed',
+      completed_at: new Date().toISOString(),
       metadata: {
         to,
         subject,

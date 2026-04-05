@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import Link from 'next/link'
 import {
   ArrowLeft, Save, Loader2, Plus, Trash2, ChevronDown, ChevronUp,
@@ -53,7 +54,7 @@ export default function NewWorkflowPage() {
   async function loadData() {
     const [templatesRes, stagesRes] = await Promise.all([
       supabase.from('email_templates').select('*'),
-      supabase.from('deal_stages').select('*').order('position'),
+      supabase.from('deal_stages').select('*').order('sort_order'),
     ])
 
     setTemplates(templatesRes.data ?? [])
@@ -119,9 +120,13 @@ export default function NewWorkflowPage() {
     setSaving(true)
     setError('')
 
+    const orgId = await getOrgId(supabase)
+    if (!orgId) { setError('Organization not found'); setSaving(false); return }
+
     const { error: insertError } = await supabase
       .from('workflows')
       .insert({
+        organization_id: orgId,
         name,
         description: description || null,
         trigger_type: triggerType,

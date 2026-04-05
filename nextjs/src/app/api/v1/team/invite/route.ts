@@ -27,10 +27,20 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 })
     }
 
+    // Get the org from the inviter's profile
+    const { data: inviterProfile } = await supabase
+      .from('profiles')
+      .select('organization_id')
+      .limit(1)
+      .single()
+
+    const orgId = inviterProfile?.organization_id
+
     // Create profile for the invited user if it does not exist
-    if (data.user) {
+    if (data.user && orgId) {
       await supabase.from('profiles').upsert({
         id: data.user.id,
+        organization_id: orgId,
         full_name: email.split('@')[0],
         role,
       }, { onConflict: 'id' })

@@ -34,6 +34,7 @@ export async function POST(request: Request) {
 
     const actions = workflow.actions as WorkflowAction[]
     const results: { action: string; status: string; error?: string }[] = []
+    const orgId = workflow.organization_id
 
     // Process each action in sequence
     for (const action of actions) {
@@ -51,11 +52,13 @@ export async function POST(request: Request) {
               if (template && triggerData?.contact_email) {
                 // Log as activity
                 await supabase.from('activities').insert({
+                  organization_id: orgId,
                   contact_id: triggerData?.contact_id ?? null,
                   type: 'email',
                   title: `Auto: ${template.subject}`,
                   description: `Automated email sent via workflow "${workflow.name}"`,
-                  completed: true,
+                  status: 'completed',
+                  completed_at: new Date().toISOString(),
                   metadata: {
                     workflow_id: workflowId,
                     template_id: templateId,
@@ -70,12 +73,13 @@ export async function POST(request: Request) {
 
           case 'create_activity': {
             await supabase.from('activities').insert({
+              organization_id: orgId,
               contact_id: triggerData?.contact_id ?? null,
               deal_id: triggerData?.deal_id ?? null,
               type: (action.config.type as string) ?? 'task',
               title: (action.config.title as string) ?? 'Automated activity',
               description: (action.config.description as string) ?? null,
-              completed: false,
+              status: 'pending',
               metadata: { workflow_id: workflowId, automated: true },
             })
             results.push({ action: 'create_activity', status: 'completed' })
@@ -91,6 +95,7 @@ export async function POST(request: Request) {
                 .from('tags')
                 .select('id')
                 .eq('name', tagName)
+                .eq('organization_id', orgId)
                 .single()
 
               if (existingTag) {
@@ -98,7 +103,7 @@ export async function POST(request: Request) {
               } else {
                 const { data: newTag } = await supabase
                   .from('tags')
-                  .insert({ name: tagName })
+                  .insert({ organization_id: orgId, name: tagName })
                   .select('id')
                   .single()
                 tagId = newTag!.id
@@ -120,10 +125,12 @@ export async function POST(request: Request) {
             const message = action.config.message as string
             if (message) {
               await supabase.from('activities').insert({
+                organization_id: orgId,
                 type: 'note',
                 title: `Notification: ${message}`,
                 description: `Automated notification from workflow "${workflow.name}"`,
-                completed: true,
+                status: 'completed',
+                completed_at: new Date().toISOString(),
                 metadata: { workflow_id: workflowId, automated: true, notification: true },
               })
             }

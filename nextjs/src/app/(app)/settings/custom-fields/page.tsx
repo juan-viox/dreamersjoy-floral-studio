@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import {
   ArrowLeft,
   Plus,
@@ -170,9 +171,11 @@ export default function CustomFieldsPage() {
       setSuccess('Field updated')
     } else {
       const maxSort = fields.length > 0 ? Math.max(...fields.map((f) => f.sort_order)) + 1 : 0
+      const orgId = await getOrgId(supabase)
       const { error: insertError } = await supabase
         .from('custom_field_definitions')
         .insert({
+          organization_id: orgId,
           entity_type: activeTab,
           field_name: fieldName,
           field_label: newLabel.trim(),

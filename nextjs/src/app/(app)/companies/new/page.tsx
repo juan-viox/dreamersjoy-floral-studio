@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import Link from 'next/link'
 import { ArrowLeft, Loader2, Save } from 'lucide-react'
 
@@ -26,7 +27,11 @@ export default function NewCompanyPage() {
     setLoading(true)
     setError('')
 
+    const orgId = await getOrgId(supabase)
+    if (!orgId) { setError('Organization not found'); setLoading(false); return }
+
     const { error: insertError } = await supabase.from('companies').insert({
+      organization_id: orgId,
       name,
       domain: domain || null,
       industry: industry || null,

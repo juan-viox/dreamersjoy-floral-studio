@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import { MessageSquare, Plus, Trash2, Pencil, X, Check, Loader2 } from 'lucide-react'
 import Avatar from '@/components/shared/Avatar'
 import { formatRelativeTime } from '@/lib/utils'
@@ -71,7 +72,9 @@ export default function NotesPanel({
     if (!newContent.trim()) return
     setSaving(true)
 
+    const orgId = await getOrgId(supabase)
     const { error } = await supabase.from('notes').insert({
+      organization_id: orgId,
       entity_type: entityType,
       entity_id: entityId,
       user_id: currentUserId,

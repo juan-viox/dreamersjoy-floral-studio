@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import Link from 'next/link'
 import { ArrowLeft, Plus, Save, Trash2, Loader2, X, Mail } from 'lucide-react'
 import type { EmailTemplate } from '@/types'
@@ -101,9 +102,11 @@ export default function EmailTemplatesPage() {
 
       if (updateError) { setError(updateError.message); setSaving(false); return }
     } else {
+      const orgId = await getOrgId(supabase)
       const { error: insertError } = await supabase
         .from('email_templates')
         .insert({
+          organization_id: orgId,
           name, subject, body, category,
           variables: allVars,
           created_by: userId,

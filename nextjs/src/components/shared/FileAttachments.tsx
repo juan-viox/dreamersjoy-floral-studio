@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { getOrgId } from '@/lib/utils'
 import {
   Upload,
   FileText,
@@ -19,8 +20,8 @@ import { formatDate } from '@/lib/utils'
 interface FileDoc {
   id: string
   name: string
-  file_url: string
-  file_type: string | null
+  file_path: string
+  mime_type: string | null
   file_size: number | null
   created_at: string
 }
@@ -60,16 +61,13 @@ export default function FileAttachments({
   const supabase = createClient()
 
   const loadFiles = useCallback(async () => {
-    const query = supabase
+    const { data } = await supabase
       .from('documents')
       .select('*')
+      .eq('entity_type', entityType)
+      .eq('entity_id', entityId)
       .order('created_at', { ascending: false })
 
-    if (entityType === 'contact') query.eq('contact_id', entityId)
-    else if (entityType === 'company') query.eq('company_id', entityId)
-    else if (entityType === 'deal') query.eq('deal_id', entityId)
-
-    const { data } = await query
     setFiles(data ?? [])
   }, [entityType, entityId, supabase])
 
@@ -96,18 +94,17 @@ export default function FileAttachments({
       if (uploadErr) throw uploadErr
 
       const { data: urlData } = supabase.storage.from('documents').getPublicUrl(path)
+      const orgId = await getOrgId(supabase)
 
-      const insertData: Record<string, unknown> = {
+      await supabase.from('documents').insert({
+        organization_id: orgId,
+        entity_type: entityType,
+        entity_id: entityId,
         name: file.name,
-        file_url: urlData.publicUrl,
-        file_type: file.type || null,
+        file_path: urlData.publicUrl,
+        mime_type: file.type || null,
         file_size: file.size,
-      }
-      if (entityType === 'contact') insertData.contact_id = entityId
-      else if (entityType === 'company') insertData.company_id = entityId
-      else if (entityType === 'deal') insertData.deal_id = entityId
-
-      await supabase.from('documents').insert(insertData)
+      })
       await loadFiles()
     } catch (err: any) {
       setError(err.message || 'Upload failed')
@@ -118,7 +115,7 @@ export default function FileAttachments({
 
   async function deleteFile(doc: FileDoc) {
     // Extract storage path from URL
-    const url = new URL(doc.file_url)
+    const url = new URL(doc.file_path)
     const storagePath = url.pathname.split('/documents/')[1]
     if (storagePath) {
       await supabase.storage.from('documents').remove([decodeURIComponent(storagePath)])
@@ -203,7 +200,7 @@ export default function FileAttachments({
       {files.length > 0 && (
         <div className="space-y-2">
           {files.map((doc) => {
-            const { icon: Icon, color } = getFileIcon(doc.file_type)
+            const { icon: Icon, color } = getFileIcon(doc.mime_type)
             return (
               <div
                 key={doc.id}
@@ -223,7 +220,7 @@ export default function FileAttachments({
                 </div>
                 <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <a
-                    href={doc.file_url}
+                    href={doc.file_path}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-1.5 rounded-md hover:bg-[var(--surface-2)] transition-colors"

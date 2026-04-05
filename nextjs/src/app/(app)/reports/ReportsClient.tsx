@@ -51,12 +51,13 @@ interface Deal {
   id: string
   title: string
   amount: number
-  status: string
+  status: string // computed from stage (is_won/is_lost) or closed_at
   probability?: number
   stage_id: string
   created_at: string
   updated_at: string
   close_date?: string
+  closed_at?: string
 }
 
 interface Contact {
@@ -70,14 +71,14 @@ interface ActivityRecord {
   type: string
   user_id?: string
   created_at: string
-  completed: boolean
+  status: string
 }
 
 interface Stage {
   id: string
   name: string
   color: string
-  position: number
+  sort_order: number
 }
 
 type DateRange = '7d' | '30d' | '90d' | 'year' | 'all'
@@ -304,7 +305,7 @@ export default function ReportsClient({
     return stages.map((s, i) => {
       const inOrPast = allDeals.filter((d) => {
         const stagePos = stages.find((st) => st.id === d.stage_id)?.position ?? 0
-        return stagePos >= s.position || d.status === 'won'
+        return stagePos >= s.sort_order || d.status === 'won'
       }).length
       const total = allDeals.length
       return {

@@ -38,22 +38,24 @@ export async function POST(request: Request) {
         .from('deals')
         .update({ contact_id: survivorId })
         .eq('contact_id', duplicateId),
-      // Notes
+      // Notes (polymorphic: entity_type + entity_id)
       supabase
         .from('notes')
-        .update({ contact_id: survivorId })
-        .eq('contact_id', duplicateId),
+        .update({ entity_id: survivorId })
+        .eq('entity_type', 'contact')
+        .eq('entity_id', duplicateId),
       // Entity tags
       supabase
         .from('entity_tags')
         .update({ entity_id: survivorId })
         .eq('entity_type', 'contact')
         .eq('entity_id', duplicateId),
-      // Documents
+      // Documents (polymorphic: entity_type + entity_id)
       supabase
         .from('documents')
-        .update({ contact_id: survivorId })
-        .eq('contact_id', duplicateId),
+        .update({ entity_id: survivorId })
+        .eq('entity_type', 'contact')
+        .eq('entity_id', duplicateId),
       // Invoices
       supabase
         .from('invoices')
@@ -66,12 +68,14 @@ export async function POST(request: Request) {
 
     // 5. Log the merge as an activity
     await supabase.from('activities').insert({
+      organization_id: survivor.organization_id,
       contact_id: survivorId,
       user_id: userId || null,
       type: 'note',
       title: 'Contacts merged',
       description: `Merged "${duplicate.first_name} ${duplicate.last_name}" (${duplicate.email ?? 'no email'}) into this contact. All activities, deals, notes, and tags were transferred.`,
-      completed: true,
+      status: 'completed',
+      completed_at: new Date().toISOString(),
       metadata: {
         action: 'contact_merge',
         merged_contact_id: duplicateId,
