@@ -1701,23 +1701,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <defs>
     <symbol id="dj-logo" viewBox="0 0 200 200">
-      <!-- Single circle -->
-      <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/>
+      <!-- Outer circle -->
+      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="1.8"/>
       <!-- Center D -->
-      <text x="100" y="124" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="88" font-weight="400" fill="currentColor">D</text>
-      <!-- DREAMERSJOY arched on top -->
-      <path id="topArc" d="M 14,106 A 86,86 0 0,1 186,106" fill="none"/>
-      <text font-family="'Jost', sans-serif" font-size="17" font-weight="400" letter-spacing="5.5" fill="currentColor">
+      <text x="100" y="118" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="90" font-weight="400" fill="currentColor">D</text>
+      <!-- DREAMERSJOY arched on top — hugging inside of circle -->
+      <path id="topArc" d="M 20,100 A 80,80 0 0,1 180,100" fill="none"/>
+      <text font-family="'Jost', sans-serif" font-size="14.5" font-weight="400" letter-spacing="4.5" fill="currentColor">
         <textPath href="#topArc" startOffset="50%" text-anchor="middle">DREAMERSJOY</textPath>
       </text>
-      <!-- FLORAL STUDIO arched on bottom -->
-      <path id="bottomArc" d="M 18,112 A 82,82 0 0,0 182,112" fill="none"/>
-      <text font-family="'Jost', sans-serif" font-size="16" font-weight="300" letter-spacing="5" fill="currentColor">
+      <!-- FLORAL STUDIO arched on bottom — hugging inside of circle -->
+      <path id="bottomArc" d="M 24,112 A 76,76 0 0,0 176,112" fill="none"/>
+      <text font-family="'Jost', sans-serif" font-size="13.5" font-weight="400" letter-spacing="5" fill="currentColor">
         <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">FLORAL STUDIO</textPath>
       </text>
-      <!-- Decorative dots -->
-      <circle cx="24" cy="103" r="2.5" fill="currentColor"/>
-      <circle cx="176" cy="103" r="2.5" fill="currentColor"/>
+      <!-- Decorative dots at 9 and 3 o'clock -->
+      <circle cx="16" cy="100" r="3" fill="currentColor"/>
+      <circle cx="184" cy="100" r="3" fill="currentColor"/>
     </symbol>
   </defs>
 </svg>
@@ -2752,7 +2752,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   // ─── VIOX CRM INTEGRATION ───
   var CRM = {
-    apiUrl: 'https://viox-crm.vercel.app/api/v1/ingest',
+    apiUrl: '/api/v1/ingest',
     apiKey: '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
   };
 
