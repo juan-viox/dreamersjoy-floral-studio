@@ -29,7 +29,8 @@ export async function POST(request: Request) {
 
     const supabase = createAdminClient()
     const body = await request.json()
-    const { firstName, lastName, emailAddress, phone, description } = body
+    const { firstName, lastName, phone, description } = body
+    const emailAddress = body.emailAddress || body.email || null
 
     // Get org ID - try from API key first, fall back to first org
     let orgId = await getOrgIdFromApiKey(supabase, apiKey)
