@@ -58,17 +58,30 @@ export default async function ReportsPage() {
       : 'open',
   }))
 
+  // Transform profiles → teamMembers format
+  const teamMembers = (profilesRes.data ?? []).map((p: any) => ({
+    id: p.id,
+    name: p.full_name || 'Unknown',
+  }))
+
+  // Transform companies → topCompanies format (sorted by deal count, top 10)
+  const topCompanies = (companies ?? [])
+    .map(c => ({
+      name: c.name,
+      deals: companyDealCounts[c.id] || 0,
+    }))
+    .filter(c => c.deals > 0)
+    .sort((a, b) => b.deals - a.deals)
+    .slice(0, 10)
+
   return (
     <ReportsClient
       deals={dealsWithStatus}
       contacts={contactsRes.data ?? []}
       activities={activitiesRes.data ?? []}
       stages={stages}
-      profiles={profilesRes.data ?? []}
-      companies={(companies ?? []).map(c => ({
-        ...c,
-        dealCount: companyDealCounts[c.id] || 0,
-      }))}
+      teamMembers={teamMembers}
+      topCompanies={topCompanies}
     />
   )
 }

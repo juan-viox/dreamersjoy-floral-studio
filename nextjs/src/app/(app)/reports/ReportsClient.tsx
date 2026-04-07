@@ -304,7 +304,7 @@ export default function ReportsClient({
     const allDeals = deals.filter((d) => d.status === 'won' || d.status === 'open')
     return stages.map((s, i) => {
       const inOrPast = allDeals.filter((d) => {
-        const stagePos = stages.find((st) => st.id === d.stage_id)?.position ?? 0
+        const stagePos = stages.find((st) => st.id === d.stage_id)?.sort_order ?? 0
         return stagePos >= s.sort_order || d.status === 'won'
       }).length
       const total = allDeals.length
