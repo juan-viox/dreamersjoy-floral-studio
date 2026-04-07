@@ -1359,6 +1359,92 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .booking-btns .btn-primary { min-width: 200px; text-align: center; }
 .booking-btns .btn-outline { min-width: 200px; text-align: center; }
 
+/* Booking Form */
+.booking-form {
+  max-width: 560px;
+  margin: 48px auto 0;
+  text-align: left;
+}
+.booking-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.booking-form .form-full {
+  margin-bottom: 16px;
+}
+.booking-form label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 6px;
+}
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--accent2);
+  background: rgba(255,255,255,0.6);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  border-color: var(--primary);
+}
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+  color: rgba(51,65,85,0.35);
+}
+.booking-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.booking-form select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23334155' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.booking-form .form-submit {
+  text-align: center;
+  margin-top: 24px;
+}
+.booking-form .form-submit .btn-primary {
+  min-width: 240px;
+}
+.booking-form .form-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+.booking-form .form-success h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.booking-form .form-success p {
+  font-size: 15px;
+  color: rgba(51,65,85,0.6);
+}
+@media (max-width: 480px) {
+  .booking-form .form-row { grid-template-columns: 1fr; }
+}
+
 /* ═══════════════════════════════════════════════════════════
    14. CONTACT
    ═══════════════════════════════════════════════════════════ */
@@ -2250,10 +2336,50 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p class="section-label">Begin Here</p>
       <h2>Start a Conversation</h2>
       <p>Whether it's a seasonal arrangement, private floral experience, or subscription, every relationship begins with a conversation.</p>
-      <div class="booking-btns">
-        <a href="#offerings" class="btn-primary">View Offerings</a>
-        <a href="#private" class="btn-outline">Book a Consultation</a>
-        <a href="#studio-design" class="btn-outline">Custom Order</a>
+      <div class="booking-form" id="bookingFormWrap">
+        <form id="bookingForm">
+          <div class="form-row">
+            <div>
+              <label for="bkFirstName">First Name</label>
+              <input type="text" id="bkFirstName" name="firstName" placeholder="First name" required>
+            </div>
+            <div>
+              <label for="bkLastName">Last Name</label>
+              <input type="text" id="bkLastName" name="lastName" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="bkEmail">Email</label>
+              <input type="email" id="bkEmail" name="email" placeholder="you@email.com" required>
+            </div>
+            <div>
+              <label for="bkPhone">Phone</label>
+              <input type="tel" id="bkPhone" name="phone" placeholder="(555) 123-4567">
+            </div>
+          </div>
+          <div class="form-full">
+            <label for="bkInterest">I'm Interested In</label>
+            <select id="bkInterest" name="interest" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Petite Arrangement">Petite Arrangement ($85 &ndash; $125)</option>
+              <option value="Signature Arrangement">Signature Arrangement ($125 &ndash; $175)</option>
+              <option value="Statement Arrangement">Statement Arrangement ($175 &ndash; $250)</option>
+              <option value="Collector's Piece">Collector's Piece ($250+)</option>
+              <option value="Bloom Circle Subscription">Bloom Circle Subscription</option>
+              <option value="Private Floral Experience">Private Floral Experience</option>
+              <option value="Custom Order">Custom Order</option>
+              <option value="Consultation">General Consultation</option>
+            </select>
+          </div>
+          <div class="form-full">
+            <label for="bkMessage">Tell Us More</label>
+            <textarea id="bkMessage" name="message" placeholder="Occasion, date, color preferences, or anything else you'd like us to know"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary" id="bookingSubmitBtn">Send Inquiry</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -2653,19 +2779,85 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     });
   }
 
-  // Booking buttons → CRM (track click as lead)
-  document.querySelectorAll('a[href="#booking"]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+  // Booking inquiry form → CRM
+  var bkForm = document.getElementById('bookingForm');
+  if (bkForm) {
+    bkForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('bookingSubmitBtn');
+      var wrap = document.getElementById('bookingFormWrap');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      var firstName = document.getElementById('bkFirstName').value;
+      var lastName = document.getElementById('bkLastName').value;
+      var email = document.getElementById('bkEmail').value;
+      var phone = document.getElementById('bkPhone').value;
+      var interest = document.getElementById('bkInterest').value;
+      var message = document.getElementById('bkMessage').value;
+
       fetch(CRM.apiUrl + '/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
         body: JSON.stringify({
-          firstName: 'Website',
-          lastName: 'Visitor',
-          description: 'Clicked Book button on ' + new Date().toLocaleDateString(),
-          source: 'Web Site'
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          description: 'Interest: ' + interest + (message ? ' | ' + message : ''),
+          source: 'web_form'
         })
-      }).catch(function() {});
+      }).then(function(res) {
+        if (!res.ok) throw new Error('Failed');
+        wrap.innerHTML = '<div class="form-success"><h3>Thank You, ' + firstName + '</h3><p>We received your inquiry and will be in touch soon.</p></div>';
+      }).catch(function() {
+        btn.textContent = 'Send Inquiry';
+        btn.disabled = false;
+        btn.style.background = '#e17055';
+        btn.textContent = 'Something went wrong. Try again.';
+        setTimeout(function() {
+          btn.style.background = '';
+          btn.textContent = 'Send Inquiry';
+        }, 3000);
+      });
+    });
+  }
+
+  // CTA buttons → pre-select interest and scroll to form
+  function scrollToBooking(interest) {
+    var select = document.getElementById('bkInterest');
+    if (select && interest) {
+      select.value = interest;
+    }
+    var booking = document.getElementById('booking');
+    if (booking) {
+      booking.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(function() {
+        var firstInput = document.getElementById('bkFirstName');
+        if (firstInput) firstInput.focus();
+      }, 800);
+    }
+  }
+
+  // Place an Order → scroll to form
+  document.querySelectorAll('a[href="#booking"]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var text = btn.textContent.trim();
+      var interest = '';
+      if (text === 'Place an Order') interest = '';
+      else if (text === 'Book a Consultation') interest = 'Consultation';
+      else if (text === 'Join the Circle') interest = 'Bloom Circle Subscription';
+      else if (text === 'Custom Order') interest = 'Custom Order';
+      scrollToBooking(interest);
+    });
+  });
+
+  // Flip card Inquire links → scroll to form
+  document.querySelectorAll('.flip-link').forEach(function(link) {
+    link.style.cursor = 'pointer';
+    link.addEventListener('click', function() {
+      scrollToBooking('Private Floral Experience');
     });
   });
 
