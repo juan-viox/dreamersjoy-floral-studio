@@ -123,8 +123,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo svg { height: 100px; width: 100px; transition: transform 0.3s var(--ease-out); shape-rendering: geometricPrecision; }
-.nav-logo:hover svg { transform: scale(1.05); }
+.nav-logo img { height: 100px; width: 100px; transition: transform 0.3s var(--ease-out), filter 0.4s var(--ease-smooth); }
+.nav-logo:hover img { transform: scale(1.05); }
+/* On hero (dark bg): invert logo to light */
+.nav .nav-logo img { filter: brightness(0) invert(1) opacity(0.9); }
+/* On scroll (light bg): show dark original */
+.nav.scrolled .nav-logo img { filter: none; }
 .nav-links {
   display: flex;
   gap: 36px;
@@ -165,8 +169,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
 .nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
 .nav-cta::after { display: none !important; }
-.nav-logo svg { height: 100px; width: 100px; fill: var(--accent4); transition: fill 0.4s var(--ease-smooth), transform 0.3s var(--ease-out); shape-rendering: geometricPrecision; }
-.nav.scrolled .nav-logo svg { fill: var(--dark); }
+/* nav-logo handled above with img tag */
 
 /* Hamburger */
 .nav-hamburger {
@@ -1012,7 +1015,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   padding: 0 24px;
 }
-.marquee-logo-inline svg {
+.marquee-logo-inline svg,
+.marquee-logo-inline img {
   height: 40px;
   width: 40px;
   opacity: 0.3;
@@ -1728,7 +1732,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="DreamersJoy Floral Studio home">
-      <svg style="color: var(--primary)"><use href="#dj-logo"/></svg>
+      <img src="assets/images/dj-logo-transparent.png" alt="DreamersJoy Floral Studio" width="100" height="100">
     </a>
     <ul class="nav-links">
       <li><a href="#offerings">Floral Offerings</a></li>
@@ -2116,13 +2120,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="marquee-content">
       <span class="marquee-item">Refined<span class="marquee-dot"></span></span>
       <span class="marquee-item">Focused<span class="marquee-dot"></span></span>
-      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+      <span class="marquee-logo-inline"><img src="assets/images/dj-logo-transparent.png" alt="" width="40" height="40"></span>
       <span class="marquee-item">Intentional<span class="marquee-dot"></span></span>
       <span class="marquee-item">Intimate<span class="marquee-dot"></span></span>
-      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+      <span class="marquee-logo-inline"><img src="assets/images/dj-logo-transparent.png" alt="" width="40" height="40"></span>
       <span class="marquee-item">Editorial<span class="marquee-dot"></span></span>
       <span class="marquee-item">Elevated<span class="marquee-dot"></span></span>
-      <span class="marquee-logo-inline"><svg style="color: var(--primary)"><use href="#dj-logo"/></svg></span>
+      <span class="marquee-logo-inline"><img src="assets/images/dj-logo-transparent.png" alt="" width="40" height="40"></span>
     </div>
   </div>
 </section>
@@ -2437,7 +2441,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="container">
     <div class="footer-main">
       <div class="footer-brand">
-        <svg style="color: var(--light)"><use href="#dj-logo"/></svg>
+        <img src="assets/images/dj-logo-light.png" alt="DreamersJoy Floral Studio" style="height: 80px; width: 80px;">
         <p>Private floral design studio. Seasonal arrangements, curated installations & invitation-based experiences in Bergen County, NJ.</p>
       </div>
       <div class="footer-col">
