@@ -1145,7 +1145,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-marquee {
   padding: 24px 0;
   overflow: hidden;
-  background: var(--dark);
+  background: var(--secondary);
   position: relative;
 }
 .hero-marquee::before {
@@ -1153,14 +1153,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: rgba(139,115,85,0.15);
+  background: rgba(201,184,168,0.2);
 }
 .hero-marquee::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: rgba(139,115,85,0.15);
+  background: rgba(201,184,168,0.2);
 }
 .hero-marquee-row {
   display: flex;
@@ -1180,7 +1180,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 300;
   font-style: italic;
-  color: rgba(245,240,235,0.85);
+  color: var(--primary);
   padding: 0 20px;
   letter-spacing: 0.02em;
 }
@@ -1189,18 +1189,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-style: normal;
   font-family: var(--font-body);
   font-weight: 300;
-  color: rgba(201,184,168,0.5);
+  color: rgba(139,115,85,0.5);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 .hero-marquee-sep {
-  color: rgba(139,115,85,0.4);
+  color: rgba(201,184,168,0.5);
   font-size: clamp(20px, 3vw, 36px);
   padding: 0 16px;
 }
 .hero-marquee-sep.light {
   font-size: 10px;
-  color: rgba(139,115,85,0.3);
+  color: rgba(201,184,168,0.4);
 }
 
 .marquee-section {
@@ -2076,9 +2076,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
+     2D. MOTHER'S DAY PROMO
+     ═══════════════════════════════════════════════════════ -->
+<section class="mothers-day">
+  <div class="container">
+    <p class="md-label">Mother's Day</p>
+    <h2>Flowers for the Ones Who Made Us</h2>
+    <p class="md-sub">Thoughtfully designed arrangements and hand-tied bouquets, created to celebrate her beautifully.</p>
+    <div class="md-btns">
+      <a href="#order" class="btn-primary">Shop Mother's Day Flowers</a>
+      <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
+    </div>
+    <p class="md-note">Limited Mother's Day availability. Pre-order recommended.</p>
+    <div class="md-options">
+      <span>Petite Arrangements</span>
+      <span>Signature Arrangements</span>
+      <span>Hand-Tied Bouquets</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
      2B. HERO TRANSITION MARQUEE
      ═══════════════════════════════════════════════════════ -->
-<section class="hero-marquee" aria-hidden="true">
+<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15);">
   <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
     <div class="marquee-content">
       <span class="hero-marquee-word">Seasonal Arrangements</span>
@@ -2145,27 +2166,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-sep light">&bull;</span>
       <span class="hero-marquee-word light">Scabiosa</span>
       <span class="hero-marquee-sep light">&bull;</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     2D. MOTHER'S DAY PROMO
-     ═══════════════════════════════════════════════════════ -->
-<section class="mothers-day">
-  <div class="container">
-    <p class="md-label">Mother's Day</p>
-    <h2>Flowers for the Ones Who Made Us</h2>
-    <p class="md-sub">Thoughtfully designed arrangements and hand-tied bouquets, created to celebrate her beautifully.</p>
-    <div class="md-btns">
-      <a href="#order" class="btn-primary">Shop Mother's Day Flowers</a>
-      <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
-    </div>
-    <p class="md-note">Limited Mother's Day availability. Pre-order recommended.</p>
-    <div class="md-options">
-      <span>Petite Arrangements</span>
-      <span>Signature Arrangements</span>
-      <span>Hand-Tied Bouquets</span>
     </div>
   </div>
 </section>
