@@ -3,9 +3,13 @@
 import { useState } from 'react'
 
 const arrangements = [
-  { id: 'petite', name: 'Petite', price: '$85 \u2013 $125', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.' },
-  { id: 'signature', name: 'Signature', price: '$125 \u2013 $175', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.' },
-  { id: 'statement', name: 'Statement', price: '$175 \u2013 $250', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.' },
+  { id: 'small-bouquet', name: 'Small Bouquet', price: '$75+', desc: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.' },
+  { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 \u2013 $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.' },
+  { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 \u2013 $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.' },
+  { id: 'signature-bouquet', name: 'Signature Bouquet', price: '$165+', desc: 'A luxurious hand-tied bouquet featuring carefully selected stems. Designed for gifting and special occasions.' },
+  { id: 'petite', name: 'Petite Arrangement', price: '$85+', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.' },
+  { id: 'signature', name: 'Signature Arrangement', price: '$125+', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.' },
+  { id: 'statement', name: 'Statement Arrangement', price: '$175+', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.' },
   { id: 'collectors', name: "Collector\u2019s Piece", price: '$250+', desc: 'One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.' },
 ]
 

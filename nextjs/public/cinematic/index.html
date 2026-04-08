@@ -529,6 +529,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.7;
 }
 
+/* Brand statement strip (after mask section) */
+.brand-strip {
+  background: var(--dark);
+  padding: clamp(40px, 6vw, 72px) 0;
+  text-align: center;
+}
+.brand-strip p {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(250,250,248,0.8);
+  max-width: 50ch;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
 /* ═══════════════════════════════════════════════════════════
    4. ABOUT / THE STUDIO
    ═══════════════════════════════════════════════════════════ */
@@ -573,7 +591,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    4B. FLORAL OFFERINGS
    ═══════════════════════════════════════════════════════════ */
 .offerings {
-  padding: clamp(80px, 12vw, 160px) 0;
+  padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 6vw, 60px);
   background: var(--secondary);
 }
 .offerings-header {
@@ -678,10 +696,66 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ═══════════════════════════════════════════════════════════
+   4C. SEASONAL BOUQUETS
+   ═══════════════════════════════════════════════════════════ */
+.bouquets {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: var(--light);
+  border-top: 1px solid rgba(201,184,168,0.15);
+}
+.bouquets-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+.bouquets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.bouquet-card {
+  padding: 32px 24px;
+  border: 1px solid rgba(201,184,168,0.25);
+  border-radius: 4px;
+  background: var(--white);
+  text-align: center;
+  transition: all 0.4s var(--ease-out);
+}
+.bouquet-card:hover {
+  border-color: var(--accent1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(139,115,85,0.08);
+}
+.bouquet-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.bouquet-card .bouquet-price {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent1);
+  margin-bottom: 12px;
+}
+.bouquet-card p {
+  font-size: 14px;
+  color: rgba(51,65,85,0.6);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .bouquets-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .bouquets-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    5. EXPERIENCES — STICKY STACK (formerly Workshops)
    ═══════════════════════════════════════════════════════════ */
 .workshops {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(60px, 8vw, 100px) 0;
   background: var(--secondary);
 }
 .workshops-header {
@@ -1696,7 +1770,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin: 0 auto 40px;
 }
 .bloom-tier {
-  padding: 36px 28px;
+  padding: 44px 36px;
   border: 1px solid rgba(212,184,160,0.2);
   border-radius: 4px;
   transition: all 0.4s var(--ease-out);
@@ -1707,22 +1781,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .bloom-tier h3 {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 400;
   color: var(--light);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .bloom-tier .tier-freq {
   font-size: 13px;
   color: var(--accent4);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .bloom-tier p {
-  font-size: 14px;
-  color: rgba(250,250,248,0.45);
-  line-height: 1.6;
+  font-size: 15px;
+  color: rgba(250,250,248,0.5);
+  line-height: 1.7;
 }
 .bloom-circle-cta {
   margin-top: 40px;
@@ -2062,6 +2136,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
+<!-- Brand Statement Strip -->
+<section class="brand-strip" aria-label="Brand statement">
+  <div class="container">
+    <p>Every arrangement begins with intention. Every petal placed with purpose. This is floral design as art form.</p>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════════════
      4. ABOUT / THE STUDIO
      ═══════════════════════════════════════════════════════ -->
@@ -2147,6 +2228,46 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 8px;">Delivery</p>
       <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area. Same-day delivery available for orders placed before 1:00 PM.</p>
       <a href="/delivery" style="display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     4C. SEASONAL BOUQUETS
+     ═══════════════════════════════════════════════════════ -->
+<section class="bouquets" id="bouquets">
+  <div class="container">
+    <div class="bouquets-header fade-up">
+      <p class="section-label">Seasonal Bouquets</p>
+      <h2 class="section-heading">Giftable Florals</h2>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 52ch; margin: 0 auto; line-height: 1.7;">A curated selection of hand-tied bouquets designed for gifting, everyday moments, and effortless beauty.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.55); max-width: 52ch; margin: 8px auto 0; line-height: 1.7;">Each bouquet is composed with seasonal blooms and wrapped in a refined, minimal presentation.</p>
+    </div>
+    <div class="bouquets-grid">
+      <div class="bouquet-card fade-up">
+        <h3>The Small Bouquet</h3>
+        <div class="bouquet-price">$75+</div>
+        <p>A delicate, thoughtfully composed bouquet featuring a light mix of seasonal blooms. Perfect for simple gestures and everyday moments.</p>
+      </div>
+      <div class="bouquet-card fade-up">
+        <h3>The Medium Bouquet</h3>
+        <div class="bouquet-price">$95 &ndash; $125</div>
+        <p>A balanced, fuller bouquet with a curated mix of seasonal florals, offering a soft yet elevated presence.</p>
+      </div>
+      <div class="bouquet-card fade-up">
+        <h3>The Large Bouquet</h3>
+        <div class="bouquet-price">$125 &ndash; $165</div>
+        <p>A more abundant, expressive bouquet with layered blooms and natural movement. Designed to feel generous and refined.</p>
+      </div>
+      <div class="bouquet-card fade-up">
+        <h3>The Signature Bouquet</h3>
+        <div class="bouquet-price">$165+</div>
+        <p>A luxurious, hand-tied bouquet featuring carefully selected stems and a more expansive composition. Designed for gifting and special occasions.</p>
+      </div>
+    </div>
+    <div class="fade-up" style="text-align: center; margin-top: 32px;">
+      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.5); margin-bottom: 20px;">Each bouquet is wrapped in a neutral, elevated presentation using soft paper and ribbon, designed to reflect the DreamersJoy aesthetic.</p>
+      <a href="#order" class="btn-primary">Order a Bouquet</a>
     </div>
   </div>
 </section>
