@@ -362,6 +362,62 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ═══════════════════════════════════════════════════════════
+   2C. HOW TO WORK WITH US
+   ═══════════════════════════════════════════════════════════ */
+.how-to-work {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: var(--light);
+}
+.how-to-work-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+.how-to-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.how-to-work-item .htw-icon {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent1);
+  margin-bottom: 16px;
+}
+.how-to-work-item h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.how-to-work-item p {
+  font-size: 14px;
+  color: rgba(51,65,85,0.6);
+  line-height: 1.7;
+  max-width: 30ch;
+  margin: 0 auto;
+}
+.how-to-work-item a {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  border-bottom: 1px solid var(--accent2);
+  padding-bottom: 2px;
+  transition: border-color 0.3s;
+}
+.how-to-work-item a:hover { border-color: var(--primary); color: var(--primary); }
+@media (max-width: 768px) {
+  .how-to-work-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    3. TEXT MASK REVEAL
    ═══════════════════════════════════════════════════════════ */
 .mask-section {
@@ -587,6 +643,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (max-width: 768px) {
   .offerings-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+.offering-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.btn-sm {
+  padding: 8px 16px !important;
+  font-size: 11px !important;
 }
 @media (max-width: 480px) {
   .offerings-grid { grid-template-columns: 1fr; }
@@ -1739,8 +1804,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <li><a href="#about">The Studio</a></li>
       <li><a href="#experiences">Experiences</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#private">Private</a></li>
-      <li><a href="#founder">Sarah</a></li>
+      <li><a href="#founder">About</a></li>
       <li><a href="#booking" class="nav-cta">Booking</a></li>
     </ul>
     <div class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" role="button" tabindex="0">
@@ -1755,8 +1819,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <a href="#about" class="mobile-link">The Studio</a>
   <a href="#experiences" class="mobile-link">Experiences</a>
   <a href="#gallery" class="mobile-link">Gallery</a>
-  <a href="#private" class="mobile-link">Private</a>
-  <a href="#founder" class="mobile-link">Sarah</a>
+  <a href="#founder" class="mobile-link">About</a>
   <a href="#booking" class="mobile-link">Booking</a>
 </div>
 
@@ -1769,10 +1832,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>A <em>Private</em> Floral Design Studio</h1>
-      <p class="hero-sub">Seasonal arrangements, curated installations & invitation-based floral experiences. Bergen County, NJ.</p>
+      <p class="hero-sub">Seasonal arrangements, home styling florals, and delivery throughout Northern New Jersey.</p>
       <div class="hero-cta-row">
-        <a href="#offerings" class="btn-primary">View Offerings</a>
-        <a href="#booking" class="btn-outline">Book a Consultation</a>
+        <a href="#order" class="btn-primary">Order Florals</a>
+        <a href="#booking" class="btn-outline">Inquire</a>
       </div>
     </div>
     <div class="scroll-indicator" id="scrollIndicator">
@@ -1798,7 +1861,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Private Experiences</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Subscriptions</span>
+      <span class="hero-marquee-word">Bloom Circle</span>
       <span class="hero-marquee-sep">&mdash;</span>
     </div>
     <div class="marquee-content">
@@ -1812,7 +1875,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Private Experiences</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Subscriptions</span>
+      <span class="hero-marquee-word">Bloom Circle</span>
       <span class="hero-marquee-sep">&mdash;</span>
     </div>
   </div>
@@ -1857,6 +1920,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
+     2C. HOW TO WORK WITH US
+     ═══════════════════════════════════════════════════════ -->
+<section class="how-to-work" id="how-to-work">
+  <div class="container">
+    <div class="how-to-work-header fade-up">
+      <p class="section-label">How to Work With Us</p>
+    </div>
+    <div class="how-to-work-grid">
+      <div class="how-to-work-item fade-up">
+        <div class="htw-icon">I</div>
+        <h3>Order Florals</h3>
+        <p>Seasonal arrangements delivered to your home or sent as a gift.</p>
+        <a href="#order">Place an Order</a>
+      </div>
+      <div class="how-to-work-item fade-up">
+        <div class="htw-icon">II</div>
+        <h3>Style Your Space</h3>
+        <p>Open house florals and home styling for gatherings and everyday living.</p>
+        <a href="#booking">Inquire</a>
+      </div>
+      <div class="how-to-work-item fade-up">
+        <div class="htw-icon">III</div>
+        <h3>Join the Bloom Circle</h3>
+        <p>Ongoing floral delivery designed to keep your space effortlessly in bloom.</p>
+        <a href="#bloom-circle">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
      3. TEXT MASK REVEAL
      ═══════════════════════════════════════════════════════ -->
 <section class="mask-section" id="maskSection">
@@ -1884,7 +1978,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <p class="section-label">The Studio</p>
         <h2 class="section-heading">Where Intention Meets Artistry</h2>
         <p class="about-body">DreamersJoy Floral Studio is a private floral design studio built around intention, creative expression, and intimate scale. We craft seasonal arrangements, curated installations, and bespoke floral pieces for discerning clients across Bergen County.</p>
-        <p class="about-body">Founded by Sarah De Jesus, our studio operates by appointment only. No public storefront, no walk-ins. This intentional privacy allows us to focus entirely on the craft, sourcing premium seasonal stems and designing with editorial precision.</p>
+        <p class="about-body">Founded by Sarah De Jesus, our studio operates by appointment only. No public storefront, no walk-ins. This intentional privacy allows us to focus entirely on the craft, sourcing seasonally sourced blooms selected for movement, texture, and tone.</p>
         <p class="about-body">We also host invitation-based floral experiences for small groups, but our foundation is the art of the arrangement itself. Every stem selected with care. Every piece designed to elevate your space.</p>
         <p class="about-signature">Quiet confidence. Contained joy.</p>
       </div>
@@ -1901,7 +1995,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="offerings-header fade-up">
       <p class="section-label">Seasonal Floral Offerings</p>
       <h2 class="section-heading">Designed for Your Space</h2>
-      <p>Every arrangement is crafted with seasonal blooms, editorial intention, and quiet luxury. Delivery available across Bergen County.</p>
+      <p>Available for local delivery. Designed with what's currently in bloom.</p>
     </div>
     <div class="offerings-grid">
       <div class="offering-card fade-up">
@@ -1910,7 +2004,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="offering-tier">Petite</div>
           <h3>Petite Arrangement</h3>
           <div class="offering-price">$85 &ndash; $125</div>
-          <p>A refined touch for intimate spaces. Perfect for a bedside table, powder room, or thoughtful gift.</p>
+          <p>A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.</p>
+          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
       </div>
       <div class="offering-card fade-up">
@@ -1919,7 +2014,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="offering-tier">Signature</div>
           <h3>Signature Arrangement</h3>
           <div class="offering-price">$125 &ndash; $175</div>
-          <p>Our most-loved arrangement size. A statement piece for your dining table, entryway, or kitchen island.</p>
+          <p>Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.</p>
+          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
       </div>
       <div class="offering-card fade-up">
@@ -1928,7 +2024,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="offering-tier">Statement</div>
           <h3>Statement Arrangement</h3>
           <div class="offering-price">$175 &ndash; $250</div>
-          <p>Bold, sculptural, unforgettable. Designed to anchor a room and command attention with effortless beauty.</p>
+          <p>Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.</p>
+          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
       </div>
       <div class="offering-card fade-up">
@@ -1937,13 +2034,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="offering-tier">Collector's</div>
           <h3>Collector's Piece</h3>
           <div class="offering-price">$250+</div>
-          <p>Museum-worthy. One of a kind. A bespoke floral installation crafted for those who appreciate the extraordinary.</p>
+          <p>One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.</p>
+          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
       </div>
     </div>
-    <div class="offerings-footer fade-up">
-      <p>All arrangements are seasonal. We design with what's blooming.</p>
-      <a href="#booking" class="btn-primary">Place an Order</a>
+    <div class="offerings-ordering fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 64px);">
+      <p class="section-label">Ordering</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 12px; line-height: 1.7;">Select your arrangement size and allow us to design with the most beautiful blooms of the season.</p>
+      <a href="#order" class="btn-primary" style="margin-top: 16px;">Order Your Arrangement</a>
+    </div>
+    <div class="offerings-footer fade-up" style="margin-top: 32px;">
+      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 8px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
+      <p style="font-size: 13px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
+      <p style="font-size: 13px; color: var(--accent1); margin-top: 8px;">Same-day delivery available for orders placed before 1 PM.</p>
+    </div>
+    <div class="offerings-delivery fade-up" style="text-align: center; margin-top: 32px; padding: 28px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
+      <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 8px;">Delivery</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area. Same-day delivery available for orders placed before 1:00 PM.</p>
+      <a href="/delivery" style="display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
     </div>
   </div>
 </section>
@@ -1956,8 +2065,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="workshops-header fade-up">
       <p class="section-label">Invitation-Based Experiences</p>
       <h2 class="section-heading">By Invitation Only</h2>
-      <p>Our seasonal floral experiences are offered by invitation and limited to small groups. Wine, music, elevated stems, and guided instruction in sculptural floral composition.</p>
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.5); margin-top: 12px;">To join our invitation list, subscribe below or inquire via the booking form.</p>
+      <p>Our seasonal floral experiences are offered by invitation and limited to small groups. Wine, music, carefully sourced stems, and guided instruction in sculptural floral composition.</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.55); margin-top: 16px; max-width: 50ch; margin-left: auto; margin-right: auto; line-height: 1.7;">These experiences are ideal for birthdays, small gatherings, client appreciation events, and creative evenings.</p>
+      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 12px;">To join our invitation list, subscribe below or inquire via the booking form.</p>
     </div>
     <div class="stack-container">
       <div class="stack-visual">
@@ -2096,7 +2206,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="exp-step">
             <div class="step-time">60 min</div>
             <h4>Hands-On Creation</h4>
-            <p>Design your own arrangement using premium seasonal blooms, with personalized guidance throughout.</p>
+            <p>Design your own arrangement using carefully sourced seasonal stems, with personalized guidance throughout.</p>
           </div>
           <div class="exp-step">
             <div class="step-time">20 min</div>
@@ -2139,7 +2249,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="private-header fade-up">
       <p class="section-label">Private Gatherings</p>
       <h2 class="section-heading">Your Night, Your Blooms</h2>
-      <p>Bespoke floral experiences brought to your space. We provide premium stems, tools, guidance, and a beautifully curated setup.</p>
+      <p>Bespoke floral experiences brought to your space. We provide beautiful stems, tools, guidance, and a beautifully curated setup.</p>
     </div>
     <div class="private-cards">
       <div class="flip-card fade-up">
@@ -2151,7 +2261,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           </div>
           <div class="flip-card-back">
             <h3>Birthday Floral Nights</h3>
-            <p>Celebrate with an intimate evening of floral design. We bring premium stems, tools, and expertise to your gathering. By invitation, perfect for groups of 8 to 14 guests.</p>
+            <p>Celebrate with an intimate evening of floral design. We bring beautiful stems, tools, and expertise to your gathering. By invitation, perfect for groups of 8 to 14 guests.</p>
             <span class="flip-link">Inquire</span>
           </div>
         </div>
@@ -2205,7 +2315,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Elegant centerpieces and table runners designed to complement your tablescape. We consult on color palette and scale, then deliver arrangements ready to impress your guests. From intimate dinners of four to gatherings of twenty.</p>
+          <p>Elegant centerpieces and table runners designed to complement your tablescape. We consult on color palette and scale, then deliver arrangements ready to impress your guests. From intimate dinners of four to gatherings of twenty. Delivery and styling available upon request.</p>
         </div></div>
       </div>
       <div class="design-acc-item fade-up">
@@ -2214,7 +2324,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Curated floral installations that elevate your listing. Strategic placement in entryways, dining areas, and primary suites. We work with realtors across Bergen County to make homes feel aspirational and lived-in at once.</p>
+          <p>Curated floral installations that elevate your listing. Strategic placement in entryways, dining areas, and primary suites. We work with realtors across Bergen County to make homes feel aspirational and lived-in at once. Also available for private homes and hosted gatherings.</p>
         </div></div>
       </div>
       <div class="design-acc-item fade-up">
@@ -2223,7 +2333,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Seasonal collections for Mother's Day, Valentine's Day, Thanksgiving, and the winter holidays. Pre-order premium arrangements with our signature editorial aesthetic. Limited quantities available each season.</p>
+          <p>Seasonal collections for Mother's Day, Valentine's Day, Thanksgiving, and the winter holidays. Pre-order seasonal arrangements with our signature editorial aesthetic. Limited quantities available each season.</p>
         </div></div>
       </div>
       <div class="design-acc-item fade-up">
@@ -2232,7 +2342,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Bespoke floral designs for any occasion. Share your vision, color preferences, and the mood you want to create. We source premium stems and craft something uniquely yours. Delivery available across Bergen County.</p>
+          <p>Bespoke floral designs for meaningful moments. Share your vision, color palette, and the atmosphere you want to create. Each piece is thoughtfully composed using seasonally sourced stems and our signature editorial style. We'll guide you through the process and deliver a design that feels considered, personal, and entirely your own. <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid var(--accent2);">Inquire to begin</a>.</p>
         </div></div>
       </div>
     </div>
@@ -2305,27 +2415,69 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="fade-up">
       <p class="section-label">The Bloom Circle</p>
       <h2 class="section-heading">Fresh Florals, On Repeat</h2>
-      <p class="bloom-circle-desc">Join our subscription program and receive seasonal arrangements delivered to your door. Each piece is designed with the same editorial intention as our one-time orders, on a schedule that keeps your space alive.</p>
+      <p class="bloom-circle-desc">Fresh florals, thoughtfully delivered on a rhythm that keeps your space alive. Our subscription clients receive seasonally composed arrangements designed with the same intention and artistry as our one-time orders, curated to evolve with the seasons and elevate your everyday environment.</p>
+      <p style="font-size: 14px; color: var(--accent4); margin-top: 12px;">Subscriptions begin at $95 per delivery.</p>
     </div>
+
+    <!-- How It Works -->
+    <div class="fade-up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 48px auto 0; text-align: center;">
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">1</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">Choose your cadence</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">2</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We design your arrangement</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">3</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We deliver on schedule</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">4</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">Your space stays in bloom</p></div>
+    </div>
+
+    <!-- Cadence Options -->
     <div class="bloom-tiers fade-up">
       <div class="bloom-tier">
         <h3>Weekly</h3>
         <div class="tier-freq">Every week</div>
-        <p>A fresh arrangement each week. Ideal for spaces that thrive on constant beauty: offices, lobbies, and dining rooms.</p>
+        <p>Designed for spaces that thrive on constant beauty: offices, lobbies, and entertaining homes.</p>
       </div>
       <div class="bloom-tier">
         <h3>Bi-Weekly</h3>
         <div class="tier-freq">Every two weeks</div>
-        <p>Our most popular cadence. Fresh blooms arrive before the last ones fade, keeping your home effortlessly styled.</p>
+        <p>Our most popular option. A balanced rhythm that keeps your home effortlessly styled.</p>
       </div>
       <div class="bloom-tier">
         <h3>Monthly</h3>
         <div class="tier-freq">Once a month</div>
-        <p>A curated seasonal piece each month. Perfect for those who love the ritual of a fresh arrangement without the commitment of weekly delivery.</p>
+        <p>A refined refresh. Perfect for those who enjoy a seasonal touch without frequent deliveries.</p>
       </div>
     </div>
+
+    <!-- Arrangement Levels -->
+    <div class="fade-up" style="margin-top: 48px; text-align: center;">
+      <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 24px;">Arrangement Levels</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 700px; margin: 0 auto;">
+        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Petite</h4><p style="font-size: 14px; color: var(--accent4);">$95 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Signature</h4><p style="font-size: 14px; color: var(--accent4);">$150 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Statement</h4><p style="font-size: 14px; color: var(--accent4);">$225 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Collector's</h4><p style="font-size: 14px; color: var(--accent4);">$300+ / delivery</p></div>
+      </div>
+      <p style="font-size: 13px; color: rgba(250,250,248,0.4); margin-top: 16px; font-style: italic;">Each arrangement is designed using the most beautiful stems of the season. No two deliveries are ever the same.</p>
+    </div>
+
+    <!-- What's Included -->
+    <div class="fade-up" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 700px; margin-left: auto; margin-right: auto; margin-top: 48px;">
+      <div>
+        <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 12px;">What's Included</p>
+        <p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 2;">Seasonally curated floral arrangements<br>Hand delivery to your home or business<br>Vase rotation available upon request<br>Design continuity tailored to your space</p>
+      </div>
+      <div>
+        <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 12px;">Ideal For</p>
+        <p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 2;">Private residences<br>Interior-styled homes<br>Offices &amp; professional spaces<br>Client-facing businesses</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 12px;">
+      <p style="font-size: 13px; color: rgba(250,250,248,0.35); font-style: italic;">Pause, skip, or adjust your deliveries at any time with advance notice (minimum 15 days prior).</p>
+    </div>
+
     <div class="bloom-circle-cta fade-up">
-      <a href="#booking" class="btn-outline">Join the Circle</a>
+      <a href="#booking" class="btn-outline" style="border-color: rgba(245,240,235,0.4); color: var(--light);">Join the Bloom Circle</a>
+      <p style="font-size: 12px; color: rgba(250,250,248,0.4); margin-top: 12px;">Limited availability</p>
+      <p style="font-size: 13px; color: rgba(250,250,248,0.45); margin-top: 16px;">Prefer a custom plan? <a href="#booking" style="color: var(--accent4); border-bottom: 1px solid rgba(212,184,160,0.3);">Inquire for a tailored subscription experience</a>.</p>
     </div>
   </div>
 </section>
@@ -2339,7 +2491,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="booking-cta-inner fade-up">
       <p class="section-label">Begin Here</p>
       <h2>Start a Conversation</h2>
-      <p>Whether it's a seasonal arrangement, private floral experience, or subscription, every relationship begins with a conversation.</p>
+      <p style="max-width: 45ch; margin: 0 auto 8px;">Delivery options, timing, and concierge services will be discussed and confirmed during your inquiry.</p>
       <div class="booking-form" id="bookingFormWrap">
         <form id="bookingForm">
           <div class="form-row">
@@ -2363,22 +2515,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
           <div class="form-full">
-            <label for="bkInterest">I'm Interested In</label>
+            <label for="bkInterest">What Can We Create for You?</label>
             <select id="bkInterest" name="interest" required>
               <option value="" disabled selected>Select an option</option>
-              <option value="Petite Arrangement">Petite Arrangement ($85 &ndash; $125)</option>
-              <option value="Signature Arrangement">Signature Arrangement ($125 &ndash; $175)</option>
-              <option value="Statement Arrangement">Statement Arrangement ($175 &ndash; $250)</option>
-              <option value="Collector's Piece">Collector's Piece ($250+)</option>
-              <option value="Bloom Circle Subscription">Bloom Circle Subscription</option>
-              <option value="Private Floral Experience">Private Floral Experience</option>
-              <option value="Custom Order">Custom Order</option>
-              <option value="Consultation">General Consultation</option>
+              <option value="Seasonal Arrangement">Seasonal Arrangement (Delivery)</option>
+              <option value="Custom Floral Design">Custom Floral Design</option>
+              <option value="Dinner Party / Home Styling">Dinner Party / Home Styling</option>
+              <option value="Open House Styling">Open House Styling</option>
+              <option value="Floral Subscription">Floral Subscription</option>
+              <option value="Private Experience">Private Experience</option>
+              <option value="Something Else">Something Else</option>
             </select>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="bkBudget">Desired Investment</label>
+              <select id="bkBudget" name="budget">
+                <option value="" disabled selected>Select range</option>
+                <option value="$100-$150">$100 &ndash; $150</option>
+                <option value="$150-$250">$150 &ndash; $250</option>
+                <option value="$250-$500">$250 &ndash; $500</option>
+                <option value="$500+">$500+</option>
+              </select>
+            </div>
+            <div>
+              <label for="bkDate">Event / Delivery Date</label>
+              <input type="date" id="bkDate" name="date">
+            </div>
           </div>
           <div class="form-full">
             <label for="bkMessage">Tell Us More</label>
-            <textarea id="bkMessage" name="message" placeholder="Occasion, date, color preferences, or anything else you'd like us to know"></textarea>
+            <textarea id="bkMessage" name="message" placeholder="Share your vision, colors, timing, and anything meaningful we should know."></textarea>
           </div>
           <div class="form-submit">
             <button type="submit" class="btn-primary" id="bookingSubmitBtn">Send Inquiry</button>
@@ -2446,18 +2613,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       <div class="footer-col">
         <h4>Studio</h4>
-        <a href="#offerings">Floral Offerings</a>
-        <a href="#about">The Studio</a>
+        <a href="/delivery">Delivery &amp; Service</a>
+        <a href="#founder">About</a>
         <a href="#gallery">Gallery</a>
-        <a href="#founder">Sarah</a>
+        <a href="#booking">Booking</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
+        <a href="#offerings">Floral Offerings</a>
         <a href="#experiences">Experiences</a>
-        <a href="#private">Private Gatherings</a>
-        <a href="#studio-design">Floral Design</a>
         <a href="#bloom-circle">Subscriptions</a>
-        <a href="#booking">Booking</a>
+        <a href="#private">Private Gatherings</a>
       </div>
       <div class="footer-col">
         <h4>Connect</h4>
@@ -2798,7 +2964,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       var email = document.getElementById('bkEmail').value;
       var phone = document.getElementById('bkPhone').value;
       var interest = document.getElementById('bkInterest').value;
+      var budget = document.getElementById('bkBudget') ? document.getElementById('bkBudget').value : '';
+      var eventDate = document.getElementById('bkDate') ? document.getElementById('bkDate').value : '';
       var message = document.getElementById('bkMessage').value;
+
+      var desc = 'Interest: ' + interest;
+      if (budget) desc += ' | Budget: ' + budget;
+      if (eventDate) desc += ' | Date: ' + eventDate;
+      if (message) desc += ' | ' + message;
 
       fetch(CRM.apiUrl + '/lead', {
         method: 'POST',
@@ -2808,7 +2981,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           lastName: lastName,
           email: email,
           phone: phone,
-          description: 'Interest: ' + interest + (message ? ' | ' + message : ''),
+          description: desc,
           source: 'web_form'
         })
       }).then(function(res) {
@@ -2843,17 +3016,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     }
   }
 
-  // Place an Order → scroll to form
+  // Booking CTAs → scroll to form with pre-selected interest
   document.querySelectorAll('a[href="#booking"]').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       var text = btn.textContent.trim();
       var interest = '';
-      if (text === 'Place an Order') interest = '';
-      else if (text === 'Book a Consultation') interest = 'Consultation';
-      else if (text === 'Join the Circle') interest = 'Bloom Circle Subscription';
-      else if (text === 'Custom Order') interest = 'Custom Order';
+      if (text === 'Inquire') interest = '';
+      else if (text === 'Request Custom') interest = 'Custom Floral Design';
+      else if (text === 'Join the Bloom Circle') interest = 'Floral Subscription';
+      else if (text === 'Custom Order') interest = 'Custom Floral Design';
+      else if (text === 'Inquire to begin') interest = 'Custom Floral Design';
+      else if (text === 'Inquire for a tailored subscription experience') interest = 'Floral Subscription';
       scrollToBooking(interest);
+    });
+  });
+
+  // Order links → navigate to order page
+  document.querySelectorAll('a[href="#order"]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = '/order';
     });
   });
 
@@ -2861,7 +3044,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   document.querySelectorAll('.flip-link').forEach(function(link) {
     link.style.cursor = 'pointer';
     link.addEventListener('click', function() {
-      scrollToBooking('Private Floral Experience');
+      scrollToBooking('Private Experience');
     });
   });
 

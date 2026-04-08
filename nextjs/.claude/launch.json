@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dreamersjoy-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "public/cinematic", "-l", "3456"],
+      "port": 3456
+    }
+  ]
+}
