@@ -1761,6 +1761,56 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .signup-form { display: flex; gap: 0; flex-wrap: wrap; justify-content: center; }
 .signup-form input:focus { border-color: var(--primary); }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — COMPREHENSIVE CLEANUP
+   Ensure all new elements stack cleanly without breaking
+   the existing mobile experience
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Hero: scale text down, buttons stack nicely */
+  .hero-sub { font-size: clamp(14px, 3.5vw, 16px); }
+  .hero-cta-row { gap: 12px; }
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-outline { min-width: 160px; text-align: center; font-size: 12px; padding: 12px 24px; }
+
+  /* Bloom Circle: collapse 4-col grids to 2-col */
+  .bloom-steps { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .bloom-levels { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .bloom-details { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .bloom-tiers { grid-template-columns: 1fr !important; }
+  .bloom-circle .section-heading { font-size: clamp(28px, 6vw, 42px); }
+  .bloom-circle-desc { font-size: 15px !important; }
+
+  /* Offering cards: per-card buttons stack */
+  .offering-btns { flex-direction: column; }
+  .offering-btns .btn-sm { width: 100%; text-align: center; }
+
+  /* Booking form: single column on mobile */
+  .booking-form .form-row { grid-template-columns: 1fr !important; }
+
+  /* Private Gatherings: cards stack with more breathing room */
+  .private-cards { gap: 24px; }
+  .flip-card { min-height: 280px; }
+
+  /* Experience steps inside curtain */
+  .exp-step h4 { font-size: 18px; }
+  .exp-step .step-time { font-size: 28px; }
+}
+
+@media (max-width: 480px) {
+  /* Bloom Circle: single column everything */
+  .bloom-steps { grid-template-columns: 1fr !important; }
+  .bloom-levels { grid-template-columns: 1fr !important; }
+
+  /* Hero buttons full width */
+  .hero-cta-row { flex-direction: column; align-items: center; }
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-outline { width: 100%; max-width: 280px; }
+
+  /* Offerings: ordering section tighter */
+  .offerings-ordering .section-label { font-size: 11px; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2469,7 +2519,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
 
     <!-- How It Works -->
-    <div class="fade-up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 48px auto 0; text-align: center;">
+    <div class="bloom-steps fade-up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 48px auto 0; text-align: center;">
       <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">1</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">Choose your cadence</p></div>
       <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">2</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We design your arrangement</p></div>
       <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">3</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We deliver on schedule</p></div>
@@ -2498,7 +2548,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <!-- Arrangement Levels -->
     <div class="fade-up" style="margin-top: 48px; text-align: center;">
       <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 24px;">Arrangement Levels</p>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 700px; margin: 0 auto;">
+      <div class="bloom-levels" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 700px; margin: 0 auto;">
         <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Petite</h4><p style="font-size: 14px; color: var(--accent4);">$95 / delivery</p></div>
         <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Signature</h4><p style="font-size: 14px; color: var(--accent4);">$150 / delivery</p></div>
         <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Statement</h4><p style="font-size: 14px; color: var(--accent4);">$225 / delivery</p></div>
@@ -2508,7 +2558,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
 
     <!-- What's Included -->
-    <div class="fade-up" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 700px; margin-left: auto; margin-right: auto; margin-top: 48px;">
+    <div class="bloom-details fade-up" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
       <div>
         <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 12px;">What's Included</p>
         <p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 2;">Seasonally curated floral arrangements<br>Hand delivery to your home or business<br>Vase rotation available upon request<br>Design continuity tailored to your space</p>
