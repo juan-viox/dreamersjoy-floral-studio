@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Seasonal arrangements & invitation-based floral experiences in Bergen County, NJ">
 <meta name="twitter:image" content="https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png">
 <!-- Additional SEO -->
-<meta name="keywords" content="floral arrangements Bergen County NJ, luxury florist NJ, flower delivery Bergen County, private floral studio, editorial florals New Jersey, seasonal flower arrangements">
+<meta name="keywords" content="floral arrangements Bergen County NJ, luxury florist NJ, flower delivery Bergen County, private floral studio, refined florals New Jersey, seasonal flower arrangements">
 <meta name="author" content="Sarah De Jesus">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://dreamersjoystudio.com">
@@ -70,7 +70,8 @@ body {
   color: var(--primary);
   background: var(--light);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
 }
 
 img { max-width: 100%; display: block; }
@@ -81,7 +82,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
 .section-label {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -372,33 +373,51 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   text-align: center;
   margin-bottom: clamp(40px, 5vw, 60px);
 }
+.how-to-work-header .section-heading { margin-bottom: 12px; }
 .how-to-work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  text-align: center;
+  gap: 24px;
 }
-.how-to-work-item .htw-icon {
-  font-family: var(--font-display);
-  font-size: 48px;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--accent1);
-  margin-bottom: 16px;
+.how-to-work-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+}
+.how-to-work-item .htw-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+.how-to-work-item:hover .htw-bg { transform: scale(1.04); }
+.how-to-work-item .htw-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.3) 50%, transparent 100%);
+}
+.how-to-work-item .htw-content {
+  position: relative;
+  z-index: 1;
+  padding: 32px 28px;
 }
 .how-to-work-item h3 {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
-  color: var(--primary);
+  color: var(--light);
   margin-bottom: 10px;
 }
 .how-to-work-item p {
-  font-size: 14px;
-  color: rgba(51,65,85,0.6);
+  font-size: 15px;
+  color: rgba(250,250,248,0.7);
   line-height: 1.7;
-  max-width: 30ch;
-  margin: 0 auto;
 }
 .how-to-work-item a {
   display: inline-block;
@@ -407,14 +426,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent1);
-  border-bottom: 1px solid var(--accent2);
+  color: var(--accent4);
+  border-bottom: 1px solid rgba(212,184,160,0.4);
   padding-bottom: 2px;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, color 0.3s;
 }
-.how-to-work-item a:hover { border-color: var(--primary); color: var(--primary); }
+.how-to-work-item a:hover { border-color: var(--light); color: var(--light); }
 @media (max-width: 768px) {
-  .how-to-work-grid { grid-template-columns: 1fr; gap: 48px; }
+  .how-to-work-grid { grid-template-columns: 1fr; }
+  .how-to-work-item { min-height: 320px; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -422,7 +442,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 .mask-section {
   position: relative;
-  min-height: 250vh;
+  min-height: 200vh;
   background: var(--light);
 }
 .mask-sticky {
@@ -525,7 +545,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .about-text .section-label { margin-bottom: 16px; }
 .about-text .section-heading { margin-bottom: 28px; }
 .about-text .about-body {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.8;
   color: rgba(51, 65, 85, 0.75);
   margin-bottom: 20px;
@@ -960,9 +980,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 8px;
 }
 .exp-step p {
-  font-size: 13px;
-  color: rgba(250,250,248,0.5);
-  line-height: 1.6;
+  font-size: 14px;
+  color: rgba(250,250,248,0.55);
+  line-height: 1.7;
 }
 @media (max-width: 768px) {
   .experience-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1139,13 +1159,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .flip-card-front {
   border: 1px solid rgba(201,184,168,0.3);
   background: var(--light);
+  overflow: hidden;
 }
+.flip-card-front .flip-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  transition: opacity 0.4s;
+}
+.flip-card:hover .flip-card-front .flip-bg { opacity: 0.35; }
 .flip-card-front .flip-icon {
   font-family: var(--font-display);
   font-size: 48px;
   font-weight: 300;
   font-style: italic;
   color: var(--accent3);
+  position: relative; z-index: 1;
   margin-bottom: 20px;
 }
 .flip-card-front h3 {
@@ -1803,6 +1834,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <li><a href="#offerings">Floral Offerings</a></li>
       <li><a href="#about">The Studio</a></li>
       <li><a href="#experiences">Experiences</a></li>
+      <li><a href="#bloom-circle">Subscriptions</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#founder">About</a></li>
       <li><a href="#booking" class="nav-cta">Booking</a></li>
@@ -1818,6 +1850,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <a href="#offerings" class="mobile-link">Floral Offerings</a>
   <a href="#about" class="mobile-link">The Studio</a>
   <a href="#experiences" class="mobile-link">Experiences</a>
+  <a href="#bloom-circle" class="mobile-link">Subscriptions</a>
   <a href="#gallery" class="mobile-link">Gallery</a>
   <a href="#founder" class="mobile-link">About</a>
   <a href="#booking" class="mobile-link">Booking</a>
@@ -1831,11 +1864,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>A <em>Private</em> Floral Design Studio</h1>
-      <p class="hero-sub">Seasonal arrangements, home styling florals, and delivery throughout Northern New Jersey.</p>
+      <h1>Refined Floral Design for <em>Intimate</em> Gatherings</h1>
+      <p class="hero-sub">A private floral studio offering seasonal arrangements, bouquet gifting, subscriptions for home and office spaces, home styling florals, and delivery throughout Northern New Jersey.</p>
       <div class="hero-cta-row">
         <a href="#order" class="btn-primary">Order Florals</a>
         <a href="#booking" class="btn-outline">Inquire</a>
+        <a href="/invite" class="btn-outline">Request an Invitation</a>
       </div>
     </div>
     <div class="scroll-indicator" id="scrollIndicator">
@@ -1855,7 +1889,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Installations</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Editorial Florals</span>
+      <span class="hero-marquee-word">Refined Florals</span>
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Open House Styling</span>
       <span class="hero-marquee-sep">&mdash;</span>
@@ -1869,7 +1903,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Installations</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Editorial Florals</span>
+      <span class="hero-marquee-word">Refined Florals</span>
       <span class="hero-marquee-sep">&mdash;</span>
       <span class="hero-marquee-word">Open House Styling</span>
       <span class="hero-marquee-sep">&mdash;</span>
@@ -1926,25 +1960,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="container">
     <div class="how-to-work-header fade-up">
       <p class="section-label">How to Work With Us</p>
+      <h2 class="section-heading">Three Ways to Begin</h2>
     </div>
     <div class="how-to-work-grid">
       <div class="how-to-work-item fade-up">
-        <div class="htw-icon">I</div>
-        <h3>Order Florals</h3>
-        <p>Seasonal arrangements delivered to your home or sent as a gift.</p>
-        <a href="#order">Place an Order</a>
+        <div class="htw-bg" style="background-image: url(assets/images/offering-signature.png);"></div>
+        <div class="htw-overlay"></div>
+        <div class="htw-content">
+          <h3>Order Florals</h3>
+          <p>Seasonal arrangements delivered to your home or sent as a gift.</p>
+          <a href="#order">Place an Order &rarr;</a>
+        </div>
       </div>
       <div class="how-to-work-item fade-up">
-        <div class="htw-icon">II</div>
-        <h3>Style Your Space</h3>
-        <p>Open house florals and home styling for gatherings and everyday living.</p>
-        <a href="#booking">Inquire</a>
+        <div class="htw-bg" style="background-image: url(assets/images/gallery-openhouse.png);"></div>
+        <div class="htw-overlay"></div>
+        <div class="htw-content">
+          <h3>Style Your Space</h3>
+          <p>Home styling florals and open house floral design for gatherings, hosting, and beautifully lived-in spaces.</p>
+          <a href="#booking">Inquire &rarr;</a>
+        </div>
       </div>
       <div class="how-to-work-item fade-up">
-        <div class="htw-icon">III</div>
-        <h3>Join the Bloom Circle</h3>
-        <p>Ongoing floral delivery designed to keep your space effortlessly in bloom.</p>
-        <a href="#bloom-circle">Learn More</a>
+        <div class="htw-bg" style="background-image: url(assets/images/offering-petite.png);"></div>
+        <div class="htw-overlay"></div>
+        <div class="htw-content">
+          <h3>Join the Bloom Circle</h3>
+          <p>Subscription-based ongoing floral delivery designed to keep your space effortlessly in bloom. Perfect for home or office.</p>
+          <a href="#bloom-circle">Learn More &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1977,9 +2021,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="about-text fade-up">
         <p class="section-label">The Studio</p>
         <h2 class="section-heading">Where Intention Meets Artistry</h2>
-        <p class="about-body">DreamersJoy Floral Studio is a private floral design studio built around intention, creative expression, and intimate scale. We craft seasonal arrangements, curated installations, and bespoke floral pieces for discerning clients across Bergen County.</p>
-        <p class="about-body">Founded by Sarah De Jesus, our studio operates by appointment only. No public storefront, no walk-ins. This intentional privacy allows us to focus entirely on the craft, sourcing seasonally sourced blooms selected for movement, texture, and tone.</p>
-        <p class="about-body">We also host invitation-based floral experiences for small groups, but our foundation is the art of the arrangement itself. Every stem selected with care. Every piece designed to elevate your space.</p>
+        <p class="about-body">DreamersJoy Floral Studio is a refined floral studio based in Bergen County, New Jersey, built around intention, creative expression, and intimate scale. We craft seasonal arrangements, curated installations, and bespoke floral pieces for discerning clients throughout Northern New Jersey.</p>
+        <p class="about-body">Founded by Sarah De Jesus, our studio operates by appointment only. No public storefront, no walk-ins. This intentional privacy allows us to focus entirely on the craft, sourcing seasonally selected blooms chosen for movement, texture, and tone.</p>
+        <p class="about-body">We also host invitation-based floral experiences for small groups, but our foundation is the art of the arrangement itself. Every stem carefully selected. Every piece thoughtfully designed to elevate your space.</p>
         <p class="about-signature">Quiet confidence. Contained joy.</p>
       </div>
       <div class="about-visual fade-up" aria-label="Studio atmosphere placeholder"></div>
@@ -1993,9 +2037,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="offerings" id="offerings">
   <div class="container">
     <div class="offerings-header fade-up">
-      <p class="section-label">Seasonal Floral Offerings</p>
+      <p class="section-label">Floral Offerings</p>
       <h2 class="section-heading">Designed for Your Space</h2>
-      <p>Available for local delivery. Designed with what's currently in bloom.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto; line-height: 1.7;">All of our floral offerings are designed with seasonal blooms. Available for local delivery.</p>
     </div>
     <div class="offerings-grid">
       <div class="offering-card fade-up">
@@ -2003,7 +2047,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="offering-card-body">
           <div class="offering-tier">Petite</div>
           <h3>Petite Arrangement</h3>
-          <div class="offering-price">$85 &ndash; $125</div>
+          <div class="offering-price">$85+</div>
           <p>A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.</p>
           <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
@@ -2013,7 +2057,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="offering-card-body">
           <div class="offering-tier">Signature</div>
           <h3>Signature Arrangement</h3>
-          <div class="offering-price">$125 &ndash; $175</div>
+          <div class="offering-price">$125+</div>
           <p>Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.</p>
           <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
@@ -2023,7 +2067,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="offering-card-body">
           <div class="offering-tier">Statement</div>
           <h3>Statement Arrangement</h3>
-          <div class="offering-price">$175 &ndash; $250</div>
+          <div class="offering-price">$175+</div>
           <p>Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.</p>
           <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
         </div>
@@ -2063,11 +2107,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="workshops" id="experiences">
   <div class="container">
     <div class="workshops-header fade-up">
-      <p class="section-label">Invitation-Based Experiences</p>
+      <p class="section-label">Our Invitation-Based Floral Experiences</p>
       <h2 class="section-heading">By Invitation Only</h2>
-      <p>Our seasonal floral experiences are offered by invitation and limited to small groups. Wine, music, carefully sourced stems, and guided instruction in sculptural floral composition.</p>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.55); margin-top: 16px; max-width: 50ch; margin-left: auto; margin-right: auto; line-height: 1.7;">These experiences are ideal for birthdays, small gatherings, client appreciation events, and creative evenings.</p>
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 12px;">To join our invitation list, subscribe below or inquire via the booking form.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 52ch; margin: 0 auto; line-height: 1.8;">Held once or twice a month, DreamersJoy floral experiences are offered in small, beautifully curated settings designed for connection, creativity, and intentional floral design.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.6); margin-top: 16px; max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.8;">Guests are welcomed with refreshments, thoughtful guidance, and seasonal blooms selected for an intentional hands-on experience.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.55); margin-top: 16px; max-width: 50ch; margin-left: auto; margin-right: auto; line-height: 1.7;">These experiences are ideal for birthdays, small gatherings, client appreciation events, and creative evenings.</p>
+      <div style="margin-top: 24px;"><a href="/invite" class="btn-primary">Request an Invitation</a></div>
     </div>
     <div class="stack-container">
       <div class="stack-visual">
@@ -2214,7 +2259,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <p>Capture your finished piece in a beautifully styled setting. A moment to celebrate your work.</p>
           </div>
         </div>
-        <p style="margin-top: 40px; font-size: 14px; font-style: italic; color: rgba(250,250,248,0.5); max-width: 55ch; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.6;">All experiences are BYOB. Guests are welcome to bring light refreshments to enjoy during the evening.</p>
+        <p style="margin-top: 40px; font-size: 15px; font-style: italic; color: rgba(250,250,248,0.5); max-width: 58ch; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.7;">All experiences are BYOB. Guests are welcome to bring their preferred beverages, and DreamersJoy provides refreshments including water, coffee, and tea.</p>
       </div>
     </div>
     <div class="curtain-left" id="curtainLeft"><h2>The</h2></div>
@@ -2234,7 +2279,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="marquee-item">Intentional<span class="marquee-dot"></span></span>
       <span class="marquee-item">Intimate<span class="marquee-dot"></span></span>
       <span class="marquee-logo-inline"><img src="assets/images/dj-logo-transparent.png" alt="" width="40" height="40"></span>
-      <span class="marquee-item">Editorial<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Artful<span class="marquee-dot"></span></span>
       <span class="marquee-item">Elevated<span class="marquee-dot"></span></span>
       <span class="marquee-logo-inline"><img src="assets/images/dj-logo-transparent.png" alt="" width="40" height="40"></span>
     </div>
@@ -2255,9 +2300,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
+            <div class="flip-bg" style="background-image: url(assets/images/gallery-birthday.png);"></div>
             <div class="flip-icon">I</div>
-            <h3>Birthday Floral Nights</h3>
-            <p>Hover to learn more</p>
+            <h3 style="position:relative;z-index:1;">Birthday Floral Nights</h3>
+            <p style="position:relative;z-index:1;">Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Birthday Floral Nights</h3>
@@ -2269,9 +2315,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
+            <div class="flip-bg" style="background-image: url(assets/images/gallery-corporate.png);"></div>
             <div class="flip-icon">II</div>
-            <h3>Corporate Creative</h3>
-            <p>Hover to learn more</p>
+            <h3 style="position:relative;z-index:1;">Corporate Creative</h3>
+            <p style="position:relative;z-index:1;">Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Corporate Sessions</h3>
@@ -2283,9 +2330,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
+            <div class="flip-bg" style="background-image: url(assets/images/gallery-openhouse.png);"></div>
             <div class="flip-icon">III</div>
-            <h3>Client Appreciation</h3>
-            <p>Hover to learn more</p>
+            <h3 style="position:relative;z-index:1;">Client Appreciation</h3>
+            <p style="position:relative;z-index:1;">Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Client Appreciation</h3>
@@ -2333,7 +2381,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Seasonal collections for Mother's Day, Valentine's Day, Thanksgiving, and the winter holidays. Pre-order seasonal arrangements with our signature editorial aesthetic. Limited quantities available each season.</p>
+          <p>Seasonal collections for Mother's Day, Valentine's Day, Thanksgiving, and the winter holidays. Pre-order seasonal arrangements with our signature refined aesthetic. Limited quantities available each season.</p>
         </div></div>
       </div>
       <div class="design-acc-item fade-up">
@@ -2342,7 +2390,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="acc-icon">+</span>
         </button>
         <div class="design-acc-body"><div class="design-acc-body-inner">
-          <p>Bespoke floral designs for meaningful moments. Share your vision, color palette, and the atmosphere you want to create. Each piece is thoughtfully composed using seasonally sourced stems and our signature editorial style. We'll guide you through the process and deliver a design that feels considered, personal, and entirely your own. <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid var(--accent2);">Inquire to begin</a>.</p>
+          <p>Bespoke floral designs for meaningful moments. Share your vision, color palette, and the atmosphere you want to create. Each piece is thoughtfully composed using seasonally sourced stems and our signature artful style. We'll guide you through the process and deliver a design that feels considered, personal, and entirely your own. <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid var(--accent2);">Inquire to begin</a>.</p>
         </div></div>
       </div>
     </div>
@@ -2361,7 +2409,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <h2>Sarah De Jesus</h2>
         <p class="founder-title">Founder & Creative Director</p>
         <p>What began as DreamersJoy Events & Design evolved into something more focused, more intentional, and more aligned with Sarah's creative vision. DreamersJoy Floral Studio was born from a desire to create design-forward arrangements and intimate floral experiences.</p>
-        <p>Sarah's approach to floral design is editorial and sculptural. She favors intentional negative space, textural movement, and understated luxury. Every arrangement reflects her belief that beauty lies in restraint.</p>
+        <p>Sarah's approach to floral design is artful and sculptural. She favors intentional negative space, textural movement, and understated luxury. Every arrangement reflects her belief that beauty lies in restraint.</p>
         <p>Operating by appointment only in Bergen County, she serves discerning clients across Franklin Lakes, Ridgewood, and the surrounding communities who value privacy and exceptional craft.</p>
         <p class="founder-sig">Sarah De Jesus</p>
       </div>
@@ -2415,8 +2463,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="fade-up">
       <p class="section-label">The Bloom Circle</p>
       <h2 class="section-heading">Fresh Florals, On Repeat</h2>
-      <p class="bloom-circle-desc">Fresh florals, thoughtfully delivered on a rhythm that keeps your space alive. Our subscription clients receive seasonally composed arrangements designed with the same intention and artistry as our one-time orders, curated to evolve with the seasons and elevate your everyday environment.</p>
-      <p style="font-size: 14px; color: var(--accent4); margin-top: 12px;">Subscriptions begin at $95 per delivery.</p>
+      <p class="bloom-circle-desc" style="font-size: 17px;">Subscription-based floral delivery for homes, offices, and client-facing spaces designed to keep your environment effortlessly in bloom.</p>
+      <p style="font-size: 15px; color: rgba(250,250,248,0.55); margin-top: 12px; max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.7;">Thoughtfully designed floral subscriptions for spaces that deserve to stay beautifully in bloom. Each delivery is composed with the same artistry as our one-time orders.</p>
+      <p style="font-size: 15px; color: var(--accent4); margin-top: 16px;">Subscriptions begin at $95 per delivery.</p>
     </div>
 
     <!-- How It Works -->
@@ -2609,7 +2658,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="footer-main">
       <div class="footer-brand">
         <img src="assets/images/dj-logo-light.png" alt="DreamersJoy Floral Studio" style="height: 80px; width: 80px;">
-        <p>Private floral design studio. Seasonal arrangements, curated installations & invitation-based experiences in Bergen County, NJ.</p>
+        <p>Refined floral design for intimate gatherings. Seasonal arrangements, bouquet gifting, subscriptions, home styling, and delivery throughout Northern New Jersey.</p>
       </div>
       <div class="footer-col">
         <h4>Studio</h4>
