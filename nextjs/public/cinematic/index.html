@@ -529,6 +529,78 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.7;
 }
 
+/* Mother's Day promo strip */
+.mothers-day {
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--secondary);
+  text-align: center;
+  border-bottom: 1px solid rgba(201,184,168,0.15);
+}
+.mothers-day .md-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 16px;
+}
+.mothers-day h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+.mothers-day .md-sub {
+  font-size: 16px;
+  color: rgba(51,65,85,0.6);
+  max-width: 48ch;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+.mothers-day .md-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.mothers-day .md-options {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.mothers-day .md-options span {
+  font-size: 13px;
+  color: rgba(51,65,85,0.5);
+  letter-spacing: 0.06em;
+}
+.mothers-day .md-options span::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent2);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.mothers-day .md-note {
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(51,65,85,0.45);
+  margin-top: 8px;
+}
+@media (max-width: 480px) {
+  .mothers-day .md-btns { flex-direction: column; align-items: center; }
+  .mothers-day .md-btns .btn-primary,
+  .mothers-day .md-btns .btn-outline { width: 100%; max-width: 280px; }
+}
+
 /* Brand statement strip (after mask section) */
 .brand-strip {
   background: var(--dark);
@@ -2078,6 +2150,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
+     2D. MOTHER'S DAY PROMO
+     ═══════════════════════════════════════════════════════ -->
+<section class="mothers-day">
+  <div class="container">
+    <p class="md-label">Mother's Day</p>
+    <h2>Flowers for the Ones Who Made Us</h2>
+    <p class="md-sub">Thoughtfully designed arrangements and hand-tied bouquets, created to celebrate her beautifully.</p>
+    <div class="md-btns">
+      <a href="#order" class="btn-primary">Shop Mother's Day Flowers</a>
+      <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
+    </div>
+    <p class="md-note">Limited Mother's Day availability. Pre-order recommended.</p>
+    <div class="md-options">
+      <span>Petite Arrangements</span>
+      <span>Signature Arrangements</span>
+      <span>Hand-Tied Bouquets</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
      2C. HOW TO WORK WITH US
      ═══════════════════════════════════════════════════════ -->
 <section class="how-to-work" id="how-to-work">
@@ -3080,8 +3173,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   document.querySelectorAll('.marquee-row, .hero-marquee-row, .testimonial-row').forEach(function(row) {
     var content = row.querySelector('.marquee-content, .testimonial-content');
     if (!content) return;
-    var clone = content.cloneNode(true);
-    row.appendChild(clone);
+    // Clone enough times to ensure seamless looping on any screen width
+    var copies = 3;
+    for (var c = 0; c < copies; c++) {
+      row.appendChild(content.cloneNode(true));
+    }
   });
 
   var scrollVelocity = 0;
