@@ -1858,6 +1858,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-color: var(--accent4);
   background: rgba(245,240,235,0.04);
 }
+.bloom-tier-img {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 3px 3px 0 0;
+  margin: -44px -36px 24px;
+  width: calc(100% + 72px);
+}
 .bloom-tier h3 {
   font-family: var(--font-display);
   font-size: 26px;
@@ -2752,16 +2760,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <!-- Cadence Options -->
     <div class="bloom-tiers fade-up" style="margin-bottom: 40px;">
       <div class="bloom-tier">
+        <div class="bloom-tier-img" style="background-image: url(assets/images/bloom-weekly.png);"></div>
         <h3>Weekly</h3>
         <div class="tier-freq">Every week</div>
         <p>Designed for spaces that thrive on constant beauty: offices, lobbies, and entertaining homes.</p>
       </div>
       <div class="bloom-tier">
+        <div class="bloom-tier-img" style="background-image: url(assets/images/bloom-biweekly.png);"></div>
         <h3>Bi-Weekly</h3>
         <div class="tier-freq">Every two weeks</div>
         <p>Our most popular option. A balanced rhythm that keeps your home effortlessly styled.</p>
       </div>
       <div class="bloom-tier">
+        <div class="bloom-tier-img" style="background-image: url(assets/images/bloom-monthly.png);"></div>
         <h3>Monthly</h3>
         <div class="tier-freq">Once a month</div>
         <p>A refined refresh. Perfect for those who enjoy a seasonal touch without frequent deliveries.</p>
