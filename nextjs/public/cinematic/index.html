@@ -771,6 +771,94 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ═══════════════════════════════════════════════════════════
+   4B2. PALETTE COLLECTION
+   ═══════════════════════════════════════════════════════════ */
+.palette-section {
+  padding: clamp(40px, 5vw, 60px) 0;
+  border-top: 1px solid rgba(201,184,168,0.12);
+}
+.palette-section:first-of-type { border-top: none; }
+.palette-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+.palette-header h3 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.palette-header .palette-desc {
+  font-size: 15px;
+  color: rgba(51,65,85,0.55);
+  max-width: 48ch;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-style: italic;
+}
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.palette-card {
+  background: var(--white);
+  border: 1px solid rgba(201,184,168,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+.palette-card:hover {
+  border-color: var(--accent1);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(139,115,85,0.08);
+}
+.palette-card-img {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+}
+.palette-card-body {
+  padding: 24px 20px;
+  text-align: center;
+}
+.palette-card-body .pc-size {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent3);
+  margin-bottom: 6px;
+}
+.palette-card-body h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.palette-card-body .pc-price {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+.palette-card-body p {
+  font-size: 13px;
+  color: rgba(51,65,85,0.55);
+  line-height: 1.6;
+}
+.palette-card-body .offering-btns {
+  margin-top: 14px;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .palette-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    4C. SEASONAL BOUQUETS
    ═══════════════════════════════════════════════════════════ */
 .bouquets {
@@ -2281,115 +2369,151 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     4B. SEASONAL FLORAL OFFERINGS
+     4B. FLORAL OFFERINGS — PALETTE COLLECTIONS
      ═══════════════════════════════════════════════════════ -->
 <section class="offerings" id="offerings">
   <div class="container">
     <div class="offerings-header fade-up">
       <p class="section-label">Floral Offerings</p>
-      <h2 class="section-heading">Designed for Your Space</h2>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto; line-height: 1.7;">All of our floral offerings are designed with seasonal blooms. Available for local delivery.</p>
+      <h2 class="section-heading">Curated by Palette</h2>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 52ch; margin: 0 auto; line-height: 1.7;">Each collection is designed within a curated color palette using garden roses as the foundation, accented by seasonal blooms that define the character of each piece.</p>
     </div>
-    <div class="offerings-grid">
-      <div class="offering-card fade-up">
-        <div class="offering-card-image" style="background-image: url(assets/images/offering-petite.png);"></div>
-        <div class="offering-card-body">
-          <div class="offering-tier">Petite</div>
-          <h3>Petite Arrangement</h3>
-          <div class="offering-price">$85+</div>
-          <p>A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.</p>
-          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
-        </div>
-      </div>
-      <div class="offering-card fade-up">
-        <div class="offering-card-image" style="background-image: url(assets/images/offering-signature.png);"></div>
-        <div class="offering-card-body">
-          <div class="offering-tier">Signature</div>
-          <h3>Signature Arrangement</h3>
-          <div class="offering-price">$125+</div>
-          <p>Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.</p>
-          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
-        </div>
-      </div>
-      <div class="offering-card fade-up">
-        <div class="offering-card-image" style="background-image: url(assets/images/offering-statement.png);"></div>
-        <div class="offering-card-body">
-          <div class="offering-tier">Statement</div>
-          <h3>Statement Arrangement</h3>
-          <div class="offering-price">$175+</div>
-          <p>Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.</p>
-          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
-        </div>
-      </div>
-      <div class="offering-card fade-up">
-        <div class="offering-card-image" style="background-image: url(assets/images/offering-collectors.png);"></div>
-        <div class="offering-card-body">
-          <div class="offering-tier">Collector's</div>
-          <h3>Collector's Piece</h3>
-          <div class="offering-price">$250+</div>
-          <p>One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.</p>
-          <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Request Custom</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="offerings-ordering fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 64px);">
-      <p class="section-label">Ordering</p>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 12px; line-height: 1.7;">Select your arrangement size and allow us to design with the most beautiful blooms of the season.</p>
-      <a href="#order" class="btn-primary" style="margin-top: 16px;">Order Your Arrangement</a>
-    </div>
-    <div class="offerings-footer fade-up" style="margin-top: 32px;">
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 8px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
-      <p style="font-size: 13px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
-      <p style="font-size: 13px; color: var(--accent1); margin-top: 8px;">Same-day delivery available for orders placed before 1 PM.</p>
-    </div>
-    <div class="offerings-delivery fade-up" style="text-align: center; margin-top: 32px; padding: 28px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
-      <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 8px;">Delivery</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area. Same-day delivery available for orders placed before 1:00 PM.</p>
-      <a href="/delivery" style="display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════════════
-     4C. SEASONAL BOUQUETS
-     ═══════════════════════════════════════════════════════ -->
-<section class="bouquets" id="bouquets">
-  <div class="container">
-    <div class="bouquets-header fade-up">
-      <p class="section-label">Seasonal Bouquets</p>
-      <h2 class="section-heading">Giftable Florals</h2>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 52ch; margin: 0 auto; line-height: 1.7;">A curated selection of hand-tied bouquets designed for gifting, everyday moments, and effortless beauty.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.55); max-width: 52ch; margin: 8px auto 0; line-height: 1.7;">Each bouquet is composed with seasonal blooms and wrapped in a refined, minimal presentation.</p>
+    <!-- ── SOFT GARDEN ── -->
+    <div class="palette-section fade-up">
+      <div class="palette-header">
+        <p class="section-label">Collection I</p>
+        <h3>Soft Garden</h3>
+        <p class="palette-desc">Ivory, blush, pale peach, and soft green. Airy, delicate, and quietly romantic.</p>
+      </div>
+      <div class="palette-grid">
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-petite.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Petite</div>
+            <h4>Soft Garden — Petite</h4>
+            <div class="pc-price">$85+</div>
+            <p>Garden roses, sweet pea, hellebore, jasmine vine. Low and intimate.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-signature.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Signature</div>
+            <h4>Soft Garden — Signature</h4>
+            <div class="pc-price">$125+</div>
+            <p>Garden roses, peonies, ranunculus, sweet pea, eucalyptus. Lush and balanced.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-statement.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Statement</div>
+            <h4>Soft Garden — Statement</h4>
+            <div class="pc-price">$175+</div>
+            <p>Garden roses, peonies, spirea branches, sweet pea, jasmine vine. Tall, sculptural, dramatic.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bouquets-grid">
-      <div class="bouquet-card fade-up">
-        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-small.png);"></div>
-        <h3>The Small Bouquet</h3>
-        <div class="bouquet-price">$75+</div>
-        <p>A delicate, thoughtfully composed bouquet featuring a light mix of seasonal blooms. Perfect for simple gestures and everyday moments.</p>
+
+    <!-- ── DUSTY ROMANTIC ── -->
+    <div class="palette-section fade-up">
+      <div class="palette-header">
+        <p class="section-label">Collection II</p>
+        <h3>Dusty Romantic</h3>
+        <p class="palette-desc">Mauve, antique rose, muted plum, and dusty blush. Layered, emotional, softly dramatic.</p>
       </div>
-      <div class="bouquet-card fade-up">
-        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-medium.png);"></div>
-        <h3>The Medium Bouquet</h3>
-        <div class="bouquet-price">$95 &ndash; $125</div>
-        <p>A balanced, fuller bouquet with a curated mix of seasonal florals, offering a soft yet elevated presence.</p>
-      </div>
-      <div class="bouquet-card fade-up">
-        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-large.png);"></div>
-        <h3>The Large Bouquet</h3>
-        <div class="bouquet-price">$125 &ndash; $165</div>
-        <p>A more abundant, expressive bouquet with layered blooms and natural movement. Designed to feel generous and refined.</p>
-      </div>
-      <div class="bouquet-card fade-up">
-        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-signature.png);"></div>
-        <h3>The Signature Bouquet</h3>
-        <div class="bouquet-price">$165+</div>
-        <p>A luxurious, hand-tied bouquet featuring carefully selected stems and a more expansive composition. Designed for gifting and special occasions.</p>
+      <div class="palette-grid">
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-petite.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Petite</div>
+            <h4>Dusty Romantic — Petite</h4>
+            <div class="pc-price">$85+</div>
+            <p>Garden roses in antique rose, scabiosa, astilbe. Moody and intimate.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-signature.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Signature</div>
+            <h4>Dusty Romantic — Signature</h4>
+            <div class="pc-price">$125+</div>
+            <p>Garden roses, chocolate cosmos, scabiosa, astilbe, trailing jasmine. Rich and textured.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-statement.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Statement</div>
+            <h4>Dusty Romantic — Statement</h4>
+            <div class="pc-price">$175+</div>
+            <p>Garden roses, chocolate cosmos, scabiosa, spirea branches, astilbe. Moody, sculptural, high contrast.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="fade-up" style="text-align: center; margin-top: 32px;">
-      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.5); margin-bottom: 20px;">Each bouquet is wrapped in a neutral, elevated presentation using soft paper and ribbon, designed to reflect the DreamersJoy aesthetic.</p>
-      <a href="#order" class="btn-primary">Order a Bouquet</a>
+
+    <!-- ── CITRUS SCULPTURAL ── -->
+    <div class="palette-section fade-up">
+      <div class="palette-header">
+        <p class="section-label">Collection III</p>
+        <h3>Citrus Sculptural</h3>
+        <p class="palette-desc">Apricot, coral, butter yellow, and soft green. Fresh, sculptural, expressive but refined.</p>
+      </div>
+      <div class="palette-grid">
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-petite.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Petite</div>
+            <h4>Citrus Sculptural — Petite</h4>
+            <div class="pc-price">$85+</div>
+            <p>Garden roses in apricot, tulips, jasmine vine. Fresh and minimal.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-signature.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Signature</div>
+            <h4>Citrus Sculptural — Signature</h4>
+            <div class="pc-price">$125+</div>
+            <p>Garden roses in coral, ranunculus, spirea branches, jasmine, eucalyptus. Warm and expressive.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+        <div class="palette-card">
+          <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-statement.png);"></div>
+          <div class="palette-card-body">
+            <div class="pc-size">Statement</div>
+            <h4>Citrus Sculptural — Statement</h4>
+            <div class="pc-price">$175+</div>
+            <p>Garden roses in coral, poppies, spirea, jasmine, tulips. Bold, tall, sculptural.</p>
+            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="#booking" class="btn-outline btn-sm">Inquire</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ordering + Delivery -->
+    <div class="fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 60px);">
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 16px; line-height: 1.7;">Choose your palette and size. We design each piece with garden roses and seasonal blooms selected for movement, texture, and tone.</p>
+      <a href="#order" class="btn-primary" style="margin-bottom: 24px;">Order Your Arrangement</a>
+      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
+      <p style="font-size: 13px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
+      <p style="font-size: 13px; color: var(--accent1); margin-top: 6px;">Same-day delivery available for orders placed before 1 PM.</p>
+    </div>
+    <div class="fade-up" style="text-align: center; margin-top: 24px; padding: 24px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 6px;">Delivery</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area.</p>
+      <a href="/delivery" style="display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
     </div>
   </div>
 </section>
