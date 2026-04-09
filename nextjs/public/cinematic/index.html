@@ -1314,8 +1314,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 40px 32px;
 }
 .flip-card-front {
-  border: 1px solid rgba(201,184,168,0.3);
-  background: var(--light);
+  border: none;
+  background: var(--dark);
   overflow: hidden;
 }
 .flip-card-front .flip-bg {
@@ -1323,29 +1323,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.25;
-  transition: opacity 0.4s;
+  opacity: 1;
+  transition: transform 0.6s var(--ease-out);
 }
-.flip-card:hover .flip-card-front .flip-bg { opacity: 0.35; }
+.flip-card:hover .flip-card-front .flip-bg { transform: scale(1.04); }
+.flip-card-front .flip-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,26,46,0.8) 0%, rgba(26,26,46,0.3) 50%, transparent 100%);
+  z-index: 1;
+}
 .flip-card-front .flip-icon {
   font-family: var(--font-display);
   font-size: 48px;
   font-weight: 300;
   font-style: italic;
-  color: var(--accent3);
-  position: relative; z-index: 1;
+  color: rgba(250,250,248,0.7);
+  position: relative; z-index: 2;
   margin-bottom: 20px;
 }
 .flip-card-front h3 {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 400;
-  color: var(--primary);
+  color: var(--light);
   margin-bottom: 12px;
+  position: relative; z-index: 2;
 }
 .flip-card-front p {
   font-size: 14px;
-  color: rgba(51,65,85,0.5);
+  color: rgba(250,250,248,0.6);
+  position: relative; z-index: 2;
 }
 .flip-card-back {
   background: var(--primary);
@@ -2585,10 +2593,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div class="flip-bg" style="background-image: url(assets/images/private-birthday.png); opacity: 0.5;"></div>
+            <div class="flip-bg" style="background-image: url(assets/images/private-birthday.png);"></div>
+            <div class="flip-gradient"></div>
             <div class="flip-icon">I</div>
-            <h3 style="position:relative;z-index:1;">Birthday Floral Nights</h3>
-            <p style="position:relative;z-index:1;">Hover to learn more</p>
+            <h3>Birthday Floral Nights</h3>
+            <p>Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Birthday Floral Nights</h3>
@@ -2600,10 +2609,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div class="flip-bg" style="background-image: url(assets/images/private-corporate.png); opacity: 0.5;"></div>
+            <div class="flip-bg" style="background-image: url(assets/images/private-corporate.png);"></div>
+            <div class="flip-gradient"></div>
             <div class="flip-icon">II</div>
-            <h3 style="position:relative;z-index:1;">Corporate Creative</h3>
-            <p style="position:relative;z-index:1;">Hover to learn more</p>
+            <h3>Corporate Creative</h3>
+            <p>Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Corporate Sessions</h3>
@@ -2615,10 +2625,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div class="flip-bg" style="background-image: url(assets/images/private-client.png); opacity: 0.5;"></div>
+            <div class="flip-bg" style="background-image: url(assets/images/private-client.png);"></div>
+            <div class="flip-gradient"></div>
             <div class="flip-icon">III</div>
-            <h3 style="position:relative;z-index:1;">Client Appreciation</h3>
-            <p style="position:relative;z-index:1;">Hover to learn more</p>
+            <h3>Client Appreciation</h3>
+            <p>Hover to learn more</p>
           </div>
           <div class="flip-card-back">
             <h3>Client Appreciation</h3>
