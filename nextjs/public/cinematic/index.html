@@ -796,6 +796,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transform: translateY(-3px);
   box-shadow: 0 12px 40px rgba(139,115,85,0.08);
 }
+.bouquet-img {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 3px 3px 0 0;
+  margin: -32px -24px 20px;
+  width: calc(100% + 48px);
+}
 .bouquet-card h3 {
   font-family: var(--font-display);
   font-size: 22px;
@@ -2335,21 +2343,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
     <div class="bouquets-grid">
       <div class="bouquet-card fade-up">
+        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-small.png);"></div>
         <h3>The Small Bouquet</h3>
         <div class="bouquet-price">$75+</div>
         <p>A delicate, thoughtfully composed bouquet featuring a light mix of seasonal blooms. Perfect for simple gestures and everyday moments.</p>
       </div>
       <div class="bouquet-card fade-up">
+        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-medium.png);"></div>
         <h3>The Medium Bouquet</h3>
         <div class="bouquet-price">$95 &ndash; $125</div>
         <p>A balanced, fuller bouquet with a curated mix of seasonal florals, offering a soft yet elevated presence.</p>
       </div>
       <div class="bouquet-card fade-up">
+        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-large.png);"></div>
         <h3>The Large Bouquet</h3>
         <div class="bouquet-price">$125 &ndash; $165</div>
         <p>A more abundant, expressive bouquet with layered blooms and natural movement. Designed to feel generous and refined.</p>
       </div>
       <div class="bouquet-card fade-up">
+        <div class="bouquet-img" style="background-image: url(assets/images/bouquet-signature.png);"></div>
         <h3>The Signature Bouquet</h3>
         <div class="bouquet-price">$165+</div>
         <p>A luxurious, hand-tied bouquet featuring carefully selected stems and a more expansive composition. Designed for gifting and special occasions.</p>
