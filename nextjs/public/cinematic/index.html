@@ -126,8 +126,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav-logo img { height: 150px; width: 150px; transition: transform 0.3s var(--ease-out), filter 0.4s var(--ease-smooth); }
 .nav-logo:hover img { transform: scale(1.05); }
-/* Logo always dark — hero is now light */
-.nav .nav-logo img { filter: none; }
+/* Logo light on hero, dark on scroll */
+.nav .nav-logo img { filter: brightness(0) invert(1) opacity(0.9); }
 .nav.scrolled .nav-logo img { filter: none; }
 .nav-links {
   display: flex;
@@ -141,11 +141,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: rgba(250,250,248,0.9);
   position: relative;
   transition: color 0.3s;
 }
-/* nav links already dark — no change on scroll */
+.nav.scrolled .nav-links a { color: var(--primary); }
+.nav.scrolled .nav-links a { color: var(--primary); }
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -160,12 +161,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 12px !important;
   font-weight: 500 !important;
   padding: 10px 24px;
-  border: 1px solid var(--primary);
-  color: var(--primary) !important;
+  border: 1px solid rgba(250,250,248,0.5);
+  color: rgba(250,250,248,0.9) !important;
   border-radius: 0;
   transition: all 0.3s var(--ease-out) !important;
 }
-.nav-cta:hover { background: var(--primary); color: var(--light) !important; }
+.nav-cta:hover { background: rgba(250,250,248,0.15); color: var(--light) !important; }
+.nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
+.nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
 .nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
 .nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
 .nav-cta::after { display: none !important; }
@@ -183,11 +186,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-hamburger span {
   display: block;
   height: 1.5px;
-  background: var(--primary);
+  background: rgba(250,250,248,0.9);
   transition: all 0.3s var(--ease-out);
   transform-origin: center;
 }
-/* hamburger already dark — no change on scroll */
+.nav.scrolled .nav-hamburger span { background: var(--primary); }
+.nav.scrolled .nav-hamburger span { background: var(--primary); }
 .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
@@ -253,7 +257,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(250,250,248,0.35);
+  background: linear-gradient(to bottom, rgba(26,26,46,0.15) 0%, rgba(26,26,46,0.35) 50%, rgba(26,26,46,0.55) 100%);
 }
 .hero-content {
   position: relative;
@@ -276,23 +280,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: clamp(40px, 6.5vw, 80px);
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--dark);
+  color: var(--light);
   margin-bottom: 24px;
-  text-shadow: 0 2px 30px rgba(250,250,248,0.4);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
 }
 .hero h1 em {
   font-style: italic;
-  color: var(--accent1);
+  color: var(--accent4);
 }
 .hero-sub {
   font-family: var(--font-body);
   font-size: clamp(15px, 1.8vw, 18px);
   font-weight: 300;
-  color: rgba(51,65,85,0.75);
+  color: rgba(250,250,248,0.8);
   max-width: 50ch;
   margin: 0 auto 40px;
   line-height: 1.7;
-  text-shadow: none;
+  text-shadow: 0 1px 20px rgba(0,0,0,0.2);
 }
 .hero-cta-row {
   display: flex;
@@ -326,10 +330,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: all 0.3s var(--ease-out);
 }
 .btn-outline:hover { border-color: var(--primary); background: rgba(51,65,85,0.04); }
-.hero .btn-primary { background: var(--primary); border: 1px solid var(--primary); color: var(--light); backdrop-filter: none; }
-.hero .btn-primary:hover { background: var(--dark); }
-.hero .btn-outline { border-color: var(--primary); color: var(--primary); }
-.hero .btn-outline:hover { background: var(--primary); color: var(--light); }
+.hero .btn-primary { background: rgba(250,250,248,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(250,250,248,0.4); color: var(--light); }
+.hero .btn-primary:hover { background: rgba(250,250,248,0.25); }
+.hero .btn-outline { border-color: rgba(250,250,248,0.4); color: var(--light); }
+.hero .btn-outline:hover { border-color: var(--light); background: rgba(250,250,248,0.15); }
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -348,12 +352,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(51,65,85,0.5);
+  color: rgba(250,250,248,0.6);
 }
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: rgba(51,65,85,0.4);
+  background: rgba(250,250,248,0.5);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 @keyframes scrollPulse {
