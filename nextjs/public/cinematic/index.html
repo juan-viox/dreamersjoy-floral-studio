@@ -1130,112 +1130,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ═══════════════════════════════════════════════════════════
-   7. THE EXPERIENCE — CURTAIN REVEAL
+   7. WHAT TO EXPECT (clean grid, curtain removed)
    ═══════════════════════════════════════════════════════════ */
-.experience-section {
-  position: relative;
-  height: 300vh;
-  background: var(--dark);
-}
-.experience-sticky {
-  position: sticky;
-  top: 0;
-  height: 100dvh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.curtain-left, .curtain-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.curtain-left {
-  left: 0;
-  justify-content: flex-end;
-  padding-right: 40px;
-  background: var(--dark);
-}
-.curtain-right {
-  right: 0;
-  justify-content: flex-start;
-  padding-left: 40px;
-  background: var(--dark);
-}
-.curtain-left h2, .curtain-right h2 {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 7vw, 80px);
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: -0.02em;
-  color: var(--light);
-  line-height: 0.95;
-}
-.experience-content {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(26,26,46,0.95);
-  padding: 60px 40px;
-}
-.experience-inner {
-  max-width: 900px;
-  width: 100%;
-  text-align: center;
-}
-.experience-inner .section-label { color: var(--accent4); margin-bottom: 24px; }
-.experience-inner h3 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 300;
-  color: var(--light);
-  margin-bottom: 48px;
-}
-.experience-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  text-align: center;
-}
-.exp-step {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.exp-step .step-time {
-  font-family: var(--font-display);
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--accent4);
-  margin-bottom: 8px;
-}
-.exp-step h4 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--light);
-  margin-bottom: 8px;
-}
-.exp-step p {
-  font-size: 14px;
-  color: rgba(250,250,248,0.55);
-  line-height: 1.7;
-}
-@media (max-width: 768px) {
-  .experience-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .curtain-left h2, .curtain-right h2 { font-size: clamp(24px, 5vw, 48px); }
-}
-@media (max-width: 480px) {
-  .experience-steps { grid-template-columns: 1fr; }
-}
+/* What to Expect uses inline styles — no dedicated CSS needed */
 
 /* ═══════════════════════════════════════════════════════════
    8. KINETIC MARQUEE
@@ -2015,9 +1912,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 @media print {
   .nav, .scroll-indicator, .marquee-section, .voice-agent-wrapper { display: none !important; }
-  .hero, .mask-section, .experience-section { min-height: auto !important; height: auto !important; }
-  .mask-sticky, .experience-sticky { position: relative !important; }
-  .curtain-left, .curtain-right { display: none !important; }
+  .hero, .mask-section { min-height: auto !important; height: auto !important; }
+  .mask-sticky { position: relative !important; }
   * { animation: none !important; transition: none !important; }
 }
 .signup-form { display: flex; gap: 0; flex-wrap: wrap; justify-content: center; }
@@ -2054,9 +1950,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .private-cards { gap: 24px; }
   .flip-card { min-height: 280px; }
 
-  /* Experience steps inside curtain */
-  .exp-step h4 { font-size: 18px; }
-  .exp-step .step-time { font-size: 28px; }
+  /* What to Expect grid */
+  .wte-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
 }
 
 @media (max-width: 480px) {
@@ -2710,7 +2605,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div style="text-align: center; max-width: 800px; margin: 0 auto;">
       <p class="section-label" style="color: var(--accent4);">What to Expect</p>
       <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: var(--light); margin-bottom: 40px;">An Evening with the Studio Series</h2>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;">
+      <div class="wte-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;">
         <div class="fade-up">
           <div style="font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--accent4); margin-bottom: 8px;">15 min</div>
           <h4 style="font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--light); margin-bottom: 8px;">Arrival & Welcome</h4>
@@ -3370,23 +3265,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     previewStates.forEach(function(s) { s.classList.toggle('active', s.dataset.state === num); });
   }
 
-  // ─── CURTAIN REVEAL (Experience) ───
-  var expSection = document.querySelector('.experience-section');
-  gsap.to('#curtainLeft', {
-    xPercent: -100, ease: 'power2.inOut',
-    scrollTrigger: { trigger: expSection, start: 'top top', end: '50% top', scrub: 0.5 }
-  });
-  gsap.to('#curtainRight', {
-    xPercent: 100, ease: 'power2.inOut',
-    scrollTrigger: { trigger: expSection, start: 'top top', end: '50% top', scrub: 0.5 }
-  });
-  // Stagger experience steps after curtain opens
-  gsap.utils.toArray('.exp-step').forEach(function(step, i) {
-    gsap.to(step, {
-      opacity: 1, y: 0, duration: 0.6, delay: i * 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: expSection, start: '40% top', toggleActions: 'play none none reverse' }
-    });
-  });
+  // ─── (Curtain effect removed — What to Expect is now a clean grid) ───
 
   // ─── KINETIC MARQUEE ───
   document.querySelectorAll('.marquee-row, .hero-marquee-row, .testimonial-row').forEach(function(row) {
