@@ -264,10 +264,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   z-index: 2;
   max-width: 800px;
   padding: 40px 24px;
-  margin-top: 10vh;
+  margin-top: 14vh;
 }
 @media (max-width: 768px) {
-  .hero-content { margin-top: 6vh; }
+  .hero-content { margin-top: 10vh; }
 }
 .hero-eyebrow {
   font-family: var(--font-body);
@@ -294,10 +294,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero-sub {
   font-family: var(--font-body);
-  font-size: clamp(16px, 2vw, 21px);
+  font-size: clamp(17px, 2.1vw, 22px);
   font-weight: 300;
-  color: rgba(250,250,248,0.8);
-  max-width: 50ch;
+  color: rgba(250,250,248,0.85);
+  max-width: 52ch;
   margin: 0 auto 40px;
   line-height: 1.7;
   text-shadow: 0 1px 20px rgba(0,0,0,0.2);
@@ -681,8 +681,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .offerings-header .section-heading { margin-bottom: 16px; }
 .offerings-header p {
-  font-size: 16px;
-  color: rgba(51,65,85,0.65);
+  font-size: 17px;
+  color: rgba(51,65,85,0.75);
   max-width: 50ch;
   margin: 0 auto;
   line-height: 1.7;
@@ -941,8 +941,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .workshops-header .section-heading { margin-bottom: 16px; }
 .workshops-header p {
-  font-size: 16px;
-  color: rgba(51,65,85,0.65);
+  font-size: 17px;
+  color: rgba(51,65,85,0.75);
   max-width: 50ch;
   margin: 0 auto;
   line-height: 1.7;
@@ -1606,8 +1606,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 16px;
 }
 .booking-cta-inner p {
-  font-size: 16px;
-  color: rgba(51,65,85,0.6);
+  font-size: 17px;
+  color: rgba(51,65,85,0.7);
   max-width: 45ch;
   margin: 0 auto 40px;
   line-height: 1.7;
@@ -1844,8 +1844,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .bloom-circle .section-label { color: var(--accent1); }
 .bloom-circle .section-heading { color: var(--primary); margin-bottom: 16px; }
 .bloom-circle-desc {
-  font-size: 16px;
-  color: rgba(51,65,85,0.6);
+  font-size: 17px;
+  color: rgba(51,65,85,0.75);
   max-width: 52ch;
   margin: 0 auto 48px;
   line-height: 1.7;
@@ -1939,10 +1939,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   /* Hero: scale text down, buttons stack nicely */
-  .hero-sub { font-size: clamp(14px, 3.5vw, 16px); }
+  .hero-sub { font-size: clamp(16px, 4vw, 18px) !important; line-height: 1.6; }
   .hero-cta-row { gap: 12px; }
   .hero-cta-row .btn-primary,
-  .hero-cta-row .btn-outline { min-width: 160px; text-align: center; font-size: 12px; padding: 12px 24px; }
+  .hero-cta-row .btn-outline { min-width: 160px; text-align: center; font-size: 13px; padding: 14px 28px; }
 
   /* Bloom Circle: collapse 4-col grids to 2-col */
   .bloom-steps { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
@@ -1950,7 +1950,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .bloom-details { grid-template-columns: 1fr !important; gap: 32px !important; }
   .bloom-tiers { grid-template-columns: 1fr !important; }
   .bloom-circle .section-heading { font-size: clamp(28px, 6vw, 42px); }
-  .bloom-circle-desc { font-size: 15px !important; }
+  .bloom-circle-desc { font-size: 16px !important; }
 
   /* Offering cards: per-card buttons stack */
   .offering-btns { flex-direction: column; }
@@ -1965,6 +1965,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   /* What to Expect grid */
   .wte-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+
+  /* Mobile: section headings scale down, body copy stays readable */
+  .section-heading { font-size: clamp(32px, 8vw, 48px) !important; line-height: 1.15; }
+  .section-label { font-size: 11px !important; }
+  p { line-height: 1.65; }
+
+  /* MD palette labels are bigger on mobile */
+  .mothers-day h2, .offerings h2, .bouquets h2 { font-size: clamp(32px, 8vw, 44px) !important; }
+
+  /* Tap-friendly buttons */
+  .btn-primary, .btn-outline { min-height: 48px; padding: 14px 28px; font-size: 13px; }
+  .btn-sm { min-height: 42px; padding: 12px 20px; }
+
+  /* Container padding */
+  .container { padding: 0 20px !important; }
+}
+@media (max-width: 480px) {
+  .section-heading { font-size: clamp(28px, 9vw, 38px) !important; }
+  .mothers-day h2, .offerings h2, .bouquets h2 { font-size: clamp(28px, 9vw, 36px) !important; }
+  .wte-grid { grid-template-columns: 1fr !important; }
+  .bloom-steps { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 480px) {
@@ -2153,17 +2174,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="md-palette-card">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-veiled-citrus.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Veiled Citrus</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
       </div>
       <div class="md-palette-card">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-olive-air.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Olive Air</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
       </div>
       <div class="md-palette-card">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-quiet-bloom.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Quiet Bloom</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
       </div>
     </div>
 
@@ -2292,13 +2313,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="offerings-header fade-up">
       <p class="section-label">Floral Offerings</p>
       <h2 class="section-heading">Curated by Palette</h2>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">Our floral collections are designed through a color-led system; each palette developed seasonally and composed with intention.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Rather than selecting individual arrangements, you choose a palette and scale. From there, each piece is designed using seasonal blooms selected for tone, movement, and texture.</p>
+      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">Our floral collections are designed through a color-led system; each palette developed seasonally and composed with intention.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Rather than selecting individual arrangements, you choose a palette and scale. From there, each piece is designed using seasonal blooms selected for tone, movement, and texture.</p>
     </div>
 
     <!-- Tier Intro -->
     <div class="fade-up" style="text-align: center; margin-bottom: 32px; margin-top: 32px;">
-      <p style="font-size: 15px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 0 auto; line-height: 1.7; font-style: italic;">Each arrangement is composed within our seasonal palettes, using signature blooms selected for movement, texture, and tone. Scale determines presence, not quality. Every piece is designed with the same refined approach.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 0 auto; line-height: 1.7; font-style: italic;">Each arrangement is composed within our seasonal palettes, using signature blooms selected for movement, texture, and tone. Scale determines presence, not quality. Every piece is designed with the same refined approach.</p>
     </div>
 
     <!-- ── SOFT GARDEN ── -->
@@ -2426,21 +2447,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
     <!-- Seasonal Note -->
     <div class="fade-up" style="text-align: center; margin-top: 24px; margin-bottom: 8px;">
-      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45);">Palette tones and floral selections shift seasonally based on availability and evolving color direction.</p>
-      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 8px; max-width: 60ch; margin-left: auto; margin-right: auto;">Vessels are thoughtfully selected and will remain consistent in scale and overall aesthetic, though specific styles may vary based on seasonal availability.</p>
+      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45);">Palette tones and floral selections shift seasonally based on availability and evolving color direction.</p>
+      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 8px; max-width: 60ch; margin-left: auto; margin-right: auto;">Vessels are thoughtfully selected and will remain consistent in scale and overall aesthetic, though specific styles may vary based on seasonal availability.</p>
     </div>
 
     <!-- Ordering + Delivery -->
     <div class="fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 60px);">
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 16px; line-height: 1.7;">Choose your palette and size. We design each piece with garden roses and seasonal blooms selected for movement, texture, and tone.</p>
+      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 16px; line-height: 1.7;">Choose your palette and size. We design each piece with garden roses and seasonal blooms selected for movement, texture, and tone.</p>
       <a href="#order" class="btn-primary" style="margin-bottom: 24px;">Order Your Arrangement</a>
-      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
+      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
       <p style="font-size: 14px; color: var(--accent1); margin-top: 6px;">Same-day delivery available for orders placed before 1 PM.</p>
     </div>
     <div class="fade-up" style="text-align: center; margin-top: 24px; padding: 24px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
       <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 6px;">Delivery</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area.</p>
       <a href="/delivery" style="display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
     </div>
   </div>
@@ -2528,8 +2549,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="bouquets-header fade-up">
       <p class="section-label">Hand-Tied Bouquets</p>
       <h2 class="section-heading">Giftable Florals</h2>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">A refined, hand-tied interpretation of our seasonal palettes; designed for gifting, celebrating, or a simple gesture done beautifully.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 8px auto 0; line-height: 1.7;">Each bouquet is composed with the same intentional approach to color, movement, and texture, offering a more relaxed yet equally elevated expression of our work.</p>
+      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">A refined, hand-tied interpretation of our seasonal palettes; designed for gifting, celebrating, or a simple gesture done beautifully.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 8px auto 0; line-height: 1.7;">Each bouquet is composed with the same intentional approach to color, movement, and texture, offering a more relaxed yet equally elevated expression of our work.</p>
     </div>
     <div class="bouquets-grid">
       <div class="bouquet-card fade-up">
@@ -2558,7 +2579,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
     </div>
     <div class="fade-up" style="text-align: center; margin-top: 24px;">
-      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45);">Available in current seasonal palettes. Limited quantities available.</p>
+      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45);">Available in current seasonal palettes. Limited quantities available.</p>
       <a href="#order" class="btn-primary" style="margin-top: 16px;">Order a Bouquet</a>
     </div>
   </div>
@@ -2575,7 +2596,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p style="font-size: 18px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.8;">The Studio Series is a collection of curated floral evenings held in intimate, intentionally designed settings.</p>
       <p style="font-size: 17px; color: rgba(51,65,85,0.6); margin-top: 14px; max-width: 54ch; margin-left: auto; margin-right: auto; line-height: 1.8;">Each experience is centered around a seasonal palette, guiding the materials, mood, and overall atmosphere. Guests are welcomed into a refined environment to design, connect, and create, balancing composition, color, and movement.</p>
       <p style="font-size: 17px; color: rgba(51,65,85,0.55); margin-top: 14px; max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.8;">These are not traditional workshops, but immersive, design-led gatherings created to feel personal, elevated, and memorable.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.5); margin-top: 16px;">Up to 14 guests · Held once or twice monthly · Invitation-based</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.5); margin-top: 16px;">Up to 14 guests · Held once or twice monthly · Invitation-based</p>
       <div style="margin-top: 24px;"><a href="/invite" class="btn-primary">Request an Invitation</a></div>
     </div>
     <div class="stack-container">
@@ -2659,7 +2680,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <p style="font-size: 15px; color: rgba(250,250,248,0.55); line-height: 1.7;">Capture your piece in a beautifully styled setting; designed to feel like a refined moment.</p>
         </div>
       </div>
-      <p style="margin-top: 28px; font-size: 14px; font-style: italic; color: rgba(250,250,248,0.4); max-width: 54ch; margin-left: auto; margin-right: auto; line-height: 1.7;">All experiences are BYOB. DreamersJoy provides refreshments including water, coffee, and tea.</p>
+      <p style="margin-top: 28px; font-size: 15px; font-style: italic; color: rgba(250,250,248,0.4); max-width: 54ch; margin-left: auto; margin-right: auto; line-height: 1.7;">All experiences are BYOB. DreamersJoy provides refreshments including water, coffee, and tea.</p>
     </div>
   </div>
 </section>
@@ -2734,7 +2755,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="private-header fade-up">
       <p class="section-label">Private Gatherings</p>
       <h2 class="section-heading">Your Night, Your Blooms</h2>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">Bespoke floral experiences designed for private gatherings, celebrations, and intimate events. We bring a fully curated floral setting to your space; including seasonal stems, vessels, tools, and design guidance. Ideal for birthdays, client gatherings, and meaningful celebrations.</p>
+      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">Bespoke floral experiences designed for private gatherings, celebrations, and intimate events. We bring a fully curated floral setting to your space; including seasonal stems, vessels, tools, and design guidance. Ideal for birthdays, client gatherings, and meaningful celebrations.</p>
     </div>
     <div class="private-cards">
       <div class="flip-card fade-up">
@@ -2908,16 +2929,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p class="section-label">The Bloom Circle</p>
       <h2 class="section-heading">Fresh Florals, On Repeat</h2>
       <p class="bloom-circle-desc" style="font-size: 17px; margin-bottom: 8px;">Subscription-based floral delivery for homes, offices, and client-facing spaces designed to keep your environment effortlessly in bloom.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Designed through our evolving seasonal palettes to keep your space consistently refined and in bloom.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Designed through our evolving seasonal palettes to keep your space consistently refined and in bloom.</p>
       <p style="font-size: 15px; color: var(--accent1); margin-top: 12px;">Subscriptions begin at $95 per delivery.</p>
     </div>
 
     <!-- How It Works -->
     <div class="bloom-steps fade-up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 0 auto 40px; text-align: center;">
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">1</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">Choose your cadence</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">2</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">We design your arrangement</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">3</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">We deliver on schedule</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">4</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">Your space stays in bloom</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">1</div><p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 1.5;">Choose your cadence</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">2</div><p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 1.5;">We design your arrangement</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">3</div><p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 1.5;">We deliver on schedule</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">4</div><p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 1.5;">Your space stays in bloom</p></div>
     </div>
 
     <!-- Cadence Options -->
@@ -2951,27 +2972,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Statement</h4><p style="font-size: 14px; color: var(--accent1);">$225 / delivery</p></div>
         <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Collector's</h4><p style="font-size: 14px; color: var(--accent1);">$300+ / delivery</p></div>
       </div>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.5); margin-top: 12px; font-style: italic;">No two deliveries are ever the same.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.5); margin-top: 12px; font-style: italic;">No two deliveries are ever the same.</p>
     </div>
 
     <!-- What's Included -->
     <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; text-align: center;">
       <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 16px;">What's Included</p>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 2.2;">Seasonal, palette-based arrangements<br>Hand delivery to your home or business<br>Optional vessel rotation<br>Ongoing design continuity aligned with your space</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 2.2;">Seasonal, palette-based arrangements<br>Hand delivery to your home or business<br>Optional vessel rotation<br>Ongoing design continuity aligned with your space</p>
     </div>
     <!-- Ideal For -->
     <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; text-align: center;">
       <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 16px;">Ideal For</p>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 2.2;">Private residences<br>Interior-styled homes<br>Offices &amp; professional spaces<br>Client-facing businesses</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.6); line-height: 2.2;">Private residences<br>Interior-styled homes<br>Offices &amp; professional spaces<br>Client-facing businesses</p>
     </div>
 
-    <p style="text-align: center; font-size: 14px; color: rgba(51,65,85,0.45); font-style: italic; margin-bottom: 32px;">Pause, skip, or adjust your deliveries at any time with advance notice (minimum 15 days prior).</p>
+    <p style="text-align: center; font-size: 15px; color: rgba(51,65,85,0.45); font-style: italic; margin-bottom: 32px;">Pause, skip, or adjust your deliveries at any time with advance notice (minimum 15 days prior).</p>
 
     <!-- CTA -->
     <div class="bloom-circle-cta fade-up" style="margin-top: 0;">
       <a href="#booking" class="btn-outline" style="border-color: var(--accent2); color: var(--primary);">Join the Bloom Circle</a>
       <p style="font-size: 12px; color: rgba(51,65,85,0.5); margin-top: 10px;">Limited availability</p>
-      <p style="font-size: 14px; color: rgba(51,65,85,0.55); margin-top: 12px;">Prefer a custom plan? <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid rgba(139,115,85,0.4);">Inquire for a tailored subscription</a>.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.55); margin-top: 12px;">Prefer a custom plan? <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid rgba(139,115,85,0.4);">Inquire for a tailored subscription</a>.</p>
     </div>
   </div>
 </section>
