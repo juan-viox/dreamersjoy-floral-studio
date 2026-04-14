@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <base href="/cinematic/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // Apply theme before render to avoid FOUC
+  (function(){
+    try {
+      var s = localStorage.getItem('dj-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var t = s || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(e) {}
+  })();
+</script>
 <title>DreamersJoy Floral Studio | Private Floral Design Studio | Bergen County, NJ</title>
 <meta name="description" content="Private floral design studio offering seasonal arrangements, curated installations & invitation-based floral experiences in Bergen County, NJ. By appointment only.">
 <!-- Open Graph -->
@@ -55,6 +66,93 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   DARK THEME OVERRIDES
+   Same structural roles, inverted tones.
+   ═══════════════════════════════════════════════════════════ */
+html[data-theme="dark"] {
+  --primary: #EAE6E0;        /* text → warm ivory */
+  --secondary: #141821;      /* alternate bg → deep slate */
+  --light: #0D1017;          /* main bg → near-black */
+  --white: #1A1F29;          /* card bg → subtle elevation */
+  --dark: #05070B;           /* deepest sections → obsidian */
+  --accent1: #C9A97A;        /* warm brown → champagne */
+  --accent2: #5A4D3F;        /* soft beige → muted bronze (borders) */
+  --accent3: #8B9A8D;        /* sage → soft muted green */
+  --accent4: #E4C9A8;        /* peach → warm champagne highlight */
+}
+html[data-theme="dark"] body { background: var(--light); color: var(--primary); }
+html[data-theme="dark"] .hero-overlay { background: rgba(0,0,0,0.55); }
+
+/* Dark-mode nav: scrolled state uses dark bg, logo stays inverted (light) */
+html[data-theme="dark"] .nav.scrolled {
+  background: rgba(13,16,23,0.88);
+  box-shadow: 0 1px 0 rgba(234,230,224,0.06);
+}
+html[data-theme="dark"] .nav.scrolled .nav-logo img { filter: brightness(0) invert(1) opacity(0.92); }
+html[data-theme="dark"] .nav.scrolled .nav-links a { color: var(--primary); }
+html[data-theme="dark"] .nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
+html[data-theme="dark"] .nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
+html[data-theme="dark"] .nav.scrolled .nav-hamburger span { background: var(--primary); }
+html[data-theme="dark"] .nav-mobile { background: var(--light); }
+html[data-theme="dark"] .mobile-link { color: var(--primary); }
+
+/* Dark-mode accents to keep contrast right */
+html[data-theme="dark"] .bloom-tier { background: var(--white); }
+html[data-theme="dark"] .palette-card, html[data-theme="dark"] .bouquet-card { background: var(--white); }
+html[data-theme="dark"] .btn-primary { background: var(--primary); color: var(--light); }
+html[data-theme="dark"] .btn-outline { border-color: var(--accent2); color: var(--primary); }
+html[data-theme="dark"] .hero .btn-primary { background: rgba(234,230,224,0.14); border: 1px solid rgba(234,230,224,0.4); color: var(--primary); }
+html[data-theme="dark"] input, html[data-theme="dark"] textarea {
+  background: var(--white) !important;
+  color: var(--primary) !important;
+  border-color: var(--accent2) !important;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(250,250,248,0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--light);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  margin-right: 12px;
+}
+.nav.scrolled .theme-toggle { border-color: var(--accent2); color: var(--primary); }
+.theme-toggle:hover { border-color: currentColor; transform: rotate(15deg); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (max-width: 768px) {
+  .theme-toggle { width: 34px; height: 34px; margin-right: 8px; }
+}
+
+/* Smooth theme color transitions on key surfaces */
+body, section, .nav, .nav-mobile, .btn-primary, .btn-outline, .palette-card, .bouquet-card, .bloom-tier {
+  transition: background-color 0.5s var(--ease-smooth), color 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
+}
+
+/* Theme transition overlay — expanding circular reveal from toggle button */
+.theme-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  clip-path: circle(0% at 50% 50%);
+  will-change: clip-path;
+}
+.theme-transition-overlay.to-dark { background: #0D1017; }
+.theme-transition-overlay.to-light { background: #FAFAF8; }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -2054,6 +2152,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <li><a href="#founder">About</a></li>
       <li><a href="#booking" class="nav-cta">Booking</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
     <div class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
@@ -3199,6 +3301,69 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   window.addEventListener('scroll', function() {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // ─── THEME TOGGLE (light ↔ dark) with GSAP circular reveal ───
+  (function() {
+    var html = document.documentElement;
+    var stored = (function() { try { return localStorage.getItem('dj-theme'); } catch(e) { return null; } })();
+    var initial = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    html.setAttribute('data-theme', initial);
+
+    var toggleBtn = document.getElementById('themeToggle');
+    if (!toggleBtn) return;
+
+    function applyTheme(next, origin) {
+      var current = html.getAttribute('data-theme') || 'light';
+      if (current === next) return;
+
+      // Build overlay for circular reveal from click origin
+      var rect = toggleBtn.getBoundingClientRect();
+      var ox = origin && origin.x != null ? origin.x : (rect.left + rect.width / 2);
+      var oy = origin && origin.y != null ? origin.y : (rect.top + rect.height / 2);
+
+      var overlay = document.createElement('div');
+      overlay.className = 'theme-transition-overlay ' + (next === 'dark' ? 'to-dark' : 'to-light');
+      overlay.style.clipPath = 'circle(0px at ' + ox + 'px ' + oy + 'px)';
+      document.body.appendChild(overlay);
+
+      // Calculate max reach from click point to farthest corner
+      var maxReach = Math.hypot(Math.max(ox, window.innerWidth - ox), Math.max(oy, window.innerHeight - oy));
+
+      // GSAP expanding circular reveal
+      gsap.to(overlay, {
+        duration: 0.9,
+        ease: 'power2.inOut',
+        onStart: function() {
+          // Tiny rotate on button for tactile feedback
+          gsap.fromTo(toggleBtn, { rotation: 0 }, { rotation: 360, duration: 0.8, ease: 'power3.out' });
+        },
+        onUpdate: function() {
+          var p = this.progress();
+          var r = maxReach * p;
+          overlay.style.clipPath = 'circle(' + r + 'px at ' + ox + 'px ' + oy + 'px)';
+        },
+        onComplete: function() {
+          // Swap theme at peak coverage
+          html.setAttribute('data-theme', next);
+          try { localStorage.setItem('dj-theme', next); } catch(e) {}
+
+          // Fade overlay out to reveal new theme
+          gsap.to(overlay, {
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: function() { overlay.remove(); }
+          });
+        }
+      });
+    }
+
+    toggleBtn.addEventListener('click', function(e) {
+      var current = html.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next, { x: e.clientX, y: e.clientY });
+    });
+  })();
 
   // ─── HAMBURGER ───
   var hamburger = document.getElementById('navHamburger');
