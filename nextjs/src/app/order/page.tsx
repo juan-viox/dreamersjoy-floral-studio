@@ -1,16 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const arrangements = [
-  { id: 'small-bouquet', name: 'Small Bouquet', price: '$75+', desc: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.' },
-  { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 \u2013 $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.' },
-  { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 \u2013 $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.' },
-  { id: 'signature-bouquet', name: 'Signature Bouquet', price: '$165+', desc: 'A luxurious hand-tied bouquet featuring carefully selected stems. Designed for gifting and special occasions.' },
-  { id: 'petite', name: 'Petite Arrangement', price: '$85+', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.' },
-  { id: 'signature', name: 'Signature Arrangement', price: '$125+', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.' },
-  { id: 'statement', name: 'Statement Arrangement', price: '$175+', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.' },
-  { id: 'collectors', name: "Collector\u2019s Piece", price: '$250+', desc: 'One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.' },
+  // ═══ MOTHER'S DAY — THE SPRING EDIT ═══
+  { id: 'md-veiled-citrus-petite', name: "Mother's Day — Veiled Citrus (Petite)", price: '$95+', desc: 'Soft yellow, cream, fresh green. Ranunculus, sweet pea, jasmine vine. A refined, intimate piece.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-veiled-citrus-signature', name: "Mother's Day — Veiled Citrus (Signature)", price: '$145+', desc: 'Our most-loved size in the Veiled Citrus palette. Garden roses, ranunculus, butter-yellow tulips.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-olive-air-petite', name: "Mother's Day — Olive Air (Petite)", price: '$95+', desc: 'Muted olive, ivory, soft white. Hellebore, white ranunculus, olive branch. Quiet, sculptural, modern.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-olive-air-signature', name: "Mother's Day — Olive Air (Signature)", price: '$145+', desc: 'Signature size in the Olive Air palette. Tonal greens, ivory blooms, refined negative space.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-quiet-bloom-petite', name: "Mother's Day — Quiet Bloom (Petite)", price: '$95+', desc: 'Blush, dusty rose, soft neutrals. Garden roses, lisianthus, scabiosa. Softly romantic.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-quiet-bloom-signature', name: "Mother's Day — Quiet Bloom (Signature)", price: '$145+', desc: 'Signature size in the Quiet Bloom palette. Full, romantic, composed with airy movement.', category: "Mother's Day — The Spring Edit" },
+  { id: 'md-quiet-bloom-statement', name: "Mother's Day — Quiet Bloom (Statement)", price: '$195+', desc: 'A sculptural, anchor piece in the Quiet Bloom palette. Designed to elevate and celebrate.', category: "Mother's Day — The Spring Edit" },
+  // ═══ HAND-TIED BOUQUETS ═══
+  { id: 'small-bouquet', name: 'Small Bouquet', price: '$75+', desc: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.', category: 'Hand-Tied Bouquets' },
+  { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 \u2013 $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.', category: 'Hand-Tied Bouquets' },
+  { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 \u2013 $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.', category: 'Hand-Tied Bouquets' },
+  { id: 'signature-bouquet', name: 'Signature Bouquet', price: '$165+', desc: 'A luxurious hand-tied bouquet featuring carefully selected stems. Designed for gifting and special occasions.', category: 'Hand-Tied Bouquets' },
+  // ═══ SEASONAL ARRANGEMENTS ═══
+  { id: 'petite', name: 'Petite Arrangement', price: '$85+', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.', category: 'Seasonal Arrangements' },
+  { id: 'signature', name: 'Signature Arrangement', price: '$125+', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.', category: 'Seasonal Arrangements' },
+  { id: 'statement', name: 'Statement Arrangement', price: '$175+', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.', category: 'Seasonal Arrangements' },
+  { id: 'collectors', name: "Collector\u2019s Piece", price: '$250+', desc: 'One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.', category: 'Seasonal Arrangements' },
 ]
 
 const colorOptions = ['Soft & Neutral', 'Romantic Pastels', 'Rich & Moody', "Designer\u2019s Choice"]
@@ -22,6 +32,19 @@ export default function OrderPage() {
   const [form, setForm] = useState({ date: '', recipientName: '', address: '', cardMessage: '', deliveryNotes: '', name: '', email: '', phone: '' })
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+  const [highlightMD, setHighlightMD] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('collection') === 'mothers-day') {
+      setHighlightMD(true)
+      setTimeout(() => {
+        const el = document.getElementById('md-category')
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 400)
+    }
+  }, [])
 
   const handleSubmit = async () => {
     setSubmitting(true)
@@ -75,22 +98,27 @@ export default function OrderPage() {
         {step === 1 && (
           <div>
             <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6B7C6E', marginBottom: 24 }}>Step 1 &mdash; Select Your Arrangement</p>
-            <div style={{ display: 'grid', gap: 16 }}>
-              {arrangements.map(a => (
-                <button key={a.id} onClick={() => setSelected(a.name)} style={{
-                  display: 'block', width: '100%', textAlign: 'left', padding: '24px 28px',
-                  border: selected === a.name ? '2px solid #8B7355' : '1px solid rgba(201,184,168,0.3)',
-                  borderRadius: 4, background: selected === a.name ? 'rgba(139,115,85,0.04)' : '#fff',
-                  cursor: 'pointer', transition: 'all 0.2s',
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 400, color: '#334155' }}>{a.name}</h3>
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: '#8B7355' }}>{a.price}</span>
-                  </div>
-                  <p style={{ fontSize: 14, color: 'rgba(51,65,85,0.55)', lineHeight: 1.6, marginTop: 6 }}>{a.desc}</p>
-                </button>
-              ))}
-            </div>
+            {Array.from(new Set(arrangements.map(a => a.category))).map(category => (
+              <div key={category} id={category.includes("Mother") ? 'md-category' : undefined} style={{ marginBottom: 32, padding: category.includes("Mother") && highlightMD ? '20px 24px' : 0, background: category.includes("Mother") && highlightMD ? 'rgba(139,115,85,0.04)' : 'transparent', border: category.includes("Mother") && highlightMD ? '1px solid rgba(139,115,85,0.2)' : 'none', borderRadius: 4 }}>
+                <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: category.includes("Mother") ? '#8B7355' : 'rgba(51,65,85,0.5)', marginBottom: 14, paddingBottom: 8, borderBottom: '1px solid rgba(201,184,168,0.3)' }}>{category}</p>
+                <div style={{ display: 'grid', gap: 16 }}>
+                  {arrangements.filter(a => a.category === category).map(a => (
+                    <button key={a.id} onClick={() => setSelected(a.name)} style={{
+                      display: 'block', width: '100%', textAlign: 'left', padding: '24px 28px',
+                      border: selected === a.name ? '2px solid #8B7355' : '1px solid rgba(201,184,168,0.3)',
+                      borderRadius: 4, background: selected === a.name ? 'rgba(139,115,85,0.04)' : '#fff',
+                      cursor: 'pointer', transition: 'all 0.2s',
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                        <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 400, color: '#334155' }}>{a.name}</h3>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: '#8B7355' }}>{a.price}</span>
+                      </div>
+                      <p style={{ fontSize: 14, color: 'rgba(51,65,85,0.55)', lineHeight: 1.6, marginTop: 6 }}>{a.desc}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
             <p style={{ fontSize: 13, fontStyle: 'italic', color: 'rgba(51,65,85,0.4)', marginTop: 16 }}>Each arrangement is seasonally designed. Specific flowers are not guaranteed.</p>
             <div style={{ marginTop: 32, textAlign: 'right' }}>
               <button onClick={() => selected && setStep(2)} disabled={!selected} style={btnStyle(!selected)}>Continue</button>

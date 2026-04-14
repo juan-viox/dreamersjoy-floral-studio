@@ -1256,7 +1256,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 .private {
   padding: clamp(80px, 10vw, 140px) 0;
-  background: var(--light);
+  background: var(--secondary);
 }
 .private-header {
   text-align: center;
@@ -1827,15 +1827,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ═══════════════════════════════════════════════════════════ */
 .bloom-circle {
   padding: clamp(80px, 10vw, 140px) 0;
-  background: var(--dark);
-  color: var(--light);
+  background: var(--light);
+  color: var(--primary);
   text-align: center;
 }
-.bloom-circle .section-label { color: var(--accent4); }
-.bloom-circle .section-heading { color: var(--light); margin-bottom: 16px; }
+.bloom-circle .section-label { color: var(--accent1); }
+.bloom-circle .section-heading { color: var(--primary); margin-bottom: 16px; }
 .bloom-circle-desc {
   font-size: 16px;
-  color: rgba(250,250,248,0.6);
+  color: rgba(51,65,85,0.6);
   max-width: 52ch;
   margin: 0 auto 48px;
   line-height: 1.7;
@@ -1849,13 +1849,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .bloom-tier {
   padding: 44px 36px;
-  border: 1px solid rgba(212,184,160,0.2);
+  border: 1px solid rgba(201,184,168,0.3);
   border-radius: 4px;
+  background: var(--white);
   transition: all 0.4s var(--ease-out);
 }
 .bloom-tier:hover {
-  border-color: var(--accent4);
-  background: rgba(245,240,235,0.04);
+  border-color: var(--accent1);
+  background: rgba(139,115,85,0.03);
 }
 .bloom-tier-img {
   aspect-ratio: 4/3;
@@ -1869,31 +1870,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 400;
-  color: var(--light);
+  color: var(--primary);
   margin-bottom: 12px;
 }
 .bloom-tier .tier-freq {
   font-size: 13px;
-  color: var(--accent4);
+  color: var(--accent1);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 .bloom-tier p {
   font-size: 15px;
-  color: rgba(250,250,248,0.5);
+  color: rgba(51,65,85,0.6);
   line-height: 1.7;
 }
 .bloom-circle-cta {
   margin-top: 40px;
 }
 .bloom-circle-cta .btn-outline {
-  border-color: rgba(245,240,235,0.4);
-  color: var(--light);
+  border-color: var(--accent2);
+  color: var(--primary);
 }
 .bloom-circle-cta .btn-outline:hover {
-  border-color: var(--light);
-  background: rgba(245,240,235,0.1);
+  border-color: var(--primary);
+  background: rgba(51,65,85,0.04);
 }
 @media (max-width: 768px) {
   .bloom-tiers { grid-template-columns: 1fr; max-width: 400px; }
@@ -2117,7 +2118,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
 
     <div class="md-btns">
-      <a href="#order" class="btn-primary">Shop Mother's Day Collection</a>
+      <a href="/order?collection=mothers-day" class="btn-primary" data-no-intercept="true">Shop Mother's Day Collection</a>
       <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
     </div>
 
@@ -2149,74 +2150,70 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     2B. HERO TRANSITION MARQUEE
+     2B. MOTHER'S DAY URGENCY MARQUEE
      ═══════════════════════════════════════════════════════ -->
-<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15);">
+<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15); cursor: pointer;" onclick="document.querySelector('a[href=\'#mothers-day\']')?.click(); var md=document.getElementById('mothers-day'); if(md) md.scrollIntoView({behavior:'smooth'});">
   <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
     <div class="marquee-content">
-      <span class="hero-marquee-word">Seasonal Arrangements</span>
+      <span class="hero-marquee-word">Mother&rsquo;s Day Collection</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-word">Order by May 8</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Refined Florals</span>
+      <span class="hero-marquee-word">The Spring Edit</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-word">Hand-Delivered</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Private Experiences</span>
+      <span class="hero-marquee-word">Limited Quantities</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Bloom Circle</span>
+      <span class="hero-marquee-word">Shop Now</span>
       <span class="hero-marquee-sep">&mdash;</span>
     </div>
     <div class="marquee-content">
-      <span class="hero-marquee-word">Seasonal Arrangements</span>
+      <span class="hero-marquee-word">Mother&rsquo;s Day Collection</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-word">Order by May 8</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Refined Florals</span>
+      <span class="hero-marquee-word">The Spring Edit</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-word">Hand-Delivered</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Private Experiences</span>
+      <span class="hero-marquee-word">Limited Quantities</span>
       <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Bloom Circle</span>
+      <span class="hero-marquee-word">Shop Now</span>
       <span class="hero-marquee-sep">&mdash;</span>
     </div>
   </div>
   <div class="hero-marquee-row" data-speed="0.6" data-direction="right">
     <div class="marquee-content">
-      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-word light">Veiled Citrus</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-word light">Olive Air</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-word light">Quiet Bloom</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-word light">Petite</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-word light">Signature</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-word light">Statement</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Anemone</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-word light">May 10</span>
       <span class="hero-marquee-sep light">&bull;</span>
     </div>
     <div class="marquee-content">
-      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-word light">Veiled Citrus</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-word light">Olive Air</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-word light">Quiet Bloom</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-word light">Petite</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-word light">Signature</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-word light">Statement</span>
       <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Anemone</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-word light">May 10</span>
       <span class="hero-marquee-sep light">&bull;</span>
     </div>
   </div>
@@ -2465,6 +2462,80 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 6px;">Delivery</p>
       <p style="font-size: 15px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area.</p>
       <a href="/delivery" style="display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     4B2. SERVICES TRANSITION MARQUEE (moved from top)
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15);">
+  <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
+    <div class="marquee-content">
+      <span class="hero-marquee-word">Seasonal Arrangements</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Refined Florals</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Private Experiences</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Bloom Circle</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+    </div>
+    <div class="marquee-content">
+      <span class="hero-marquee-word">Seasonal Arrangements</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Installations</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Refined Florals</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Open House Styling</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Private Experiences</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+      <span class="hero-marquee-word">Bloom Circle</span>
+      <span class="hero-marquee-sep">&mdash;</span>
+    </div>
+  </div>
+  <div class="hero-marquee-row" data-speed="0.6" data-direction="right">
+    <div class="marquee-content">
+      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Anemone</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+    </div>
+    <div class="marquee-content">
+      <span class="hero-marquee-word light">Ranunculus</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Hellebores</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Sweet Pea</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">French Tulips</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Olive Branch</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Clematis</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Anemone</span>
+      <span class="hero-marquee-sep light">&bull;</span>
+      <span class="hero-marquee-word light">Scabiosa</span>
+      <span class="hero-marquee-sep light">&bull;</span>
     </div>
   </div>
 </section>
@@ -3470,8 +3541,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     });
   });
 
-  // Order links → navigate to order page
+  // Order links → navigate to order page (skip links with data-no-intercept)
   document.querySelectorAll('a[href="#order"]').forEach(function(btn) {
+    if (btn.hasAttribute('data-no-intercept')) return;
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = '/order';
