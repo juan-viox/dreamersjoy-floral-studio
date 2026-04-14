@@ -1,0 +1,3154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamersJoy Floral Vending &mdash; Business Plan 2026&ndash;2028</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #334155;
+  --accent: #8B7355;
+  --light:  #FAFAF8;
+  --cream:  #F5F0EB;
+  --text:   #64748b;
+  --dark:   #1e293b;
+  --white:  #ffffff;
+  --border: #e2e8f0;
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger: #ef4444;
+  --info:   #3b82f6;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================================
+   COVER PAGE
+   ============================================================ */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(160deg, var(--navy) 0%, #1e293b 50%, #0f172a 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(139,115,85,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.cover-inner { position: relative; z-index: 1; max-width: 700px; }
+.cover-rule {
+  width: 80px;
+  height: 1px;
+  background: var(--accent);
+  margin: 2rem auto;
+}
+.cover h1 {
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.cover h1 span { font-weight: 600; }
+.cover .cover-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.cover .cover-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+.cover .cover-meta {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  line-height: 2;
+}
+.cover .cover-confidential {
+  margin-top: 3rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.4rem 1.5rem;
+  display: inline-block;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+.toc-section {
+  padding: 4rem 0;
+  page-break-before: always;
+}
+.toc-section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.toc-section .toc-subtitle {
+  text-align: center;
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+.toc-list {
+  list-style: none;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.toc-list li {
+  display: flex;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-list .toc-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  width: 2.5rem;
+  flex-shrink: 0;
+}
+.toc-list .toc-title {
+  flex: 1;
+  font-size: 1rem;
+}
+.toc-list .toc-title a {
+  color: var(--navy);
+  transition: color 0.2s;
+}
+.toc-list .toc-title a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.toc-list .toc-page {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-left: 1rem;
+}
+.toc-sub {
+  list-style: none;
+  margin: 0.3rem 0 0 2.5rem;
+}
+.toc-sub li {
+  padding: 0.25rem 0;
+  border-bottom: none;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.toc-sub .toc-number {
+  font-size: 0.9rem;
+  width: 2.5rem;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  padding: 3.5rem 0 2rem;
+  page-break-before: always;
+}
+.section-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--accent);
+}
+.section h3 {
+  font-size: 1.45rem;
+  margin: 2.5rem 0 0.75rem;
+  color: var(--navy);
+}
+.section h4 {
+  font-size: 1.15rem;
+  margin: 1.8rem 0 0.5rem;
+  color: var(--accent);
+}
+.section p {
+  color: var(--navy);
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+}
+.section ul, .section ol {
+  margin: 0.5rem 0 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+.section li { margin-bottom: 0.35rem; }
+
+/* ============================================================
+   CALLOUT BOXES
+   ============================================================ */
+.callout {
+  background: var(--cream);
+  border-left: 4px solid var(--accent);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout.callout-navy {
+  background: var(--navy);
+  color: var(--white);
+  border-left-color: var(--accent);
+}
+.callout.callout-navy .callout-title { color: var(--accent); }
+.callout.callout-navy p { color: rgba(255,255,255,0.85); }
+.callout.callout-success {
+  border-left-color: var(--success);
+  background: #f0fdf4;
+}
+.callout.callout-warning {
+  border-left-color: var(--warning);
+  background: #fffbeb;
+}
+.callout.callout-info {
+  border-left-color: var(--info);
+  background: #eff6ff;
+}
+.callout-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+.callout p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   PULL QUOTES
+   ============================================================ */
+.pull-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  padding: 2rem 3rem;
+  margin: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.pull-quote cite {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--text);
+  margin-top: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0 1.75rem;
+  font-size: 0.9rem;
+}
+.data-table thead th {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--accent);
+}
+.data-table tbody td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.data-table tbody tr:nth-child(even) { background: var(--cream); }
+.data-table tbody tr:hover { background: #eee9e0; }
+.data-table .text-right { text-align: right; }
+.data-table .text-center { text-align: center; }
+.data-table .font-bold { font-weight: 600; }
+.data-table .highlight-row { background: rgba(139,115,85,0.08) !important; }
+.data-table tfoot td {
+  font-weight: 600;
+  border-top: 2px solid var(--navy);
+  padding: 0.7rem 1rem;
+  background: var(--cream);
+}
+
+/* ============================================================
+   STAT CARDS
+   ============================================================ */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.stat-card {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-card .stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-card .stat-label {
+  font-size: 0.78rem;
+  color: var(--text);
+  margin-top: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   SCORE BADGE
+   ============================================================ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin: 0.5rem 0;
+}
+.score-badge .score-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+/* ============================================================
+   SWOT GRID
+   ============================================================ */
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.swot-box {
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+}
+.swot-box.strengths  { background: #f0fdf4; border-left: 4px solid var(--success); }
+.swot-box.weaknesses { background: #fef2f2; border-left: 4px solid var(--danger);  }
+.swot-box.opportunities { background: #eff6ff; border-left: 4px solid var(--info); }
+.swot-box.threats    { background: #fffbeb; border-left: 4px solid var(--warning); }
+.swot-box h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+.swot-box.strengths h4 { color: var(--success); }
+.swot-box.weaknesses h4 { color: var(--danger); }
+.swot-box.opportunities h4 { color: var(--info); }
+.swot-box.threats h4 { color: var(--warning); }
+.swot-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+}
+.swot-box li {
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+.swot-box li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+/* ============================================================
+   RISK TABLE COLOR TAGS
+   ============================================================ */
+.risk-critical { color: var(--danger); font-weight: 600; }
+.risk-high     { color: #ea580c; font-weight: 600; }
+.risk-medium   { color: var(--warning); font-weight: 600; }
+.risk-low      { color: var(--success); font-weight: 600; }
+
+/* ============================================================
+   PHASE TIMELINE
+   ============================================================ */
+.phase-timeline { margin: 2rem 0; }
+.phase-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.phase-marker {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+.phase-item:not(:last-child) .phase-marker::after {
+  content: '';
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% + 2rem - 48px);
+  background: var(--border);
+}
+.phase-content { flex: 1; padding-top: 0.1rem; }
+.phase-content h4 {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+  color: var(--navy);
+}
+.phase-content .phase-time {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.phase-content p { font-size: 0.92rem; }
+
+/* ============================================================
+   SECTION FOOTER
+   ============================================================ */
+.section-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text);
+  letter-spacing: 0.08em;
+  padding: 2.5rem 0 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+  body { font-size: 11pt; color: #000; }
+  .cover { min-height: auto; padding: 3in 1in; page-break-after: always; }
+  .toc-section { page-break-after: always; }
+  .section { page-break-before: always; padding: 1rem 0; }
+  .section h2 { font-size: 16pt; }
+  .section h3 { font-size: 13pt; }
+  .callout { break-inside: avoid; }
+  .data-table { break-inside: avoid; font-size: 9pt; }
+  .stat-grid { break-inside: avoid; }
+  .swot-grid { break-inside: avoid; }
+  .pull-quote { break-inside: avoid; }
+  .phase-item { break-inside: avoid; }
+  .section-footer { font-size: 8pt; }
+  a { color: #000 !important; }
+  .callout.callout-navy { background: #f0f0f0 !important; color: #000 !important; }
+  .callout.callout-navy p { color: #333 !important; }
+  .callout.callout-navy .callout-title { color: #555 !important; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 680px) {
+  .page-container { padding: 0 1rem; }
+  .cover h1 { font-size: 2.2rem; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .pull-quote { padding: 1.5rem 1rem; font-size: 1.2rem; }
+  .section h2 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER PAGE
+     ============================================================ -->
+<header class="cover">
+  <div class="cover-inner">
+    <div class="cover-subtitle">Business Plan 2026&ndash;2028</div>
+    <div class="cover-rule"></div>
+    <h1>Dreamers<span>Joy</span></h1>
+    <h1 style="font-size:1.6rem;font-weight:300;letter-spacing:0.1em;margin-top:0.25rem;">Floral Vending</h1>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">A Floral Vending Machine Operation in Bergen County, New Jersey</p>
+    <div class="cover-meta">
+      Prepared by DreamersJoy Floral Studio<br>
+      In Partnership with VioX AI<br>
+      April 2026
+    </div>
+    <div class="cover-confidential">Confidential</div>
+  </div>
+</header>
+
+<!-- ============================================================
+     TABLE OF CONTENTS
+     ============================================================ -->
+<div class="page-container">
+<section class="toc-section" id="toc">
+  <h2>Table of Contents</h2>
+  <p class="toc-subtitle">DreamersJoy Floral Vending &mdash; Business Plan 2026&ndash;2028</p>
+
+  <ol class="toc-list">
+    <li>
+      <span class="toc-number">1</span>
+      <span class="toc-title"><a href="#executive-summary">Executive Summary</a></span>
+    </li>
+    <li>
+      <span class="toc-number">2</span>
+      <span class="toc-title"><a href="#company-overview">Company Overview</a></span>
+    </li>
+    <li>
+      <span class="toc-number">3</span>
+      <span class="toc-title"><a href="#market-analysis">Market Analysis</a></span>
+    </li>
+    <li style="border-bottom:none; padding-bottom:0;">
+      <span class="toc-number"></span>
+      <span class="toc-title">
+        <ul class="toc-sub">
+          <li><span class="toc-number">3.1</span> Industry Overview</li>
+          <li><span class="toc-number">3.2</span> Target Market</li>
+          <li><span class="toc-number">3.3</span> Competitive Landscape</li>
+          <li><span class="toc-number">3.4</span> SWOT Analysis</li>
+        </ul>
+      </span>
+    </li>
+    <li>
+      <span class="toc-number">4</span>
+      <span class="toc-title"><a href="#products-services">Products &amp; Services</a></span>
+    </li>
+    <li style="border-bottom:none; padding-bottom:0;">
+      <span class="toc-number"></span>
+      <span class="toc-title">
+        <ul class="toc-sub">
+          <li><span class="toc-number">4.1</span> Product Line &amp; Pricing</li>
+          <li><span class="toc-number">4.2</span> Seasonal Product Strategy</li>
+          <li><span class="toc-number">4.3</span> Holiday Premium Strategy</li>
+          <li><span class="toc-number">4.4</span> Presentation &amp; Branding</li>
+        </ul>
+      </span>
+    </li>
+    <li>
+      <span class="toc-number">5</span>
+      <span class="toc-title"><a href="#location-strategy">Location Strategy</a></span>
+    </li>
+    <li style="border-bottom:none; padding-bottom:0;">
+      <span class="toc-number"></span>
+      <span class="toc-title">
+        <ul class="toc-sub">
+          <li><span class="toc-number">5.1</span> Selection Criteria</li>
+          <li><span class="toc-number">5.2</span> Priority Locations</li>
+          <li><span class="toc-number">5.3</span> Secondary &amp; Expansion Locations</li>
+          <li><span class="toc-number">5.4</span> Location Securing Strategy</li>
+        </ul>
+      </span>
+    </li>
+    <li>
+      <span class="toc-number">6</span>
+      <span class="toc-title"><a href="#operations-plan">Operations Plan</a></span>
+    </li>
+    <li style="border-bottom:none; padding-bottom:0;">
+      <span class="toc-number"></span>
+      <span class="toc-title">
+        <ul class="toc-sub">
+          <li><span class="toc-number">6.1</span> Equipment</li>
+          <li><span class="toc-number">6.2</span> Restocking Operations</li>
+          <li><span class="toc-number">6.3</span> Driver &amp; Staffing Model</li>
+          <li><span class="toc-number">6.4</span> Studio Production Schedule</li>
+          <li><span class="toc-number">6.5</span> Delivery Vehicle</li>
+          <li><span class="toc-number">6.6</span> Inventory Management</li>
+          <li><span class="toc-number">6.7</span> Supply Chain</li>
+        </ul>
+      </span>
+    </li>
+    <li>
+      <span class="toc-number">7</span>
+      <span class="toc-title"><a href="#financial-plan">Financial Plan</a></span>
+    </li>
+    <li style="border-bottom:none; padding-bottom:0;">
+      <span class="toc-number"></span>
+      <span class="toc-title">
+        <ul class="toc-sub">
+          <li><span class="toc-number">7.1</span> Startup Investment</li>
+          <li><span class="toc-number">7.2</span> Monthly Operating Costs</li>
+          <li><span class="toc-number">7.3</span> Revenue Projections</li>
+          <li><span class="toc-number">7.4</span> 12-Month P&amp;L Projection</li>
+          <li><span class="toc-number">7.5</span> 5-Year Financial Projection</li>
+          <li><span class="toc-number">7.6</span> Break-Even Analysis</li>
+          <li><span class="toc-number">7.7</span> Funding Requirements</li>
+        </ul>
+      </span>
+    </li>
+    <li>
+      <span class="toc-number">8</span>
+      <span class="toc-title"><a href="#marketing-brand">Marketing &amp; Brand Strategy</a></span>
+    </li>
+    <li>
+      <span class="toc-number">9</span>
+      <span class="toc-title"><a href="#risk-analysis">Risk Analysis</a></span>
+    </li>
+    <li>
+      <span class="toc-number">10</span>
+      <span class="toc-title"><a href="#growth-strategy">Growth Strategy</a></span>
+    </li>
+    <li>
+      <span class="toc-number">11</span>
+      <span class="toc-title"><a href="#management-team">Management Team</a></span>
+    </li>
+    <li>
+      <span class="toc-number">12</span>
+      <span class="toc-title"><a href="#appendix">Appendix</a></span>
+    </li>
+  </ol>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     1. EXECUTIVE SUMMARY
+     ============================================================ -->
+<section class="section" id="executive-summary">
+  <span class="section-number">Section 1</span>
+  <h2>Executive Summary</h2>
+
+  <p>DreamersJoy Floral Vending is a new venture of DreamersJoy Floral Studio, a private floral design studio based in Wyckoff, Bergen County, New Jersey. The venture will deploy refrigerated floral vending machines in high-traffic locations throughout Bergen County, providing premium, studio-designed bouquets and arrangements on a self-service, 24/7 basis.</p>
+
+  <div class="callout callout-navy">
+    <div class="callout-title">The Opportunity at a Glance</div>
+    <p>Bergen County, New Jersey, has a population of 990,000 residents and a median household income that ranges from $109,497 countywide to over $250,000 in communities such as Saddle River. Despite this affluent and densely populated market, there are currently <strong>zero</strong> floral vending machine operators in the county &mdash; a striking gap that DreamersJoy is positioned to fill.</p>
+  </div>
+
+  <p>The business leverages DreamersJoy Floral Studio's existing brand recognition, design expertise, and wholesale supplier relationships to deliver a differentiated product in an uncontested local market. Each vending machine will carry 8&ndash;12 curated arrangements, priced from $28 to $125, and restocked three times per week from the Wyckoff studio.</p>
+
+  <h3>Key Investment Metrics</h3>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Machines at Launch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$27K&ndash;$46K</div>
+      <div class="stat-label">Total Startup Investment</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$22K&ndash;$35K</div>
+      <div class="stat-label">Monthly Revenue (3 Machines)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$10K&ndash;$14K</div>
+      <div class="stat-label">Monthly Net Profit</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">3&ndash;6 Mo.</div>
+      <div class="stat-label">Break-Even Timeline</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$122K&ndash;$172K</div>
+      <div class="stat-label">Year 1 Net Profit</div>
+    </div>
+  </div>
+
+  <h3>Five-Year Vision</h3>
+  <p>By the end of Year 5, DreamersJoy Floral Vending will operate 10 to 15 machines across Bergen County and neighboring markets, generating $400,000 to $700,000 in annual revenue. The business model is inherently scalable: each machine added to the network increases revenue with only marginal increases in operating cost, driven primarily by incremental COGS and restocking labor.</p>
+
+  <div class="pull-quote">
+    Zero competitors. 990,000 affluent residents. A proven studio brand ready to scale.
+    <cite>DreamersJoy Floral Vending &mdash; Bergen County, NJ</cite>
+  </div>
+
+  <h3>Business Model Summary</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Concept</td>
+        <td>Refrigerated floral vending machines with premium, studio-designed bouquets and arrangements</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Parent Company</td>
+        <td>DreamersJoy Floral Studio (existing private floral design studio, Wyckoff, NJ)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Market</td>
+        <td>Bergen County, NJ &mdash; 990K population, $109K&ndash;$196K median HHI, zero direct competitors</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Products</td>
+        <td>Hand-tied bouquets ($28&ndash;$95) and curated arrangements ($55&ndash;$125)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Locations</td>
+        <td>Valley Hospital (Paramus), Garden State Plaza (Paramus), Cedar Hill (Wyckoff)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Revenue Model</td>
+        <td>Direct-to-consumer vending sales, 60&ndash;70% gross margin, cashless payment</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Investment Required</td>
+        <td>$27,325&ndash;$46,100 for 3-machine launch</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Year 1 Projected Net</td>
+        <td>$122,592&ndash;$171,660</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Break-Even</td>
+        <td>3&ndash;6 months from first machine installation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-success">
+    <div class="callout-title">Why Now</div>
+    <p>Three converging factors make this the optimal launch window: (1) Valley Hospital's new $800M facility opened in April 2024 with no competing flower vendor; (2) Venus et Fleur has closed its Garden State Plaza location, creating a vacuum in the largest mall in northern New Jersey; and (3) the global flower vending market is growing at 9.1% CAGR, validating the model at scale.</p>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     2. COMPANY OVERVIEW
+     ============================================================ -->
+<section class="section" id="company-overview">
+  <span class="section-number">Section 2</span>
+  <h2>Company Overview</h2>
+
+  <h3>DreamersJoy Floral Studio</h3>
+  <p>DreamersJoy Floral Studio is a private floral design studio founded by Sarah De Jesus in Wyckoff, Bergen County, New Jersey. The studio specializes in refined floral design&mdash;bespoke arrangements, hand-tied bouquets, seasonal subscriptions, and immersive floral experiences for private clients and events.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Detail</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Legal Name</td><td>DreamersJoy Floral Studio LLC</td></tr>
+      <tr><td class="font-bold">Founder</td><td>Sarah De Jesus</td></tr>
+      <tr><td class="font-bold">Location</td><td>Wyckoff, Bergen County, New Jersey</td></tr>
+      <tr><td class="font-bold">Website</td><td>dreamersjoystudio.com</td></tr>
+      <tr><td class="font-bold">Established</td><td>Private floral design studio with existing client base</td></tr>
+      <tr><td class="font-bold">Services</td><td>Custom arrangements, bouquets, subscriptions, floral experiences, event design</td></tr>
+      <tr><td class="font-bold">Design Aesthetic</td><td>Palette-driven, seasonally inspired, refined floral design</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Existing Competitive Advantages</h3>
+  <p>DreamersJoy Floral Studio brings several critical advantages to the vending operation that differentiate it from a cold-start venture:</p>
+  <ul>
+    <li><strong>Brand Recognition:</strong> An established brand with a loyal following in Bergen County, providing immediate consumer trust and social proof for machine-dispensed products.</li>
+    <li><strong>Design Expertise:</strong> Sarah De Jesus's design capability ensures every vending product meets studio-grade quality standards, differentiating DreamersJoy from commodity flower vending.</li>
+    <li><strong>Wholesale Relationships:</strong> Existing accounts with premium flower wholesalers provide volume pricing, reliable supply, and access to seasonal specialty blooms.</li>
+    <li><strong>Local Presence:</strong> A Wyckoff-based studio creates logistical efficiency for restocking routes and positions the brand as a neighbor to the target market.</li>
+    <li><strong>Production Infrastructure:</strong> The studio provides a ready-made production hub for arrangement creation, eliminating the need for a separate facility.</li>
+  </ul>
+
+  <h3>Why Vending Is a Natural Extension</h3>
+  <p>Floral vending is a logical and low-risk expansion for DreamersJoy Floral Studio for four reasons:</p>
+  <ol>
+    <li><strong>Utilization of Existing Capacity:</strong> The studio's design and procurement infrastructure can absorb incremental production for vending inventory without significant fixed-cost increases.</li>
+    <li><strong>Brand Amplification:</strong> Physical machines in high-traffic locations serve as permanent brand billboards, driving awareness and client acquisition for the studio's higher-margin custom work and subscription services.</li>
+    <li><strong>Revenue Diversification:</strong> Vending creates a recurring, semi-passive revenue stream that supplements the studio's project-based income, smoothing cash flow throughout the year.</li>
+    <li><strong>Market Validation:</strong> Each machine provides real-time data on consumer preferences, pricing sensitivity, and seasonal demand&mdash;intelligence that enhances the studio's core business.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="callout-title">Legal Structure</div>
+    <p>The vending operation will operate under the existing DreamersJoy Floral Studio LLC, or as a new subsidiary LLC (DreamersJoy Floral Vending LLC), depending on liability preference and tax optimization analysis conducted with the company's accountant. Both structures provide pass-through taxation and personal liability protection. A subsidiary LLC offers additional isolation of vending-specific liabilities (e.g., machine malfunction, slip-and-fall) from the studio's existing assets.</p>
+  </div>
+
+  <h3>Technology Partner: VioX AI</h3>
+  <p>DreamersJoy has partnered with VioX AI, a technology services firm led by Juan Alvarado, to provide business strategy, technology integration, CRM implementation, data analytics, and digital infrastructure for the vending operation. VioX AI will support machine IoT monitoring, sales analytics dashboards, and customer relationship management to optimize the operation from launch.</p>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     3. MARKET ANALYSIS
+     ============================================================ -->
+<section class="section" id="market-analysis">
+  <span class="section-number">Section 3</span>
+  <h2>Market Analysis</h2>
+
+  <!-- 3.1 -->
+  <h3 id="industry-overview">3.1 &nbsp; Industry Overview</h3>
+
+  <p>The floral vending machine industry sits at the intersection of two large and growing markets: the global flower market and the U.S. vending industry. Both are undergoing structural shifts that favor automated, self-service retail for perishable goods.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value">$1.2B</div>
+      <div class="stat-label">Global Flower Vending Market (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$2.5B</div>
+      <div class="stat-label">Projected Market (2033)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">9.1%</div>
+      <div class="stat-label">CAGR (2024&ndash;2033)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">$27B</div>
+      <div class="stat-label">U.S. Vending Industry (Annual)</div>
+    </div>
+  </div>
+
+  <p>Flower vending currently represents 35&ndash;38% of all self-service floral retail, a share that is expanding as consumers become more comfortable with cashless, touchscreen-driven purchasing experiences. The COVID-19 pandemic accelerated adoption of contactless commerce by 3&ndash;5 years, permanently shifting consumer expectations.</p>
+
+  <h4>Key Industry Trends</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Trend</th>
+        <th>Description</th>
+        <th>Impact on DreamersJoy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">AI-Powered Inventory</td>
+        <td>Machine learning models predict demand by location, day of week, and season, minimizing spoilage and stockouts</td>
+        <td>VioX AI integration for predictive restocking</td>
+      </tr>
+      <tr>
+        <td class="font-bold">IoT Monitoring</td>
+        <td>Real-time temperature, humidity, and stock-level monitoring via cellular connectivity</td>
+        <td>Remote quality control from the studio</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Cashless Payment</td>
+        <td>Credit/debit, Apple Pay, Google Pay, tap-to-pay; reduces transaction friction</td>
+        <td>Higher average transaction value vs. cash-only</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Sustainability</td>
+        <td>Consumers increasingly value locally sourced, low-waste floral options</td>
+        <td>DreamersJoy's local production and composting program</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Premiumization</td>
+        <td>Shift from commodity bunches toward design-forward, curated arrangements</td>
+        <td>Core differentiator for studio-grade vending products</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-title">Market Validation</div>
+    <p>The global flower vending market's 9.1% CAGR significantly outpaces the broader vending industry growth rate of 2.5&ndash;3.5%. This divergence signals that flower vending is capturing market share from traditional florists and grocery store floral departments, not merely growing in line with general vending trends.</p>
+  </div>
+
+  <!-- 3.2 -->
+  <h3 id="target-market">3.2 &nbsp; Target Market</h3>
+
+  <p>Bergen County, New Jersey, is among the wealthiest and most densely populated counties in the United States, making it an exceptional market for premium floral vending. The county's demographics align precisely with the profile of flower vending consumers: affluent, time-constrained professionals who value convenience without sacrificing quality.</p>
+
+  <h4>Bergen County Demographics</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Total Population</td><td>990,000</td></tr>
+      <tr><td class="font-bold">County Median HHI</td><td>$109,497</td></tr>
+      <tr><td class="font-bold">Population Density</td><td>4,100+ per sq. mi. (highest in NJ)</td></tr>
+      <tr><td class="font-bold">Number of Households</td><td>~340,000</td></tr>
+      <tr><td class="font-bold">College Degree or Higher</td><td>52.6%</td></tr>
+      <tr><td class="font-bold">Median Age</td><td>41.3 years</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Target Communities &mdash; Affluent Core</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Community</th>
+        <th>Median HHI</th>
+        <th>Population</th>
+        <th>Key Characteristic</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Saddle River</td>
+        <td class="text-right">$250,000+</td>
+        <td class="text-right">3,300</td>
+        <td>Ultra-affluent, large estates, high discretionary spending</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Franklin Lakes</td>
+        <td class="text-right">$212,000</td>
+        <td class="text-right">11,400</td>
+        <td>Affluent families, strong gift-giving culture</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Wyckoff</td>
+        <td class="text-right">$196,632</td>
+        <td class="text-right">17,400</td>
+        <td>DreamersJoy home territory, established brand recognition</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Ridgewood</td>
+        <td class="text-right">$189,000</td>
+        <td class="text-right">25,200</td>
+        <td>Walkable village center, strong retail/dining culture</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Glen Rock</td>
+        <td class="text-right">$168,000</td>
+        <td class="text-right">12,000</td>
+        <td>Family-oriented, NJ Transit commuters</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Paramus</td>
+        <td class="text-right">$112,000</td>
+        <td class="text-right">27,000</td>
+        <td>Retail capital of NJ, 9M annual visitors to GSP alone</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Consumer Flower Spending</h4>
+  <p>National data shows the average American household spends $58&ndash;$71 on flowers during major holidays, with Mother's Day averaging $71. Bergen County's median household income is 65&ndash;140% above the national median, suggesting premium tolerance of $85&ndash;$125 per purchase&mdash;well within DreamersJoy's pricing range.</p>
+
+  <div class="callout">
+    <div class="callout-title">Mother's Day Market Opportunity</div>
+    <p>Mother's Day is the single largest flower-buying occasion in the United States, generating $3.6 billion in floral spending annually. Bergen County's ~340,000 households represent a local addressable market of $24&ndash;$42 million during the Mother's Day period alone. Even capturing 0.1% of that spend would generate $24,000&ndash;$42,000 during a single holiday window.</p>
+  </div>
+
+  <!-- 3.3 -->
+  <h3 id="competitive-landscape">3.3 &nbsp; Competitive Landscape</h3>
+
+  <p>The competitive landscape for floral vending in Bergen County is defined by a single word: vacant. There are currently zero floral vending machine operators anywhere in Bergen County. The nearest operator is located over 20 miles away in Jersey City, and the only premium floral brand at Garden State Plaza (Venus et Fleur) has recently closed.</p>
+
+  <h4>Competitive Analysis</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Competitor</th>
+        <th>Location</th>
+        <th>Distance</th>
+        <th>Price Range</th>
+        <th>Status</th>
+        <th>Threat Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Unique Creations</td>
+        <td>Jersey City, NJ</td>
+        <td>20+ miles</td>
+        <td>$45&ndash;$85</td>
+        <td>Active</td>
+        <td class="risk-low">Low</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Venus et Fleur (GSP)</td>
+        <td>Garden State Plaza</td>
+        <td>N/A (same market)</td>
+        <td>$59&ndash;$399</td>
+        <td>CLOSED</td>
+        <td class="risk-low">None</td>
+      </tr>
+      <tr>
+        <td class="font-bold">24Hour Florist</td>
+        <td>National (no NJ presence)</td>
+        <td>N/A</td>
+        <td>$25&ndash;$65</td>
+        <td>Active (other states)</td>
+        <td class="risk-low">Low</td>
+      </tr>
+      <tr>
+        <td class="font-bold">QuickFlora</td>
+        <td>National (no NJ presence)</td>
+        <td>N/A</td>
+        <td>$20&ndash;$50</td>
+        <td>Active (other states)</td>
+        <td class="risk-low">Low</td>
+      </tr>
+      <tr>
+        <td class="font-bold">HyperVend</td>
+        <td>National (NYC metro focus)</td>
+        <td>N/A</td>
+        <td>$30&ndash;$60</td>
+        <td>Active (NYC)</td>
+        <td class="risk-medium">Medium</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Traditional Florists</td>
+        <td>Throughout Bergen County</td>
+        <td>N/A</td>
+        <td>$40&ndash;$200+</td>
+        <td>Active</td>
+        <td class="risk-low">Low (different channel)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Grocery Floral (ShopRite, etc.)</td>
+        <td>Throughout Bergen County</td>
+        <td>N/A</td>
+        <td>$8&ndash;$25</td>
+        <td>Active</td>
+        <td class="risk-low">Low (different segment)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-success">
+    <div class="callout-title">First-Mover Advantage</div>
+    <p>DreamersJoy has the opportunity to establish exclusive location agreements before any competitor enters the market. By securing contracts with Valley Hospital, Garden State Plaza, and key retail centers, DreamersJoy can build a defensible moat of locked locations that would require a competitor to settle for inferior placements.</p>
+  </div>
+
+  <div class="pull-quote">
+    Bergen County is a blue ocean for floral vending &mdash; nearly one million affluent residents, and not a single machine.
+  </div>
+
+  <!-- 3.4 -->
+  <h3 id="swot-analysis">3.4 &nbsp; SWOT Analysis</h3>
+
+  <div class="swot-grid">
+    <div class="swot-box strengths">
+      <h4>Strengths</h4>
+      <ul>
+        <li>Established DreamersJoy brand and client base</li>
+        <li>Professional floral design expertise</li>
+        <li>Existing wholesale supplier relationships</li>
+        <li>Local presence in target market (Wyckoff)</li>
+        <li>Zero direct competition in Bergen County</li>
+        <li>Studio as ready-made production hub</li>
+        <li>Technology partnership with VioX AI</li>
+      </ul>
+    </div>
+    <div class="swot-box weaknesses">
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Perishable inventory with limited shelf life</li>
+        <li>Weather sensitivity affecting product quality</li>
+        <li>No prior vending machine operation experience</li>
+        <li>Capital required for initial machine investment</li>
+        <li>Reliance on single production facility (studio)</li>
+        <li>Limited staffing capacity during early phase</li>
+      </ul>
+    </div>
+    <div class="swot-box opportunities">
+      <h4>Opportunities</h4>
+      <ul>
+        <li>Blue ocean market: zero competitors in Bergen County</li>
+        <li>Affluent demographics with high discretionary spending</li>
+        <li>New $800M Valley Hospital facility (no flower vendor)</li>
+        <li>Venus et Fleur closure creates GSP vacuum</li>
+        <li>Seasonal revenue spikes (Mother's Day, Valentine's Day)</li>
+        <li>Cross-selling to studio custom work and subscriptions</li>
+        <li>Scalable model for multi-county expansion</li>
+        <li>9.1% CAGR in global flower vending market</li>
+      </ul>
+    </div>
+    <div class="swot-box threats">
+      <h4>Threats</h4>
+      <ul>
+        <li>National operators could enter Bergen County market</li>
+        <li>Spoilage risk increases with distance and temperature</li>
+        <li>Economic downturn impact on discretionary spending</li>
+        <li>Location partner contract terminations</li>
+        <li>Rising wholesale flower costs</li>
+        <li>Supply chain disruptions affecting specialty blooms</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     4. PRODUCTS & SERVICES
+     ============================================================ -->
+<section class="section" id="products-services">
+  <span class="section-number">Section 4</span>
+  <h2>Products &amp; Services</h2>
+
+  <!-- 4.1 -->
+  <h3 id="product-line">4.1 &nbsp; Product Line &amp; Pricing</h3>
+
+  <p>Every product in the DreamersJoy vending line is designed and assembled in the Wyckoff studio to the same quality standards as the studio's custom work. The product line is structured in two categories&mdash;Bouquets and Arrangements&mdash;each offered in multiple price tiers to capture a broad range of consumer budgets and purchase occasions.</p>
+
+  <h4>Bouquets (Hand-Tied, Wrapped)</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Retail Price</th>
+        <th>COGS</th>
+        <th>Gross Margin</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Petite</td>
+        <td class="text-right">$28&ndash;$35</td>
+        <td class="text-right">$8&ndash;$12</td>
+        <td class="text-right">65&ndash;70%</td>
+        <td>Single-variety or simple mixed, 8&ndash;12 stems, tissue wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Classic</td>
+        <td class="text-right">$45&ndash;$55</td>
+        <td class="text-right">$15&ndash;$20</td>
+        <td class="text-right">63&ndash;67%</td>
+        <td>Mixed variety, 15&ndash;20 stems, DreamersJoy kraft wrap, ribbon</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Premium</td>
+        <td class="text-right">$65&ndash;$75</td>
+        <td class="text-right">$22&ndash;$28</td>
+        <td class="text-right">63&ndash;66%</td>
+        <td>Designer mix, 20&ndash;25 stems, premium wrapping, seasonal accents</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Signature</td>
+        <td class="text-right">$85&ndash;$95</td>
+        <td class="text-right">$30&ndash;$40</td>
+        <td class="text-right">58&ndash;65%</td>
+        <td>Curated palette, 25&ndash;35 stems, luxury wrap, silk ribbon, card</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Arrangements (In Vessel)</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Retail Price</th>
+        <th>COGS</th>
+        <th>Gross Margin</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Petite</td>
+        <td class="text-right">$55&ndash;$65</td>
+        <td class="text-right">$18&ndash;$25</td>
+        <td class="text-right">62&ndash;67%</td>
+        <td>Compact arrangement, ceramic bud vase, 10&ndash;15 stems</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Signature</td>
+        <td class="text-right">$85&ndash;$95</td>
+        <td class="text-right">$30&ndash;$40</td>
+        <td class="text-right">58&ndash;65%</td>
+        <td>Full arrangement, tinted glass vessel, 20&ndash;25 stems</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Statement</td>
+        <td class="text-right">$110&ndash;$125</td>
+        <td class="text-right">$45&ndash;$55</td>
+        <td class="text-right">56&ndash;59%</td>
+        <td>Grand arrangement, premium vessel, 30+ stems, luxury blooms</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Pricing Philosophy</div>
+    <p>DreamersJoy pricing occupies the "accessible luxury" segment&mdash;above grocery-store bunches ($8&ndash;$25) and below traditional florist delivery ($80&ndash;$200+). This positions the brand as a convenient, design-forward option for consumers who want something special without the lead time or delivery fees of a custom order. Bergen County's affluent demographics support the premium pricing structure, where a $55&ndash;$75 impulse purchase aligns with local spending norms.</p>
+  </div>
+
+  <!-- 4.2 -->
+  <h3 id="seasonal-strategy">4.2 &nbsp; Seasonal Product Strategy</h3>
+
+  <p>Product mix rotates seasonally to leverage the best available blooms, command premium pricing during peak seasons, and maintain visual freshness that encourages repeat purchases.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Season</th>
+        <th>Months</th>
+        <th>Featured Blooms</th>
+        <th>Design Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Spring</td>
+        <td>March &ndash; May</td>
+        <td>Peonies, ranunculus, tulips, sweet pea, lilac</td>
+        <td>Soft palettes, garden-gathered aesthetic; peak demand season</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Summer</td>
+        <td>June &ndash; August</td>
+        <td>Dahlias, lisianthus, cosmos, zinnias, sunflowers</td>
+        <td>Bold colors, textural variety; wedding season cross-sell</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Fall</td>
+        <td>September &ndash; November</td>
+        <td>Scabiosa, chocolate cosmos, amaranthus, mums, dried elements</td>
+        <td>Warm tones, textural depth; Thanksgiving demand spike</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Winter</td>
+        <td>December &ndash; February</td>
+        <td>Anemones, hellebore, orchids, amaryllis, ranunculus</td>
+        <td>Moody elegance, jewel tones; Valentine's Day peak</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Year-Round Anchor:</strong> Garden roses serve as the foundational bloom across all seasons. They are available year-round, photograph beautifully (driving social media engagement), and carry strong consumer recognition as a premium flower. Garden roses appear in at least 60% of all DreamersJoy vending products.</p>
+
+  <!-- 4.3 -->
+  <h3 id="holiday-premium">4.3 &nbsp; Holiday Premium Strategy</h3>
+
+  <p>Holiday periods represent the highest-volume and highest-margin sales windows. DreamersJoy will implement a structured premium pricing strategy during these periods, supported by expanded inventory and targeted marketing.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Holiday</th>
+        <th>Premium</th>
+        <th>Inventory Adjustment</th>
+        <th>Marketing Start</th>
+        <th>Revenue Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Valentine's Day</td>
+        <td class="text-center">30&ndash;50%</td>
+        <td>2x normal inventory, daily restocking</td>
+        <td>January 15</td>
+        <td>3&ndash;5x normal daily revenue</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Mother's Day</td>
+        <td class="text-center">30&ndash;50%</td>
+        <td>2.5x inventory, daily restocking, extended SKUs</td>
+        <td>April 1</td>
+        <td>3&ndash;5x normal daily revenue</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Christmas/Holidays</td>
+        <td class="text-center">20&ndash;30%</td>
+        <td>1.5x inventory, seasonal wreaths &amp; centerpieces</td>
+        <td>November 1</td>
+        <td>2&ndash;3x normal daily revenue</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Easter</td>
+        <td class="text-center">10&ndash;20%</td>
+        <td>Spring-themed pastels, lily additions</td>
+        <td>2 weeks before</td>
+        <td>1.5&ndash;2x normal daily revenue</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Graduation Season</td>
+        <td class="text-center">10&ndash;15%</td>
+        <td>Congratulatory colors, school-color options</td>
+        <td>May 1</td>
+        <td>1.5x normal daily revenue</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Teacher Appreciation</td>
+        <td class="text-center">0&ndash;10%</td>
+        <td>Petite bouquets emphasized, bulk-friendly pricing</td>
+        <td>1 week before</td>
+        <td>1.3x normal daily revenue</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 4.4 -->
+  <h3 id="presentation-branding">4.4 &nbsp; Presentation &amp; Branding</h3>
+
+  <p>Every detail of the vending product presentation is designed to communicate "studio quality" and differentiate DreamersJoy from commodity flower vending.</p>
+
+  <ul>
+    <li><strong>DreamersJoy Branded Wrapping:</strong> Custom-printed kraft paper with the DreamersJoy logo and pattern in muted gold, creating instant brand recognition.</li>
+    <li><strong>Silk Ribbon Finishing:</strong> Every bouquet is tied with a signature silk ribbon in seasonal colors drawn from the DreamersJoy palette system.</li>
+    <li><strong>Complimentary Message Cards:</strong> Blank cards included with every purchase allow personalization. Pre-printed seasonal sentiments are also available (e.g., "Happy Mother's Day," "With Love").</li>
+    <li><strong>Palette-Driven Design System:</strong> Five signature color palettes rotate seasonally, ensuring visual consistency across all products and marketing materials. This system, developed with VioX AI, extends from the studio's existing brand guidelines.</li>
+    <li><strong>Care Instructions:</strong> A small printed card with flower care tips accompanies each purchase, extending product life and reinforcing the premium experience.</li>
+  </ul>
+
+  <div class="pull-quote">
+    Every bouquet from a DreamersJoy machine should feel like a gift from a florist, not a product from a vending machine.
+    <cite>Sarah De Jesus, Founder</cite>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     5. LOCATION STRATEGY
+     ============================================================ -->
+<section class="section" id="location-strategy">
+  <span class="section-number">Section 5</span>
+  <h2>Location Strategy</h2>
+
+  <!-- 5.1 -->
+  <h3 id="selection-criteria">5.1 &nbsp; Location Selection Criteria</h3>
+
+  <p>Location quality is the single most important determinant of vending machine revenue. DreamersJoy evaluates each potential site against six weighted criteria, scored on a 100-point scale:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Criterion</th>
+        <th>Weight</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Foot Traffic Volume</td>
+        <td class="text-center">30%</td>
+        <td>Daily visitors, dwell time, peak hours alignment with purchase occasions</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Demographics Alignment</td>
+        <td class="text-center">25%</td>
+        <td>Visitor income level, age range, and likelihood of floral purchase</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Competition Proximity</td>
+        <td class="text-center">15%</td>
+        <td>Distance to nearest florist, grocery floral department, or competing machine</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Visibility &amp; Accessibility</td>
+        <td class="text-center">15%</td>
+        <td>Line-of-sight from main walkways, ADA accessibility, near entrances</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Cost Structure</td>
+        <td class="text-center">10%</td>
+        <td>Monthly rent/commission, electricity access, contract terms</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Operational Logistics</td>
+        <td class="text-center">5%</td>
+        <td>Proximity to studio, restocking access hours, loading dock availability</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 5.2 -->
+  <h3 id="priority-locations">5.2 &nbsp; Priority Locations</h3>
+
+  <!-- Location 1 -->
+  <h4>Location 1: Valley Hospital, Paramus</h4>
+
+  <div class="score-badge">
+    Location Score: <span class="score-num">96</span>/100
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Facility</td><td>New $800M Valley Hospital campus &mdash; opened April 2024</td></tr>
+      <tr><td class="font-bold">Capacity</td><td>370 beds, 40-acre campus, Level II Trauma Center</td></tr>
+      <tr><td class="font-bold">Daily Traffic</td><td>Estimated 3,000&ndash;5,000 visitors, patients, and staff daily</td></tr>
+      <tr><td class="font-bold">Existing Floral Vendor</td><td>None &mdash; no competing flower vendor on campus</td></tr>
+      <tr><td class="font-bold">Placement</td><td>Main lobby near gift shop, visitor entrance, or cafeteria corridor</td></tr>
+      <tr><td class="font-bold">Projected Revenue</td><td>$10,000&ndash;$15,000/month</td></tr>
+      <tr><td class="font-bold">Contact Target</td><td>Facilities management / Gift shop operator / Volunteer services</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-success">
+    <div class="callout-title">Why Valley Hospital Is the #1 Location</div>
+    <p>Hospitals are universally recognized as the highest-performing locations for floral vending machines. The purchase intent is intensely emotional&mdash;visitors are buying for loved ones who are ill, recovering, or celebrating a birth. The new Valley Hospital is a state-of-the-art facility with modern architecture that welcomes retail amenities, and it currently has no competing flower vendor. This is the single most important location in the entire network.</p>
+  </div>
+
+  <!-- Location 2 -->
+  <h4>Location 2: Westfield Garden State Plaza, Paramus</h4>
+
+  <div class="score-badge">
+    Location Score: <span class="score-num">92</span>/100
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Facility</td><td>16th largest mall in the United States &mdash; 2.1M sq ft, 300+ stores</td></tr>
+      <tr><td class="font-bold">Annual Traffic</td><td>20&ndash;25 million visitors per year</td></tr>
+      <tr><td class="font-bold">Recent Change</td><td>Venus et Fleur recently closed &mdash; creating a gap in premium floral</td></tr>
+      <tr><td class="font-bold">Program</td><td>Westfield Small Business Program for emerging brands</td></tr>
+      <tr><td class="font-bold">Placement</td><td>High-traffic corridor near Nordstrom, food court, or former Venus et Fleur space</td></tr>
+      <tr><td class="font-bold">Projected Revenue</td><td>$8,000&ndash;$13,000/month</td></tr>
+      <tr><td class="font-bold">Contact Target</td><td>Westfield Small Business Program / Leasing office</td></tr>
+    </tbody>
+  </table>
+
+  <p>Garden State Plaza's Small Business Program is designed specifically for brands like DreamersJoy, offering flexible terms, reduced initial commitments, and marketing support for emerging retail concepts. The closure of Venus et Fleur creates an immediate opportunity to fill the premium floral gap with a more accessible, vending-based model.</p>
+
+  <!-- Location 3 -->
+  <h4>Location 3: Cedar Hill Shopping Center, Wyckoff</h4>
+
+  <div class="score-badge">
+    Location Score: <span class="score-num">85</span>/100
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Facility</td><td>43,370 sq ft neighborhood shopping center</td></tr>
+      <tr><td class="font-bold">Annual Traffic</td><td>~955,000 visits per year</td></tr>
+      <tr><td class="font-bold">Surrounding HHI</td><td>$218,112 (3-mile radius median)</td></tr>
+      <tr><td class="font-bold">Brand Advantage</td><td>DreamersJoy home territory &mdash; established recognition in Wyckoff</td></tr>
+      <tr><td class="font-bold">Placement</td><td>Near main entrance, adjacent to high-traffic anchor tenant</td></tr>
+      <tr><td class="font-bold">Projected Revenue</td><td>$5,000&ndash;$8,000/month</td></tr>
+      <tr><td class="font-bold">Owner/Contact</td><td>Regency Centers (REIT)</td></tr>
+    </tbody>
+  </table>
+
+  <p>Cedar Hill is strategically important beyond its direct revenue potential. Located just two minutes from the DreamersJoy studio, it provides the most efficient restocking logistics of any location and serves as a "laboratory" for testing new products, pricing, and display strategies. The surrounding community has the highest median HHI of any location in the initial network.</p>
+
+  <!-- 5.3 -->
+  <h3 id="expansion-locations">5.3 &nbsp; Secondary &amp; Expansion Locations</h3>
+
+  <p>Following validation of the initial 3-machine network, DreamersJoy has identified a pipeline of secondary locations for Phase 3 and Phase 4 expansion:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Est. Monthly Revenue</th>
+        <th>Priority</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">NJ Transit Ridgewood Station</td>
+        <td>Transit Hub</td>
+        <td class="text-right">$3,000&ndash;$6,000</td>
+        <td>High</td>
+        <td>AM/PM commuter traffic, $189K HHI community</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Shops at Riverside, Hackensack</td>
+        <td>Lifestyle Center</td>
+        <td class="text-right">$5,000&ndash;$9,000</td>
+        <td>High</td>
+        <td>Whole Foods anchor, upscale tenants</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Bergen Town Center, Paramus</td>
+        <td>Mall</td>
+        <td class="text-right">$5,000&ndash;$8,000</td>
+        <td>Medium</td>
+        <td>Target, Century 21, strong family traffic</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Whole Foods (various)</td>
+        <td>Grocery Entrance</td>
+        <td class="text-right">$3,000&ndash;$5,000</td>
+        <td>Medium</td>
+        <td>Aligned demographics, complementary shopping</td>
+      </tr>
+      <tr>
+        <td class="font-bold">ShopRite (various)</td>
+        <td>Grocery Entrance</td>
+        <td class="text-right">$2,500&ndash;$4,500</td>
+        <td>Medium</td>
+        <td>Highest foot traffic of any grocery in Bergen Co.</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Corporate Office Lobbies</td>
+        <td>Corporate</td>
+        <td class="text-right">$2,000&ndash;$4,000</td>
+        <td>Medium</td>
+        <td>Paramus/Mahwah office parks; steady weekday traffic</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Teterboro Airport Area</td>
+        <td>FBO/Corporate</td>
+        <td class="text-right">$2,000&ndash;$5,000</td>
+        <td>Lower</td>
+        <td>Ultra-affluent private aviation clients</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 5.4 -->
+  <h3 id="location-securing">5.4 &nbsp; Location Securing Strategy</h3>
+
+  <h4>Commission Structures</h4>
+  <p>DreamersJoy will offer two commission models to location partners, tailored to the partner's preference and the location's traffic characteristics:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Rate</th>
+        <th>Best For</th>
+        <th>DreamersJoy Advantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Revenue Share</td>
+        <td>10&ndash;25% of gross sales</td>
+        <td>High-traffic locations where partner wants upside</td>
+        <td>Aligns partner incentives with machine success</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Flat Monthly Fee</td>
+        <td>$200&ndash;$500/month</td>
+        <td>Smaller venues, corporate lobbies, transit stations</td>
+        <td>Predictable cost structure for budgeting</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>The 6-Point Pitch to Landlords</h4>
+  <ol>
+    <li><strong>Revenue Generation:</strong> A new income stream with zero capital investment from the property owner</li>
+    <li><strong>Amenity Enhancement:</strong> Flowers elevate the environment and visitor experience</li>
+    <li><strong>Zero Maintenance:</strong> DreamersJoy handles all restocking, cleaning, and maintenance</li>
+    <li><strong>Premium Branding:</strong> Studio-quality products and machine design reflect well on the property</li>
+    <li><strong>Exclusivity:</strong> First floral vending presence in Bergen County &mdash; a differentiator for the property</li>
+    <li><strong>Flexible Terms:</strong> Trial periods, easy termination, and adjustable commission structures</li>
+  </ol>
+
+  <h4>Contract Terms</h4>
+  <ul>
+    <li>Initial term: 1&ndash;3 years with renewal option</li>
+    <li>Termination: 30-day written notice by either party</li>
+    <li>Exclusivity clause: No competing floral vending within the property during contract term</li>
+    <li>Insurance: DreamersJoy carries $1M general liability naming property as additional insured</li>
+    <li>Trial period option: 90-day trial at reduced commission, with full-term conversion</li>
+  </ul>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     6. OPERATIONS PLAN
+     ============================================================ -->
+<section class="section" id="operations-plan">
+  <span class="section-number">Section 6</span>
+  <h2>Operations Plan</h2>
+
+  <!-- 6.1 -->
+  <h3 id="equipment">6.1 &nbsp; Equipment</h3>
+
+  <h4>Machine Specifications</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Specification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Type</td><td>Refrigerated floral vending machine with elevator delivery system</td></tr>
+      <tr><td class="font-bold">Temperature</td><td>Maintained at 34&ndash;38&deg;F with precision climate control</td></tr>
+      <tr><td class="font-bold">Display</td><td>LED-illuminated glass front for 360&deg; product visibility</td></tr>
+      <tr><td class="font-bold">Interface</td><td>10&ndash;15" touchscreen with product images, descriptions, pricing</td></tr>
+      <tr><td class="font-bold">Payment</td><td>Credit/debit card, Apple Pay, Google Pay, Samsung Pay, NFC tap-to-pay</td></tr>
+      <tr><td class="font-bold">Capacity</td><td>8&ndash;12 arrangements per machine (adjustable shelving)</td></tr>
+      <tr><td class="font-bold">Connectivity</td><td>4G LTE cellular &mdash; remote monitoring, sales reporting, temp alerts</td></tr>
+      <tr><td class="font-bold">Dimensions</td><td>Approx. 72"H x 42"W x 36"D (standard vending footprint)</td></tr>
+      <tr><td class="font-bold">Power</td><td>Standard 120V/15A outlet</td></tr>
+      <tr><td class="font-bold">Cost per Unit</td><td>$8,000&ndash;$12,000 (purchase) or $350&ndash;$500/month (lease)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-title">Machine Selection Approach</div>
+    <p>DreamersJoy will evaluate machines from at least three manufacturers before purchasing: FloraBot (US-based, specialized in floral), CoolVend (China-manufactured with US support), and HyperVend (premium US brand). Key differentiators include elevator delivery gentleness (critical for preserving arrangements), temperature consistency, and remote monitoring capabilities. A purchase model (vs. lease) is preferred for machines that will be deployed long-term, as the break-even on purchase vs. lease occurs within 18&ndash;24 months.</p>
+  </div>
+
+  <!-- 6.2 -->
+  <h3 id="restocking-operations">6.2 &nbsp; Restocking Operations</h3>
+
+  <h4>Standard Restocking Schedule</h4>
+  <p>Machines are restocked three times per week&mdash;Monday, Wednesday, and Friday&mdash;with increased frequency during holiday periods. This schedule ensures product freshness (maximum 72-hour display window) while optimizing labor costs.</p>
+
+  <h4>Route Map</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Stop</th>
+        <th>Location</th>
+        <th>Drive Time (from previous)</th>
+        <th>Service Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Start</td>
+        <td>DreamersJoy Studio, Wyckoff</td>
+        <td>&mdash;</td>
+        <td>30 min (load vehicle)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Stop 1</td>
+        <td>Cedar Hill Shopping Center, Wyckoff</td>
+        <td>2 min</td>
+        <td>20 min</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Stop 2</td>
+        <td>Valley Hospital, Paramus</td>
+        <td>8 min</td>
+        <td>25 min</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Stop 3</td>
+        <td>Garden State Plaza, Paramus</td>
+        <td>5 min</td>
+        <td>25 min</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Return</td>
+        <td>DreamersJoy Studio, Wyckoff</td>
+        <td>12 min</td>
+        <td>15 min (unload, report)</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Total Route</strong></td>
+        <td><strong>27 min driving</strong></td>
+        <td><strong>~2.5 hours total</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <p><strong>Holiday Schedule:</strong> During Valentine's Day week, Mother's Day week, and the week before Christmas, restocking increases to daily (7 days). All other holiday periods use a 5-day schedule (Monday through Friday).</p>
+
+  <!-- 6.3 -->
+  <h3 id="driver-staffing">6.3 &nbsp; Driver &amp; Staffing Model</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Machines</th>
+        <th>Staffing</th>
+        <th>Pay Structure</th>
+        <th>Monthly Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Phase 1</td>
+        <td>1&ndash;3</td>
+        <td>Part-time employee or owner-operated</td>
+        <td>$18&ndash;$22/hr, 3 days/week, 4 hrs/day</td>
+        <td>$960&ndash;$1,200</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Phase 2</td>
+        <td>4&ndash;7</td>
+        <td>Full-time driver</td>
+        <td>$20&ndash;$25/hr, 5 days/week, 6 hrs/day</td>
+        <td>$2,600&ndash;$3,250</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Phase 3</td>
+        <td>8+</td>
+        <td>Full restocking team (driver + assistant)</td>
+        <td>Driver + PT assistant</td>
+        <td>$3,800&ndash;$5,200</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Driver Duties Checklist</h4>
+  <ol>
+    <li>Load vehicle at studio with prepared arrangements (verify count against manifest)</li>
+    <li>Transport product using temperature-controlled portable coolers</li>
+    <li>At each machine: remove any product beyond 72-hour display window (FIFO)</li>
+    <li>Restock machine front-to-back (newest product to rear, oldest to front)</li>
+    <li>Clean machine exterior glass, touchscreen, and dispensing area</li>
+    <li>Verify internal temperature is 34&ndash;38&deg;F (log reading)</li>
+    <li>Check payment system operation (run test transaction if needed)</li>
+    <li>Document stock levels, spoilage count, and machine condition via mobile app</li>
+    <li>Return expired product to studio for donation, display, or composting</li>
+  </ol>
+
+  <!-- 6.4 -->
+  <h3 id="production-schedule">6.4 &nbsp; Studio Production Schedule</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Activity</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Sunday</td>
+        <td>PM (2&ndash;6 PM)</td>
+        <td>Prepare Monday batch &mdash; process flowers, design, wrap</td>
+        <td>24&ndash;36 pieces</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Monday</td>
+        <td>AM (7&ndash;10 AM)</td>
+        <td>Full restock route &mdash; all 3 machines</td>
+        <td>All machines filled</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Tuesday</td>
+        <td>PM (2&ndash;6 PM)</td>
+        <td>Prepare Wednesday batch &mdash; mid-week top-off</td>
+        <td>12&ndash;24 pieces</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Wednesday</td>
+        <td>AM (7&ndash;10 AM)</td>
+        <td>Top-off route &mdash; replace sold and pulled product</td>
+        <td>Machines topped off</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Thursday</td>
+        <td>PM (2&ndash;6 PM)</td>
+        <td>Prepare Friday/weekend batch &mdash; largest production run</td>
+        <td>24&ndash;36 pieces</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Friday</td>
+        <td>AM (7&ndash;10 AM)</td>
+        <td>Weekend prep route &mdash; full restock for Sat/Sun</td>
+        <td>All machines filled</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Saturday</td>
+        <td>&mdash;</td>
+        <td>No production (machines run on Friday stock)</td>
+        <td>&mdash;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Weekly Production Volume:</strong> 60&ndash;96 pieces per week across all three machines, requiring approximately 12&ndash;16 hours of studio production time.</p>
+
+  <!-- 6.5 -->
+  <h3 id="delivery-vehicle">6.5 &nbsp; Delivery Vehicle</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Vehicle</th>
+        <th>Monthly Cost</th>
+        <th>Capacity</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Phase 1 (1&ndash;2 machines)</td>
+        <td>Personal vehicle (SUV/minivan)</td>
+        <td>$0/month (existing)</td>
+        <td>12&ndash;18 arrangements</td>
+        <td>Adequate with portable coolers; no lease cost</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Phase 2 (3 machines)</td>
+        <td>Ford Transit Connect</td>
+        <td>$350&ndash;$450/month</td>
+        <td>24&ndash;36 arrangements</td>
+        <td>Ideal cargo volume; fits residential parking</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Phase 3 (5+ machines)</td>
+        <td>Ram ProMaster City / Mercedes Metris</td>
+        <td>$400&ndash;$550/month</td>
+        <td>36&ndash;60 arrangements</td>
+        <td>Walk-in cargo area; commercial vehicle wrap</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Vehicle Setup Requirements</h4>
+  <ul>
+    <li>2&ndash;3 portable coolers (battery-powered, 34&ndash;38&deg;F capacity)</li>
+    <li>Non-slip cargo mats to prevent sliding during transport</li>
+    <li>Custom arrangement trays with individual compartments (prevents tipping)</li>
+    <li>DreamersJoy vehicle wrap (Phase 2+) &mdash; mobile billboard effect</li>
+    <li>First-aid kit, cleaning supplies, and spare machine parts kit</li>
+  </ul>
+
+  <h4>Monthly Vehicle Costs</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Expense</th>
+        <th>Personal Vehicle</th>
+        <th>Leased Vehicle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Lease/Payment</td><td class="text-right">$0</td><td class="text-right">$350&ndash;$550</td></tr>
+      <tr><td class="font-bold">Insurance (commercial)</td><td class="text-right">$50&ndash;$80</td><td class="text-right">$80&ndash;$120</td></tr>
+      <tr><td class="font-bold">Fuel (3 routes/week)</td><td class="text-right">$60&ndash;$90</td><td class="text-right">$60&ndash;$90</td></tr>
+      <tr><td class="font-bold">Maintenance</td><td class="text-right">$25&ndash;$50</td><td class="text-right">$0 (included)</td></tr>
+      <tr><td class="font-bold">Parking/Tolls</td><td class="text-right">$20&ndash;$50</td><td class="text-right">$20&ndash;$50</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="font-bold">Total Monthly</td>
+        <td class="text-right font-bold">$155&ndash;$270</td>
+        <td class="text-right font-bold">$510&ndash;$810</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- 6.6 -->
+  <h3 id="inventory-management">6.6 &nbsp; Inventory Management</h3>
+
+  <p>Effective inventory management is critical for a perishable product business. DreamersJoy implements a multi-layered system to minimize spoilage while maintaining machine fullness.</p>
+
+  <h4>Core Inventory Protocols</h4>
+  <ul>
+    <li><strong>FIFO Rotation:</strong> First In, First Out &mdash; oldest product is always positioned at front for first sale. New stock loads to the rear.</li>
+    <li><strong>72-Hour Pull Window:</strong> Every arrangement is date-stamped at production. Product remaining in the machine after 72 hours is pulled regardless of condition. This ensures every purchase delivers maximum vase life to the consumer.</li>
+    <li><strong>IoT Temperature Monitoring:</strong> Continuous temperature logging with cellular alerts if internal temp exceeds 42&deg;F. Temperature excursions trigger an immediate service call.</li>
+    <li><strong>Per-SKU Sales Tracking:</strong> Every sale is logged by product type, price point, time of day, and day of week. This data drives product mix optimization over time.</li>
+    <li><strong>Weekly Spoilage Reporting:</strong> Target spoilage rate is under 15% of units stocked. Rates above 15% trigger product mix or restocking frequency adjustments.</li>
+  </ul>
+
+  <h4>Pulled Product Disposition</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Condition</th>
+        <th>Action</th>
+        <th>Frequency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Good (sellable at studio)</td><td>Transfer to studio for walk-in sale at 30% discount</td><td>~40% of pulls</td></tr>
+      <tr><td class="font-bold">Fair (still presentable)</td><td>Donate to local nursing homes, senior centers</td><td>~30% of pulls</td></tr>
+      <tr><td class="font-bold">Past prime</td><td>Compost or dried-flower repurposing</td><td>~30% of pulls</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 6.7 -->
+  <h3 id="supply-chain">6.7 &nbsp; Supply Chain</h3>
+
+  <p>DreamersJoy's supply chain leverages the studio's existing wholesale accounts, providing immediate access to volume pricing and established supplier relationships.</p>
+
+  <ul>
+    <li><strong>Primary Wholesaler:</strong> Existing DreamersJoy wholesale account(s) for premium blooms. Volume discounts increase with vending-driven demand.</li>
+    <li><strong>Backup Suppliers (2):</strong> Two secondary wholesale sources identified for peak-season surge capacity and supply chain disruption resilience.</li>
+    <li><strong>Local Growers:</strong> Seasonal partnerships with NJ/NY-area flower farms for ultra-local, seasonal product with marketing storytelling value.</li>
+    <li><strong>Hard Goods:</strong> Vases, wrapping, ribbon, and cards sourced through existing DreamersJoy procurement channels.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Volume Leverage</div>
+    <p>At 3 machines producing 60&ndash;96 units per week, DreamersJoy's weekly flower purchasing volume increases by approximately 40&ndash;60% over the studio's baseline. This increased volume unlocks tier-2 wholesale pricing from primary suppliers, reducing per-stem costs by an estimated 8&ndash;12%. These savings compound across the network as machines are added.</p>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     7. FINANCIAL PLAN
+     ============================================================ -->
+<section class="section" id="financial-plan">
+  <span class="section-number">Section 7</span>
+  <h2>Financial Plan</h2>
+
+  <!-- 7.1 -->
+  <h3 id="startup-investment">7.1 &nbsp; Startup Investment</h3>
+
+  <h4>Per-Machine Startup Cost</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Low Estimate</th>
+        <th>High Estimate</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Vending Machine (purchase)</td>
+        <td class="text-right">$8,000</td>
+        <td class="text-right">$12,000</td>
+        <td>Refrigerated, touchscreen, cashless, IoT-connected</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Initial Inventory</td>
+        <td class="text-right">$400</td>
+        <td class="text-right">$800</td>
+        <td>First batch of 8&ndash;12 arrangements</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Machine Wrap/Branding</td>
+        <td class="text-right">$800</td>
+        <td class="text-right">$2,000</td>
+        <td>Custom DreamersJoy vinyl wrap design and installation</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Delivery &amp; Installation</td>
+        <td class="text-right">$300</td>
+        <td class="text-right">$800</td>
+        <td>Freight, rigging, electrical hookup</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Payment System Setup</td>
+        <td class="text-right">$0</td>
+        <td class="text-right">$200</td>
+        <td>Many machines include payment hardware</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Security Deposit (location)</td>
+        <td class="text-right">$0</td>
+        <td class="text-right">$500</td>
+        <td>Varies by location partner</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="font-bold">Per Machine Total</td>
+        <td class="text-right font-bold">$9,500</td>
+        <td class="text-right font-bold">$16,300</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <h4>3-Machine Network Startup</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Low Estimate</th>
+        <th>High Estimate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">3 Machines (all-in per above)</td>
+        <td class="text-right">$28,500</td>
+        <td class="text-right">$48,900</td>
+      </tr>
+      <tr>
+        <td class="font-bold">LLC Formation (if new subsidiary)</td>
+        <td class="text-right">$125</td>
+        <td class="text-right">$500</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Insurance (first month)</td>
+        <td class="text-right">$50</td>
+        <td class="text-right">$150</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Business Licenses &amp; Permits</td>
+        <td class="text-right">$150</td>
+        <td class="text-right">$350</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Portable Coolers (2&ndash;3)</td>
+        <td class="text-right">$300</td>
+        <td class="text-right">$600</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Arrangement Trays &amp; Supplies</td>
+        <td class="text-right">$200</td>
+        <td class="text-right">$400</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Working Capital (1st month ops)</td>
+        <td class="text-right">$2,000</td>
+        <td class="text-right">$4,000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="font-bold">Total Startup Investment</td>
+        <td class="text-right font-bold">$31,325</td>
+        <td class="text-right font-bold">$54,900</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="callout callout-navy">
+    <div class="callout-title">Investment Summary</div>
+    <p>A total startup investment of $27,000&ndash;$46,000 launches a 3-machine floral vending network in the wealthiest county in New Jersey with zero direct competition. This investment can be fully recovered within 4&ndash;8 months of operation based on conservative revenue projections.</p>
+  </div>
+
+  <!-- 7.2 -->
+  <h3 id="monthly-operating-costs">7.2 &nbsp; Monthly Operating Costs (3 Machines)</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Expense Category</th>
+        <th>Low Estimate</th>
+        <th>High Estimate</th>
+        <th>% of Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Cost of Goods Sold (flowers, wrapping, vessels)</td>
+        <td class="text-right">$6,600</td>
+        <td class="text-right">$12,250</td>
+        <td class="text-center">30&ndash;35%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Driver/Restocking Labor</td>
+        <td class="text-right">$1,000</td>
+        <td class="text-right">$1,500</td>
+        <td class="text-center">4&ndash;5%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Location Commissions (avg. 15%)</td>
+        <td class="text-right">$3,300</td>
+        <td class="text-right">$5,250</td>
+        <td class="text-center">15%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Vehicle Costs</td>
+        <td class="text-right">$155</td>
+        <td class="text-right">$780</td>
+        <td class="text-center">1&ndash;2%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Electricity (3 machines)</td>
+        <td class="text-right">$90</td>
+        <td class="text-right">$300</td>
+        <td class="text-center">~1%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Insurance (general liability)</td>
+        <td class="text-right">$50</td>
+        <td class="text-right">$150</td>
+        <td class="text-center">&lt;1%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Machine Maintenance &amp; Repairs</td>
+        <td class="text-right">$150</td>
+        <td class="text-right">$300</td>
+        <td class="text-center">~1%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Payment Processing (2.7%)</td>
+        <td class="text-right">$594</td>
+        <td class="text-right">$945</td>
+        <td class="text-center">2.7%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">IoT/Monitoring Subscription</td>
+        <td class="text-right">$30</td>
+        <td class="text-right">$90</td>
+        <td class="text-center">&lt;1%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Marketing &amp; Promotion</td>
+        <td class="text-right">$200</td>
+        <td class="text-right">$500</td>
+        <td class="text-center">1&ndash;2%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Miscellaneous / Contingency</td>
+        <td class="text-right">$100</td>
+        <td class="text-right">$300</td>
+        <td class="text-center">&lt;1%</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="font-bold">Total Monthly OpEx</td>
+        <td class="text-right font-bold">$12,269</td>
+        <td class="text-right font-bold">$22,365</td>
+        <td class="text-center font-bold">55&ndash;64%</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- 7.3 -->
+  <h3 id="revenue-projections">7.3 &nbsp; Revenue Projections</h3>
+
+  <h4>Per-Machine Monthly Revenue Scenarios</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>Daily Sales</th>
+        <th>Avg. Transaction</th>
+        <th>Monthly Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Conservative</td>
+        <td class="text-center">3&ndash;4 units/day</td>
+        <td class="text-center">$55</td>
+        <td class="text-right">$4,500&ndash;$6,750</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Average (expected)</td>
+        <td class="text-center">5&ndash;8 units/day</td>
+        <td class="text-center">$60</td>
+        <td class="text-right">$9,000&ndash;$15,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">High Traffic (hospital/mall)</td>
+        <td class="text-center">8&ndash;12 units/day</td>
+        <td class="text-center">$62</td>
+        <td class="text-right">$15,000&ndash;$24,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>3-Machine Network Monthly Projection</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Conservative</th>
+        <th>Expected</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Valley Hospital</td>
+        <td class="text-right">$10,000</td>
+        <td class="text-right">$15,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Garden State Plaza</td>
+        <td class="text-right">$8,000</td>
+        <td class="text-right">$13,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Cedar Hill, Wyckoff</td>
+        <td class="text-right">$5,000</td>
+        <td class="text-right">$8,000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="font-bold">Monthly Revenue</td>
+        <td class="text-right font-bold">$23,000</td>
+        <td class="text-right font-bold">$36,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Monthly OpEx</td>
+        <td class="text-right">($12,269)</td>
+        <td class="text-right">($22,365)</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Monthly Net Profit</td>
+        <td class="text-right font-bold">$10,731</td>
+        <td class="text-right font-bold">$13,635</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Net Margin</td>
+        <td class="text-right">46.7%</td>
+        <td class="text-right">37.9%</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="pull-quote">
+    At steady state, 3 machines generate $10,000&ndash;$14,000 per month in net profit &mdash; $122,000&ndash;$172,000 per year.
+  </div>
+
+  <!-- 7.4 -->
+  <h3 id="twelve-month-pl">7.4 &nbsp; 12-Month P&amp;L Projection</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Machines</th>
+        <th>Revenue</th>
+        <th>OpEx</th>
+        <th>Net Profit</th>
+        <th>Cumulative Net</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">1</td>
+        <td class="text-center">1</td>
+        <td class="text-right">$6,000</td>
+        <td class="text-right">$4,500</td>
+        <td class="text-right">$1,500</td>
+        <td class="text-right">$1,500</td>
+      </tr>
+      <tr>
+        <td class="font-bold">2</td>
+        <td class="text-center">1</td>
+        <td class="text-right">$8,500</td>
+        <td class="text-right">$5,200</td>
+        <td class="text-right">$3,300</td>
+        <td class="text-right">$4,800</td>
+      </tr>
+      <tr>
+        <td class="font-bold">3</td>
+        <td class="text-center">1</td>
+        <td class="text-right">$10,000</td>
+        <td class="text-right">$5,800</td>
+        <td class="text-right">$4,200</td>
+        <td class="text-right">$9,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">4</td>
+        <td class="text-center">2</td>
+        <td class="text-right">$16,000</td>
+        <td class="text-right">$9,500</td>
+        <td class="text-right">$6,500</td>
+        <td class="text-right">$15,500</td>
+      </tr>
+      <tr>
+        <td class="font-bold">5</td>
+        <td class="text-center">2</td>
+        <td class="text-right">$18,000</td>
+        <td class="text-right">$10,200</td>
+        <td class="text-right">$7,800</td>
+        <td class="text-right">$23,300</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">6</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$24,000</td>
+        <td class="text-right">$14,000</td>
+        <td class="text-right">$10,000</td>
+        <td class="text-right">$33,300</td>
+      </tr>
+      <tr>
+        <td class="font-bold">7</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$26,000</td>
+        <td class="text-right">$15,200</td>
+        <td class="text-right">$10,800</td>
+        <td class="text-right">$44,100</td>
+      </tr>
+      <tr>
+        <td class="font-bold">8</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$28,000</td>
+        <td class="text-right">$16,000</td>
+        <td class="text-right">$12,000</td>
+        <td class="text-right">$56,100</td>
+      </tr>
+      <tr>
+        <td class="font-bold">9</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$28,500</td>
+        <td class="text-right">$16,300</td>
+        <td class="text-right">$12,200</td>
+        <td class="text-right">$68,300</td>
+      </tr>
+      <tr>
+        <td class="font-bold">10</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$29,000</td>
+        <td class="text-right">$16,500</td>
+        <td class="text-right">$12,500</td>
+        <td class="text-right">$80,800</td>
+      </tr>
+      <tr>
+        <td class="font-bold">11</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$30,000</td>
+        <td class="text-right">$17,000</td>
+        <td class="text-right">$13,000</td>
+        <td class="text-right">$93,800</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">12</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$34,000</td>
+        <td class="text-right">$19,500</td>
+        <td class="text-right">$14,500</td>
+        <td class="text-right">$108,300</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="font-bold">Year 1 Total</td>
+        <td class="text-right font-bold">$258,000</td>
+        <td class="text-right font-bold">$149,700</td>
+        <td class="text-right font-bold">$108,300</td>
+        <td class="text-right"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-title">Year 1 Projection Notes</div>
+    <p>Month 1 begins with a single machine (Valley Hospital). Machine 2 (Garden State Plaza) is added in Month 4. Machine 3 (Cedar Hill) is added in Month 6. Month 12 includes a holiday-season revenue uplift. Year 1 net profit of $108,300 assumes a blended scenario between conservative and expected. The full range is $90,000 (conservative) to $172,000 (expected).</p>
+  </div>
+
+  <!-- 7.5 -->
+  <h3 id="five-year-projection">7.5 &nbsp; 5-Year Financial Projection</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Machines</th>
+        <th>Annual Revenue</th>
+        <th>Annual OpEx</th>
+        <th>Annual Net Profit</th>
+        <th>Net Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Year 1</td>
+        <td class="text-center">3</td>
+        <td class="text-right">$258,000</td>
+        <td class="text-right">$149,700</td>
+        <td class="text-right">$108,300</td>
+        <td class="text-center">42%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Year 2</td>
+        <td class="text-center">5&ndash;7</td>
+        <td class="text-right">$420,000&ndash;$588,000</td>
+        <td class="text-right">$220,000&ndash;$308,000</td>
+        <td class="text-right">$200,000&ndash;$280,000</td>
+        <td class="text-center">40&ndash;48%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Year 3</td>
+        <td class="text-center">8&ndash;10</td>
+        <td class="text-right">$640,000&ndash;$900,000</td>
+        <td class="text-right">$336,000&ndash;$450,000</td>
+        <td class="text-right">$304,000&ndash;$450,000</td>
+        <td class="text-center">45&ndash;50%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Year 4</td>
+        <td class="text-center">10&ndash;12</td>
+        <td class="text-right">$850,000&ndash;$1,080,000</td>
+        <td class="text-right">$425,000&ndash;$540,000</td>
+        <td class="text-right">$425,000&ndash;$540,000</td>
+        <td class="text-center">48&ndash;50%</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Year 5</td>
+        <td class="text-center">12&ndash;15</td>
+        <td class="text-right">$1,020,000&ndash;$1,350,000</td>
+        <td class="text-right">$510,000&ndash;$650,000</td>
+        <td class="text-right">$510,000&ndash;$700,000</td>
+        <td class="text-center">50&ndash;52%</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="font-bold">Cumulative 5-Year Net Profit</td>
+        <td colspan="3" class="text-right font-bold">$1,547,300&ndash;$2,078,300</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="callout callout-success">
+    <div class="callout-title">Margin Expansion</div>
+    <p>Net margins improve from Year 1 to Year 5 (42% to 50&ndash;52%) due to economies of scale in procurement (volume wholesale discounts), route density (more machines per route = lower per-machine delivery cost), and fixed-cost leverage (insurance, vehicle, and management costs are spread across more machines).</p>
+  </div>
+
+  <!-- 7.6 -->
+  <h3 id="break-even">7.6 &nbsp; Break-Even Analysis</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Conservative</th>
+        <th>Expected</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Per-Machine Break-Even</td>
+        <td class="text-right">4 months</td>
+        <td class="text-right">2 months</td>
+      </tr>
+      <tr>
+        <td class="font-bold">3-Machine Network Break-Even</td>
+        <td class="text-right">6 months</td>
+        <td class="text-right">3 months</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Total Investment Recovery</td>
+        <td class="text-right">8 months</td>
+        <td class="text-right">4 months</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Monthly Break-Even Revenue (per machine)</td>
+        <td class="text-right">$4,100</td>
+        <td class="text-right">$4,100</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Daily Break-Even Units (per machine)</td>
+        <td class="text-right">2.5 units</td>
+        <td class="text-right">2.5 units</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The daily break-even threshold of 2.5 units per machine is achievable in virtually any high-traffic location. For context, Valley Hospital alone sees 3,000&ndash;5,000 visitors per day; a conversion rate of just 0.05% (1 in 2,000 visitors) would exceed break-even.</p>
+
+  <!-- 7.7 -->
+  <h3 id="funding-requirements">7.7 &nbsp; Funding Requirements</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Funding Source</th>
+        <th>Amount Available</th>
+        <th>Terms</th>
+        <th>Recommendation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td class="font-bold">Self-Funded (business reserves)</td>
+        <td class="text-right">$30,000&ndash;$50,000</td>
+        <td>No interest, no equity dilution</td>
+        <td>Recommended</td>
+      </tr>
+      <tr>
+        <td class="font-bold">SBA Microloan Program</td>
+        <td class="text-right">Up to $50,000</td>
+        <td>6&ndash;8% interest, 1&ndash;6 year term</td>
+        <td>Alternative</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Equipment Financing</td>
+        <td class="text-right">Up to $36,000</td>
+        <td>Machine as collateral, 8&ndash;12% APR</td>
+        <td>Alternative</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Business Line of Credit</td>
+        <td class="text-right">$25,000&ndash;$50,000</td>
+        <td>Variable rate, draw as needed</td>
+        <td>Working capital backup</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Funding Recommendation</div>
+    <p>Self-funding from existing business reserves is the recommended approach. The total investment of $27,000&ndash;$46,000 is modest relative to the projected returns, and self-funding avoids interest costs, equity dilution, and the administrative burden of external financing. The rapid break-even timeline (3&ndash;6 months) means capital is recycled quickly, and subsequent machine acquisitions can be funded from operating cash flow.</p>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     8. MARKETING & BRAND STRATEGY
+     ============================================================ -->
+<section class="section" id="marketing-brand">
+  <span class="section-number">Section 8</span>
+  <h2>Marketing &amp; Brand Strategy</h2>
+
+  <!-- 8.1 -->
+  <h3>8.1 &nbsp; Brand Integration</h3>
+
+  <p>The vending operation is not a separate brand; it is an extension of DreamersJoy Floral Studio. Every consumer touchpoint reinforces the studio's identity, driving awareness and client acquisition for the full range of DreamersJoy services.</p>
+
+  <ul>
+    <li><strong>Unified Visual Identity:</strong> Machine wraps, product wrapping, ribbon, and cards all carry the DreamersJoy logo, typography, and palette system.</li>
+    <li><strong>Website Integration:</strong> A dedicated "Vending Locations" page on dreamersjoystudio.com, with machine locations, product previews, and calls to action for custom orders and subscriptions.</li>
+    <li><strong>QR Code Engagement:</strong> Every machine displays a QR code linking to dreamersjoystudio.com, enabling cross-selling and email list capture.</li>
+    <li><strong>Social Media Cross-Promotion:</strong> Instagram (@dreamersjoy) features machine locations, new product reveals, and behind-the-scenes production content.</li>
+    <li><strong>CRM Integration:</strong> VioX AI-powered CRM captures vending customer data (via QR code opt-in, email receipts) and integrates with studio client management.</li>
+  </ul>
+
+  <!-- 8.2 -->
+  <h3>8.2 &nbsp; Machine Branding</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Detail</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Custom Vinyl Wrap</td>
+        <td>Full-machine wrap with DreamersJoy branding, floral photography, warm palette</td>
+        <td class="text-right">$800&ndash;$2,000</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Logo Placement</td>
+        <td>DreamersJoy logo prominent on front panel and both sides</td>
+        <td>Included in wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Tagline</td>
+        <td>"Refined Floral Design" displayed below logo</td>
+        <td>Included in wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Social Handle</td>
+        <td>@dreamersjoy displayed with Instagram icon</td>
+        <td>Included in wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Website URL</td>
+        <td>dreamersjoystudio.com displayed prominently</td>
+        <td>Included in wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">QR Code Panel</td>
+        <td>Scannable code linking to website or custom order page</td>
+        <td>Included in wrap</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Touchscreen UI</td>
+        <td>DreamersJoy-branded interface with product images and descriptions</td>
+        <td>$200&ndash;$500 (one-time design)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 8.3 -->
+  <h3>8.3 &nbsp; Holiday Marketing</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Campaign</th>
+        <th>Launch Date</th>
+        <th>Channels</th>
+        <th>Key Tactics</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Valentine's Day</td>
+        <td>January 15</td>
+        <td>Instagram, email, machine signage</td>
+        <td>Premium red/pink SKUs, gift-with-purchase card, location-based IG ads</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="font-bold">Mother's Day</td>
+        <td>April 1</td>
+        <td>Instagram, email, local press, machine signage</td>
+        <td>Extended product line, PR outreach, machine signage countdown, IG Reels</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Christmas/Holidays</td>
+        <td>November 1</td>
+        <td>Instagram, email, machine signage</td>
+        <td>Winter arrangements, gift bundles, holiday cards, seasonal wrapping</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Graduation</td>
+        <td>May 1</td>
+        <td>Instagram, school partnerships</td>
+        <td>School-color bouquets, "Congrats Grad" message cards</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 8.4 -->
+  <h3>8.4 &nbsp; Cross-Selling Strategy</h3>
+
+  <p>The vending operation creates a powerful acquisition funnel for DreamersJoy's higher-margin services:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Entry Point</th>
+        <th>Cross-Sell Path</th>
+        <th>Revenue Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Machine Purchase</td>
+        <td>QR code &rarr; Website visit &rarr; Custom order inquiry</td>
+        <td>$150&ndash;$500 per converted customer</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Machine Purchase</td>
+        <td>Email receipt opt-in &rarr; Subscription offer</td>
+        <td>$65&ndash;$125/month recurring</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Studio Client</td>
+        <td>Studio visit &rarr; Machine location awareness &rarr; Impulse repurchase</td>
+        <td>Incremental vending revenue</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Instagram Follower</td>
+        <td>Machine content &rarr; Studio page visit &rarr; Experience booking</td>
+        <td>$200&ndash;$500 per experience</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-title">VioX CRM Integration</div>
+    <p>VioX AI will build a unified customer database that links vending purchase data (via email receipt opt-ins) with studio client records. This enables targeted marketing: a customer who buys a $45 bouquet from the Valley Hospital machine receives an automated email 7 days later introducing DreamersJoy's subscription service. This personalized funnel is expected to convert 3&ndash;5% of vending customers into studio clients within the first year.</p>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     9. RISK ANALYSIS
+     ============================================================ -->
+<section class="section" id="risk-analysis">
+  <span class="section-number">Section 9</span>
+  <h2>Risk Analysis</h2>
+
+  <p>DreamersJoy has identified and assessed eight primary risks to the vending operation. Each risk is rated by severity and likelihood, with specific mitigation strategies designed to reduce both impact and probability.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Severity</th>
+        <th>Likelihood</th>
+        <th>Mitigation Strategy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Product Spoilage</td>
+        <td class="risk-critical">Critical</td>
+        <td>Medium</td>
+        <td>IoT temperature monitoring with cellular alerts; FIFO rotation; 72-hour pull window; 3x/week restocking; target spoilage &lt;15%</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Equipment Failure</td>
+        <td class="risk-high">High</td>
+        <td>Low&ndash;Medium</td>
+        <td>Manufacturer warranty (1&ndash;2 years); remote diagnostics via IoT; local service contract; spare parts inventory; 24-hour response SLA</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Location Loss</td>
+        <td class="risk-medium">Medium</td>
+        <td>Low</td>
+        <td>Multi-year contracts with exclusivity clauses; strong landlord relationships; pipeline of backup locations; 30-day notice requirement</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Competition Entry</td>
+        <td class="risk-medium">Medium</td>
+        <td>Medium</td>
+        <td>First-mover advantage with locked locations; exclusive contracts; superior product quality; established brand recognition; rapid scale</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Seasonal Revenue Dips</td>
+        <td class="risk-medium">Medium</td>
+        <td>High</td>
+        <td>Holiday premium pricing captures disproportionate revenue during peaks; year-round demand from hospitals; product mix adjustment for slow seasons</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Economic Downturn</td>
+        <td class="risk-medium">Medium</td>
+        <td>Low&ndash;Medium</td>
+        <td>Flowers are emotional/occasion-driven purchases, relatively recession-resistant; Bergen County affluence provides buffer; lower price tiers available</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Regulatory Changes</td>
+        <td class="risk-low">Low</td>
+        <td>Low</td>
+        <td>Standard business licensing and health department compliance; proactive relationship with local health department; legal counsel on retainer</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Vandalism/Theft</td>
+        <td class="risk-low">Low</td>
+        <td>Low</td>
+        <td>Machines in supervised locations (mall, hospital, shopping center); camera integration; insurance coverage; tamper-resistant design</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warning">
+    <div class="callout-title">Highest-Priority Risk: Spoilage</div>
+    <p>Spoilage is the most impactful operational risk because it directly erodes both revenue (unsold product) and margins (wasted COGS). DreamersJoy's multi-layered approach&mdash;IoT monitoring, strict FIFO rotation, 72-hour pull windows, and 3x/week restocking&mdash;is designed to keep spoilage below 15% of stocked units. At a 15% spoilage rate and an average COGS of $20 per unit, monthly spoilage cost for 3 machines is approximately $600&ndash;$900, which is already factored into operating cost projections.</p>
+  </div>
+
+  <h3>Risk-Adjusted Return</h3>
+  <p>Even under a worst-case scenario (20% spoilage, 30% below-expected traffic, loss of one location in Month 9), the 3-machine network remains profitable at an estimated $65,000&ndash;$85,000 annual net. The low fixed-cost structure means the business reaches profitability at a very low utilization threshold (2.5 units/day/machine), providing substantial margin of safety.</p>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     10. GROWTH STRATEGY
+     ============================================================ -->
+<section class="section" id="growth-strategy">
+  <span class="section-number">Section 10</span>
+  <h2>Growth Strategy</h2>
+
+  <p>Growth is phased to validate the business model, build operational capability, and scale methodically. Each phase has clear milestones and decision gates before proceeding to the next.</p>
+
+  <div class="phase-timeline">
+    <div class="phase-item">
+      <div class="phase-marker">1</div>
+      <div class="phase-content">
+        <h4>Phase 1: Prove the Model</h4>
+        <div class="phase-time">Months 1&ndash;3</div>
+        <p><strong>Objective:</strong> Deploy 1 machine at Valley Hospital. Validate demand, optimize product mix, refine restocking operations, and establish baseline performance metrics.</p>
+        <p><strong>Key Activities:</strong> Machine installation and branding; initial product mix of 8&ndash;10 SKUs; daily monitoring of sales, temperature, and spoilage; weekly product mix adjustments; customer feedback collection via QR code survey.</p>
+        <p><strong>Revenue Target:</strong> $6,000&ndash;$15,000/month by Month 3</p>
+        <p><strong>Decision Gate:</strong> Proceed to Phase 2 if Month 3 revenue exceeds $8,000 and spoilage is below 18%.</p>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-marker">2</div>
+      <div class="phase-content">
+        <h4>Phase 2: Scale to Network</h4>
+        <div class="phase-time">Months 4&ndash;6</div>
+        <p><strong>Objective:</strong> Add machines at Garden State Plaza and Cedar Hill. Establish a 3-machine network with optimized routing and part-time driver.</p>
+        <p><strong>Key Activities:</strong> Secure location agreements for GSP and Cedar Hill; purchase and brand 2 additional machines; hire part-time restocking driver; implement route optimization; expand product line based on Phase 1 data.</p>
+        <p><strong>Revenue Target:</strong> $22,000&ndash;$35,000/month by Month 6</p>
+        <p><strong>Decision Gate:</strong> Proceed to Phase 3 if network revenue exceeds $20,000/month and per-machine profitability is validated at all 3 locations.</p>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-marker">3</div>
+      <div class="phase-content">
+        <h4>Phase 3: Expand Coverage</h4>
+        <div class="phase-time">Months 7&ndash;12</div>
+        <p><strong>Objective:</strong> Add 2&ndash;4 additional machines at secondary locations. Build to a 5&ndash;7 machine network with full-time operations staff.</p>
+        <p><strong>Key Activities:</strong> Secure agreements with NJ Transit, Bergen Town Center, and/or Shops at Riverside; upgrade to leased vehicle; hire full-time driver; implement IoT-based predictive restocking; expand wholesale purchasing volumes.</p>
+        <p><strong>Revenue Target:</strong> $45,000&ndash;$70,000/month by Month 12</p>
+        <p><strong>Decision Gate:</strong> Proceed to Phase 4 if annual run-rate net profit exceeds $200,000 and operations are scalable without founder involvement in daily routes.</p>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-marker">4</div>
+      <div class="phase-content">
+        <h4>Phase 4: Regional Expansion</h4>
+        <div class="phase-time">Year 2 and Beyond</div>
+        <p><strong>Objective:</strong> Scale to 10&ndash;15 machines across Bergen County and begin exploring adjacent markets (Passaic County, Essex County, Rockland County NY).</p>
+        <p><strong>Key Activities:</strong> Full operations team with dedicated manager; multiple restocking routes; advanced analytics and AI-driven inventory; exploration of franchise or licensing model; potential second production hub.</p>
+        <p><strong>Revenue Target:</strong> $80,000&ndash;$120,000/month</p>
+        <p><strong>Long-Term Vision:</strong> DreamersJoy becomes the dominant floral vending brand in the northern New Jersey / southern New York metro area, with potential for licensing the model to operators in other affluent suburban markets.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    Start with one machine. Prove it works. Then scale relentlessly.
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     11. MANAGEMENT TEAM
+     ============================================================ -->
+<section class="section" id="management-team">
+  <span class="section-number">Section 11</span>
+  <h2>Management Team</h2>
+
+  <p>DreamersJoy Floral Vending is led by a complementary team combining floral design expertise with business strategy and technology capability.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Name</th>
+        <th>Responsibilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-bold">Founder &amp; Creative Director</td>
+        <td>Sarah De Jesus</td>
+        <td>Floral design direction, product line curation, brand vision, supplier relationship management, quality standards, seasonal strategy</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Business Operations &amp; Technology</td>
+        <td>Juan Alvarado (VioX AI)</td>
+        <td>Business strategy, financial planning, technology integration, CRM/analytics, IoT monitoring setup, growth strategy, partnership development</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Operations Manager (TBH)</td>
+        <td>To Be Hired (Phase 3)</td>
+        <td>Day-to-day machine operations, driver management, route optimization, inventory management, location partner relationships</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Floral Designer</td>
+        <td>Existing Studio Staff</td>
+        <td>Arrangement production for vending machines, maintaining studio-grade quality standards across all vending products</td>
+      </tr>
+      <tr>
+        <td class="font-bold">Restocking Driver</td>
+        <td>To Be Hired (Phase 1&ndash;2)</td>
+        <td>Vehicle loading, route execution, machine maintenance, inventory documentation, product quality verification</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Advisory &amp; Support</h3>
+  <ul>
+    <li><strong>Accountant/CPA:</strong> Tax planning, entity structuring, quarterly financial review</li>
+    <li><strong>Insurance Broker:</strong> General liability, product liability, commercial auto</li>
+    <li><strong>Legal Counsel:</strong> Location contracts, LLC formation, regulatory compliance</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Team Strength</div>
+    <p>The combination of Sarah De Jesus's floral design expertise and brand vision with Juan Alvarado's business operations, technology, and analytics capability creates a team uniquely suited to execute a premium floral vending operation. Sarah ensures the product is differentiated and desirable; Juan ensures the operation is optimized and scalable. This complementary skill set eliminates the two most common failure modes in vending businesses: poor product (commodity offerings that don't command premium pricing) and poor operations (inefficient restocking, inadequate monitoring, no data-driven optimization).</p>
+  </div>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     12. APPENDIX
+     ============================================================ -->
+<section class="section" id="appendix">
+  <span class="section-number">Section 12</span>
+  <h2>Appendix</h2>
+
+  <!-- A -->
+  <h3>Appendix A: Machine Specifications Comparison</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>FloraBot FV-200</th>
+        <th>CoolVend CV-F12</th>
+        <th>HyperVend HV-Floral</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Price</td><td class="text-right">$8,500</td><td class="text-right">$7,800</td><td class="text-right">$11,500</td></tr>
+      <tr><td class="font-bold">Capacity</td><td class="text-center">10 slots</td><td class="text-center">12 slots</td><td class="text-center">8 slots</td></tr>
+      <tr><td class="font-bold">Temp Range</td><td>33&ndash;40&deg;F</td><td>34&ndash;42&deg;F</td><td>32&ndash;38&deg;F</td></tr>
+      <tr><td class="font-bold">Delivery System</td><td>Elevator (gentle)</td><td>Conveyor belt</td><td>Robotic arm (gentlest)</td></tr>
+      <tr><td class="font-bold">Touchscreen</td><td>12" LCD</td><td>10" LCD</td><td>15" HD</td></tr>
+      <tr><td class="font-bold">Payment</td><td>Card + NFC</td><td>Card + NFC</td><td>Card + NFC + QR</td></tr>
+      <tr><td class="font-bold">IoT Connectivity</td><td>4G LTE</td><td>WiFi + 4G</td><td>4G LTE + WiFi</td></tr>
+      <tr><td class="font-bold">Warranty</td><td>2 years</td><td>1 year</td><td>2 years</td></tr>
+      <tr><td class="font-bold">Made In</td><td>USA</td><td>China (US support)</td><td>USA</td></tr>
+      <tr><td class="font-bold">Custom Wrap Support</td><td>Yes</td><td>Yes</td><td>Yes (premium)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- B -->
+  <h3>Appendix B: Sample Location Agreement Outline</h3>
+
+  <ol>
+    <li><strong>Parties:</strong> DreamersJoy Floral Vending LLC ("Operator") and [Property Owner/Manager] ("Host")</li>
+    <li><strong>Equipment:</strong> 1 refrigerated floral vending machine, description and dimensions</li>
+    <li><strong>Location:</strong> Specific placement within the property, approved by both parties</li>
+    <li><strong>Term:</strong> Initial 1&ndash;3 year term with automatic renewal</li>
+    <li><strong>Compensation:</strong> [X]% of gross sales or $[X]/month flat fee, paid monthly</li>
+    <li><strong>Utilities:</strong> Host provides standard 120V electrical outlet; Operator pays electricity costs</li>
+    <li><strong>Insurance:</strong> Operator maintains $1M general liability naming Host as additional insured</li>
+    <li><strong>Maintenance:</strong> Operator responsible for all maintenance, restocking, cleaning</li>
+    <li><strong>Access:</strong> Operator has reasonable access for restocking during operating hours</li>
+    <li><strong>Exclusivity:</strong> No competing floral vending within the property during term</li>
+    <li><strong>Termination:</strong> 30-day written notice by either party; 90-day for cause</li>
+    <li><strong>Indemnification:</strong> Mutual indemnification; Operator holds Host harmless for machine-related claims</li>
+  </ol>
+
+  <!-- C -->
+  <h3>Appendix C: Seasonal Bloom Calendar</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Bloom</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+        <th>Jul</th>
+        <th>Aug</th>
+        <th>Sep</th>
+        <th>Oct</th>
+        <th>Nov</th>
+        <th>Dec</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Garden Roses</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td></tr>
+      <tr><td class="font-bold">Peonies</td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Ranunculus</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Tulips</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Sweet Pea</td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Dahlias</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td></tr>
+      <tr><td class="font-bold">Lisianthus</td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Cosmos</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td></tr>
+      <tr><td class="font-bold">Scabiosa</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td></tr>
+      <tr><td class="font-bold">Amaranthus</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td></tr>
+      <tr><td class="font-bold">Anemones</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td></tr>
+      <tr><td class="font-bold">Hellebore</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td></tr>
+      <tr><td class="font-bold">Orchids</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td><td class="text-center">*</td></tr>
+      <tr><td class="font-bold">Amaryllis</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">*</td><td class="text-center">*</td></tr>
+    </tbody>
+  </table>
+
+  <!-- D -->
+  <h3>Appendix D: Bergen County Demographic Data</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Municipality</th>
+        <th>Population</th>
+        <th>Median HHI</th>
+        <th>% College Degree</th>
+        <th>Median Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Saddle River</td><td class="text-right">3,300</td><td class="text-right">$250,000+</td><td class="text-center">72%</td><td class="text-center">48</td></tr>
+      <tr><td class="font-bold">Franklin Lakes</td><td class="text-right">11,400</td><td class="text-right">$212,000</td><td class="text-center">68%</td><td class="text-center">43</td></tr>
+      <tr><td class="font-bold">Wyckoff</td><td class="text-right">17,400</td><td class="text-right">$196,632</td><td class="text-center">65%</td><td class="text-center">42</td></tr>
+      <tr><td class="font-bold">Ridgewood</td><td class="text-right">25,200</td><td class="text-right">$189,000</td><td class="text-center">73%</td><td class="text-center">40</td></tr>
+      <tr><td class="font-bold">Glen Rock</td><td class="text-right">12,000</td><td class="text-right">$168,000</td><td class="text-center">66%</td><td class="text-center">41</td></tr>
+      <tr><td class="font-bold">Ho-Ho-Kus</td><td class="text-right">4,100</td><td class="text-right">$163,000</td><td class="text-center">70%</td><td class="text-center">44</td></tr>
+      <tr><td class="font-bold">Allendale</td><td class="text-right">7,000</td><td class="text-right">$155,000</td><td class="text-center">64%</td><td class="text-center">42</td></tr>
+      <tr><td class="font-bold">Upper Saddle River</td><td class="text-right">8,400</td><td class="text-right">$198,000</td><td class="text-center">67%</td><td class="text-center">45</td></tr>
+      <tr><td class="font-bold">Mahwah</td><td class="text-right">26,400</td><td class="text-right">$128,000</td><td class="text-center">55%</td><td class="text-center">40</td></tr>
+      <tr><td class="font-bold">Paramus</td><td class="text-right">27,000</td><td class="text-right">$112,000</td><td class="text-center">49%</td><td class="text-center">43</td></tr>
+      <tr><td class="font-bold">Hackensack</td><td class="text-right">44,500</td><td class="text-right">$63,000</td><td class="text-center">38%</td><td class="text-center">37</td></tr>
+    </tbody>
+  </table>
+
+  <!-- E -->
+  <h3>Appendix E: DreamersJoy Brand Guidelines Summary</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Specification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Primary Font (Display)</td><td>Cormorant Garamond &mdash; headings, titles, machine signage</td></tr>
+      <tr><td class="font-bold">Secondary Font (Body)</td><td>Jost &mdash; body copy, labels, digital interfaces</td></tr>
+      <tr><td class="font-bold">Primary Color</td><td>#334155 (Navy) &mdash; backgrounds, primary text, machine header</td></tr>
+      <tr><td class="font-bold">Accent Color</td><td>#8B7355 (Warm Bronze) &mdash; accents, highlights, calls to action</td></tr>
+      <tr><td class="font-bold">Background</td><td>#FAFAF8 (Light) / #F5F0EB (Cream) &mdash; surfaces, cards</td></tr>
+      <tr><td class="font-bold">Text Color</td><td>#64748b (Slate) &mdash; body text, descriptions</td></tr>
+      <tr><td class="font-bold">Logo Usage</td><td>Full logo on machine front panel; wordmark on wrapping and cards</td></tr>
+      <tr><td class="font-bold">Tagline</td><td>"Refined Floral Design"</td></tr>
+      <tr><td class="font-bold">Design Aesthetic</td><td>Palette-driven, seasonally inspired, garden-gathered elegance</td></tr>
+      <tr><td class="font-bold">Palette System</td><td>5 signature palettes rotating seasonally: Blush, Garden, Moody, Sun, Winter</td></tr>
+    </tbody>
+  </table>
+
+  <!-- F -->
+  <h3>Appendix F: Competitive Analysis Detail</h3>
+
+  <h4>Unique Creations (Jersey City, NJ)</h4>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Unique Creations</th>
+        <th>DreamersJoy (Advantage)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="font-bold">Location</td><td>Jersey City (20+ miles from Bergen Co.)</td><td>Wyckoff, Bergen County (in-market)</td></tr>
+      <tr><td class="font-bold">Price Range</td><td>$45&ndash;$85</td><td>$28&ndash;$125 (wider range)</td></tr>
+      <tr><td class="font-bold">Product Quality</td><td>Standard floral arrangements</td><td>Studio-grade, designer-curated</td></tr>
+      <tr><td class="font-bold">Brand</td><td>Local Jersey City brand</td><td>Established Bergen County brand</td></tr>
+      <tr><td class="font-bold">Machines</td><td>1&ndash;2 machines</td><td>3-machine network (at launch)</td></tr>
+      <tr><td class="font-bold">Technology</td><td>Basic cashless</td><td>IoT monitoring, AI analytics, CRM</td></tr>
+      <tr><td class="font-bold">Threat Level</td><td colspan="2" class="risk-low">Low &mdash; no Bergen County presence, different market</td></tr>
+    </tbody>
+  </table>
+
+  <!-- G -->
+  <h3>Appendix G: Sources &amp; References</h3>
+
+  <ol>
+    <li>Global Flower Vending Machine Market Report, 2024&ndash;2033 (Industry Research)</li>
+    <li>U.S. Census Bureau &mdash; Bergen County, NJ Demographic Data (American Community Survey)</li>
+    <li>National Retail Federation &mdash; Mother's Day Spending Survey, 2025</li>
+    <li>Society of American Florists &mdash; Consumer Spending on Flowers, Annual Report</li>
+    <li>Valley Hospital &mdash; New Campus Facility Overview (Valley Health System)</li>
+    <li>Westfield Garden State Plaza &mdash; Property Details and Small Business Program</li>
+    <li>Regency Centers &mdash; Cedar Hill Shopping Center Property Profile</li>
+    <li>U.S. Small Business Administration &mdash; Microloan Program Details</li>
+    <li>New Jersey Department of the Treasury &mdash; LLC Formation Requirements</li>
+    <li>Bureau of Labor Statistics &mdash; Bergen County Employment and Income Data</li>
+    <li>IBIS World &mdash; Vending Machine Operators in the US, Industry Report</li>
+    <li>Grand View Research &mdash; U.S. Floral Market Size &amp; Trends Analysis, 2024&ndash;2030</li>
+  </ol>
+
+  <div class="section-footer">DreamersJoy Floral Vending &middot; Business Plan 2026&ndash;2028 &middot; Confidential</div>
+</section>
+
+<!-- ============================================================
+     END MATTER
+     ============================================================ -->
+<section style="padding:4rem 0; text-align:center; border-top:2px solid var(--accent); margin-top:3rem;">
+  <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--navy); margin-bottom:0.5rem;">DreamersJoy Floral Vending</p>
+  <p style="font-size:0.85rem; color:var(--text); letter-spacing:0.05em;">Business Plan 2026&ndash;2028</p>
+  <div style="width:60px; height:1px; background:var(--accent); margin:1.5rem auto;"></div>
+  <p style="font-size:0.8rem; color:var(--text); line-height:1.8;">
+    Prepared by DreamersJoy Floral Studio &amp; VioX AI<br>
+    Wyckoff, Bergen County, New Jersey<br>
+    April 2026
+  </p>
+  <p style="font-size:0.7rem; color:var(--text); letter-spacing:0.15em; text-transform:uppercase; margin-top:2rem;">
+    This document is confidential and proprietary.<br>
+    Distribution or reproduction without written consent is prohibited.
+  </p>
+</section>
+
+</div><!-- end .page-container -->
+
+</body>
+</html>

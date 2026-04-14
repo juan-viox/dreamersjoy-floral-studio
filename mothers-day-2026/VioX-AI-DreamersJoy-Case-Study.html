@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VioX AI Case Study | DreamersJoy Floral Studio</title>
+<meta name="description" content="How AI Systems Engineering Delivered a $150K Digital Ecosystem for Under $15 — A VioX AI Case Study">
+<meta name="author" content="Juan Alvarado, VioX AI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VioX AI Case Study — Master Stylesheet
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy: #1A1A2E;
+  --navy-deep: #12121F;
+  --navy-light: #252542;
+  --gold: #C9A96E;
+  --gold-light: #D4BC8E;
+  --gold-dim: #A8894F;
+  --light: #FAFAF8;
+  --cream: #F5F0EB;
+  --cream-warm: #EDE5DB;
+  --text: #334155;
+  --text-light: #475569;
+  --muted: #64748b;
+  --border: #E2DDD6;
+  --success: #059669;
+  --success-bg: #ECFDF5;
+  --danger: #DC2626;
+  --danger-bg: #FEF2F2;
+  --white: #FFFFFF;
+  --shadow-sm: 0 1px 2px rgba(26,26,46,0.05);
+  --shadow-md: 0 4px 12px rgba(26,26,46,0.08);
+  --shadow-lg: 0 12px 40px rgba(26,26,46,0.12);
+  --shadow-xl: 0 24px 60px rgba(26,26,46,0.16);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background: var(--light);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  color: var(--navy);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+h4 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
+h5 { font-size: 1.1rem; font-family: 'Jost', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; }
+
+p { margin-bottom: 1.25rem; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+a:hover { color: var(--gold); }
+
+strong { font-weight: 600; color: var(--navy); }
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container--narrow {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+section + section {
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Cover Page ---------- */
+.cover {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 40%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  padding: 3rem 2rem;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,169,110,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cover__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.cover__logo {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cover__logo-mark {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.cover__type {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 3.5rem;
+}
+
+.cover__client {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.cover__headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+  margin-bottom: 3.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover__meta {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.cover__divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 2rem auto;
+  opacity: 0.5;
+}
+
+/* ---------- Section Headers ---------- */
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  line-height: 1.65;
+}
+
+/* ---------- Stat Cards ---------- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card__number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-card__number--gold {
+  color: var(--gold);
+}
+
+.stat-card__number--success {
+  color: var(--success);
+}
+
+.stat-card__label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* ---------- Stat Cards — Navy variant ---------- */
+.stat-card--navy {
+  background: var(--navy);
+  border-color: var(--navy-light);
+}
+
+.stat-card--navy .stat-card__number { color: var(--gold); }
+.stat-card--navy .stat-card__label { color: rgba(255,255,255,0.55); }
+
+/* ---------- Callout Box ---------- */
+.callout {
+  background: var(--cream);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 2rem 2.25rem;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+.callout--navy {
+  background: var(--navy);
+  border-left-color: var(--gold);
+  color: rgba(255,255,255,0.85);
+}
+
+.callout--navy strong { color: var(--gold-light); }
+
+.callout__title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.75rem;
+}
+
+.callout--navy .callout__title { color: var(--gold); }
+
+.callout p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+/* ---------- Pull Quote ---------- */
+.pull-quote {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.pull-quote__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.55;
+  max-width: 750px;
+  margin: 0 auto 1rem;
+}
+
+.pull-quote__attr {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Comparison Table ---------- */
+.comparison {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.92rem;
+}
+
+.comparison th,
+.comparison td {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.comparison thead th {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.comparison tbody tr:last-child td {
+  border-bottom: 2px solid var(--navy);
+}
+
+.comparison .col-item { width: 40%; font-weight: 500; color: var(--navy); }
+.comparison .col-agency { width: 30%; color: var(--danger); }
+.comparison .col-viox { width: 30%; color: var(--success); font-weight: 600; }
+
+.comparison tfoot td {
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding-top: 1.25rem;
+  border-bottom: none;
+}
+
+.comparison tfoot .col-agency { color: var(--danger); }
+.comparison tfoot .col-viox { color: var(--success); }
+
+/* ---------- Architecture Diagram ---------- */
+.arch-diagram {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  margin: 2.5rem 0;
+  color: var(--white);
+  overflow-x: auto;
+}
+
+.arch-diagram__title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.arch-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.arch-node {
+  border: 1px solid rgba(201,169,110,0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: center;
+  min-width: 130px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.arch-node:hover {
+  border-color: var(--gold);
+  background: rgba(201,169,110,0.08);
+}
+
+.arch-node--primary {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.8rem 1.5rem;
+}
+
+.arch-node--pipeline {
+  background: rgba(201,169,110,0.12);
+  border-color: rgba(201,169,110,0.4);
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.arch-connector {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  opacity: 0.5;
+}
+
+.arch-branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.arch-branch__group {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.arch-branch__label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.arch-branch__items {
+  list-style: none;
+}
+
+.arch-branch__items li {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  padding: 0.25rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.arch-branch__items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 1px;
+  background: rgba(201,169,110,0.4);
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--border));
+}
+
+.timeline__item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline__item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -2.65rem;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--light);
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+.timeline__phase {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.25rem;
+}
+
+.timeline__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.timeline__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Deliverable Cards ---------- */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin: 2.5rem 0;
+}
+
+.deliverable-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.deliverable-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.deliverable-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+.deliverable-card__number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--cream-warm);
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+}
+
+.deliverable-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.deliverable-card__desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.deliverable-card__list {
+  list-style: none;
+}
+
+.deliverable-card__list li {
+  font-size: 0.84rem;
+  color: var(--text-light);
+  padding: 0.35rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.55;
+}
+
+.deliverable-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+/* ---------- Tool Chain Grid ---------- */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.tool-badge {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--navy);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.tool-badge:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.tool-badge__role {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Big Number Section ---------- */
+.big-number-section {
+  background: var(--navy);
+  padding: 5rem 0;
+  text-align: center;
+  border-top: none;
+}
+
+.big-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.big-number-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+}
+
+.big-number-context {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ---------- Insight Callout (big, centered) ---------- */
+.insight-block {
+  background: linear-gradient(160deg, var(--navy-deep), var(--navy));
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3rem;
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.insight-block::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.insight-block__label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.insight-block__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.insight-block__text strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+/* ---------- Metrics Grid ---------- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric-item {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border-right: 1px solid var(--border);
+}
+
+.metric-item:last-child { border-right: none; }
+
+.metric-item__value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.metric-item__label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ---------- Palette Swatches ---------- */
+.palette-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.palette-swatch {
+  flex: 1;
+  min-width: 120px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.palette-swatch__color {
+  height: 80px;
+}
+
+.palette-swatch__name {
+  padding: 0.65rem 0.75rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--navy);
+  background: var(--white);
+  text-align: center;
+}
+
+/* ---------- Services List ---------- */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+  list-style: none;
+}
+
+.services-list li {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  padding: 1rem 1.25rem;
+  padding-left: 2rem;
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.services-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+}
+
+/* ---------- Closing Page ---------- */
+.closing {
+  min-height: 60vh;
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-top: none;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201,169,110,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.closing__quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.45;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.closing__brand {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+}
+
+.closing__url {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Subsection styling ---------- */
+.subsection {
+  margin-bottom: 3rem;
+}
+
+.subsection:last-child { margin-bottom: 0; }
+
+.subsection-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-right: 0.5rem;
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 3rem auto;
+  opacity: 0.4;
+}
+
+/* ---------- Tag ---------- */
+.tag {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  background: rgba(201,169,110,0.12);
+  color: var(--gold-dim);
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Two-column comparison ---------- */
+.vs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.vs-panel {
+  border-radius: var(--radius-md);
+  padding: 2rem;
+}
+
+.vs-panel--agency {
+  background: var(--danger-bg);
+  border: 1px solid #FECACA;
+}
+
+.vs-panel--viox {
+  background: var(--success-bg);
+  border: 1px solid #A7F3D0;
+}
+
+.vs-panel__title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.vs-panel--agency .vs-panel__title { color: var(--danger); }
+.vs-panel--viox .vs-panel__title { color: var(--success); }
+
+.vs-panel__total {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.vs-panel--agency .vs-panel__total { color: var(--danger); }
+.vs-panel--viox .vs-panel__total { color: var(--success); }
+
+.vs-panel__sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* ---------- Phase badge ---------- */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.phase-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.25s ease;
+}
+
+.phase-card:hover { border-color: var(--gold); }
+
+.phase-card__num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phase-card__content {}
+
+.phase-card__title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.15rem;
+}
+
+.phase-card__desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ---------- Summary bar ---------- */
+.summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  margin: 2.5rem 0;
+}
+
+.summary-bar__item {
+  text-align: center;
+}
+
+.summary-bar__value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.summary-bar__label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+/* ---------- Table of Contents ---------- */
+.toc {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2.5rem;
+  margin: 3rem 0;
+}
+
+.toc__title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.25rem;
+}
+
+.toc__list {
+  list-style: none;
+  counter-reset: toc;
+}
+
+.toc__list li {
+  counter-increment: toc;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.toc__list li:last-child { border-bottom: none; }
+
+.toc__list li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  min-width: 1.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .container, .container--narrow {
+    padding: 0 1.25rem;
+  }
+
+  section { padding: 3.5rem 0; }
+
+  .vs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+
+  .metric-item:last-child { border-bottom: none; }
+
+  .arch-branch {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison {
+    font-size: 0.8rem;
+  }
+
+  .comparison th,
+  .comparison td {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .palette-row {
+    flex-direction: column;
+  }
+
+  .palette-swatch { min-width: 100%; }
+
+  .callout { padding: 1.5rem; }
+
+  .insight-block { padding: 2.5rem 1.5rem; }
+
+  .summary-bar { gap: 1.25rem; }
+
+  .cover__inner { padding: 0 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .services-list { grid-template-columns: 1fr; }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 1.5cm 2cm;
+  }
+
+  body {
+    font-size: 10pt;
+    color: #000;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cover {
+    min-height: auto;
+    padding: 4cm 2cm;
+    page-break-after: always;
+  }
+
+  .closing {
+    min-height: auto;
+    padding: 4cm 2cm;
+    page-break-before: always;
+  }
+
+  section {
+    padding: 1.5cm 0;
+    page-break-inside: avoid;
+  }
+
+  .stat-card,
+  .deliverable-card,
+  .phase-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .stat-card:hover,
+  .deliverable-card:hover,
+  .phase-card:hover,
+  .tool-badge:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .arch-diagram {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .insight-block {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-inside: avoid;
+  }
+
+  .big-number-section {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-before: always;
+  }
+
+  .comparison { page-break-inside: avoid; }
+  .pull-quote { page-break-inside: avoid; }
+  .callout { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+
+  a { color: var(--text); text-decoration: none; }
+  a[href]::after { content: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER PAGE
+     ============================================================ -->
+<div class="cover">
+  <div class="cover__inner">
+
+    <div class="cover__logo">
+      <span class="cover__logo-mark">V</span>
+      VioX AI
+    </div>
+
+    <div class="cover__type">Case Study</div>
+
+    <div class="cover__divider"></div>
+
+    <h1 class="cover__client">DreamersJoy<br>Floral Studio</h1>
+
+    <p class="cover__headline">
+      How AI Systems Engineering Delivered a $150K Digital Ecosystem for Under $15
+    </p>
+
+    <div class="cover__divider"></div>
+
+    <p class="cover__meta">April 2026 &middot; Confidential</p>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     TABLE OF CONTENTS
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="toc">
+      <div class="toc__title">Contents</div>
+      <ol class="toc__list">
+        <li>The Challenge</li>
+        <li>The Approach: AI Systems Engineering</li>
+        <li>What Was Delivered</li>
+        <li>The Numbers</li>
+        <li>Technical Architecture</li>
+        <li>Build Metrics</li>
+        <li>About VioX AI</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXECUTIVE SUMMARY
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Executive Summary</div>
+    <h2 class="section-title">The Overview</h2>
+    <p class="section-subtitle">
+      A proprietary AI orchestration platform delivers an entire digital ecosystem &mdash; website, CRM, voice agent, brand system, market analysis, and more &mdash; at 99.98% cost savings versus traditional agency pricing.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat-card stat-card--navy">
+        <div class="stat-card__number">~$13</div>
+        <div class="stat-card__label">Total API Cost</div>
+      </div>
+      <div class="stat-card stat-card--navy">
+        <div class="stat-card__number">$148K</div>
+        <div class="stat-card__label">Agency Equivalent</div>
+      </div>
+      <div class="stat-card stat-card--navy">
+        <div class="stat-card__number">99.98%</div>
+        <div class="stat-card__label">Cost Savings</div>
+      </div>
+      <div class="stat-card stat-card--navy">
+        <div class="stat-card__number">5 Days</div>
+        <div class="stat-card__label">Delivery Time</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Client</div>
+      <p><strong>DreamersJoy Floral Studio</strong> &mdash; A premium, invitation-based floral design studio in Bergen County, New Jersey, specializing in curated arrangements, seasonal collections, and private floral experiences.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">System Architect</div>
+      <p><strong>Juan Alvarado</strong>, Founder of VioX AI &mdash; AI systems engineer specializing in multi-agent orchestration, cinematic design automation, and intelligent tool chaining for business-grade digital products.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     1. THE CHALLENGE
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title">The Challenge</h2>
+    <p class="section-subtitle">
+      A local floral business needed to transform into a luxury brand &mdash; with the digital infrastructure to match.
+    </p>
+
+    <p>DreamersJoy Floral Studio was at an inflection point. The business needed to transition from a workshop-focused operation to a private floral design studio with a premium, invitation-based client experience. That transformation demanded far more than a website refresh.</p>
+
+    <p>The scope of what was needed represented the full digital infrastructure of a modern luxury brand:</p>
+
+    <div class="deliverables-grid">
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">01</div>
+        <div class="deliverable-card__title">Cinematic Website</div>
+        <div class="deliverable-card__desc">A scroll-driven, video-forward website rivaling luxury fashion and hospitality brands. Not a template &mdash; a cinematic experience.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">02</div>
+        <div class="deliverable-card__title">Full CRM System</div>
+        <div class="deliverable-card__desc">Lead management, sales pipeline, invoicing, contact management, activity tracking, email integration, and team collaboration.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">03</div>
+        <div class="deliverable-card__title">AI Voice Agent</div>
+        <div class="deliverable-card__desc">A conversational voice agent for phone inquiries with brand-voice guidelines and CRM integration for automatic call logging.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">04</div>
+        <div class="deliverable-card__title">E-Commerce Order Flow</div>
+        <div class="deliverable-card__desc">A guided order flow system with delivery zone pricing, invitation-request pages, and full source tracking back to the CRM.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">05</div>
+        <div class="deliverable-card__title">Subscription Platform</div>
+        <div class="deliverable-card__desc">Bloom Circle &mdash; a recurring floral subscription with tiered membership, seasonal rotation, and subscriber management.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">06</div>
+        <div class="deliverable-card__title">Brand Design System</div>
+        <div class="deliverable-card__desc">A palette-driven system governing color, typography, product photography direction, and seasonal bloom curation rules.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">07</div>
+        <div class="deliverable-card__title">Social Media Pipeline</div>
+        <div class="deliverable-card__desc">Product photography, brand-aligned copy, and scheduled publishing across Instagram, Facebook, Pinterest, and TikTok.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">08</div>
+        <div class="deliverable-card__title">Market Analysis &amp; Business Plan</div>
+        <div class="deliverable-card__desc">Floral vending machine opportunity analysis, competitive landscape, location scouting, revenue projections, and a full business plan.</div>
+      </div>
+
+      <div class="deliverable-card">
+        <div class="deliverable-card__number">09</div>
+        <div class="deliverable-card__title">Mother's Day Collection</div>
+        <div class="deliverable-card__desc">Product images, floral recipes, PDF presentation, print-quality assets, and message card design for the 2026 seasonal campaign.</div>
+      </div>
+    </div>
+
+    <div class="callout callout--navy">
+      <div class="callout__title">The Agency Price Tag</div>
+      <p>A traditional agency &mdash; or more realistically, a team of agencies &mdash; would quote <strong>$75,000 to $150,000</strong> for this scope. Delivery would take <strong>3 to 6 months</strong>. The website alone would be a $15K-$30K engagement. The CRM would be a separate $25K-$50K project. The market analysis and business plan another $13K-$25K. And none of it would share a unified design system or data layer.</p>
+    </div>
+
+    <p>DreamersJoy didn't need to wait six months or spend six figures. The business needed everything, and it needed it now.</p>
+
+    <p>That's the problem VioX AI was built to solve.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     2. THE APPROACH: AI SYSTEMS ENGINEERING
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title">The Approach: AI Systems Engineering</h2>
+    <p class="section-subtitle">
+      Not prompt engineering. Not tool usage. Systems engineering &mdash; where specialized AI models are orchestrated into production-grade pipelines.
+    </p>
+
+    <!-- 2.1 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">2.1</span> The VioX AI Platform</h3>
+      <p>VioX AI is not a single AI tool. It is a <strong>multi-agent orchestration system</strong> &mdash; a platform that chains specialized AI models together into purpose-built pipelines, each designed to handle a specific domain of digital product development.</p>
+
+      <p>Where most people see AI as a single assistant you ask questions to, Juan Alvarado engineered VioX AI as something fundamentally different: a <strong>system of systems</strong> where each pipeline handles a specific class of work, and the orchestration layer ensures that outputs from one pipeline feed cleanly into the next.</p>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card__number">5</div>
+          <div class="stat-card__label">Core Pipelines</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">11</div>
+          <div class="stat-card__label">Build Phases</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">12+</div>
+          <div class="stat-card__label">Integrated Tools</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">1</div>
+          <div class="stat-card__label">System Architect</div>
+        </div>
+      </div>
+
+      <p>Each pipeline is designed for <strong>speed without sacrificing quality</strong>. The system doesn't produce "AI-looking" output. It produces agency-quality output &mdash; because the pipelines encode the same design thinking, technical rigor, and quality standards that a senior creative director or systems architect would demand. The difference is that those standards are encoded into the system itself, not dependent on a team of people executing them manually.</p>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">2.2</span> The Cinematic Sites Pipeline</h3>
+      <p>The flagship pipeline in VioX AI is the <strong>Cinematic Sites Pipeline</strong> &mdash; an 11-phase production system that takes a client from zero to a deployed, cinematic website with full SEO, voice agent, and CRM integration.</p>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-card__num">0</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Competitive Analysis</div>
+            <div class="phase-card__desc">20 competitors auto-analyzed for positioning, pricing, and visual language</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">1</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Brand Analysis</div>
+            <div class="phase-card__desc">Colors, fonts, tone, and content extraction from existing brand assets</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">2</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Hero Concepts</div>
+            <div class="phase-card__desc">3 cinematic video concepts designed for scroll-driven canvas playback</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">3</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Scene Generation</div>
+            <div class="phase-card__desc">Gemini image prompts, WaveSpeed Kling v3 animation, ffmpeg frame extraction</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">4</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Site Build</div>
+            <div class="phase-card__desc">3,500+ line HTML with 30 cinematic modules, GSAP ScrollTrigger animations</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">5</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Image Generation</div>
+            <div class="phase-card__desc">70 AI images, palette-driven, editorial photography direction</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">6</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">SEO &amp; Meta</div>
+            <div class="phase-card__desc">Schema.org structured data, Open Graph, Twitter Cards, sitemap</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">7</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Deploy</div>
+            <div class="phase-card__desc">GitHub to Vercel auto-deploy pipeline, Cloudflare DNS configuration</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">8</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Voice Agent</div>
+            <div class="phase-card__desc">ElevenLabs conversational AI with Twilio phone integration</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">9</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">Newsletter</div>
+            <div class="phase-card__desc">CRM-integrated newsletter signup with automated drip sequences</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-card__num">10</div>
+          <div class="phase-card__content">
+            <div class="phase-card__title">QA &amp; Delivery</div>
+            <div class="phase-card__desc">Cross-browser testing, performance audit, client handoff</div>
+          </div>
+        </div>
+      </div>
+
+      <p>This isn't a checklist someone follows. It's an <strong>engineered pipeline</strong> where each phase's output is structured to feed the next phase. The competitive analysis informs the brand positioning. The brand analysis drives the color palettes. The palettes govern the image generation prompts. The images populate the site modules. The site modules connect to the CRM endpoints. Every phase is connected by design.</p>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">2.3</span> The Design System Approach</h3>
+      <p>One of the most critical engineering decisions in VioX AI is that <strong>AI-generated images are not random</strong>. They're governed by a curated design system that ensures every visual output looks like it belongs in the same brand universe.</p>
+
+      <p>For DreamersJoy, the design system includes:</p>
+
+      <h4 style="margin-top: 1.5rem; margin-bottom: 1rem;">5 Core Palettes</h4>
+
+      <div class="palette-row">
+        <div class="palette-swatch">
+          <div class="palette-swatch__color" style="background: linear-gradient(135deg, #F5E6D3, #E8D5C4, #D4C4B0);"></div>
+          <div class="palette-swatch__name">Soft Garden</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__color" style="background: linear-gradient(135deg, #D4A9A9, #C49898, #B08787);"></div>
+          <div class="palette-swatch__name">Dusty Romantic</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__color" style="background: linear-gradient(135deg, #F5C77E, #E8B56E, #D4A45E);"></div>
+          <div class="palette-swatch__name">Citrus Sculptural</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__color" style="background: linear-gradient(135deg, #4A3728, #5C4A3A, #3D2E22);"></div>
+          <div class="palette-swatch__name">Deep Editorial</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__color" style="background: linear-gradient(135deg, #7FA87F, #6E956E, #5D825D);"></div>
+          <div class="palette-swatch__name">Fresh Modern Green</div>
+        </div>
+      </div>
+
+      <h4 style="margin-top: 1.5rem; margin-bottom: 1rem;">3 Product Forms</h4>
+      <div class="stats-row" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">Hand-Tied</div>
+          <div class="stat-card__label">Bouquet Form</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">Signature</div>
+          <div class="stat-card__label">Arrangement Form</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">Statement</div>
+          <div class="stat-card__label">Arrangement Form</div>
+        </div>
+      </div>
+
+      <p>Every image generation prompt encodes the palette, form, styling direction (pedestal/column for editorial photography), and seasonal bloom selection (with garden roses as the year-round anchor). This is <strong>design thinking applied to AI generation</strong> &mdash; not just "make me a picture."</p>
+
+      <div class="callout">
+        <div class="callout__title">Why This Matters</div>
+        <p>Without a design system, AI-generated images look like AI-generated images &mdash; technically impressive but visually incoherent. With a design system, every image reinforces the brand. The palette drives the mood. The form drives the product identity. The pedestal styling drives the editorial feel. The result is a visual language indistinguishable from what a high-end photography studio would produce.</p>
+      </div>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">2.4</span> Tool Chain Architecture</h3>
+      <p>VioX AI orchestrates a carefully selected chain of specialized tools, each chosen for its specific strength:</p>
+
+      <div class="tools-grid">
+        <div class="tool-badge">
+          Claude Code
+          <span class="tool-badge__role">Orchestration + Code</span>
+        </div>
+        <div class="tool-badge">
+          Gemini API
+          <span class="tool-badge__role">Image Generation</span>
+        </div>
+        <div class="tool-badge">
+          WaveSpeed Kling v3
+          <span class="tool-badge__role">Video Animation</span>
+        </div>
+        <div class="tool-badge">
+          ElevenLabs
+          <span class="tool-badge__role">Voice Agent</span>
+        </div>
+        <div class="tool-badge">
+          Supabase
+          <span class="tool-badge__role">Database + Auth</span>
+        </div>
+        <div class="tool-badge">
+          Vercel
+          <span class="tool-badge__role">Hosting + Deploy</span>
+        </div>
+        <div class="tool-badge">
+          Next.js 15
+          <span class="tool-badge__role">Application Framework</span>
+        </div>
+        <div class="tool-badge">
+          GSAP ScrollTrigger
+          <span class="tool-badge__role">Scroll Animations</span>
+        </div>
+        <div class="tool-badge">
+          Blotato
+          <span class="tool-badge__role">Social Automation</span>
+        </div>
+        <div class="tool-badge">
+          ffmpeg
+          <span class="tool-badge__role">Frame Extraction</span>
+        </div>
+        <div class="tool-badge">
+          GitHub
+          <span class="tool-badge__role">Version Control + CI/CD</span>
+        </div>
+        <div class="tool-badge">
+          Twilio
+          <span class="tool-badge__role">Phone Integration</span>
+        </div>
+      </div>
+
+      <p>The key insight is not that these tools exist &mdash; anyone can sign up for them. The insight is <strong>how they're chained together</strong>. Gemini generates images at $0.03&ndash;$0.05 each, but only because the prompts are engineered by the design system to produce usable results on the first pass. WaveSpeed Kling v3 Pro animates videos at $1.50&ndash;$2.00 per clip, but only because the input images are already composed for animation. The system eliminates the iteration tax that makes AI tools expensive in amateur hands.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     3. WHAT WAS DELIVERED
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 03</div>
+    <h2 class="section-title">What Was Delivered</h2>
+    <p class="section-subtitle">
+      A complete digital ecosystem spanning web, CRM, voice, commerce, brand, research, and social media &mdash; all built from a single orchestration platform.
+    </p>
+
+    <!-- 3.1 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.1</span> Cinematic Website</h3>
+      <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 1.25rem;">dreamersjoystudio.com</p>
+
+      <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+        <div class="stat-card">
+          <div class="stat-card__number">3,535</div>
+          <div class="stat-card__label">Lines of Code</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">122</div>
+          <div class="stat-card__label">Hero Frames</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">15+</div>
+          <div class="stat-card__label">Animated Sections</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">30</div>
+          <div class="stat-card__label">Cinematic Modules</div>
+        </div>
+      </div>
+
+      <ul class="deliverable-card__list" style="margin: 1.5rem 0;">
+        <li>Scroll-driven canvas video hero powered by WaveSpeed Kling v3 (122 extracted frames)</li>
+        <li>GSAP ScrollTrigger animations across 15+ sections with parallax, fade, and reveal effects</li>
+        <li>Palette-driven floral offerings: 3 collections across 3 sizes with product photography</li>
+        <li>Mother's Day 2026 promotional section with seasonal product display</li>
+        <li>Bloom Circle subscription section with tiered membership presentation</li>
+        <li>Invitation-based experiences section for private studio events</li>
+        <li>Full booking inquiry form with CRM integration and source tracking</li>
+        <li>Mobile responsive across all breakpoints with optimized touch interactions</li>
+        <li>Embedded ElevenLabs voice agent widget for phone inquiries</li>
+        <li>Hand-crafted HTML/CSS/JS &mdash; no templates, no page builders</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.2 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.2</span> VioX CRM System</h3>
+
+      <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+        <div class="stat-card">
+          <div class="stat-card__number">51</div>
+          <div class="stat-card__label">Pages / Routes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">18+</div>
+          <div class="stat-card__label">Modules</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">20+</div>
+          <div class="stat-card__label">Database Tables</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">4</div>
+          <div class="stat-card__label">API Ingest Endpoints</div>
+        </div>
+      </div>
+
+      <p>A full-featured CRM built on Next.js 15 and Supabase PostgreSQL with Row-Level Security, multi-tenant architecture (<code>organization_id</code> on all tables), and a client portal with branded login:</p>
+
+      <div class="tools-grid" style="grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); margin: 1.5rem 0;">
+        <div class="tool-badge">Dashboard<span class="tool-badge__role">Overview</span></div>
+        <div class="tool-badge">Contacts<span class="tool-badge__role">People</span></div>
+        <div class="tool-badge">Companies<span class="tool-badge__role">Organizations</span></div>
+        <div class="tool-badge">Pipeline<span class="tool-badge__role">Kanban Board</span></div>
+        <div class="tool-badge">Leads<span class="tool-badge__role">Inbound</span></div>
+        <div class="tool-badge">Calendar<span class="tool-badge__role">Scheduling</span></div>
+        <div class="tool-badge">Activities<span class="tool-badge__role">Logging</span></div>
+        <div class="tool-badge">Emails<span class="tool-badge__role">Communication</span></div>
+        <div class="tool-badge">Invoices<span class="tool-badge__role">Billing</span></div>
+        <div class="tool-badge">Automations<span class="tool-badge__role">Workflows</span></div>
+        <div class="tool-badge">Tasks<span class="tool-badge__role">Management</span></div>
+        <div class="tool-badge">Reports<span class="tool-badge__role">Analytics</span></div>
+        <div class="tool-badge">Custom Fields<span class="tool-badge__role">Extensibility</span></div>
+        <div class="tool-badge">Command Palette<span class="tool-badge__role">Navigation</span></div>
+        <div class="tool-badge">Notifications<span class="tool-badge__role">Alerts</span></div>
+        <div class="tool-badge">Team Mgmt<span class="tool-badge__role">Roles &amp; Access</span></div>
+        <div class="tool-badge">File Attachments<span class="tool-badge__role">Documents</span></div>
+        <div class="tool-badge">Contact Merge<span class="tool-badge__role">Deduplication</span></div>
+      </div>
+
+      <p>Four dedicated API ingest endpoints (<code>/api/ingest/lead</code>, <code>/newsletter</code>, <code>/voice-call</code>, <code>/booking</code>) ensure that every customer touchpoint &mdash; website form, phone call, newsletter signup &mdash; flows directly into the CRM with full source attribution.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.3 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.3</span> AI Voice Agent</h3>
+      <p>A conversational AI phone agent built on ElevenLabs with Twilio phone line integration. The agent speaks with the DreamersJoy brand voice, answers inquiries about services, pricing, availability, and seasonal collections, and automatically logs all calls as activities in the CRM.</p>
+
+      <div class="stats-row" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">ElevenLabs</div>
+          <div class="stat-card__label">Conversational AI</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">Twilio</div>
+          <div class="stat-card__label">Phone Line</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" style="font-size: 1.1rem; font-weight: 600;">CRM-Linked</div>
+          <div class="stat-card__label">Auto-Logged</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.4 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.4</span> Order &amp; Delivery System</h3>
+      <p>A complete commerce flow integrated directly into the website and CRM:</p>
+      <ul class="deliverable-card__list" style="margin: 1rem 0;">
+        <li>4-step guided order flow on the <code>/order</code> page with progressive disclosure</li>
+        <li>Delivery &amp; Service page with zone-based pricing for Bergen County and surrounding areas</li>
+        <li>Invitation request page (<code>/invite</code>) for private studio experiences</li>
+        <li>All form submissions route to CRM with full source tracking and attribution</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.5 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.5</span> Brand Design System</h3>
+      <p>A comprehensive design system that governs all visual output across every channel:</p>
+      <ul class="deliverable-card__list" style="margin: 1rem 0;">
+        <li>5 curated color palettes with specific use-case guidance and mood definitions</li>
+        <li>3 product forms with standardized naming conventions for inventory and display</li>
+        <li>Pedestal and editorial photography direction for consistent product presentation</li>
+        <li>Seasonal bloom rotation strategy with garden roses as the year-round anchor</li>
+        <li>Typography and visual hierarchy rules for all digital and print materials</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.6 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.6</span> Mother's Day 2026 Collection</h3>
+
+      <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+        <div class="stat-card">
+          <div class="stat-card__number">7</div>
+          <div class="stat-card__label">Product Images</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">4+3</div>
+          <div class="stat-card__label">Bouquets + Arrangements</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">7</div>
+          <div class="stat-card__label">Floral Recipes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">1</div>
+          <div class="stat-card__label">PDF Presentation</div>
+        </div>
+      </div>
+
+      <p>A complete seasonal collection with AI-generated product photography, detailed floral recipes for each piece, a designer-ready PDF presentation, print-quality JPG exports, and a custom message card design.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.7 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.7</span> Market Analysis &amp; Business Plan</h3>
+
+      <p>A full market opportunity analysis and business plan for DreamersJoy's floral vending machine expansion:</p>
+
+      <div class="deliverables-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="deliverable-card">
+          <div class="deliverable-card__title">Market Analysis</div>
+          <div class="deliverable-card__desc">3,500+ line HTML report covering competitive landscape, location analysis, and revenue projections</div>
+          <ul class="deliverable-card__list">
+            <li>Zero competitors identified in Bergen County</li>
+            <li>3 target locations: Valley Hospital, Garden State Plaza, Cedar Hill</li>
+            <li>$122K&ndash;$172K annual net revenue projection (3 machines)</li>
+          </ul>
+        </div>
+
+        <div class="deliverable-card">
+          <div class="deliverable-card__title">Business Plan</div>
+          <div class="deliverable-card__desc">3,200+ line HTML report plus 23-slide PPTX presentation</div>
+          <ul class="deliverable-card__list">
+            <li>Driver operations model with vehicle analysis</li>
+            <li>5-year financial projection ($1.5M&ndash;$2.3M cumulative)</li>
+            <li>Full PPTX for investor/lender presentations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3.8 -->
+    <div class="subsection">
+      <h3><span class="subsection-number">3.8</span> Social Media Content</h3>
+      <p>Five Mother's Day posts created and scheduled through Blotato, with product photography and brand-aligned copy published across Instagram (<code>@dreamersjoy</code>), Facebook, Pinterest, and TikTok.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     BIG NUMBER INTERSTITIAL
+     ============================================================ -->
+<div class="big-number-section">
+  <div class="container">
+    <div class="big-number">99.98%</div>
+    <div class="big-number-label">Cost Reduction vs. Traditional Agency</div>
+    <div class="big-number-context">
+      An entire digital ecosystem &mdash; website, CRM, voice agent, brand system, market analysis, social pipeline &mdash; delivered for the cost of a single stock photo.
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     4. THE NUMBERS
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 04</div>
+    <h2 class="section-title">The Numbers</h2>
+    <p class="section-subtitle">
+      A line-by-line comparison of traditional agency pricing versus VioX AI system costs.
+    </p>
+
+    <!-- Side-by-side panels -->
+    <div class="vs-grid">
+      <div class="vs-panel vs-panel--agency">
+        <div class="vs-panel__title">Traditional Agency</div>
+        <div class="vs-panel__total">$76,500 &ndash; $148,000</div>
+        <div class="vs-panel__sub">Estimated total &middot; 3&ndash;6 month timeline</div>
+        <p style="font-size: 0.84rem; color: var(--text-light); line-height: 1.6;">Requires multiple vendors: web agency, CRM developer, voice AI consultant, brand designer, market researcher, business plan writer, social media manager, photographer, and a project manager to coordinate them all.</p>
+      </div>
+
+      <div class="vs-panel vs-panel--viox">
+        <div class="vs-panel__title">VioX AI System</div>
+        <div class="vs-panel__total">~$13</div>
+        <div class="vs-panel__sub">Actual API spend &middot; 5-day delivery</div>
+        <p style="font-size: 0.84rem; color: var(--text-light); line-height: 1.6;">Single system architect. One orchestration platform. All pipelines integrated. Shared design system across every deliverable. Unified data layer from website to CRM to voice agent.</p>
+      </div>
+    </div>
+
+    <!-- Detailed comparison table -->
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th class="col-item">Deliverable</th>
+          <th class="col-agency">Traditional Agency</th>
+          <th class="col-viox">VioX AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-item">Website Design &amp; Development</td>
+          <td class="col-agency">$15,000 &ndash; $30,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">CRM System (18+ modules)</td>
+          <td class="col-agency">$25,000 &ndash; $50,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">AI Voice Agent</td>
+          <td class="col-agency">$2,000 &ndash; $4,000</td>
+          <td class="col-viox">~$5</td>
+        </tr>
+        <tr>
+          <td class="col-item">70 Product Images</td>
+          <td class="col-agency">$5,000 &ndash; $10,000</td>
+          <td class="col-viox">~$3</td>
+        </tr>
+        <tr>
+          <td class="col-item">3 Cinematic Videos</td>
+          <td class="col-agency">$3,000 &ndash; $5,000</td>
+          <td class="col-viox">~$5</td>
+        </tr>
+        <tr>
+          <td class="col-item">Brand Design System</td>
+          <td class="col-agency">$3,000 &ndash; $5,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Order Flow + Delivery Pages</td>
+          <td class="col-agency">$4,000 &ndash; $7,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Mother's Day Collection + Recipes</td>
+          <td class="col-agency">$3,000 &ndash; $5,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Market Analysis Report</td>
+          <td class="col-agency">$5,000 &ndash; $10,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Business Plan + PPTX</td>
+          <td class="col-agency">$8,000 &ndash; $15,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Social Media Content (5 posts)</td>
+          <td class="col-agency">$500 &ndash; $1,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Competitive Analysis (20 brands)</td>
+          <td class="col-agency">$2,000 &ndash; $4,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+        <tr>
+          <td class="col-item">Deployment &amp; DevOps</td>
+          <td class="col-agency">$1,000 &ndash; $2,000</td>
+          <td class="col-viox">$0</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="col-item" style="font-weight: 700;">Total</td>
+          <td class="col-agency">$76,500 &ndash; $148,000</td>
+          <td class="col-viox">~$13</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Cost breakdown detail -->
+    <div class="callout" style="margin-top: 2rem;">
+      <div class="callout__title">VioX AI Cost Breakdown</div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.75rem;">
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">Gemini API (70 images at ~$0.03&ndash;$0.05 each)</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--navy);">~$3.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">WaveSpeed Kling v3 Pro (3 videos at ~$1.50&ndash;$2.00 each)</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--navy);">~$5.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">ElevenLabs Voice Agent</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--navy);">~$5.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">Supabase (free tier)</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--success);">$0.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">Vercel (existing plan)</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--success);">$0.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">Blotato (existing plan)</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--success);">$0.00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0; color: var(--text-light);">GitHub</td>
+          <td style="padding: 0.4rem 0; text-align: right; font-weight: 600; color: var(--success);">$0.00</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--navy);">
+          <td style="padding: 0.75rem 0; font-weight: 700; color: var(--navy);">Total API Spend</td>
+          <td style="padding: 0.75rem 0; text-align: right; font-weight: 700; color: var(--navy); font-size: 1.1rem;">~$13.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Timeline comparison -->
+    <h3 style="margin-top: 3rem; margin-bottom: 1.25rem;">Delivery Timeline Comparison</h3>
+
+    <div class="vs-grid">
+      <div style="text-align: center; padding: 2rem; background: var(--danger-bg); border-radius: var(--radius-md); border: 1px solid #FECACA;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--danger); line-height: 1;">3&ndash;6</div>
+        <div style="font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--danger); margin-top: 0.25rem;">Months (Agency)</div>
+      </div>
+      <div style="text-align: center; padding: 2rem; background: var(--success-bg); border-radius: var(--radius-md); border: 1px solid #A7F3D0;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--success); line-height: 1;">5</div>
+        <div style="font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--success); margin-top: 0.25rem;">Days (VioX AI)</div>
+      </div>
+    </div>
+
+    <!-- THE KEY INSIGHT -->
+    <div class="insight-block">
+      <div class="insight-block__label">The Key Insight</div>
+      <div class="insight-block__text">
+        The $13 in API costs is not the story. The story is the <strong>engineering behind the system</strong> that makes $13 sufficient. Juan Alvarado built VioX AI as a multi-agent orchestration platform that chains specialized AI models into production-ready pipelines. Each pipeline is designed to produce <strong>agency-quality output</strong> &mdash; not AI-looking output. The palette-driven design system, the cinematic site modules, the CRM architecture, the tool chain &mdash; these are <strong>engineering decisions that took years of expertise to design</strong>. The AI executes. The system architect designs what gets executed.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. TECHNICAL ARCHITECTURE
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 05</div>
+    <h2 class="section-title">Technical Architecture</h2>
+    <p class="section-subtitle">
+      The VioX AI platform architecture &mdash; a multi-pipeline orchestration system designed for production-grade digital product development.
+    </p>
+
+    <div class="arch-diagram">
+      <div class="arch-diagram__title">VioX AI System Architecture</div>
+
+      <!-- Top level -->
+      <div class="arch-row">
+        <div class="arch-node" style="border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7);">Client Input</div>
+      </div>
+
+      <div class="arch-connector">&#9660;</div>
+
+      <div class="arch-row">
+        <div class="arch-node arch-node--primary">VioX AI Orchestrator</div>
+      </div>
+
+      <div class="arch-connector">&#9660;</div>
+
+      <!-- Pipeline branches -->
+      <div class="arch-branch">
+        <div class="arch-branch__group">
+          <div class="arch-branch__label">Cinematic Sites Pipeline</div>
+          <ul class="arch-branch__items">
+            <li>Gemini API (images)</li>
+            <li>WaveSpeed Kling v3 (video)</li>
+            <li>ffmpeg (frames)</li>
+            <li>GSAP ScrollTrigger (animations)</li>
+            <li>Vercel (deploy)</li>
+            <li>Cloudflare (DNS)</li>
+          </ul>
+        </div>
+
+        <div class="arch-branch__group">
+          <div class="arch-branch__label">CRM Pipeline</div>
+          <ul class="arch-branch__items">
+            <li>Next.js 15 (framework)</li>
+            <li>Supabase (DB + Auth)</li>
+            <li>PostgreSQL (RLS)</li>
+            <li>API Routes (ingest)</li>
+            <li>Client Portal</li>
+          </ul>
+        </div>
+
+        <div class="arch-branch__group">
+          <div class="arch-branch__label">Voice Agent Pipeline</div>
+          <ul class="arch-branch__items">
+            <li>ElevenLabs (AI voice)</li>
+            <li>Twilio (phone line)</li>
+            <li>Brand Prompt</li>
+            <li>CRM Activity Log</li>
+          </ul>
+        </div>
+
+        <div class="arch-branch__group">
+          <div class="arch-branch__label">Content Pipeline</div>
+          <ul class="arch-branch__items">
+            <li>Gemini (product images)</li>
+            <li>Brand Design System</li>
+            <li>Palette Engine</li>
+            <li>Blotato (social)</li>
+          </ul>
+        </div>
+
+        <div class="arch-branch__group">
+          <div class="arch-branch__label">Research Pipeline</div>
+          <ul class="arch-branch__items">
+            <li>Web Research</li>
+            <li>Data Analysis</li>
+            <li>Report Gen (HTML)</li>
+            <li>Report Gen (PPTX)</li>
+            <li>Report Gen (PDF)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Integration Points</div>
+      <p>The architecture is not five isolated pipelines &mdash; it's an integrated system. The Cinematic Sites pipeline generates the website that connects to the CRM pipeline's API endpoints. The Voice Agent pipeline logs activities into the CRM's database. The Content pipeline uses the Design System to generate images that populate both the website and social media channels. The Research pipeline's outputs inform the website content and business positioning. Every pipeline feeds into the others.</p>
+    </div>
+
+    <h3 style="margin-top: 2.5rem; margin-bottom: 1.25rem;">Data Flow</h3>
+    <p>All customer-facing touchpoints converge into a single data layer:</p>
+
+    <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+      <div class="stat-card">
+        <div class="stat-card__number" style="font-size: 1rem; font-weight: 600;">Website Forms</div>
+        <div class="stat-card__label">Booking, Order, Newsletter</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number" style="font-size: 1rem; font-weight: 600;">Voice Calls</div>
+        <div class="stat-card__label">ElevenLabs + Twilio</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number" style="font-size: 1rem; font-weight: 600;">Social Media</div>
+        <div class="stat-card__label">Blotato Engagement</div>
+      </div>
+    </div>
+
+    <div class="arch-connector" style="font-size: 1.5rem; color: var(--gold); text-align: center; margin: 1rem 0;">&#9660;</div>
+
+    <div class="stat-card stat-card--navy" style="text-align: center; max-width: 400px; margin: 0 auto;">
+      <div class="stat-card__number" style="font-size: 1.1rem; color: var(--gold);">Supabase PostgreSQL</div>
+      <div class="stat-card__label">Unified CRM Data Layer with Row-Level Security</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. BUILD METRICS
+     ============================================================ -->
+<section>
+  <div class="container--narrow">
+    <div class="section-label">Section 06</div>
+    <h2 class="section-title">Build Metrics</h2>
+    <p class="section-subtitle">
+      A quantitative summary of everything produced during the 5-day build.
+    </p>
+
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="metric-item__value">~5</div>
+        <div class="metric-item__label">Build Days</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">80</div>
+        <div class="metric-item__label">Git Commits</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">20+</div>
+        <div class="metric-item__label">Vercel Deploys</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">3,535</div>
+        <div class="metric-item__label">Lines of Site HTML</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">51</div>
+        <div class="metric-item__label">Next.js Pages</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">70</div>
+        <div class="metric-item__label">AI Images</div>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="metric-item__value">3</div>
+        <div class="metric-item__label">Cinematic Videos</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">366</div>
+        <div class="metric-item__label">Total Video Frames</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">18+</div>
+        <div class="metric-item__label">CRM Modules</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">10+</div>
+        <div class="metric-item__label">API Endpoints</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">20+</div>
+        <div class="metric-item__label">Database Tables</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-item__value">5</div>
+        <div class="metric-item__label">Social Posts</div>
+      </div>
+    </div>
+
+    <div class="summary-bar">
+      <div class="summary-bar__item">
+        <div class="summary-bar__value">3</div>
+        <div class="summary-bar__label">HTML Reports</div>
+      </div>
+      <div class="summary-bar__item">
+        <div class="summary-bar__value">3</div>
+        <div class="summary-bar__label">PPTX Decks</div>
+      </div>
+      <div class="summary-bar__item">
+        <div class="summary-bar__value">1</div>
+        <div class="summary-bar__label">PDF Presentation</div>
+      </div>
+      <div class="summary-bar__item">
+        <div class="summary-bar__value">15+</div>
+        <div class="summary-bar__label">Animated Sections</div>
+      </div>
+      <div class="summary-bar__item">
+        <div class="summary-bar__value">30</div>
+        <div class="summary-bar__label">Cinematic Modules</div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote__text">
+        Every metric here represents work that would have required a different specialist in a traditional agency model &mdash; designer, developer, copywriter, photographer, videographer, market researcher, business analyst, social media manager. VioX AI consolidates all of those roles into a single orchestrated system.
+      </div>
+      <div class="pull-quote__attr">Juan Alvarado &middot; VioX AI</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7. ABOUT VIOX AI
+     ============================================================ -->
+<section style="background: var(--cream);">
+  <div class="container--narrow">
+    <div class="section-label">Section 07</div>
+    <h2 class="section-title">About VioX AI</h2>
+    <p class="section-subtitle">
+      AI-powered business solutions built on multi-agent orchestration, cinematic design automation, and intelligent tool chaining.
+    </p>
+
+    <p>VioX AI is a technology company founded by <strong>Juan Alvarado</strong> that builds AI-powered business solutions. The VioX AI platform combines multi-agent orchestration, cinematic design automation, and intelligent tool chaining to deliver enterprise-quality digital products at startup speed and cost.</p>
+
+    <p>The platform is not a product you buy &mdash; it's a capability Juan Alvarado has engineered over years of building at the intersection of AI, design, and systems architecture. Every client engagement benefits from the accumulated knowledge embedded in the pipelines, design systems, and orchestration patterns.</p>
+
+    <h3 style="margin-top: 2rem; margin-bottom: 1.25rem;">Services</h3>
+
+    <ul class="services-list">
+      <li>Cinematic Website Development</li>
+      <li>CRM &amp; Business Systems</li>
+      <li>AI Voice Agents</li>
+      <li>Brand Design Systems</li>
+      <li>Market Analysis &amp; Business Planning</li>
+      <li>Social Media Automation</li>
+    </ul>
+
+    <div class="callout" style="margin-top: 2.5rem;">
+      <div class="callout__title">Get in Touch</div>
+      <p><strong>VioX AI</strong><br>Bergen County, New Jersey<br>viox.ai</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CLOSING PAGE
+     ============================================================ -->
+<div class="closing">
+  <div style="position: relative; z-index: 2;">
+    <div class="closing__quote">
+      &ldquo;We don't just use AI. We engineer AI systems that think like agencies and execute like machines.&rdquo;
+    </div>
+    <div class="cover__divider" style="margin-bottom: 2rem;"></div>
+    <div class="closing__brand">VioX AI</div>
+    <div class="closing__url">viox.ai</div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     Footer / Legal
+     ============================================================ -->
+<footer style="background: var(--navy-deep); padding: 2rem 0; text-align: center;">
+  <p style="font-family: 'Jost', sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; margin: 0;">
+    &copy; 2026 VioX AI. All rights reserved. This document is confidential and intended for the recipient only.
+  </p>
+</footer>
+
+</body>
+</html>
