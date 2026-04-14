@@ -1200,6 +1200,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 10px;
   color: rgba(201,184,168,0.4);
 }
+@media (max-width: 600px) {
+  .hero-marquee { padding: 18px 0; }
+  .hero-marquee-word { padding: 0 14px; }
+  .hero-marquee-word.light { padding: 0 10px; letter-spacing: 0.1em; }
+  .hero-marquee-sep { padding: 0 10px; }
+}
 
 .marquee-section {
   padding: 40px 0;
@@ -1255,7 +1261,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    9. PRIVATE GATHERINGS
    ═══════════════════════════════════════════════════════════ */
 .private {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(64px, 8vw, 110px) 0;
   background: var(--secondary);
 }
 .private-header {
@@ -1375,7 +1381,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    10. STUDIO FLORAL DESIGN
    ═══════════════════════════════════════════════════════════ */
 .studio-design {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(64px, 8vw, 110px) 0;
   background: var(--secondary);
 }
 .studio-design-header {
@@ -1701,7 +1707,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    14. CONTACT
    ═══════════════════════════════════════════════════════════ */
 .contact {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(64px, 8vw, 110px) 0;
   background: var(--secondary);
 }
 .contact-grid {
@@ -1826,7 +1832,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    BLOOM CIRCLE — SUBSCRIPTION
    ═══════════════════════════════════════════════════════════ */
 .bloom-circle {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(64px, 8vw, 110px) 0;
   background: var(--light);
   color: var(--primary);
   text-align: center;
@@ -2089,85 +2095,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     2D. MOTHER'S DAY — THE SPRING EDIT
+     2B. MOTHER'S DAY URGENCY MARQUEE (quick view above MD section)
      ═══════════════════════════════════════════════════════ -->
-<section class="mothers-day" id="mothers-day">
-  <div class="container">
-    <!-- Title at top -->
-    <p class="md-label">Mother's Day</p>
-    <h2>The Spring Edit &mdash; Mother's Day</h2>
-    <p class="md-sub">A refined collection of seasonal arrangements and hand-tied bouquets, designed through soft, curated palettes and composed with intention. Thoughtfully created to celebrate her with beauty, ease, and quiet elegance.</p>
-
-    <!-- 3 Palette Images Below Title -->
-    <div class="md-palette-row fade-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 40px auto 32px;">
-      <div class="md-palette-card">
-        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-veiled-citrus.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
-        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Veiled Citrus</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 13px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
-      </div>
-      <div class="md-palette-card">
-        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-olive-air.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
-        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Olive Air</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 13px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
-      </div>
-      <div class="md-palette-card">
-        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-quiet-bloom.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
-        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Quiet Bloom</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 13px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
-      </div>
-    </div>
-
-    <div class="md-btns">
-      <a href="/order?collection=mothers-day" class="btn-primary" data-no-intercept="true">Shop Mother's Day Collection</a>
-      <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
-    </div>
-
-    <!-- Delivery Urgency Timeline -->
-    <div class="md-delivery fade-up" style="max-width: 720px; margin: 32px auto 0;">
-      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent1); text-align: center; margin-bottom: 14px;">Delivery Timeline</p>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
-        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
-          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Early Order</p>
-          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">Now — May 5</p>
-        </div>
-        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
-          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Standard Close</p>
-          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 8</p>
-        </div>
-        <div style="padding: 14px 8px; border: 1px solid rgba(139,115,85,0.4); border-radius: 3px; background: rgba(139,115,85,0.04);">
-          <p style="font-family: var(--font-display); font-size: 14px; color: var(--accent1); margin-bottom: 2px;">Limited</p>
-          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 9 — 10</p>
-        </div>
-        <div style="padding: 14px 8px; border: 1px solid var(--primary); border-radius: 3px; background: var(--primary);">
-          <p style="font-family: var(--font-display); font-size: 14px; color: var(--light); margin-bottom: 2px;">Mother's Day</p>
-          <p style="font-size: 11px; color: rgba(245,240,235,0.7);">May 10</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="md-note" style="margin-top: 18px;">Mother's Day deliveries available Thursday through Saturday. Pre-orders close Wednesday at 8 PM. Limited quantities available to preserve design integrity.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     2B. MOTHER'S DAY URGENCY MARQUEE
-     ═══════════════════════════════════════════════════════ -->
-<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15); cursor: pointer;" onclick="document.querySelector('a[href=\'#mothers-day\']')?.click(); var md=document.getElementById('mothers-day'); if(md) md.scrollIntoView({behavior:'smooth'});">
+<section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15); cursor: pointer;" onclick="var md=document.getElementById('mothers-day'); if(md) md.scrollIntoView({behavior:'smooth'});">
   <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
-    <div class="marquee-content">
-      <span class="hero-marquee-word">Mother&rsquo;s Day Collection</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Order by May 8</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">The Spring Edit</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Hand-Delivered</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Limited Quantities</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Shop Now</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-    </div>
     <div class="marquee-content">
       <span class="hero-marquee-word">Mother&rsquo;s Day Collection</span>
       <span class="hero-marquee-sep">&mdash;</span>
@@ -2200,22 +2131,67 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="hero-marquee-word light">May 10</span>
       <span class="hero-marquee-sep light">&bull;</span>
     </div>
-    <div class="marquee-content">
-      <span class="hero-marquee-word light">Veiled Citrus</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Olive Air</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Quiet Bloom</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Petite</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Signature</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Statement</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">May 10</span>
-      <span class="hero-marquee-sep light">&bull;</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     2D. MOTHER'S DAY — THE SPRING EDIT
+     ═══════════════════════════════════════════════════════ -->
+<section class="mothers-day" id="mothers-day">
+  <div class="container">
+    <!-- Title at top -->
+    <p class="md-label">Mother's Day</p>
+    <h2>The Spring Edit &mdash; Mother's Day</h2>
+    <p class="md-sub">A refined collection of seasonal arrangements and hand-tied bouquets, designed through soft, curated palettes and composed with intention. Thoughtfully created to celebrate her with beauty, ease, and quiet elegance.</p>
+
+    <!-- 3 Palette Images Below Title -->
+    <div class="md-palette-row fade-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 40px auto 32px;">
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-veiled-citrus.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Veiled Citrus</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
+      </div>
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-olive-air.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Olive Air</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
+      </div>
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-quiet-bloom.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Quiet Bloom</p>
+        <p style="text-align: center; margin-top: 4px; font-size: 14px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
+      </div>
     </div>
+
+    <div class="md-btns">
+      <a href="/order?collection=mothers-day" class="btn-primary" data-no-intercept="true">Shop Mother's Day Collection</a>
+      <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
+    </div>
+
+    <!-- Delivery Urgency Timeline -->
+    <div class="md-delivery fade-up" style="max-width: 720px; margin: 32px auto 0;">
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent1); text-align: center; margin-bottom: 14px;">Delivery Timeline</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
+        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Early Order</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">Now — May 5</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Standard Close</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 8</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid rgba(139,115,85,0.4); border-radius: 3px; background: rgba(139,115,85,0.04);">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--accent1); margin-bottom: 2px;">Limited</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 9 — 10</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid var(--primary); border-radius: 3px; background: var(--primary);">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--light); margin-bottom: 2px;">Mother's Day</p>
+          <p style="font-size: 11px; color: rgba(245,240,235,0.7);">May 10</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="md-note" style="margin-top: 18px;">Mother's Day deliveries available Thursday through Saturday. Pre-orders close Wednesday at 8 PM. Limited quantities available to preserve design integrity.</p>
   </div>
 </section>
 
@@ -2446,17 +2422,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
     <!-- Seasonal Note -->
     <div class="fade-up" style="text-align: center; margin-top: 24px; margin-bottom: 8px;">
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45);">Palette tones and floral selections shift seasonally based on availability and evolving color direction.</p>
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 8px; max-width: 60ch; margin-left: auto; margin-right: auto;">Vessels are thoughtfully selected and will remain consistent in scale and overall aesthetic, though specific styles may vary based on seasonal availability.</p>
+      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45);">Palette tones and floral selections shift seasonally based on availability and evolving color direction.</p>
+      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 8px; max-width: 60ch; margin-left: auto; margin-right: auto;">Vessels are thoughtfully selected and will remain consistent in scale and overall aesthetic, though specific styles may vary based on seasonal availability.</p>
     </div>
 
     <!-- Ordering + Delivery -->
     <div class="fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 60px);">
       <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 16px; line-height: 1.7;">Choose your palette and size. We design each piece with garden roses and seasonal blooms selected for movement, texture, and tone.</p>
       <a href="#order" class="btn-primary" style="margin-bottom: 24px;">Order Your Arrangement</a>
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
-      <p style="font-size: 13px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
-      <p style="font-size: 13px; color: var(--accent1); margin-top: 6px;">Same-day delivery available for orders placed before 1 PM.</p>
+      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
+      <p style="font-size: 14px; color: var(--accent1); margin-top: 6px;">Same-day delivery available for orders placed before 1 PM.</p>
     </div>
     <div class="fade-up" style="text-align: center; margin-top: 24px; padding: 24px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
       <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 6px;">Delivery</p>
@@ -2578,7 +2554,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
     </div>
     <div class="fade-up" style="text-align: center; margin-top: 24px;">
-      <p style="font-size: 13px; font-style: italic; color: rgba(51,65,85,0.45);">Available in current seasonal palettes. Limited quantities available.</p>
+      <p style="font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45);">Available in current seasonal palettes. Limited quantities available.</p>
       <a href="#order" class="btn-primary" style="margin-top: 16px;">Order a Bouquet</a>
     </div>
   </div>
@@ -2928,16 +2904,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p class="section-label">The Bloom Circle</p>
       <h2 class="section-heading">Fresh Florals, On Repeat</h2>
       <p class="bloom-circle-desc" style="font-size: 17px; margin-bottom: 8px;">Subscription-based floral delivery for homes, offices, and client-facing spaces designed to keep your environment effortlessly in bloom.</p>
-      <p style="font-size: 15px; color: rgba(250,250,248,0.55); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Designed through our evolving seasonal palettes to keep your space consistently refined and in bloom.</p>
-      <p style="font-size: 15px; color: var(--accent4); margin-top: 12px;">Subscriptions begin at $95 per delivery.</p>
+      <p style="font-size: 15px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Designed through our evolving seasonal palettes to keep your space consistently refined and in bloom.</p>
+      <p style="font-size: 15px; color: var(--accent1); margin-top: 12px;">Subscriptions begin at $95 per delivery.</p>
     </div>
 
     <!-- How It Works -->
     <div class="bloom-steps fade-up" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 0 auto 40px; text-align: center;">
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">1</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">Choose your cadence</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">2</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We design your arrangement</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">3</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">We deliver on schedule</p></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent4); margin-bottom: 6px;">4</div><p style="font-size: 13px; color: rgba(250,250,248,0.5); line-height: 1.5;">Your space stays in bloom</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">1</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">Choose your cadence</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">2</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">We design your arrangement</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">3</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">We deliver on schedule</p></div>
+      <div><div style="font-family: var(--font-display); font-size: 32px; font-weight: 300; font-style: italic; color: var(--accent1); margin-bottom: 6px;">4</div><p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 1.5;">Your space stays in bloom</p></div>
     </div>
 
     <!-- Cadence Options -->
@@ -2964,34 +2940,72 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
     <!-- Arrangement Levels -->
     <div class="fade-up" style="text-align: center; margin-bottom: 40px;">
-      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 20px;">Arrangement Levels</p>
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 20px;">Arrangement Levels</p>
       <div class="bloom-levels" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 700px; margin: 0 auto;">
-        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Petite</h4><p style="font-size: 14px; color: var(--accent4);">$95 / delivery</p></div>
-        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Signature</h4><p style="font-size: 14px; color: var(--accent4);">$150 / delivery</p></div>
-        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Statement</h4><p style="font-size: 14px; color: var(--accent4);">$225 / delivery</p></div>
-        <div style="padding: 20px; border: 1px solid rgba(212,184,160,0.15); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--light); margin-bottom: 4px;">Collector's</h4><p style="font-size: 14px; color: var(--accent4);">$300+ / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Petite</h4><p style="font-size: 14px; color: var(--accent1);">$95 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Signature</h4><p style="font-size: 14px; color: var(--accent1);">$150 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Statement</h4><p style="font-size: 14px; color: var(--accent1);">$225 / delivery</p></div>
+        <div style="padding: 20px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px;"><h4 style="font-family: var(--font-display); font-size: 20px; color: var(--primary); margin-bottom: 4px;">Collector's</h4><p style="font-size: 14px; color: var(--accent1);">$300+ / delivery</p></div>
       </div>
-      <p style="font-size: 13px; color: rgba(250,250,248,0.4); margin-top: 12px; font-style: italic;">No two deliveries are ever the same.</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.5); margin-top: 12px; font-style: italic;">No two deliveries are ever the same.</p>
     </div>
 
     <!-- What's Included -->
-    <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(212,184,160,0.2); border-radius: 4px; text-align: center;">
-      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 16px;">What's Included</p>
-      <p style="font-size: 14px; color: rgba(250,250,248,0.5); line-height: 2.2;">Seasonal, palette-based arrangements<br>Hand delivery to your home or business<br>Optional vessel rotation<br>Ongoing design continuity aligned with your space</p>
+    <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; text-align: center;">
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 16px;">What's Included</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 2.2;">Seasonal, palette-based arrangements<br>Hand delivery to your home or business<br>Optional vessel rotation<br>Ongoing design continuity aligned with your space</p>
     </div>
     <!-- Ideal For -->
-    <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(212,184,160,0.2); border-radius: 4px; text-align: center;">
-      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent4); margin-bottom: 16px;">Ideal For</p>
-      <p style="font-size: 14px; color: rgba(250,250,248,0.5); line-height: 2.2;">Private residences<br>Interior-styled homes<br>Offices &amp; professional spaces<br>Client-facing businesses</p>
+    <div class="fade-up" style="max-width: 560px; margin: 0 auto 32px; padding: 36px 40px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; text-align: center;">
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 16px;">Ideal For</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.6); line-height: 2.2;">Private residences<br>Interior-styled homes<br>Offices &amp; professional spaces<br>Client-facing businesses</p>
     </div>
 
-    <p style="text-align: center; font-size: 13px; color: rgba(250,250,248,0.35); font-style: italic; margin-bottom: 32px;">Pause, skip, or adjust your deliveries at any time with advance notice (minimum 15 days prior).</p>
+    <p style="text-align: center; font-size: 14px; color: rgba(51,65,85,0.45); font-style: italic; margin-bottom: 32px;">Pause, skip, or adjust your deliveries at any time with advance notice (minimum 15 days prior).</p>
 
     <!-- CTA -->
     <div class="bloom-circle-cta fade-up" style="margin-top: 0;">
-      <a href="#booking" class="btn-outline" style="border-color: rgba(245,240,235,0.4); color: var(--light);">Join the Bloom Circle</a>
-      <p style="font-size: 12px; color: rgba(250,250,248,0.4); margin-top: 10px;">Limited availability</p>
-      <p style="font-size: 13px; color: rgba(250,250,248,0.45); margin-top: 12px;">Prefer a custom plan? <a href="#booking" style="color: var(--accent4); border-bottom: 1px solid rgba(212,184,160,0.3);">Inquire for a tailored subscription</a>.</p>
+      <a href="#booking" class="btn-outline" style="border-color: var(--accent2); color: var(--primary);">Join the Bloom Circle</a>
+      <p style="font-size: 12px; color: rgba(51,65,85,0.5); margin-top: 10px;">Limited availability</p>
+      <p style="font-size: 14px; color: rgba(51,65,85,0.55); margin-top: 12px;">Prefer a custom plan? <a href="#booking" style="color: var(--accent1); border-bottom: 1px solid rgba(139,115,85,0.4);">Inquire for a tailored subscription</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     12B. CTA TRANSITION MARQUEE (contact prompt + services recap)
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero-marquee cta-marquee" aria-hidden="true" style="background: var(--primary); border-top: 1px solid rgba(201,184,168,0.2); border-bottom: 1px solid rgba(201,184,168,0.2); cursor: pointer;" onclick="var b=document.getElementById('booking'); if(b) b.scrollIntoView({behavior:'smooth'});">
+  <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
+    <div class="marquee-content">
+      <span class="hero-marquee-word" style="color: var(--light);">Ready to Begin</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+      <span class="hero-marquee-word" style="color: var(--light);">Book a Consultation</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+      <span class="hero-marquee-word" style="color: var(--light);">Request a Custom Design</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+      <span class="hero-marquee-word" style="color: var(--light);">Hand-Delivered in NJ</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+      <span class="hero-marquee-word" style="color: var(--light);">Contact the Studio</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+      <span class="hero-marquee-word" style="color: var(--light);">By Appointment Only</span>
+      <span class="hero-marquee-sep" style="color: var(--accent4);">&mdash;</span>
+    </div>
+  </div>
+  <div class="hero-marquee-row" data-speed="0.6" data-direction="right">
+    <div class="marquee-content">
+      <span class="hero-marquee-word" style="color: var(--accent4);">Arrangements</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
+      <span class="hero-marquee-word" style="color: var(--accent4);">Installations</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
+      <span class="hero-marquee-word" style="color: var(--accent4);">Bouquets</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
+      <span class="hero-marquee-word" style="color: var(--accent4);">Bloom Circle</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
+      <span class="hero-marquee-word" style="color: var(--accent4);">Private Experiences</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
+      <span class="hero-marquee-word" style="color: var(--accent4);">Delivery</span>
+      <span class="hero-marquee-sep" style="color: rgba(250,250,248,0.4);">&bull;</span>
     </div>
   </div>
 </section>
