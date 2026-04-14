@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /(app)/
+Disallow: /(auth)/
+Disallow: /(portal)/
+Disallow: /auth/
+Disallow: /invite/
+
+Sitemap: https://dreamersjoystudio.com/sitemap.xml
