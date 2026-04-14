@@ -2,7 +2,14 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 /** Paths that never require authentication */
-const publicPaths = ['/login', '/signup', '/auth/callback', '/portal-login', '/order', '/delivery', '/invite']
+const publicPaths = [
+  '/login', '/signup', '/auth/callback', '/portal-login',
+  '/order', '/delivery', '/invite',
+  // Public marketing pages (multi-page site)
+  '/shop', '/mothers-day', '/studio-series', '/subscriptions',
+  '/gallery', '/about', '/contact', '/booking',
+  '/sitemap.xml', '/robots.txt',
+]
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
