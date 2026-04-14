@@ -599,6 +599,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-top: 8px;
 }
 @media (max-width: 480px) {
+  .md-palette-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .mothers-day .md-delivery > div { grid-template-columns: repeat(2, 1fr) !important; }
   .mothers-day .md-btns { flex-direction: column; align-items: center; }
   .mothers-day .md-btns .btn-primary,
   .mothers-day .md-btns .btn-outline { width: 100%; max-width: 280px; }
@@ -2086,23 +2088,61 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     2D. MOTHER'S DAY PROMO
+     2D. MOTHER'S DAY — THE SPRING EDIT
      ═══════════════════════════════════════════════════════ -->
-<section class="mothers-day">
+<section class="mothers-day" id="mothers-day">
   <div class="container">
+    <!-- 3 Palette Images Above Title -->
+    <div class="md-palette-row fade-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto 40px;">
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 3.8/3; background-image: url(assets/images/mothersday-veiled-citrus.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 10px; font-family: var(--font-display); font-size: 16px; color: var(--primary);">Veiled Citrus</p>
+        <p style="text-align: center; font-size: 12px; color: rgba(51,65,85,0.5); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
+      </div>
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 3.8/3; background-image: url(assets/images/mothersday-olive-air.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 10px; font-family: var(--font-display); font-size: 16px; color: var(--primary);">Olive Air</p>
+        <p style="text-align: center; font-size: 12px; color: rgba(51,65,85,0.5); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
+      </div>
+      <div class="md-palette-card">
+        <div class="md-palette-img" style="aspect-ratio: 3.8/3; background-image: url(assets/images/mothersday-quiet-bloom.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
+        <p style="text-align: center; margin-top: 10px; font-family: var(--font-display); font-size: 16px; color: var(--primary);">Quiet Bloom</p>
+        <p style="text-align: center; font-size: 12px; color: rgba(51,65,85,0.5); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
+      </div>
+    </div>
+
     <p class="md-label">Mother's Day</p>
-    <h2>Flowers for the Ones Who Made Us</h2>
-    <p class="md-sub">Thoughtfully designed arrangements and hand-tied bouquets, created to celebrate her beautifully.</p>
+    <h2>The Spring Edit &mdash; Mother's Day</h2>
+    <p class="md-sub">A refined collection of seasonal arrangements and hand-tied bouquets, designed through soft, curated palettes and composed with intention. Thoughtfully created to celebrate her with beauty, ease, and quiet elegance.</p>
     <div class="md-btns">
-      <a href="#order" class="btn-primary">Shop Mother's Day Flowers</a>
+      <a href="#order" class="btn-primary">Shop Mother's Day Collection</a>
       <a href="#bouquets" class="btn-outline">Send a Signature Bouquet</a>
     </div>
-    <p class="md-note">Limited Mother's Day availability. Pre-order recommended.</p>
-    <div class="md-options">
-      <span>Petite Arrangements</span>
-      <span>Signature Arrangements</span>
-      <span>Hand-Tied Bouquets</span>
+
+    <!-- Delivery Urgency Timeline -->
+    <div class="md-delivery fade-up" style="max-width: 720px; margin: 32px auto 0;">
+      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent1); text-align: center; margin-bottom: 14px;">Delivery Timeline</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
+        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Early Order</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">Now — May 5</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid rgba(201,184,168,0.3); border-radius: 3px;">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--primary); margin-bottom: 2px;">Standard Close</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 8</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid rgba(139,115,85,0.4); border-radius: 3px; background: rgba(139,115,85,0.04);">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--accent1); margin-bottom: 2px;">Limited</p>
+          <p style="font-size: 11px; color: rgba(51,65,85,0.55);">May 9 — 10</p>
+        </div>
+        <div style="padding: 14px 8px; border: 1px solid var(--primary); border-radius: 3px; background: var(--primary);">
+          <p style="font-family: var(--font-display); font-size: 14px; color: var(--light); margin-bottom: 2px;">Mother's Day</p>
+          <p style="font-size: 11px; color: rgba(245,240,235,0.7);">May 10</p>
+        </div>
+      </div>
     </div>
+
+    <p class="md-note" style="margin-top: 18px;">Mother's Day deliveries available Thursday through Saturday. Pre-orders close Wednesday at 8 PM. Limited quantities available to preserve design integrity.</p>
   </div>
 </section>
 
