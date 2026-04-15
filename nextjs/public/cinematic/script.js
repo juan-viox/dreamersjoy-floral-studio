@@ -1,6 +1,83 @@
 (function() {
   'use strict';
 
+  // ─── TOAST: editorial confirmation notification ───
+  // Usage: window.djToast({ message, label?, type?, duration? })
+  //   type: 'success' (default) | 'error'
+  //   duration: ms before auto-dismiss (default 4200, 0 = persistent)
+  function ensureToastStack() {
+    var stack = document.getElementById('djToastStack');
+    if (stack) return stack;
+    stack = document.createElement('div');
+    stack.id = 'djToastStack';
+    stack.className = 'dj-toast-stack';
+    stack.setAttribute('role', 'status');
+    stack.setAttribute('aria-live', 'polite');
+    document.body.appendChild(stack);
+    return stack;
+  }
+
+  window.djToast = function(opts) {
+    opts = opts || {};
+    var message = opts.message || '';
+    var label = opts.label || (opts.type === 'error' ? 'Something went wrong' : 'Received');
+    var type = opts.type === 'error' ? 'error' : 'success';
+    var duration = (typeof opts.duration === 'number') ? opts.duration : 4200;
+
+    var stack = ensureToastStack();
+    var toast = document.createElement('div');
+    toast.className = 'dj-toast' + (type === 'error' ? ' dj-toast--error' : '');
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+
+    var icon = document.createElement('span');
+    icon.className = 'dj-toast__icon';
+    icon.textContent = type === 'error' ? '!' : '\u2713';
+    icon.setAttribute('aria-hidden', 'true');
+
+    var body = document.createElement('div');
+    body.className = 'dj-toast__body';
+    var labelEl = document.createElement('span');
+    labelEl.className = 'dj-toast__label';
+    labelEl.textContent = label;
+    var msgEl = document.createElement('p');
+    msgEl.className = 'dj-toast__message';
+    msgEl.textContent = message;
+    body.appendChild(labelEl);
+    body.appendChild(msgEl);
+
+    var close = document.createElement('button');
+    close.className = 'dj-toast__close';
+    close.setAttribute('type', 'button');
+    close.setAttribute('aria-label', 'Dismiss notification');
+    close.innerHTML = '&times;';
+
+    toast.appendChild(icon);
+    toast.appendChild(body);
+    toast.appendChild(close);
+    stack.appendChild(toast);
+
+    // next frame → trigger entrance
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        toast.classList.add('dj-toast--visible');
+      });
+    });
+
+    var dismissed = false;
+    function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
+      toast.classList.remove('dj-toast--visible');
+      toast.classList.add('dj-toast--leaving');
+      setTimeout(function() {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 600);
+    }
+    close.addEventListener('click', dismiss);
+    if (duration > 0) setTimeout(dismiss, duration);
+    return dismiss;
+  };
+
   // ─── PAGE TRANSITION: mark page as ready (fades body in) ───
   function markPageReady() {
     document.body.classList.add('page-ready');
@@ -335,12 +412,22 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
         body: JSON.stringify({ email: email })
-      }).then(function() {
-        btn.textContent = 'Thank you!';
+      }).then(function(res) {
+        if (!res.ok) throw new Error('Failed');
+        btn.textContent = 'Thank you';
         document.getElementById('newsletterEmail').disabled = true;
+        if (window.djToast) window.djToast({
+          label: 'You\u2019re on the list',
+          message: 'We\u2019ll be in touch when the next collection blooms.'
+        });
       }).catch(function() {
         btn.textContent = 'Subscribe';
         btn.disabled = false;
+        if (window.djToast) window.djToast({
+          type: 'error',
+          label: 'Hmm \u2014 try again',
+          message: 'We couldn\u2019t reach the studio. Please retry in a moment or email hello@dreamersjoystudio.com.'
+        });
       });
     });
   }
@@ -383,15 +470,20 @@
       }).then(function(res) {
         if (!res.ok) throw new Error('Failed');
         wrap.innerHTML = '<div class="form-success"><h3>Thank You, ' + firstName + '</h3><p>We received your inquiry and will be in touch soon.</p></div>';
+        if (window.djToast) window.djToast({
+          label: 'Inquiry received',
+          message: 'Thank you, ' + firstName + '. We\u2019ll be in touch within two business days.',
+          duration: 5200
+        });
       }).catch(function() {
         btn.textContent = 'Send Inquiry';
         btn.disabled = false;
-        btn.style.background = '#e17055';
-        btn.textContent = 'Something went wrong. Try again.';
-        setTimeout(function() {
-          btn.style.background = '';
-          btn.textContent = 'Send Inquiry';
-        }, 3000);
+        if (window.djToast) window.djToast({
+          type: 'error',
+          label: 'Inquiry didn\u2019t send',
+          message: 'Please try again, or email hello@dreamersjoystudio.com directly.',
+          duration: 5200
+        });
       });
     });
   }

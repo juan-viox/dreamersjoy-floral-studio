@@ -1986,3 +1986,139 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
 @media (prefers-reduced-motion: reduce) {
   body { opacity: 1; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TOAST — editorial confirmation notification
+   Slides in from top-right, auto-dismisses after ~4s.
+   Used for newsletter / booking / contact form feedback.
+   ═══════════════════════════════════════════════════════════ */
+.dj-toast-stack {
+  position: fixed;
+  top: clamp(80px, 10vh, 120px);
+  right: clamp(16px, 3vw, 32px);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+}
+
+.dj-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 18px 22px;
+  background: var(--light);
+  border: 1px solid var(--accent2);
+  border-left: 3px solid var(--accent3);
+  border-radius: 2px;
+  box-shadow: 0 18px 48px rgba(26, 26, 46, 0.14), 0 2px 6px rgba(26, 26, 46, 0.08);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.55s var(--ease-out), opacity 0.4s var(--ease-smooth);
+}
+
+.dj-toast.dj-toast--visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.dj-toast.dj-toast--leaving {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.dj-toast--error {
+  border-left-color: #B8574A;
+}
+
+.dj-toast__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--accent3);
+  color: var(--light);
+  margin-top: 2px;
+}
+
+.dj-toast--error .dj-toast__icon {
+  background: #B8574A;
+}
+
+.dj-toast__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.dj-toast__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 4px;
+}
+
+.dj-toast__message {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--primary);
+  letter-spacing: 0.005em;
+}
+
+.dj-toast__close {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 4px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--accent1);
+  opacity: 0.55;
+  transition: opacity 0.2s var(--ease-out);
+  margin-top: -2px;
+}
+
+.dj-toast__close:hover { opacity: 1; }
+
+@media (max-width: 640px) {
+  .dj-toast-stack {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+  }
+  .dj-toast {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    transform: translateY(140%);
+  }
+  .dj-toast.dj-toast--visible { transform: translateY(0); }
+  .dj-toast.dj-toast--leaving { transform: translateY(140%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dj-toast {
+    transition: opacity 0.2s linear;
+    transform: none !important;
+  }
+}
