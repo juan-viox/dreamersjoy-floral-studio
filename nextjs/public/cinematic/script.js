@@ -637,6 +637,50 @@
     });
   });
 
+  // ─── GALLERY LIGHTBOX ───
+  var galleryLb = document.getElementById('galleryLightbox');
+  if (galleryLb) {
+    var glImg = document.getElementById('galleryLightboxImg');
+    var glCat = document.getElementById('galleryLightboxCat');
+    var glLabel = document.getElementById('galleryLightboxLabel');
+    var glLastTrigger = null;
+
+    function openGalleryLb(card) {
+      glLastTrigger = card;
+      var img = card.getAttribute('data-gallery-image');
+      var cat = card.getAttribute('data-gallery-cat') || '';
+      var label = card.getAttribute('data-gallery-label') || '';
+      glImg.style.backgroundImage = 'url("' + img + '")';
+      glCat.textContent = cat;
+      glLabel.textContent = label;
+      galleryLb.classList.add('is-open');
+      galleryLb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGalleryLb() {
+      galleryLb.classList.remove('is-open');
+      galleryLb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (glLastTrigger) { try { glLastTrigger.focus(); } catch(e) {} }
+    }
+
+    document.querySelectorAll('.gallery-card').forEach(function(card) {
+      card.addEventListener('click', function() { openGalleryLb(card); });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openGalleryLb(card);
+        }
+      });
+    });
+    galleryLb.querySelectorAll('[data-gallery-close]').forEach(function(el) {
+      el.addEventListener('click', closeGalleryLb);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && galleryLb.classList.contains('is-open')) closeGalleryLb();
+    });
+  }
+
   // Flip card Inquire links → navigate to /inquire with private experience pre-selected
   document.querySelectorAll('.flip-link').forEach(function(link) {
     link.style.cursor = 'pointer';
