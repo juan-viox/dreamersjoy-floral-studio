@@ -290,14 +290,16 @@
     draw();
   }
 
-  // Booking mesh only (hero is now video)
+  // Booking mesh only (hero is now video).
+  // Colors tuned to sit on the deep-primary booking-cta background (#2E2244)
+  // so there's no visible white square when the mesh renders off-center.
   var bookingMeshEl = document.getElementById('bookingMesh');
   if (bookingMeshEl) {
     initMesh(
       bookingMeshEl,
-      ['rgba(212,184,160,0.15)', 'rgba(107,124,110,0.12)', 'rgba(201,184,168,0.1)', 'rgba(245,240,235,0.2)'],
-      0.25,
-      '#FAFAF8'
+      ['rgba(242,242,235,0.06)', 'rgba(124,140,171,0.08)', 'rgba(135,115,76,0.05)', 'rgba(242,242,235,0.04)'],
+      0.15,
+      '#2E2244'
     );
   }
 

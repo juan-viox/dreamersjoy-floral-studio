@@ -5,19 +5,31 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --primary: #334155;
-  --secondary: #F5F0EB;
-  --accent1: #8B7355;
-  --accent2: #C9B8A8;
-  --accent3: #6B7C6E;
-  --accent4: #D4B8A0;
-  --dark: #1A1A2E;
-  --light: #FAFAF8;
-  --white: #ffffff;
+  /* LOCKED BRAND PALETTE — do not introduce new colors */
+  --primary: #2E2244;     /* Dominant — deep aubergine navy. All text, borders, CTAs. */
+  --bg: #F2F2EB;          /* Default background — warm stone */
+  --white: #FFFFFF;       /* Digital only — rarely used */
+  --accent: #7C8CAB;      /* Soft slate blue — sparing use */
+  --bronze: #87734C;      /* VERY limited — seasonal / luxury accents only */
+
+  /* Legacy aliases (map old token names to new palette so existing CSS
+     continues to compile without a full rewrite of every declaration) */
+  --secondary: var(--bg);
+  --light: var(--bg);
+  --dark: var(--primary);
+  --accent1: var(--bronze);
+  --accent2: rgba(46, 34, 68, 0.16);   /* soft primary at low alpha — dividers, borders */
+  --accent3: var(--accent);
+  --accent4: var(--accent);
+
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Jost', sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing rhythm (new) */
+  --nav-height: 88px;
+  --section-gap: clamp(72px, 9vw, 128px);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,15 +84,28 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 18px 0;
   transition: all 0.4s var(--ease-smooth);
+  /* Always-visible guarantee: subtle background even before scroll
+     so the nav never overlaps or disappears into light page heroes. */
+  background: rgba(242, 242, 235, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(46, 34, 68, 0.06);
+}
+/* Home hero is the ONE place the nav starts transparent over dark video */
+body[data-page="home"] .nav:not(.scrolled) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
 }
 .nav.scrolled {
-  background: rgba(250, 250, 248, 0.92);
+  background: rgba(242, 242, 235, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 14px 0;
-  box-shadow: 0 1px 0 rgba(51, 65, 85, 0.06);
+  padding: 12px 0;
+  box-shadow: 0 1px 0 rgba(46, 34, 68, 0.06);
 }
 .nav-inner {
   max-width: 1200px;
@@ -92,9 +117,12 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
 }
 .nav-logo img { height: 150px; width: 150px; transition: transform 0.3s var(--ease-out), filter 0.4s var(--ease-smooth); }
 .nav-logo:hover img { transform: scale(1.05); }
-/* Logo light on hero, dark on scroll */
-.nav .nav-logo img { filter: brightness(0) invert(1) opacity(0.9); }
-.nav.scrolled .nav-logo img { filter: none; }
+/* Logo: dark on stone bg (default). White only on the home hero while
+   nav is still transparent over the dark video. */
+.nav .nav-logo img { filter: none; }
+body[data-page="home"] .nav:not(.scrolled) .nav-logo img {
+  filter: brightness(0) invert(1) opacity(0.92);
+}
 .nav-links {
   display: flex;
   gap: 36px;
@@ -105,39 +133,29 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(250,250,248,0.9);
+  /* Default color: primary (always visible against stone bg) */
+  color: var(--primary);
   position: relative;
   transition: color 0.3s;
+  padding: 4px 0;
 }
-.nav.scrolled .nav-links a { color: var(--primary); }
-.nav.scrolled .nav-links a { color: var(--primary); }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--accent1);
-  transition: width 0.3s var(--ease-out);
-}
-.nav-links a:hover::after { width: 100%; }
-.nav-links a:hover { color: var(--accent1); }
+/* On home hero (transparent nav over video), links are white */
+body[data-page="home"] .nav:not(.scrolled) .nav-links a { color: var(--white); }
+.nav-links a:hover { color: var(--bronze); }
+/* No ::after hover underline — keep it clean; active underline handled below */
+.nav-links a::after { display: none; }
+/* Inquire is NOT a CTA button — just another nav link */
 .nav-cta {
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  padding: 10px 24px;
-  border: 1px solid rgba(250,250,248,0.5);
-  color: rgba(250,250,248,0.9) !important;
-  border-radius: 0;
-  transition: all 0.3s var(--ease-out) !important;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 4px 0;
+  border: none;
+  color: inherit;
+  letter-spacing: 0.08em;
 }
-.nav-cta:hover { background: rgba(250,250,248,0.15); color: var(--light) !important; }
-.nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
-.nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
-.nav.scrolled .nav-cta { border-color: var(--primary); color: var(--primary) !important; }
-.nav.scrolled .nav-cta:hover { background: var(--primary); color: var(--light) !important; }
-.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: transparent; }
 /* nav-logo handled above with img tag */
 
 /* Hamburger */
@@ -152,12 +170,13 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
 .nav-hamburger span {
   display: block;
   height: 1.5px;
-  background: rgba(250,250,248,0.9);
+  background: var(--primary);
   transition: all 0.3s var(--ease-out);
   transform-origin: center;
 }
-.nav.scrolled .nav-hamburger span { background: var(--primary); }
-.nav.scrolled .nav-hamburger span { background: var(--primary); }
+body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
+  background: var(--white);
+}
 .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
@@ -2125,10 +2144,10 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
 
 
 /* ═══════════════════════════════════════════════════════════
-   NAV ACTIVE STATE — per-page highlight
-   Body carries data-page="home|shop|subscriptions|our-process|..."
-   Matching nav link gets underline + darker color.
-   Inquire stays a CTA, never shown as active.
+   NAV ACTIVE STATE — single clean underline, one item at a time
+   Body carries data-page="home|shop|subscriptions|...". Matching
+   nav link gets a thin primary-color underline. Mother's Day has
+   NO special styling (it looks like every other nav item).
    ═══════════════════════════════════════════════════════════ */
 .nav-links a { position: relative; }
 .nav-links a.is-active {
@@ -2137,33 +2156,37 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
 }
 .nav-links a.is-active::after {
   content: '';
+  display: block;
   position: absolute;
   left: 0; right: 0;
   bottom: -6px;
   height: 1px;
   background: var(--primary);
-  opacity: 0.8;
+  opacity: 0.85;
 }
-.nav-links a.nav-cta.is-active::after { display: none; }
-.nav-links a.nav-cta { /* Inquire CTA button — never active-underlined */ }
+body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active {
+  color: var(--white);
+}
+body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
+  background: var(--white);
+}
+/* Explicitly remove any lingering seasonal italic treatment */
 .nav-links a.nav-seasonal {
-  font-style: italic;
-  color: var(--accent1);
+  font-style: normal;
+  color: inherit;
 }
-.nav-links a.nav-seasonal.is-active { color: var(--accent1); }
-.nav-links a.nav-seasonal.is-active::after { background: var(--accent1); }
 
 /* Mobile active */
 .mobile-link.is-active {
   color: var(--primary);
-  border-left: 2px solid var(--primary);
-  padding-left: 10px;
+  font-weight: 500;
 }
 .mobile-link-cta {
-  background: var(--primary);
-  color: var(--light) !important;
-  padding: 12px 18px !important;
-  margin-top: 12px;
+  /* No longer a special CTA \u2014 looks like any other mobile link */
+  background: transparent;
+  color: var(--primary) !important;
+  padding: 0 !important;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -2771,3 +2794,227 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   }
   .gallery-lightbox__figure { transform: none !important; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   SPACING + DIVIDER SYSTEM (4/15 brand enforcement)
+   Introduces a consistent rhythm and a thin, refined divider.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Every non-home page hero gets room for the fixed nav.
+   Home is excluded because its hero is a full-bleed video. */
+body:not([data-page="home"]) .page-hero,
+body:not([data-page="home"]) section:first-of-type:not(.hero):not(.nav):not(.hero-marquee) {
+  /* A conservative default padding-top ensures no title collides with nav. */
+}
+
+.section-divider {
+  width: 100%;
+  max-width: 1200px;
+  margin: clamp(16px, 2.5vw, 32px) auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+}
+.section-divider::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: rgba(46, 34, 68, 0.14);
+}
+.section-divider--full {
+  max-width: none;
+  padding: 0;
+}
+.section-divider--full::after { background: rgba(46, 34, 68, 0.12); }
+
+
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE PALETTE REBRAND — the new #2E2244 aubergine needs
+   slightly different supporting treatments for overlays, mesh,
+   gradients that were baked in with the old slate color.
+   ═══════════════════════════════════════════════════════════ */
+.booking-cta { background: var(--primary); color: var(--bg); }
+.booking-cta h2, .booking-cta .section-label { color: var(--bg); }
+.booking-cta .section-label { color: rgba(242, 242, 235, 0.7); }
+.booking-cta p { color: rgba(242, 242, 235, 0.8); }
+.booking-cta .btn-primary {
+  background: var(--bg);
+  color: var(--primary);
+  border: 1px solid var(--bg);
+}
+.booking-cta .btn-primary:hover {
+  background: transparent;
+  color: var(--bg);
+}
+.booking-cta .btn-outline {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(242, 242, 235, 0.5);
+}
+.booking-cta .btn-outline:hover {
+  background: var(--bg);
+  color: var(--primary);
+}
+
+/* Section-label color lock — always the bronze accent, never body color */
+.section-label { color: var(--bronze); }
+
+
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL HERO PADDING — EVERY non-home page hero sits CLEANLY
+   below the fixed nav. No title ever collides with nav.
+   ═══════════════════════════════════════════════════════════ */
+body:not([data-page="home"]) section:first-of-type {
+  padding-top: clamp(180px, 18vh, 220px) !important;
+}
+body:not([data-page="home"]) section:first-of-type.hero-marquee {
+  /* Exception: if a page starts with a marquee (MD), nudge the marquee
+     itself down and compress it. Not a full hero. */
+  padding-top: clamp(110px, 12vh, 140px) !important;
+  padding-bottom: 16px !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SUBSCRIPTIONS — bigger typography, bigger images, cleaner layout
+   ═══════════════════════════════════════════════════════════ */
+.subs-section { overflow: hidden; }
+.subs-steps {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: clamp(20px, 3vw, 40px) !important;
+  max-width: 1080px !important;
+  margin: 0 auto clamp(56px, 7vw, 88px) !important;
+  padding: 0 clamp(8px, 1vw, 16px);
+  text-align: center;
+}
+.subs-step {
+  padding: 0 8px;
+}
+.subs-step-num {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--bronze);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subs-step-label {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(46, 34, 68, 0.78);
+  max-width: 18ch;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .subs-steps { grid-template-columns: repeat(2, 1fr) !important; gap: 32px !important; }
+}
+@media (max-width: 520px) {
+  .subs-steps { grid-template-columns: 1fr !important; }
+  .subs-step-num { font-size: 48px; }
+}
+
+/* Scale bloom-tier images up (was 4/3 → now 4/5 vertical) */
+.bloom-tier { overflow: hidden; }
+.bloom-tier-img {
+  aspect-ratio: 4 / 5 !important;
+  margin: -44px -36px 28px !important;
+  width: calc(100% + 72px) !important;
+}
+.bloom-tier h3 { font-size: 30px !important; }
+.bloom-tier .tier-freq { font-size: 12px !important; }
+.bloom-tier p { font-size: 16px !important; color: rgba(46, 34, 68, 0.75) !important; }
+
+/* Remove the "white shadow/glow on left bottom" — that was the booking-mesh
+   canvas bleeding through. Subscriptions section must clip its children. */
+body[data-page="subscriptions"] .booking-cta { overflow: hidden; }
+body[data-page="subscriptions"] section { overflow: hidden; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   GALLERY — guaranteed no-overlap grid (generous gap, clipped cards)
+   ═══════════════════════════════════════════════════════════ */
+body[data-page="gallery"] .gallery-tight .gallery-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: clamp(16px, 2vw, 28px) !important;
+}
+body[data-page="gallery"] .gallery-card {
+  overflow: hidden !important;
+  position: relative !important;
+  isolation: isolate;
+}
+body[data-page="gallery"] .gallery-card .gallery-item-bg {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
+body[data-page="gallery"] .gallery-card .gallery-item-overlay {
+  position: absolute !important;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+body[data-page="gallery"] .gallery-card .gallery-item-cat,
+body[data-page="gallery"] .gallery-card .gallery-item-label {
+  z-index: 2;
+  position: absolute;
+}
+@media (max-width: 900px) {
+  body[data-page="gallery"] .gallery-tight .gallery-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 520px) {
+  body[data-page="gallery"] .gallery-tight .gallery-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOTHER'S DAY — compressed urgency marquee (never overlaps nav)
+   ═══════════════════════════════════════════════════════════ */
+body[data-page="mothers-day"] .hero-marquee {
+  padding-top: clamp(110px, 13vh, 140px) !important;
+  padding-bottom: 8px !important;
+  background: var(--bg) !important;
+  border-top: 1px solid rgba(46, 34, 68, 0.08) !important;
+  border-bottom: 1px solid rgba(46, 34, 68, 0.08) !important;
+}
+body[data-page="mothers-day"] .hero-marquee .hero-marquee-row {
+  /* Compress the row height */
+  padding: 6px 0 !important;
+}
+body[data-page="mothers-day"] .hero-marquee-word {
+  font-size: clamp(14px, 1.4vw, 18px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase;
+  color: var(--primary) !important;
+}
+body[data-page="mothers-day"] .hero-marquee-word.light {
+  color: var(--bronze) !important;
+}
+body[data-page="mothers-day"] .hero-marquee-sep {
+  font-size: 14px !important;
+  color: rgba(46, 34, 68, 0.4) !important;
+}
+/* MD page sections — force visibility to prevent blank-screen scroll bug.
+   The sticky/fixed canvas elsewhere on the page could have been the culprit. */
+body[data-page="mothers-day"] section {
+  position: relative;
+  z-index: 1;
+}
+body[data-page="mothers-day"] section.mothers-day {
+  padding-top: clamp(40px, 5vw, 64px);
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* Footer sits on deep primary */
+footer { background: var(--primary) !important; color: var(--bg) !important; }
+footer p, footer a, footer span { color: rgba(242, 242, 235, 0.7) !important; }
+footer a:hover { color: var(--bg) !important; }
+footer p[style*="font-family"] { color: var(--bg) !important; }
