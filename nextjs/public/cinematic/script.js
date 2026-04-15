@@ -1,35 +1,47 @@
 (function() {
   'use strict';
+
+  // ─── SAFETY NET: if GSAP/ScrollTrigger fail to load, content stays visible (CSS default) ───
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    return; // fade-up elements remain at opacity:1 per default CSS
+  }
   gsap.registerPlugin(ScrollTrigger);
+  // Tell CSS that JS can handle animations → activates fade-up hiding
+  document.documentElement.classList.add('js-animations-ready');
 
   // ─── NAV SCROLL ───
   var nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
 
   // ─── HAMBURGER ───
   var hamburger = document.getElementById('navHamburger');
   var mobileMenu = document.getElementById('navMobile');
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  });
-  document.querySelectorAll('.mobile-link').forEach(function(link) {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-  });
-  hamburger.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
-  });
+    document.querySelectorAll('.mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    hamburger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
+    });
+  }
 
   // ─── SCROLL-DRIVEN VIDEO HERO (Canvas Frame Engine) ───
   (function() {
     var canvas = document.getElementById('heroCanvas');
+    if (!canvas) return; // Hero only exists on homepage
     var ctx = canvas.getContext('2d');
     var frameCount = 122;
     var currentFrame = 0;
@@ -140,30 +152,37 @@
   }
 
   // Booking mesh only (hero is now video)
-  initMesh(
-    document.getElementById('bookingMesh'),
-    ['rgba(212,184,160,0.15)', 'rgba(107,124,110,0.12)', 'rgba(201,184,168,0.1)', 'rgba(245,240,235,0.2)'],
-    0.25,
-    '#FAFAF8'
-  );
+  var bookingMeshEl = document.getElementById('bookingMesh');
+  if (bookingMeshEl) {
+    initMesh(
+      bookingMeshEl,
+      ['rgba(212,184,160,0.15)', 'rgba(107,124,110,0.12)', 'rgba(201,184,168,0.1)', 'rgba(245,240,235,0.2)'],
+      0.25,
+      '#FAFAF8'
+    );
+  }
 
   // ─── HERO ENTRANCE ANIMATIONS ───
-  gsap.from('.hero h1', { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power2.out' });
-  gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 0.8, delay: 1.0, ease: 'power2.out' });
-  gsap.from('.hero-cta-row', { opacity: 0, y: 20, duration: 0.8, delay: 1.2, ease: 'power2.out' });
-  gsap.from('#scrollIndicator', { opacity: 0, duration: 0.6, delay: 1.5, ease: 'power2.out' });
+  if (document.querySelector('.hero h1')) {
+    gsap.from('.hero h1', { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power2.out' });
+    gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 0.8, delay: 1.0, ease: 'power2.out' });
+    gsap.from('.hero-cta-row', { opacity: 0, y: 20, duration: 0.8, delay: 1.2, ease: 'power2.out' });
+    gsap.from('#scrollIndicator', { opacity: 0, duration: 0.6, delay: 1.5, ease: 'power2.out' });
+  }
 
   // ─── TEXT MASK REVEAL ───
   var maskSection = document.querySelector('.mask-section');
-  gsap.to('.mask-reveal', {
-    clipPath: 'inset(0% 0 0 0)',
-    ease: 'none',
-    scrollTrigger: { trigger: maskSection, start: 'top top', end: '60% bottom', scrub: 0.3 }
-  });
-  gsap.to('.mask-subtext', {
-    opacity: 1, y: 0,
-    scrollTrigger: { trigger: maskSection, start: '55% top', end: '70% top', scrub: true }
-  });
+  if (maskSection) {
+    gsap.to('.mask-reveal', {
+      clipPath: 'inset(0% 0 0 0)',
+      ease: 'none',
+      scrollTrigger: { trigger: maskSection, start: 'top top', end: '60% bottom', scrub: 0.3 }
+    });
+    gsap.to('.mask-subtext', {
+      opacity: 1, y: 0,
+      scrollTrigger: { trigger: maskSection, start: '55% top', end: '70% top', scrub: true }
+    });
+  }
 
   // ─── STICKY STACK (Experiences) ───
   var workshopCards = document.querySelectorAll('.workshop-card');
