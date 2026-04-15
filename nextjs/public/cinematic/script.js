@@ -56,12 +56,10 @@
     toast.appendChild(close);
     stack.appendChild(toast);
 
-    // next frame → trigger entrance
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        toast.classList.add('dj-toast--visible');
-      });
-    });
+    // trigger entrance after layout (setTimeout is more reliable than RAF
+    // for backgrounded tabs, e.g. during automated browser testing)
+    void toast.offsetWidth; // force layout so the initial state paints
+    setTimeout(function() { toast.classList.add('dj-toast--visible'); }, 20);
 
     var dismissed = false;
     function dismiss() {
