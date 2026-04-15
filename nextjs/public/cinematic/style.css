@@ -1967,3 +1967,22 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   /* Offerings: ordering section tighter */
   .offerings-ordering .section-label { font-size: 11px; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE TRANSITIONS — body fades on navigation
+   Default: hidden until JS marks page as ready (no FOUC).
+   On navigation: body fades out smoothly before navigating.
+   Reduced-motion: instant, no fade.
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-smooth);
+  }
+  body.page-ready { opacity: 1; }
+  body.page-leaving { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body { opacity: 1; }
+}

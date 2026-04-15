@@ -1,6 +1,52 @@
 (function() {
   'use strict';
 
+  // ─── PAGE TRANSITION: mark page as ready (fades body in) ───
+  function markPageReady() {
+    document.body.classList.add('page-ready');
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(markPageReady, 30);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(markPageReady, 30);
+    });
+  }
+
+  // ─── NAVIGATION HELPER: fade out body, then navigate ───
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.djNavigate = function(url) {
+    if (prefersReducedMotion) {
+      window.location.href = url;
+      return;
+    }
+    document.body.classList.add('page-leaving');
+    setTimeout(function() { window.location.href = url; }, 380);
+  };
+
+  // ─── PAGE TRANSITION: intercept internal nav → fade out → navigate ───
+  // Bubble phase + defaultPrevented check, so specific handlers (booking/order) win.
+  document.addEventListener('click', function(e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return; // only left-click
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // let modifier-clicks open new tab
+    var link = e.target.closest('a[href]');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+    try {
+      var url = new URL(link.href, window.location.origin);
+      if (url.origin !== window.location.origin) return;
+      // Same-page hash → let browser handle smooth scroll
+      if (url.pathname === window.location.pathname) return;
+      if (link.hasAttribute('download')) return;
+      if (link.hasAttribute('target') && link.getAttribute('target') !== '_self') return;
+      if (link.hasAttribute('data-no-transition')) return;
+    } catch(err) { return; }
+    e.preventDefault();
+    window.djNavigate(link.href);
+  });
+
   // ─── SAFETY NET: if GSAP/ScrollTrigger fail to load, content stays visible (CSS default) ───
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     return; // fade-up elements remain at opacity:1 per default CSS
@@ -383,10 +429,9 @@
         e.preventDefault();
         scrollToBooking(interest);
       } else {
-        // Navigate to /booking page; pass interest as query param
         e.preventDefault();
         var url = '/booking' + (interest ? '?interest=' + encodeURIComponent(interest) : '');
-        window.location.href = url;
+        window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
       }
     });
   });
@@ -403,13 +448,12 @@
     }
   }
 
-  // Order links → navigate to order page
-  document.querySelectorAll('a[href="#order"], a[href="/order"]').forEach(function(btn) {
+  // Order links → navigate to order page (with transition)
+  document.querySelectorAll('a[href="#order"]').forEach(function(btn) {
     if (btn.hasAttribute('data-no-intercept')) return;
-    if (btn.getAttribute('href') === '/order') return; // already absolute, let it through
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      window.location.href = '/order';
+      window.djNavigate ? window.djNavigate('/order') : (window.location.href = '/order');
     });
   });
 
@@ -421,7 +465,8 @@
       if (hasForm) {
         scrollToBooking('Private Experience');
       } else {
-        window.location.href = '/booking?interest=' + encodeURIComponent('Private Experience');
+        var url = '/booking?interest=' + encodeURIComponent('Private Experience');
+        window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
       }
     });
   });

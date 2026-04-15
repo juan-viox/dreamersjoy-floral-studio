@@ -11,6 +11,14 @@ const publicPaths = [
   '/sitemap.xml', '/robots.txt',
 ]
 
+/** CRM route prefixes — require authentication */
+const crmPaths = [
+  '/dashboard', '/contacts', '/companies', '/deals', '/leads',
+  '/activities', '/automations', '/calendar', '/emails',
+  '/invoices', '/products', '/reports', '/settings', '/sites', '/tasks',
+  '/portal',
+]
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -72,14 +80,21 @@ export async function middleware(request: NextRequest) {
     return supabaseResponse
   }
 
-  // ── 6. All other routes: require auth ──
-  if (!user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
+  // ── 6. CRM routes: require auth, redirect to /login if missing ──
+  const isCrmRoute = crmPaths.some((p) => pathname === p || pathname.startsWith(p + '/'))
+  if (isCrmRoute) {
+    if (!user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
+    return supabaseResponse
   }
 
-  return supabaseResponse
+  // ── 7. Unknown public path → serve branded 404 (rewrite, not redirect) ──
+  const url = request.nextUrl.clone()
+  url.pathname = '/cinematic/404.html'
+  return NextResponse.rewrite(url, { status: 404 })
 }
 
 export const config = {
