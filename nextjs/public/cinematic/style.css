@@ -2933,6 +2933,18 @@ body:not([data-page="home"]) section:first-of-type.hero-marquee {
 body[data-page="subscriptions"] .booking-cta { overflow: hidden; }
 body[data-page="subscriptions"] section { overflow: hidden; }
 
+/* Tighten the internal rhythm of bloom-circle so the page doesn't feel
+   like a series of floating blocks. Consistent 48-64px between children. */
+body[data-page="subscriptions"] .bloom-circle > .container > * {
+  margin-bottom: clamp(48px, 5vw, 64px) !important;
+  margin-top: 0 !important;
+}
+body[data-page="subscriptions"] .bloom-circle > .container > *:last-child {
+  margin-bottom: 0 !important;
+}
+/* First child: no extra top margin (the section padding handles it) */
+body[data-page="subscriptions"] .bloom-circle { padding-top: clamp(40px, 5vw, 72px) !important; padding-bottom: clamp(40px, 5vw, 72px) !important; }
+
 
 /* ═══════════════════════════════════════════════════════════
    GALLERY — guaranteed no-overlap grid (generous gap, clipped cards)
