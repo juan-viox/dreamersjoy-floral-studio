@@ -251,7 +251,7 @@ function Page({ children }: { children: React.ReactNode }) {
         <nav style={{ padding: '20px 0', borderBottom: '1px solid rgba(201,184,168,0.2)' }}>
           <div style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <a href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 400, color: '#334155', textDecoration: 'none' }}>DreamersJoy</a>
-            <a href="/#booking" style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B7355', textDecoration: 'none', borderBottom: '1px solid #C9B8A8', paddingBottom: 2 }}>Inquire Instead</a>
+            <a href="/booking" style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B7355', textDecoration: 'none', borderBottom: '1px solid #C9B8A8', paddingBottom: 2 }}>Inquire Instead</a>
           </div>
         </nav>
         {children}
