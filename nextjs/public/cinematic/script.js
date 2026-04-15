@@ -565,6 +565,78 @@
     });
   });
 
+  // ─── SHOP LIGHTBOX ───
+  // Card click → open modal with product details + Order/Inquire CTAs
+  var lightbox = document.getElementById('shopLightbox');
+  if (lightbox) {
+    var lbImg = document.getElementById('shopLightboxImg');
+    var lbCollection = document.getElementById('shopLightboxCollection');
+    var lbTitle = document.getElementById('shopLightboxTitle');
+    var lbSize = document.getElementById('shopLightboxSize');
+    var lbPrice = document.getElementById('shopLightboxPrice');
+    var lbDesc = document.getElementById('shopLightboxDesc');
+    var lbOrder = document.getElementById('shopLightboxOrder');
+    var lbInquire = document.getElementById('shopLightboxInquire');
+    var lastTrigger = null;
+
+    function openLightbox(card) {
+      lastTrigger = card;
+      lbImg.style.backgroundImage = 'url("' + card.getAttribute('data-image') + '")';
+      lbCollection.textContent = card.getAttribute('data-collection') || '';
+      lbTitle.textContent = card.getAttribute('data-name') || '';
+      lbSize.textContent = card.getAttribute('data-size') || '';
+      lbPrice.textContent = card.getAttribute('data-price') || '';
+      lbDesc.textContent = card.getAttribute('data-desc') || '';
+      var id = card.getAttribute('data-arrangement') || '';
+      lbOrder.setAttribute('href', '/order' + (id ? '?arrangement=' + encodeURIComponent(id) : ''));
+      var interest = encodeURIComponent('Custom Floral Design');
+      lbInquire.setAttribute('href', '/inquire?interest=' + interest);
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastTrigger) { try { lastTrigger.focus(); } catch(e) {} }
+    }
+
+    // Open on card click — but ignore clicks on inner buttons/links
+    document.querySelectorAll('.shop-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        var interactive = e.target.closest('button, a');
+        if (interactive) return; // let explicit Order/Inquire button handle it
+        openLightbox(card);
+      });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(card);
+        }
+      });
+    });
+
+    // Close triggers
+    lightbox.querySelectorAll('[data-shop-close]').forEach(function(el) {
+      el.addEventListener('click', closeLightbox);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    });
+  }
+
+  // ─── SHOP Order buttons (data-shop-order) → /order?arrangement=<id> ───
+  document.querySelectorAll('[data-shop-order]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation(); // don't also open the lightbox
+      var id = btn.getAttribute('data-shop-order');
+      var url = '/order' + (id ? '?arrangement=' + encodeURIComponent(id) : '');
+      window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
+    });
+  });
+
   // Flip card Inquire links → navigate to /inquire with private experience pre-selected
   document.querySelectorAll('.flip-link').forEach(function(link) {
     link.style.cursor = 'pointer';

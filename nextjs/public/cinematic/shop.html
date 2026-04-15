@@ -91,280 +91,289 @@
 </div>
 
 
-<!-- Page Header -->
-<section style="padding: 140px 0 40px 0; background: var(--secondary); text-align: center;">
+<!-- ═══ HERO (SHORT) ═══ -->
+<section style="padding: 120px 0 40px 0; background: var(--secondary); text-align: center;">
   <div class="container">
     <p class="section-label fade-up">Shop</p>
-    <h1 class="section-heading fade-up" style="margin-bottom: 16px;">Seasonal Floral Design</h1>
-    <p class="fade-up" style="font-size: 18px; color: rgba(51,65,85,0.75); max-width: 56ch; margin: 0 auto; line-height: 1.7;">Choose your palette, choose your scale. Each arrangement is composed by hand using the most beautiful blooms of the season.</p>
+    <h1 class="section-heading fade-up" style="margin-bottom: 12px;">Seasonal Floral Design</h1>
+    <p class="fade-up" style="font-size: 17px; color: rgba(51,65,85,0.7); max-width: 52ch; margin: 0 auto; line-height: 1.6;">Three palettes, three scales. Composed by hand with seasonal blooms.</p>
   </div>
 </section>
-<section class="offerings" id="offerings">
+
+<!-- ═══ PRODUCTS FIRST ═══ -->
+<section class="offerings shop-products" id="offerings">
   <div class="container">
-    <div class="offerings-header fade-up">
-      <p class="section-label">Floral Offerings</p>
-      <h2 class="section-heading">Curated by Palette</h2>
-      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">Our floral collections are designed through a color-led system; each palette developed seasonally and composed with intention.</p>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 10px auto 0; line-height: 1.7;">Rather than selecting individual arrangements, you choose a palette and scale. From there, each piece is designed using seasonal blooms selected for tone, movement, and texture.</p>
-    </div>
 
-    <!-- Tier Intro -->
-    <div class="fade-up" style="text-align: center; margin-bottom: 32px; margin-top: 32px;">
-      <p style="font-size: 16px; color: rgba(51,65,85,0.6); max-width: 54ch; margin: 0 auto; line-height: 1.7; font-style: italic;">Each arrangement is composed within our seasonal palettes, using signature blooms selected for movement, texture, and tone. Scale determines presence, not quality. Every piece is designed with the same refined approach.</p>
-    </div>
-
-    <!-- ── SOFT GARDEN ── -->
+    <!-- ── COLLECTION I · SOFT GARDEN ── -->
     <div class="palette-section fade-up">
       <div class="palette-header">
         <p class="section-label">Collection I</p>
         <h3>Soft Garden</h3>
-        <p class="palette-desc">Ivory, blush, pale peach, and soft green. Rooted in classic garden florals with an emphasis on softness, air, and gentle movement. Refined, delicate, and quietly romantic.</p>
+        <p class="palette-desc">Ivory, blush, pale peach, soft green. Classic garden florals with softness, air, and gentle movement.</p>
       </div>
       <div class="palette-grid">
-        <div class="palette-card">
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="softgarden-petite" data-collection="Soft Garden" data-size="Petite"
+          data-name="The Petite Arrangement — Soft Garden" data-price="$85+"
+          data-image="assets/images/palette-softgarden-petite.png"
+          data-desc="A refined, compact arrangement with intentional spacing. Garden roses, ranunculus, sweet pea. Delicate and quietly present.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-petite.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Petite</div>
             <h4>The Petite Arrangement</h4>
             <div class="pc-price">$85+</div>
-            <p>A refined, compact arrangement with intentional spacing. Garden roses, ranunculus, sweet pea. Delicate and quietly present.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, ranunculus, sweet pea. Delicate and quietly present.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="softgarden-petite">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="softgarden-signature" data-collection="Soft Garden" data-size="Signature"
+          data-name="The Signature Arrangement — Soft Garden" data-price="$125+"
+          data-image="assets/images/palette-softgarden-signature.png"
+          data-desc="Layered blooms with soft movement. Garden roses, lisianthus, scabiosa. Fuller presence, airy feel.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-signature.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Signature</div>
             <h4>The Signature Arrangement</h4>
             <div class="pc-price">$125+</div>
-            <p>Layered blooms with soft movement. Garden roses, lisianthus, scabiosa. Fuller presence, airy feel.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, lisianthus, scabiosa. Fuller presence, airy feel.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="softgarden-signature">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="softgarden-statement" data-collection="Soft Garden" data-size="Statement"
+          data-name="The Statement Arrangement — Soft Garden" data-price="$175+"
+          data-image="assets/images/palette-softgarden-statement.png"
+          data-desc="Expansive, design-forward with sculptural presence. Garden roses, sweet pea, jasmine vine, spirea branches.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-softgarden-statement.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Statement</div>
             <h4>The Statement Arrangement</h4>
             <div class="pc-price">$175+</div>
-            <p>Expansive, design-forward with sculptural presence. Garden roses, sweet pea, jasmine vine, spirea branches.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, sweet pea, jasmine vine, spirea branches. Sculptural presence.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="softgarden-statement">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
 
-    <!-- ── DUSTY ROMANTIC ── -->
+    <!-- ── COLLECTION II · DUSTY ROMANTIC ── -->
     <div class="palette-section fade-up">
       <div class="palette-header">
         <p class="section-label">Collection II</p>
         <h3>Dusty Romantic</h3>
-        <p class="palette-desc">Mauve, antique rose, muted plum, and dusty blush. Introduces depth and mood through layered tones and texture. Emotional, layered, and softly dramatic.</p>
+        <p class="palette-desc">Mauve, antique rose, muted plum, dusty blush. Depth and mood through layered tones and texture.</p>
       </div>
       <div class="palette-grid">
-        <div class="palette-card">
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="dustyromantic-petite" data-collection="Dusty Romantic" data-size="Petite"
+          data-name="The Petite Arrangement — Dusty Romantic" data-price="$85+"
+          data-image="assets/images/palette-dustyromantic-petite.png"
+          data-desc="Compact with controlled movement. Garden roses in deeper tones, scabiosa, astilbe. Moody and intimate.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-petite.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Petite</div>
             <h4>The Petite Arrangement</h4>
             <div class="pc-price">$85+</div>
-            <p>Compact with controlled movement. Garden roses in deeper tones, scabiosa, astilbe. Moody and intimate.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Deeper-toned garden roses, scabiosa, astilbe. Moody and intimate.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="dustyromantic-petite">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="dustyromantic-signature" data-collection="Dusty Romantic" data-size="Signature"
+          data-name="The Signature Arrangement — Dusty Romantic" data-price="$125+"
+          data-image="assets/images/palette-dustyromantic-signature.png"
+          data-desc="Fuller compositions with controlled movement. Garden roses, hellebore, scabiosa, astilbe. Rich and textured.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-signature.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Signature</div>
             <h4>The Signature Arrangement</h4>
             <div class="pc-price">$125+</div>
-            <p>Fuller compositions with controlled movement. Garden roses, hellebore, scabiosa, astilbe. Rich and textured.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, hellebore, scabiosa, astilbe. Rich and textured.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="dustyromantic-signature">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="dustyromantic-statement" data-collection="Dusty Romantic" data-size="Statement"
+          data-name="The Statement Arrangement — Dusty Romantic" data-price="$175+"
+          data-image="assets/images/palette-dustyromantic-statement.png"
+          data-desc="Depth and structure with moodier tones. Garden roses, scabiosa, astilbe, spirea. Softly dramatic.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-dustyromantic-statement.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Statement</div>
             <h4>The Statement Arrangement</h4>
             <div class="pc-price">$175+</div>
-            <p>Depth and structure with moodier tones. Garden roses, scabiosa, astilbe, spirea. Softly dramatic.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, scabiosa, astilbe, spirea. Softly dramatic.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="dustyromantic-statement">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
 
-    <!-- ── CITRUS SCULPTURAL ── -->
+    <!-- ── COLLECTION III · CITRUS SCULPTURAL ── -->
     <div class="palette-section fade-up">
       <div class="palette-header">
         <p class="section-label">Collection III</p>
         <h3>Citrus Sculptural</h3>
-        <p class="palette-desc">Apricot, coral, butter yellow, and soft green. Balances softness with modern structure, creating a more expressive seasonal statement. Fresh, sculptural, with a modern edge.</p>
+        <p class="palette-desc">Apricot, coral, butter yellow, soft green. Softness with modern structure. Fresh and sculptural.</p>
       </div>
       <div class="palette-grid">
-        <div class="palette-card">
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="citrussculptural-petite" data-collection="Citrus Sculptural" data-size="Petite"
+          data-name="The Petite Arrangement — Citrus Sculptural" data-price="$85+"
+          data-image="assets/images/palette-citrussculptural-petite.png"
+          data-desc="Fresh and minimal. Garden roses paired with ranunculus and tulips. Modern and expressive.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-petite.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Petite</div>
             <h4>The Petite Arrangement</h4>
             <div class="pc-price">$85+</div>
-            <p>Fresh and minimal. Garden roses paired with ranunculus and tulips. Modern and expressive.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, ranunculus, tulips. Modern and expressive.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="citrussculptural-petite">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="citrussculptural-signature" data-collection="Citrus Sculptural" data-size="Signature"
+          data-name="The Signature Arrangement — Citrus Sculptural" data-price="$125+"
+          data-image="assets/images/palette-citrussculptural-signature.png"
+          data-desc="Garden roses, ranunculus, select orchid accents. Warm, expressive, with structural detail.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-signature.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Signature</div>
             <h4>The Signature Arrangement</h4>
             <div class="pc-price">$125+</div>
-            <p>Garden roses, ranunculus, select orchid accents. Warm, expressive, with structural detail.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, ranunculus, select orchid accents. Warm and structural.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="citrussculptural-signature">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
-        <div class="palette-card">
+        </article>
+        <article class="palette-card shop-card" tabindex="0" role="button"
+          data-arrangement="citrussculptural-statement" data-collection="Citrus Sculptural" data-size="Statement"
+          data-name="The Statement Arrangement — Citrus Sculptural" data-price="$175+"
+          data-image="assets/images/palette-citrussculptural-statement.png"
+          data-desc="Sculptural with refined tropical accents. Garden roses, tulips, orchids, spirea. Modern and elevated.">
           <div class="palette-card-img" style="background-image: url(assets/images/palette-citrussculptural-statement.png);"></div>
           <div class="palette-card-body">
             <div class="pc-size">Statement</div>
             <h4>The Statement Arrangement</h4>
             <div class="pc-price">$175+</div>
-            <p>Sculptural with refined tropical accents. Garden roses, tulips, orchids, spirea. Modern and elevated.</p>
-            <div class="offering-btns"><a href="#order" class="btn-primary btn-sm">Order</a><a href="/inquire" class="btn-outline btn-sm">Inquire</a></div>
+            <p>Garden roses, tulips, orchids, spirea. Modern and elevated.</p>
+            <div class="offering-btns"><button type="button" class="btn-primary btn-sm" data-shop-order="citrussculptural-statement">Order</button><a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline btn-sm">Inquire</a></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
 
-    <!-- Seasonal Note -->
-    <div class="fade-up" style="text-align: center; margin-top: 24px; margin-bottom: 8px;">
-      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45);">Palette tones and floral selections shift seasonally based on availability and evolving color direction.</p>
-      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45); margin-top: 8px; max-width: 60ch; margin-left: auto; margin-right: auto;">Vessels are thoughtfully selected and will remain consistent in scale and overall aesthetic, though specific styles may vary based on seasonal availability.</p>
-    </div>
+  </div>
+</section>
 
-    <!-- Ordering + Delivery -->
-    <div class="fade-up" style="text-align: center; margin-top: clamp(40px, 5vw, 60px);">
-      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto 16px; line-height: 1.7;">Choose your palette and size. We design each piece with garden roses and seasonal blooms selected for movement, texture, and tone.</p>
-      <a href="#order" class="btn-primary" style="margin-bottom: 24px;">Order Your Arrangement</a>
-      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45); margin-bottom: 6px;">All arrangements are made in limited quantities each week. Availability is not guaranteed.</p>
-      <p style="font-size: 15px; color: rgba(51,65,85,0.5);">Serving Bergen County and surrounding areas.</p>
-      <p style="font-size: 14px; color: var(--accent1); margin-top: 6px;">Same-day delivery available for orders placed before 1 PM.</p>
-    </div>
-    <div class="fade-up" style="text-align: center; margin-top: 24px; padding: 24px; border: 1px solid rgba(201,184,168,0.3); border-radius: 4px; background: var(--light);">
-      <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent1); margin-bottom: 6px;">Delivery</p>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.65); line-height: 1.7; max-width: 50ch; margin: 0 auto;">Hand-delivered throughout Northern New Jersey and the greater New York metropolitan area.</p>
-      <a href="/delivery" style="display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1); border-bottom: 1px solid var(--accent2); padding-bottom: 2px;">View full delivery details &rarr;</a>
-    </div>
-  </div>
-</section><section class="hero-marquee" aria-hidden="true" style="background: var(--secondary); border-top: 1px solid rgba(201,184,168,0.15); border-bottom: 1px solid rgba(201,184,168,0.15);">
-  <div class="hero-marquee-row" data-speed="0.8" data-direction="left">
-    <div class="marquee-content">
-      <span class="hero-marquee-word">Seasonal Arrangements</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Installations</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Refined Florals</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Open House Styling</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Private Experiences</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Bloom Circle</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-    </div>
-    <div class="marquee-content">
-      <span class="hero-marquee-word">Seasonal Arrangements</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Installations</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Refined Florals</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Open House Styling</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Private Experiences</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-      <span class="hero-marquee-word">Bloom Circle</span>
-      <span class="hero-marquee-sep">&mdash;</span>
-    </div>
-  </div>
-  <div class="hero-marquee-row" data-speed="0.6" data-direction="right">
-    <div class="marquee-content">
-      <span class="hero-marquee-word light">Ranunculus</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Hellebores</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Sweet Pea</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">French Tulips</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Olive Branch</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Clematis</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Anemone</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Scabiosa</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-    </div>
-    <div class="marquee-content">
-      <span class="hero-marquee-word light">Ranunculus</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Hellebores</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Sweet Pea</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">French Tulips</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Olive Branch</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Clematis</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Anemone</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-      <span class="hero-marquee-word light">Scabiosa</span>
-      <span class="hero-marquee-sep light">&bull;</span>
-    </div>
-  </div>
-</section><section class="bouquets" id="bouquets">
+<!-- ═══ GIFTABLE FLORALS (section within Shop) ═══ -->
+<section class="bouquets shop-giftable" id="bouquets">
   <div class="container">
     <div class="bouquets-header fade-up">
       <p class="section-label">Hand-Tied Bouquets</p>
       <h2 class="section-heading">Giftable Florals</h2>
-      <p style="font-size: 17px; color: rgba(51,65,85,0.65); max-width: 54ch; margin: 0 auto; line-height: 1.7;">A refined, hand-tied interpretation of our seasonal palettes; designed for gifting, celebrating, or a simple gesture done beautifully.</p>
-      <p style="font-size: 16px; color: rgba(51,65,85,0.55); max-width: 54ch; margin: 8px auto 0; line-height: 1.7;">Each bouquet is composed with the same intentional approach to color, movement, and texture, offering a more relaxed yet equally elevated expression of our work.</p>
+      <p style="font-size: 16px; color: rgba(51,65,85,0.65); max-width: 50ch; margin: 0 auto; line-height: 1.6;">A relaxed, hand-tied interpretation of our seasonal palettes — designed for gifting.</p>
     </div>
     <div class="bouquets-grid">
-      <div class="bouquet-card fade-up">
+      <article class="bouquet-card shop-card fade-up" tabindex="0" role="button"
+        data-arrangement="small-bouquet" data-collection="Giftable" data-size="Small"
+        data-name="The Small Bouquet" data-price="$75+"
+        data-image="assets/images/bouquet-small.png"
+        data-desc="A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.">
         <div class="bouquet-img" style="background-image: url(assets/images/bouquet-small.png);"></div>
         <h3>The Small Bouquet</h3>
         <div class="bouquet-price">$75+</div>
-        <p>A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.</p>
-      </div>
-      <div class="bouquet-card fade-up">
+        <p>Delicate and thoughtful. For simple gestures.</p>
+        <div class="offering-btns" style="margin-top: 10px;"><button type="button" class="btn-primary btn-sm" data-shop-order="small-bouquet">Order</button></div>
+      </article>
+      <article class="bouquet-card shop-card fade-up" tabindex="0" role="button"
+        data-arrangement="medium-bouquet" data-collection="Giftable" data-size="Medium"
+        data-name="The Medium Bouquet" data-price="$95+"
+        data-image="assets/images/bouquet-medium.png"
+        data-desc="A balanced, fuller bouquet with a curated mix of seasonal florals. Soft yet elevated.">
         <div class="bouquet-img" style="background-image: url(assets/images/bouquet-medium.png);"></div>
         <h3>The Medium Bouquet</h3>
         <div class="bouquet-price">$95+</div>
-        <p>A balanced, fuller bouquet with a curated mix of seasonal florals. Soft yet elevated.</p>
-      </div>
-      <div class="bouquet-card fade-up">
+        <p>Balanced and fuller. Soft yet elevated.</p>
+        <div class="offering-btns" style="margin-top: 10px;"><button type="button" class="btn-primary btn-sm" data-shop-order="medium-bouquet">Order</button></div>
+      </article>
+      <article class="bouquet-card shop-card fade-up" tabindex="0" role="button"
+        data-arrangement="large-bouquet" data-collection="Giftable" data-size="Large"
+        data-name="The Large Bouquet" data-price="$125+"
+        data-image="assets/images/bouquet-large.png"
+        data-desc="An abundant, expressive bouquet with layered blooms and natural movement. Generous and refined.">
         <div class="bouquet-img" style="background-image: url(assets/images/bouquet-large.png);"></div>
         <h3>The Large Bouquet</h3>
         <div class="bouquet-price">$125+</div>
-        <p>An abundant, expressive bouquet with layered blooms and natural movement. Generous and refined.</p>
-      </div>
-      <div class="bouquet-card fade-up">
+        <p>Abundant and expressive. Generous and refined.</p>
+        <div class="offering-btns" style="margin-top: 10px;"><button type="button" class="btn-primary btn-sm" data-shop-order="large-bouquet">Order</button></div>
+      </article>
+      <article class="bouquet-card shop-card fade-up" tabindex="0" role="button"
+        data-arrangement="signature-bouquet" data-collection="Giftable" data-size="Signature"
+        data-name="The Signature Bouquet" data-price="$165+"
+        data-image="assets/images/bouquet-signature.png"
+        data-desc="A luxurious hand-tied bouquet with carefully selected stems. Designed for gifting and special occasions.">
         <div class="bouquet-img" style="background-image: url(assets/images/bouquet-signature.png);"></div>
         <h3>The Signature Bouquet</h3>
         <div class="bouquet-price">$165+</div>
-        <p>A luxurious hand-tied bouquet with carefully selected stems. Designed for gifting and special occasions.</p>
-      </div>
-    </div>
-    <div class="fade-up" style="text-align: center; margin-top: 24px;">
-      <p style="font-size: 15px; font-style: italic; color: rgba(51,65,85,0.45);">Available in current seasonal palettes. Limited quantities available.</p>
-      <a href="#order" class="btn-primary" style="margin-top: 16px;">Order a Bouquet</a>
+        <p>Luxurious, carefully selected stems. For special occasions.</p>
+        <div class="offering-btns" style="margin-top: 10px;"><button type="button" class="btn-primary btn-sm" data-shop-order="signature-bouquet">Order</button></div>
+      </article>
     </div>
   </div>
-</section><!-- ═══ NEWSLETTER + FOOTER ═══ -->
+</section>
+
+<!-- ═══ ABOUT THE COLLECTIONS (copy AFTER products) ═══ -->
+<section class="shop-about-collections" style="padding: clamp(48px, 6vw, 80px) 0; background: var(--light);">
+  <div class="container" style="max-width: 820px; text-align: center;">
+    <p class="section-label fade-up">Curated by Palette</p>
+    <h2 class="section-heading fade-up" style="margin-bottom: 16px; font-size: clamp(32px, 4vw, 48px);">A Color-Led System</h2>
+    <p class="fade-up" style="font-size: 16px; color: rgba(51,65,85,0.7); line-height: 1.75;">Rather than choosing individual stems, you choose a palette and scale. From there, every arrangement is composed with seasonal blooms selected for tone, movement, and texture. Scale determines presence &mdash; not quality. Every piece is designed with the same refined approach.</p>
+    <p class="fade-up" style="margin-top: 14px; font-size: 14px; font-style: italic; color: rgba(51,65,85,0.45); line-height: 1.7;">Palette tones and floral selections shift seasonally based on availability. Vessels are thoughtfully selected and remain consistent in scale and overall aesthetic, though specific styles may vary.</p>
+  </div>
+</section>
+
+<!-- ═══ ORDER + DELIVERY CTA ═══ -->
+<section class="booking-cta shop-order-cta" style="padding: clamp(64px, 8vw, 100px) 0;">
+  <canvas class="booking-mesh" id="bookingMesh"></canvas>
+  <div class="container">
+    <div class="booking-cta-inner fade-up" style="text-align: center;">
+      <p class="section-label">Place an Order</p>
+      <h2>Ready to Begin?</h2>
+      <p style="max-width: 50ch; margin: 0 auto 12px;">Choose your palette and size. We'll confirm availability and delivery timing by email.</p>
+      <p style="max-width: 52ch; margin: 0 auto 24px; font-size: 14px; opacity: 0.75;">Same-day delivery available for orders placed before 1&nbsp;PM. Hand-delivered throughout Northern New Jersey and the greater New York metro area.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/order" class="btn-primary" data-no-intercept="true">Order an Arrangement</a>
+        <a href="/delivery" class="btn-outline">View Delivery Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHOP LIGHTBOX MODAL (hidden until activated) ═══ -->
+<div class="shop-lightbox" id="shopLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="shopLightboxTitle">
+  <div class="shop-lightbox__backdrop" data-shop-close></div>
+  <div class="shop-lightbox__card" role="document">
+    <button type="button" class="shop-lightbox__close" aria-label="Close" data-shop-close>&times;</button>
+    <div class="shop-lightbox__media">
+      <div class="shop-lightbox__img" id="shopLightboxImg"></div>
+    </div>
+    <div class="shop-lightbox__body">
+      <p class="shop-lightbox__collection" id="shopLightboxCollection"></p>
+      <h2 class="shop-lightbox__title" id="shopLightboxTitle"></h2>
+      <p class="shop-lightbox__size" id="shopLightboxSize"></p>
+      <p class="shop-lightbox__price" id="shopLightboxPrice"></p>
+      <p class="shop-lightbox__desc" id="shopLightboxDesc"></p>
+      <div class="shop-lightbox__actions">
+        <a href="/order" class="btn-primary" id="shopLightboxOrder" data-no-intercept="true">Order This Arrangement</a>
+        <a href="/inquire" class="btn-outline" id="shopLightboxInquire">Ask a Question</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ NEWSLETTER + FOOTER ═══ -->
 <section class="contact" id="newsletter" style="padding: clamp(48px, 6vw, 80px) 0; text-align: center; background: var(--secondary);">
   <div class="container">
     <p class="section-label">Stay Close</p>
@@ -389,19 +398,21 @@
         <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent4); margin-bottom: 16px;">Explore</p>
         <ul style="list-style: none; padding: 0; display: grid; gap: 8px; font-size: 14px;">
           <li><a href="/shop" style="color: rgba(250,250,248,0.7); text-decoration: none;">Shop</a></li>
-          <li><a href="/studio-series" style="color: rgba(250,250,248,0.7); text-decoration: none;">Studio Series</a></li>
           <li><a href="/subscriptions" style="color: rgba(250,250,248,0.7); text-decoration: none;">Subscriptions</a></li>
+          <li><a href="/our-process" style="color: rgba(250,250,248,0.7); text-decoration: none;">Our Process</a></li>
           <li><a href="/gallery" style="color: rgba(250,250,248,0.7); text-decoration: none;">Gallery</a></li>
         </ul>
+
       </div>
       <div>
         <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent4); margin-bottom: 16px;">Studio</p>
         <ul style="list-style: none; padding: 0; display: grid; gap: 8px; font-size: 14px;">
           <li><a href="/about" style="color: rgba(250,250,248,0.7); text-decoration: none;">About</a></li>
-          <li><a href="/inquire" style="color: rgba(250,250,248,0.7); text-decoration: none;">Contact</a></li>
-          <li><a href="/inquire" style="color: rgba(250,250,248,0.7); text-decoration: none;">Booking</a></li>
+          <li><a href="/mothers-day" style="color: rgba(250,250,248,0.7); text-decoration: none;">Mother&rsquo;s Day</a></li>
+          <li><a href="/inquire" style="color: rgba(250,250,248,0.7); text-decoration: none;">Inquire</a></li>
           <li><a href="/delivery" style="color: rgba(250,250,248,0.7); text-decoration: none;">Delivery</a></li>
         </ul>
+
       </div>
     </div>
     <div style="border-top: 1px solid rgba(212,184,160,0.15); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(250,250,248,0.4);">

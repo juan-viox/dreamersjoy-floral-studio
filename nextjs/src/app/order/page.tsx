@@ -16,7 +16,19 @@ const arrangements = [
   { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 \u2013 $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.', category: 'Hand-Tied Bouquets' },
   { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 \u2013 $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.', category: 'Hand-Tied Bouquets' },
   { id: 'signature-bouquet', name: 'Signature Bouquet', price: '$165+', desc: 'A luxurious hand-tied bouquet featuring carefully selected stems. Designed for gifting and special occasions.', category: 'Hand-Tied Bouquets' },
-  // ═══ SEASONAL ARRANGEMENTS ═══
+  // ═══ COLLECTION I · SOFT GARDEN ═══
+  { id: 'softgarden-petite', name: 'Soft Garden — Petite', price: '$85+', desc: 'Garden roses, ranunculus, sweet pea. Delicate and quietly present. Ivory, blush, pale peach, soft green.', category: 'Collection I — Soft Garden' },
+  { id: 'softgarden-signature', name: 'Soft Garden — Signature', price: '$125+', desc: 'Garden roses, lisianthus, scabiosa. Fuller presence, airy feel. Our most-loved scale in the Soft Garden palette.', category: 'Collection I — Soft Garden' },
+  { id: 'softgarden-statement', name: 'Soft Garden — Statement', price: '$175+', desc: 'Garden roses, sweet pea, jasmine vine, spirea branches. Sculptural presence in soft, romantic tones.', category: 'Collection I — Soft Garden' },
+  // ═══ COLLECTION II · DUSTY ROMANTIC ═══
+  { id: 'dustyromantic-petite', name: 'Dusty Romantic — Petite', price: '$85+', desc: 'Garden roses in deeper tones, scabiosa, astilbe. Moody and intimate. Mauve, antique rose, dusty blush.', category: 'Collection II — Dusty Romantic' },
+  { id: 'dustyromantic-signature', name: 'Dusty Romantic — Signature', price: '$125+', desc: 'Garden roses, hellebore, scabiosa, astilbe. Rich and textured compositions with layered tones.', category: 'Collection II — Dusty Romantic' },
+  { id: 'dustyromantic-statement', name: 'Dusty Romantic — Statement', price: '$175+', desc: 'Garden roses, scabiosa, astilbe, spirea. Softly dramatic, with moodier depth and structure.', category: 'Collection II — Dusty Romantic' },
+  // ═══ COLLECTION III · CITRUS SCULPTURAL ═══
+  { id: 'citrussculptural-petite', name: 'Citrus Sculptural — Petite', price: '$85+', desc: 'Garden roses, ranunculus, tulips. Modern and expressive. Apricot, coral, butter yellow, soft green.', category: 'Collection III — Citrus Sculptural' },
+  { id: 'citrussculptural-signature', name: 'Citrus Sculptural — Signature', price: '$125+', desc: 'Garden roses, ranunculus, select orchid accents. Warm, expressive, with structural detail.', category: 'Collection III — Citrus Sculptural' },
+  { id: 'citrussculptural-statement', name: 'Citrus Sculptural — Statement', price: '$175+', desc: 'Garden roses, tulips, orchids, spirea. Modern and elevated with sculptural, tropical accents.', category: 'Collection III — Citrus Sculptural' },
+  // ═══ SEASONAL ARRANGEMENTS (legacy / custom sizing) ═══
   { id: 'petite', name: 'Petite Arrangement', price: '$85+', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.', category: 'Seasonal Arrangements' },
   { id: 'signature', name: 'Signature Arrangement', price: '$125+', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.', category: 'Seasonal Arrangements' },
   { id: 'statement', name: 'Statement Arrangement', price: '$175+', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.', category: 'Seasonal Arrangements' },
@@ -43,6 +55,18 @@ export default function OrderPage() {
         const el = document.getElementById('md-category')
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 400)
+    }
+    // Pre-select a specific arrangement from /shop → /order?arrangement=<id>
+    const arr = params.get('arrangement')
+    if (arr) {
+      const match = arrangements.find(a => a.id === arr)
+      if (match) {
+        setSelected(match.name)
+        setTimeout(() => {
+          const el = document.getElementById(`arrangement-${arr}`)
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 400)
+      }
     }
   }, [])
 
@@ -103,7 +127,7 @@ export default function OrderPage() {
                 <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: category.includes("Mother") ? '#8B7355' : 'rgba(51,65,85,0.5)', marginBottom: 14, paddingBottom: 8, borderBottom: '1px solid rgba(201,184,168,0.3)' }}>{category}</p>
                 <div style={{ display: 'grid', gap: 16 }}>
                   {arrangements.filter(a => a.category === category).map(a => (
-                    <button key={a.id} onClick={() => setSelected(a.name)} style={{
+                    <button key={a.id} id={`arrangement-${a.id}`} onClick={() => setSelected(a.name)} style={{
                       display: 'block', width: '100%', textAlign: 'left', padding: '24px 28px',
                       border: selected === a.name ? '2px solid #8B7355' : '1px solid rgba(201,184,168,0.3)',
                       borderRadius: 4, background: selected === a.name ? 'rgba(139,115,85,0.04)' : '#fff',
