@@ -1,6 +1,24 @@
 (function() {
   'use strict';
 
+  // ─── NAV ACTIVE STATE: highlight current-page link ───
+  // Runs ASAP so the class is on before paint. Inquire is a CTA —
+  // never marked active even when you're on it.
+  (function markActiveNav() {
+    var path = window.location.pathname.replace(/\/$/, '') || '/';
+    var allLinks = document.querySelectorAll('.nav-links a, .nav-mobile .mobile-link');
+    for (var i = 0; i < allLinks.length; i++) {
+      var link = allLinks[i];
+      var href = link.getAttribute('href');
+      if (!href) continue;
+      // Skip the Inquire CTA — it's a button, not an active-state target
+      if (link.classList.contains('nav-cta') || link.classList.contains('mobile-link-cta')) continue;
+      // Exact match OR same path minus trailing slash
+      var target = href.replace(/\/$/, '') || '/';
+      if (target === path) link.classList.add('is-active');
+    }
+  })();
+
   // ─── TOAST: editorial confirmation notification ───
   // Usage: window.djToast({ message, label?, type?, duration? })
   //   type: 'success' (default) | 'error'
@@ -502,8 +520,8 @@
     }
   }
 
-  // Booking CTAs: if booking form is on this page → scroll & pre-fill, else → navigate to /booking
-  document.querySelectorAll('a[href="#booking"], a[href="/booking"]').forEach(function(btn) {
+  // Inquiry CTAs: if inquiry form is on this page → scroll & pre-fill, else → navigate to /inquire
+  document.querySelectorAll('a[href="#booking"], a[href="/inquire"]').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       var hasForm = document.getElementById('booking');
       var text = btn.textContent.trim();
@@ -520,14 +538,14 @@
         scrollToBooking(interest);
       } else {
         e.preventDefault();
-        var url = '/booking' + (interest ? '?interest=' + encodeURIComponent(interest) : '');
+        var url = '/inquire' + (interest ? '?interest=' + encodeURIComponent(interest) : '');
         window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
       }
     });
   });
 
-  // Pre-fill booking form from ?interest= on /booking page
-  if (window.location.pathname === '/booking' || window.location.pathname.indexOf('contact') > -1) {
+  // Pre-fill inquiry form from ?interest= on /inquire page (also legacy /booking /contact)
+  if (window.location.pathname === '/inquire' || window.location.pathname === '/booking' || window.location.pathname.indexOf('contact') > -1) {
     var p = new URLSearchParams(window.location.search);
     var i = p.get('interest');
     if (i) {
@@ -547,7 +565,7 @@
     });
   });
 
-  // Flip card Inquire links → navigate to /booking with private experience pre-selected
+  // Flip card Inquire links → navigate to /inquire with private experience pre-selected
   document.querySelectorAll('.flip-link').forEach(function(link) {
     link.style.cursor = 'pointer';
     link.addEventListener('click', function() {
@@ -555,7 +573,7 @@
       if (hasForm) {
         scrollToBooking('Private Experience');
       } else {
-        var url = '/booking?interest=' + encodeURIComponent('Private Experience');
+        var url = '/inquire?interest=' + encodeURIComponent('Private Experience');
         window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
       }
     });

@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="404">
 
 <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
@@ -24,13 +24,14 @@
     </a>
     <ul class="nav-links">
       <li><a href="/shop">Shop</a></li>
-      <li><a href="/studio-series">Studio Series</a></li>
       <li><a href="/subscriptions">Subscriptions</a></li>
+      <li><a href="/our-process">Our Process</a></li>
       <li><a href="/gallery">Gallery</a></li>
+      <li><a href="/mothers-day" class="nav-seasonal">Mother&rsquo;s Day</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/booking" class="nav-cta">Booking</a></li>
+      <li><a href="/inquire" class="nav-cta">Inquire</a></li>
     </ul>
+
     <div class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
@@ -39,14 +40,14 @@
 
 <div class="nav-mobile" id="navMobile">
   <a href="/shop" class="mobile-link">Shop</a>
-  <a href="/mothers-day" class="mobile-link">Mother&rsquo;s Day</a>
-  <a href="/studio-series" class="mobile-link">Studio Series</a>
   <a href="/subscriptions" class="mobile-link">Subscriptions</a>
+  <a href="/our-process" class="mobile-link">Our Process</a>
   <a href="/gallery" class="mobile-link">Gallery</a>
+  <a href="/mothers-day" class="mobile-link">Mother&rsquo;s Day</a>
   <a href="/about" class="mobile-link">About</a>
-  <a href="/contact" class="mobile-link">Contact</a>
-  <a href="/booking" class="mobile-link">Booking</a>
+  <a href="/inquire" class="mobile-link mobile-link-cta">Inquire</a>
 </div>
+
 
 <!-- 404 Content -->
 <section style="min-height: 75vh; display: flex; align-items: center; justify-content: center; padding: 140px 24px 80px; background: var(--secondary); text-align: center;">
@@ -73,7 +74,7 @@
         <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent1); margin-bottom: 4px;">Subscriptions</p>
         <p style="font-family: var(--font-display); font-size: 19px;">Bloom Circle</p>
       </a>
-      <a href="/contact" style="text-decoration: none; color: var(--primary); padding: 12px;">
+      <a href="/inquire" style="text-decoration: none; color: var(--primary); padding: 12px;">
         <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent1); margin-bottom: 4px;">Connect</p>
         <p style="font-family: var(--font-display); font-size: 19px;">Contact</p>
       </a>

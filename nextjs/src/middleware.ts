@@ -7,9 +7,18 @@ const publicPaths = [
   '/order', '/delivery', '/invite',
   // Public marketing pages (multi-page site)
   '/shop', '/mothers-day', '/studio-series', '/subscriptions',
-  '/gallery', '/about', '/contact', '/booking',
+  '/gallery', '/about',
+  '/inquire', '/our-process',
+  // Legacy paths kept for the 301 redirect handler below
+  '/contact', '/booking',
   '/sitemap.xml', '/robots.txt',
 ]
+
+/** Permanent (301) redirects for merged/renamed pages */
+const redirectMap: Record<string, string> = {
+  '/contact': '/inquire',
+  '/booking': '/inquire',
+}
 
 /** CRM route prefixes — require authentication */
 const crmPaths = [
@@ -25,6 +34,15 @@ export async function middleware(request: NextRequest) {
   // ── 0. Allow the cinematic site root and its static assets ──
   if (pathname === '/' || pathname.startsWith('/cinematic')) {
     return NextResponse.next()
+  }
+
+  // ── 0.5. 301 redirects for merged/renamed pages ──
+  // Match exact path; trailing slash tolerated.
+  const normalizedForRedirect = pathname.replace(/\/$/, '') || '/'
+  if (redirectMap[normalizedForRedirect]) {
+    const url = request.nextUrl.clone()
+    url.pathname = redirectMap[normalizedForRedirect]
+    return NextResponse.redirect(url, 301)
   }
 
   // ── 1. Always allow public paths ──
