@@ -2880,14 +2880,9 @@ body:not([data-page="home"]) section:first-of-type:not(.hero):not(.nav):not(.her
    below the fixed nav. No title ever collides with nav.
    ═══════════════════════════════════════════════════════════ */
 body:not([data-page="home"]) section:first-of-type {
-  padding-top: clamp(180px, 18vh, 220px) !important;
+  padding-top: clamp(220px, 22vh, 270px) !important;
 }
-body:not([data-page="home"]) section:first-of-type.hero-marquee {
-  /* Exception: if a page starts with a marquee (MD), nudge the marquee
-     itself down and compress it. Not a full hero. */
-  padding-top: clamp(110px, 12vh, 140px) !important;
-  padding-bottom: 16px !important;
-}
+/* MD marquee removed from HTML — this rule is no longer needed */
 
 
 /* ═══════════════════════════════════════════════════════════
@@ -2933,10 +2928,10 @@ body:not([data-page="home"]) section:first-of-type.hero-marquee {
   .subs-step-num { font-size: 48px; }
 }
 
-/* Bloom-tier images: rectangular landscape (not tall + cropping) */
+/* Bloom-tier images: generous vertical to show more of the arrangement */
 .bloom-tier { overflow: hidden; }
 .bloom-tier-img {
-  aspect-ratio: 16 / 10 !important;
+  aspect-ratio: 3 / 4 !important;
   margin: -44px -36px 28px !important;
   width: calc(100% + 72px) !important;
 }
