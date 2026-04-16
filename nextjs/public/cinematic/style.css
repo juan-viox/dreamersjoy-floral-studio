@@ -5,22 +5,24 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* LOCKED BRAND PALETTE — do not introduce new colors */
-  --primary: #2E2244;     /* Dominant — deep aubergine navy. All text, borders, CTAs. */
-  --bg: #F2F2EB;          /* Default background — warm stone */
-  --white: #FFFFFF;       /* Digital only — rarely used */
-  --accent: #7C8CAB;      /* Soft slate blue — sparing use */
-  --bronze: #87734C;      /* VERY limited — seasonal / luxury accents only */
+  /* ═══ LOCKED BRAND PALETTE — 4/15/26 final ═══
+     Primary anchor is TRUE EDITORIAL NAVY (Brooklyn Vogue direction).
+     Zero purple. Zero gradients on dark sections. Flat navy only.       */
+  --primary: #2C3E50;     /* Deep blue-gray navy. All text, CTAs, dark sections. */
+  --bg: #F2F2EB;          /* Warm stone — default page background */
+  --white: #FFFFFF;       /* Digital use only */
+  --accent: #7C8CAB;      /* Soft slate blue — sparing supporting accent */
+  --bronze: #87734C;      /* Warm gold/bronze — limited luxury accent */
+  --blush: #C9A5A0;       /* Hero emphasis accent — soft editorial rose */
 
-  /* Legacy aliases (map old token names to new palette so existing CSS
-     continues to compile without a full rewrite of every declaration) */
+  /* Legacy aliases — map old names so existing CSS stays valid */
   --secondary: var(--bg);
   --light: var(--bg);
   --dark: var(--primary);
   --accent1: var(--bronze);
-  --accent2: rgba(46, 34, 68, 0.16);   /* soft primary at low alpha — dividers, borders */
+  --accent2: rgba(44, 62, 80, 0.14);   /* primary at low alpha — dividers, borders */
   --accent3: var(--accent);
-  --accent4: var(--accent);
+  --accent4: var(--blush);
 
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Jost', sans-serif;
@@ -68,7 +70,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .section-heading {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(42px, 5.7vw, 76px);
+  font-size: clamp(36px, 5vw, 68px);
   line-height: 1.12;
   letter-spacing: -0.01em;
   color: var(--primary);
@@ -91,7 +93,7 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   background: rgba(242, 242, 235, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(46, 34, 68, 0.06);
+  border-bottom: 1px solid rgba(44, 62, 80, 0.06);
 }
 /* Home hero is the ONE place the nav starts transparent over dark video */
 body[data-page="home"] .nav:not(.scrolled) {
@@ -105,7 +107,7 @@ body[data-page="home"] .nav:not(.scrolled) {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 12px 0;
-  box-shadow: 0 1px 0 rgba(46, 34, 68, 0.06);
+  box-shadow: 0 1px 0 rgba(44, 62, 80, 0.06);
 }
 .nav-inner {
   max-width: 1200px;
@@ -143,9 +145,20 @@ body[data-page="home"] .nav:not(.scrolled) .nav-logo img {
 }
 /* On home hero (transparent nav over video), links are white */
 body[data-page="home"] .nav:not(.scrolled) .nav-links a { color: var(--white); }
+/* Hover: subtle shift to warm gold on ALL backgrounds */
 .nav-links a:hover { color: var(--bronze); }
-/* No ::after hover underline — keep it clean; active underline handled below */
-.nav-links a::after { display: none; }
+/* Hover underline — thin gold line slides in */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--bronze);
+  transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover::after { width: 100%; }
+/* Active link overrides hover underline (permanent underline in primary) */
+.nav-links a.is-active::after { width: 100%; background: var(--primary); }
 /* Inquire is NOT a CTA button — just another nav link */
 .nav-cta {
   font-size: 13px;
@@ -266,7 +279,7 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(40px, 6.7vw, 88px);
+  font-size: clamp(38px, 6.2vw, 80px);
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--light);
@@ -2425,9 +2438,9 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
 
 /* Tighten spacing between palette sections (~35% reduction) */
 .shop-products .palette-section {
-  margin-bottom: clamp(32px, 4vw, 56px);
-  padding-bottom: clamp(32px, 4vw, 56px);
-  border-bottom: 1px solid rgba(201, 184, 168, 0.18);
+  margin-bottom: clamp(20px, 2.5vw, 36px);
+  padding-bottom: clamp(20px, 2.5vw, 36px);
+  border-bottom: 1px solid rgba(44, 62, 80, 0.10);
 }
 .shop-products .palette-section:last-of-type {
   border-bottom: none;
@@ -2818,20 +2831,23 @@ body:not([data-page="home"]) section:first-of-type:not(.hero):not(.nav):not(.her
   content: '';
   display: block;
   height: 1px;
-  background: rgba(46, 34, 68, 0.14);
+  background: rgba(44, 62, 80, 0.14);
 }
 .section-divider--full {
   max-width: none;
   padding: 0;
 }
-.section-divider--full::after { background: rgba(46, 34, 68, 0.12); }
+.section-divider--full::after { background: rgba(44, 62, 80, 0.12); }
 
 
 /* ═══════════════════════════════════════════════════════════
-   DARK MODE PALETTE REBRAND — the new #2E2244 aubergine needs
-   slightly different supporting treatments for overlays, mesh,
-   gradients that were baked in with the old slate color.
+   DARK CTA SECTIONS — flat editorial navy. No gradients, no
+   glows, no mesh-canvas light patches. Completely flat.
    ═══════════════════════════════════════════════════════════ */
+/* KILL the mesh canvas entirely — it creates light-square artifacts */
+.booking-mesh {
+  display: none !important;
+}
 .booking-cta { background: var(--primary); color: var(--bg); }
 .booking-cta h2, .booking-cta .section-label { color: var(--bg); }
 .booking-cta .section-label { color: rgba(242, 242, 235, 0.7); }
@@ -2905,7 +2921,7 @@ body:not([data-page="home"]) section:first-of-type.hero-marquee {
   font-size: clamp(15px, 1.2vw, 17px);
   font-weight: 400;
   line-height: 1.55;
-  color: rgba(46, 34, 68, 0.78);
+  color: rgba(44, 62, 80, 0.78);
   max-width: 18ch;
   margin: 0 auto;
 }
@@ -2917,16 +2933,16 @@ body:not([data-page="home"]) section:first-of-type.hero-marquee {
   .subs-step-num { font-size: 48px; }
 }
 
-/* Scale bloom-tier images up (was 4/3 → now 4/5 vertical) */
+/* Bloom-tier images: rectangular landscape (not tall + cropping) */
 .bloom-tier { overflow: hidden; }
 .bloom-tier-img {
-  aspect-ratio: 4 / 5 !important;
+  aspect-ratio: 16 / 10 !important;
   margin: -44px -36px 28px !important;
   width: calc(100% + 72px) !important;
 }
 .bloom-tier h3 { font-size: 30px !important; }
 .bloom-tier .tier-freq { font-size: 12px !important; }
-.bloom-tier p { font-size: 16px !important; color: rgba(46, 34, 68, 0.75) !important; }
+.bloom-tier p { font-size: 16px !important; color: rgba(44, 62, 80, 0.75) !important; }
 
 /* Remove the "white shadow/glow on left bottom" — that was the booking-mesh
    canvas bleeding through. Subscriptions section must clip its children. */
@@ -2993,8 +3009,8 @@ body[data-page="mothers-day"] .hero-marquee {
   padding-top: clamp(110px, 13vh, 140px) !important;
   padding-bottom: 8px !important;
   background: var(--bg) !important;
-  border-top: 1px solid rgba(46, 34, 68, 0.08) !important;
-  border-bottom: 1px solid rgba(46, 34, 68, 0.08) !important;
+  border-top: 1px solid rgba(44, 62, 80, 0.08) !important;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.08) !important;
 }
 body[data-page="mothers-day"] .hero-marquee .hero-marquee-row {
   /* Compress the row height */
@@ -3012,7 +3028,7 @@ body[data-page="mothers-day"] .hero-marquee-word.light {
 }
 body[data-page="mothers-day"] .hero-marquee-sep {
   font-size: 14px !important;
-  color: rgba(46, 34, 68, 0.4) !important;
+  color: rgba(44, 62, 80, 0.4) !important;
 }
 /* MD page sections — force visibility to prevent blank-screen scroll bug.
    The sticky/fixed canvas elsewhere on the page could have been the culprit. */
