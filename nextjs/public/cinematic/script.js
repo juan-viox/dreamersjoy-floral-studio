@@ -290,11 +290,11 @@
     draw();
   }
 
-  // Booking mesh only (hero is now video).
-  // Colors tuned to sit on the deep-primary booking-cta background (#2C3E50)
-  // so there's no visible white square when the mesh renders off-center.
+  // Booking mesh — DISABLED via CSS (display:none) to eliminate the
+  // light-square glow artifact. Guard here too: if canvas has zero
+  // dimensions (hidden), skip init entirely so the IIFE doesn't crash.
   var bookingMeshEl = document.getElementById('bookingMesh');
-  if (bookingMeshEl) {
+  if (bookingMeshEl && bookingMeshEl.offsetWidth > 0 && bookingMeshEl.offsetHeight > 0) {
     initMesh(
       bookingMeshEl,
       ['rgba(242,242,235,0.06)', 'rgba(124,140,171,0.08)', 'rgba(135,115,76,0.05)', 'rgba(242,242,235,0.04)'],
