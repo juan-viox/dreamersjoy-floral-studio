@@ -108,23 +108,41 @@
 <section class="mothers-day" id="mothers-day">
   <div class="container">
 
-    <!-- 3 Palette Images Below Title -->
+    <!-- 3 Palette Images Below Title — click opens quick view -->
     <div class="md-palette-row fade-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 40px auto 32px;">
-      <div class="md-palette-card">
+      <article class="md-palette-card md-quickview-trigger" tabindex="0" role="button"
+        data-palette="veiled-citrus"
+        data-name="Veiled Citrus"
+        data-desc="Soft yellow, cream, fresh green. Ranunculus, sweet pea, jasmine vine."
+        data-image="assets/images/mothersday-veiled-citrus.png"
+        data-sizes='[{"label":"Petite","price":"$95","id":"md-veiled-citrus-petite"},{"label":"Signature","price":"$145","id":"md-veiled-citrus-signature"}]'
+        aria-label="Quick view: Veiled Citrus">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-veiled-citrus.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Veiled Citrus</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
-      </div>
-      <div class="md-palette-card">
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(44,62,80,0.55); font-style: italic; letter-spacing: 0.02em;">Soft yellow, cream, fresh green</p>
+      </article>
+      <article class="md-palette-card md-quickview-trigger" tabindex="0" role="button"
+        data-palette="olive-air"
+        data-name="Olive Air"
+        data-desc="Muted olive, ivory, soft white. Hellebore, white ranunculus, olive branch."
+        data-image="assets/images/mothersday-olive-air.png"
+        data-sizes='[{"label":"Petite","price":"$95","id":"md-olive-air-petite"},{"label":"Signature","price":"$145","id":"md-olive-air-signature"}]'
+        aria-label="Quick view: Olive Air">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-olive-air.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Olive Air</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
-      </div>
-      <div class="md-palette-card">
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(44,62,80,0.55); font-style: italic; letter-spacing: 0.02em;">Muted olive, ivory, soft white</p>
+      </article>
+      <article class="md-palette-card md-quickview-trigger" tabindex="0" role="button"
+        data-palette="quiet-bloom"
+        data-name="Quiet Bloom"
+        data-desc="Blush, dusty rose, soft neutrals. Garden roses, lisianthus, scabiosa."
+        data-image="assets/images/mothersday-quiet-bloom.png"
+        data-sizes='[{"label":"Petite","price":"$95","id":"md-quiet-bloom-petite"},{"label":"Signature","price":"$145","id":"md-quiet-bloom-signature"},{"label":"Statement","price":"$195","id":"md-quiet-bloom-statement"}]'
+        aria-label="Quick view: Quiet Bloom">
         <div class="md-palette-img" style="aspect-ratio: 4/3; background-image: url(assets/images/mothersday-quiet-bloom.png); background-size: cover; background-position: center; border-radius: 3px;"></div>
         <p style="text-align: center; margin-top: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--primary);">Quiet Bloom</p>
-        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(51,65,85,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
-      </div>
+        <p style="text-align: center; margin-top: 4px; font-size: 15px; color: rgba(44,62,80,0.55); font-style: italic; letter-spacing: 0.02em;">Blush, dusty rose, soft neutrals</p>
+      </article>
     </div>
 
     <div class="md-btns">
@@ -157,7 +175,35 @@
 
     <p class="md-note" style="margin-top: 18px;">Mother's Day deliveries available Thursday through Saturday. Pre-orders close Wednesday at 8 PM. Limited quantities available to preserve design integrity.</p>
   </div>
-</section><section class="booking-cta" style="padding: clamp(72px, 9vw, 110px) 0;">
+</section>
+
+<!-- ═══ MD QUICK VIEW MODAL ═══ -->
+<div class="md-quickview" id="mdQuickview" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mdQvTitle">
+  <div class="md-quickview__backdrop" data-mdqv-close></div>
+  <div class="md-quickview__card" role="document">
+    <button type="button" class="md-quickview__close" aria-label="Close" data-mdqv-close>&times;</button>
+    <div class="md-quickview__media">
+      <div class="md-quickview__img" id="mdQvImg"></div>
+    </div>
+    <div class="md-quickview__body">
+      <p class="md-quickview__eyebrow">Mother&rsquo;s Day &mdash; The Spring Edit</p>
+      <h2 class="md-quickview__title" id="mdQvTitle"></h2>
+      <p class="md-quickview__desc" id="mdQvDesc"></p>
+
+      <div class="md-quickview__sizes">
+        <p class="md-quickview__sizes-label">Choose a size</p>
+        <div class="md-quickview__size-list" id="mdQvSizeList" role="radiogroup" aria-label="Arrangement size"></div>
+      </div>
+
+      <div class="md-quickview__actions">
+        <button type="button" class="btn-primary md-quickview__cta" id="mdQvCta" disabled>Add to Cart</button>
+        <p class="md-quickview__hint" id="mdQvHint">Select a size to continue</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="booking-cta" style="padding: clamp(72px, 9vw, 110px) 0;">
   <canvas class="booking-mesh" id="bookingMesh"></canvas>
   <div class="container">
     <div class="booking-cta-inner fade-up" style="text-align: center;">
@@ -165,7 +211,7 @@
       <h2>Order Her Arrangement</h2>
       <p style="max-width: 50ch; margin: 0 auto 32px;">Order by May 8 for Mother's Day delivery. Hand-delivered throughout Northern New Jersey.</p>
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="/order?collection=mothers-day" class="btn-primary">Shop the Spring Edit</a>
+        <a href="/order?collection=mothers-day" class="btn-primary" data-no-intercept="true">Shop Mother&rsquo;s Day Collection</a>
         <a href="/inquire" class="btn-outline">Ask a Question</a>
       </div>
     </div>

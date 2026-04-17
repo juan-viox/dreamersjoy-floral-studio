@@ -683,6 +683,91 @@
     });
   }
 
+  // ─── MOTHER'S DAY QUICK VIEW MODAL ───
+  // Click a palette card → modal with larger image + size selector + Add to Cart.
+  // Add to Cart routes to /order?arrangement=<selected-id> which auto-selects
+  // the right arrangement in the order flow.
+  var mdQv = document.getElementById('mdQuickview');
+  if (mdQv) {
+    var mdQvImg = document.getElementById('mdQvImg');
+    var mdQvTitle = document.getElementById('mdQvTitle');
+    var mdQvDesc = document.getElementById('mdQvDesc');
+    var mdQvSizeList = document.getElementById('mdQvSizeList');
+    var mdQvCta = document.getElementById('mdQvCta');
+    var mdQvHint = document.getElementById('mdQvHint');
+    var mdQvLastTrigger = null;
+    var mdQvSelectedId = null;
+
+    function openMdQv(card) {
+      mdQvLastTrigger = card;
+      mdQvSelectedId = null;
+      mdQvImg.style.backgroundImage = 'url("' + card.getAttribute('data-image') + '")';
+      mdQvTitle.textContent = card.getAttribute('data-name') || '';
+      mdQvDesc.textContent = card.getAttribute('data-desc') || '';
+      // Parse size options and build buttons
+      var sizes = [];
+      try { sizes = JSON.parse(card.getAttribute('data-sizes') || '[]'); } catch (e) { sizes = []; }
+      mdQvSizeList.innerHTML = '';
+      sizes.forEach(function(s) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'md-quickview__size-option';
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', 'false');
+        btn.setAttribute('data-size-id', s.id);
+        btn.innerHTML = '<span class="size-label">' + s.label + '</span><span class="size-price">' + s.price + '</span>';
+        btn.addEventListener('click', function() {
+          // Deselect siblings
+          mdQvSizeList.querySelectorAll('.md-quickview__size-option').forEach(function(o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('is-selected');
+          btn.setAttribute('aria-checked', 'true');
+          mdQvSelectedId = s.id;
+          mdQvCta.disabled = false;
+          mdQvHint.textContent = s.label + ' selected \u2014 ' + s.price;
+        });
+        mdQvSizeList.appendChild(btn);
+      });
+      mdQvCta.disabled = true;
+      mdQvHint.textContent = 'Select a size to continue';
+      mdQv.classList.add('is-open');
+      mdQv.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMdQv() {
+      mdQv.classList.remove('is-open');
+      mdQv.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (mdQvLastTrigger) { try { mdQvLastTrigger.focus(); } catch(e) {} }
+    }
+
+    // Open on palette card click / keyboard activation
+    document.querySelectorAll('.md-quickview-trigger').forEach(function(card) {
+      card.addEventListener('click', function() { openMdQv(card); });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMdQv(card); }
+      });
+    });
+
+    // Close triggers
+    mdQv.querySelectorAll('[data-mdqv-close]').forEach(function(el) {
+      el.addEventListener('click', closeMdQv);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mdQv.classList.contains('is-open')) closeMdQv();
+    });
+
+    // CTA → route to /order with selected arrangement pre-filled
+    mdQvCta.addEventListener('click', function() {
+      if (!mdQvSelectedId) return;
+      var url = '/order?arrangement=' + encodeURIComponent(mdQvSelectedId);
+      closeMdQv();
+      window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
+    });
+  }
+
   // Flip card Inquire links → navigate to /inquire with private experience pre-selected
   document.querySelectorAll('.flip-link').forEach(function(link) {
     link.style.cursor = 'pointer';
