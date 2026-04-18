@@ -16,16 +16,10 @@
 
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
-import { createClient } from '@supabase/supabase-js';
 import type Stripe from 'stripe';
 
 // Force this route to run on the Node runtime (needed for stripe.webhooks.constructEvent)
 export const runtime = 'nodejs';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-);
 
 export async function POST(request: Request) {
   const signature = request.headers.get('stripe-signature');
@@ -123,43 +117,52 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     .filter(Boolean)
     .join(' | ');
 
-  // 1. Create / upsert CRM contact (source=stripe_order)
-  const { error: contactError } = await supabase.from('contacts').insert({
-    first_name: firstName || 'Stripe',
-    last_name: lastName || 'Customer',
-    email,
-    phone: phone || null,
-    source: 'stripe_order',
-    notes,
-  });
+  // Route both the customer contact + the order notification through the
+  // existing /api/v1/ingest/lead endpoint. That endpoint already handles
+  // organization_id resolution (looks up the API key → site → org), which
+  // is a NOT NULL column we can't populate directly from here.
+  const apiKey =
+    process.env.SITE_API_KEY ||
+    '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa';
+  const origin = new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com',
+  ).origin;
+  const notificationEmail =
+    process.env.ORDER_NOTIFICATION_EMAIL || 'hello@dreamersjoystudio.com';
 
-  if (contactError) {
-    console.error('[stripe.webhook] Supabase contact insert failed:', contactError);
-  }
-
-  // 2. Fire a notification "newsletter"-style email lead to Sarah
-  //    using the existing /api/v1/ingest/lead infra. This keeps the
-  //    notification path consistent with other site events and lets
-  //    Sarah see the order in her CRM inbox.
-  const notificationEmail = process.env.ORDER_NOTIFICATION_EMAIL || 'hello@dreamersjoystudio.com';
-  const apiKey = process.env.INGEST_API_KEY || '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa';
-  try {
-    const origin = new URL(
-      process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com',
-    ).origin;
-    await fetch(`${origin}/api/v1/ingest/lead`, {
+  async function postLead(payload: Record<string, string>) {
+    const res = await fetch(`${origin}/api/v1/ingest/lead`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey },
-      body: JSON.stringify({
-        firstName: 'NEW ORDER',
-        lastName: metadata.arrangement_name || 'Arrangement',
-        email: notificationEmail,
-        phone: '',
-        description: notes,
-        source: 'stripe_order_notification',
-      }),
+      body: JSON.stringify(payload),
     });
-  } catch (err) {
-    console.error('[stripe.webhook] Order notification dispatch failed:', err);
+    if (!res.ok) {
+      const txt = await res.text().catch(() => '');
+      console.error('[stripe.webhook] ingest/lead failed:', res.status, txt);
+    }
+    return res;
   }
+
+  // 1. The customer — create a contact with source=stripe_order
+  if (email) {
+    await postLead({
+      firstName: firstName || 'Stripe',
+      lastName: lastName || 'Customer',
+      email,
+      phone: phone || '',
+      description: notes,
+      source: 'stripe_order',
+    });
+  }
+
+  // 2. A notification "lead" to Sarah's inbox (firstName="NEW ORDER" sorts
+  //    to the top of her CRM)
+  await postLead({
+    firstName: 'NEW ORDER',
+    lastName: metadata.arrangement_name || 'Arrangement',
+    email: notificationEmail,
+    phone: '',
+    description: notes,
+    source: 'stripe_order_notification',
+  });
 }
