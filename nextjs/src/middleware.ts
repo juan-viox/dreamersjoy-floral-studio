@@ -55,6 +55,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // ── 2.5. Always allow Stripe checkout + webhook routes ──
+  //     - /api/v1/checkout/* → used by shop/MD modals, no auth (server creates session)
+  //     - /api/v1/webhooks/stripe → verifies via Stripe signature, no Supabase auth
+  if (
+    pathname.startsWith('/api/v1/checkout') ||
+    pathname.startsWith('/api/v1/webhooks')
+  ) {
+    return NextResponse.next()
+  }
+
   // ── 3. Always allow public API routes ──
   if (pathname.startsWith('/api/')) {
     return NextResponse.next()

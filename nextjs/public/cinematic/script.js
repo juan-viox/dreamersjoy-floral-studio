@@ -568,29 +568,76 @@
   });
 
   // ─── SHOP LIGHTBOX ───
-  // Card click → open modal with product details + Order/Inquire CTAs
+  // Card click → modal with product details + size selector + Stripe Checkout
   var lightbox = document.getElementById('shopLightbox');
   if (lightbox) {
     var lbImg = document.getElementById('shopLightboxImg');
     var lbCollection = document.getElementById('shopLightboxCollection');
     var lbTitle = document.getElementById('shopLightboxTitle');
-    var lbSize = document.getElementById('shopLightboxSize');
-    var lbPrice = document.getElementById('shopLightboxPrice');
     var lbDesc = document.getElementById('shopLightboxDesc');
-    var lbOrder = document.getElementById('shopLightboxOrder');
+    var lbSizeList = document.getElementById('shopLightboxSizeList');
+    var lbCta = document.getElementById('shopLightboxCta');
+    var lbHint = document.getElementById('shopLightboxHint');
     var lbInquire = document.getElementById('shopLightboxInquire');
     var lastTrigger = null;
+    var lbSelectedId = null;
 
     function openLightbox(card) {
       lastTrigger = card;
+      lbSelectedId = null;
       lbImg.style.backgroundImage = 'url("' + card.getAttribute('data-image') + '")';
       lbCollection.textContent = card.getAttribute('data-collection') || '';
-      lbTitle.textContent = card.getAttribute('data-name') || '';
-      lbSize.textContent = card.getAttribute('data-size') || '';
-      lbPrice.textContent = card.getAttribute('data-price') || '';
+      // Display the palette/collection name as the modal title (size choices below)
+      var name = card.getAttribute('data-name') || '';
+      // Strip "The <Size> Arrangement — " prefix so title reads as just the palette
+      lbTitle.textContent = name.replace(/^The\s+\w+\s+Arrangement\s*[—-]\s*/, '') || name;
       lbDesc.textContent = card.getAttribute('data-desc') || '';
-      var id = card.getAttribute('data-arrangement') || '';
-      lbOrder.setAttribute('href', '/order' + (id ? '?arrangement=' + encodeURIComponent(id) : ''));
+
+      // Render size options
+      var sizes = [];
+      try { sizes = JSON.parse(card.getAttribute('data-sizes') || '[]'); } catch (e) { sizes = []; }
+      lbSizeList.innerHTML = '';
+      // If single-size (bouquet), auto-select it
+      var currentId = card.getAttribute('data-arrangement');
+      sizes.forEach(function(s) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'shop-lightbox__size-option';
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', 'false');
+        btn.setAttribute('data-size-id', s.id);
+        btn.innerHTML = '<span class="size-label">' + s.label + '</span><span class="size-price">' + s.price + '</span>';
+        btn.addEventListener('click', function() {
+          lbSizeList.querySelectorAll('.shop-lightbox__size-option').forEach(function(o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('is-selected');
+          btn.setAttribute('aria-checked', 'true');
+          lbSelectedId = s.id;
+          lbCta.disabled = false;
+          lbHint.textContent = s.label + ' selected \u2014 ' + s.price;
+        });
+        lbSizeList.appendChild(btn);
+        // Pre-select the card's own size (so clicking "Signature" card opens with Signature highlighted)
+        if (s.id === currentId) {
+          setTimeout(function() { btn.click(); }, 0);
+        }
+      });
+      // If only one size (bouquet), auto-select
+      if (sizes.length === 1) {
+        setTimeout(function() {
+          var only = lbSizeList.querySelector('.shop-lightbox__size-option');
+          if (only) only.click();
+        }, 0);
+      }
+      if (sizes.length === 0) {
+        // Fallback: no size metadata, use the arrangement id directly
+        lbSelectedId = currentId;
+        lbCta.disabled = false;
+        lbHint.textContent = '';
+      }
+
       var interest = encodeURIComponent('Custom Floral Design');
       lbInquire.setAttribute('href', '/inquire?interest=' + interest);
       lightbox.classList.add('is-open');
@@ -603,6 +650,35 @@
       document.body.style.overflow = '';
       if (lastTrigger) { try { lastTrigger.focus(); } catch(e) {} }
     }
+    // Add to Cart → create Stripe Checkout session → redirect
+    lbCta.addEventListener('click', function() {
+      if (!lbSelectedId) return;
+      lbCta.disabled = true;
+      lbCta.textContent = 'Redirecting to checkout...';
+      fetch('/api/v1/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ arrangement_id: lbSelectedId, quantity: 1 }),
+      })
+        .then(function(res) { if (!res.ok) throw new Error('checkout failed'); return res.json(); })
+        .then(function(data) {
+          if (data.url) { window.location.href = data.url; }
+          else { throw new Error('no checkout url'); }
+        })
+        .catch(function(err) {
+          console.error('[shop-lightbox] checkout failed:', err);
+          lbCta.disabled = false;
+          lbCta.textContent = 'Add to Cart';
+          if (window.djToast) {
+            window.djToast({
+              type: 'error',
+              label: 'Checkout unavailable',
+              message: 'We couldn\u2019t reach the payment server. Please try again or email hello@dreamersjoystudio.com.',
+              duration: 6000,
+            });
+          }
+        });
+    });
 
     // Open on card click — but ignore clicks on inner buttons/links
     document.querySelectorAll('.shop-card').forEach(function(card) {
@@ -628,14 +704,18 @@
     });
   }
 
-  // ─── SHOP Order buttons (data-shop-order) → /order?arrangement=<id> ───
+  // ─── SHOP inline Order buttons → open lightbox (let user see details + size
+  //     selector before checkout). No direct-to-cart flow anymore.
   document.querySelectorAll('[data-shop-order]').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      e.stopPropagation(); // don't also open the lightbox
-      var id = btn.getAttribute('data-shop-order');
-      var url = '/order' + (id ? '?arrangement=' + encodeURIComponent(id) : '');
-      window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
+      e.stopPropagation();
+      // Find the parent card and open the lightbox for it
+      var card = btn.closest('.shop-card');
+      if (card && typeof openLightbox === 'function') {
+        // openLightbox is defined inside the lightbox IIFE block above
+        card.click();
+      }
     });
   });
 
@@ -759,12 +839,40 @@
       if (e.key === 'Escape' && mdQv.classList.contains('is-open')) closeMdQv();
     });
 
-    // CTA → route to /order with selected arrangement pre-filled
+    // CTA → create Stripe Checkout session and redirect to Stripe-hosted checkout
     mdQvCta.addEventListener('click', function() {
       if (!mdQvSelectedId) return;
-      var url = '/order?arrangement=' + encodeURIComponent(mdQvSelectedId);
-      closeMdQv();
-      window.djNavigate ? window.djNavigate(url) : (window.location.href = url);
+      mdQvCta.disabled = true;
+      mdQvCta.textContent = 'Redirecting to checkout...';
+      fetch('/api/v1/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ arrangement_id: mdQvSelectedId, quantity: 1 }),
+      })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Checkout session failed');
+          return res.json();
+        })
+        .then(function(data) {
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            throw new Error('No checkout URL in response');
+          }
+        })
+        .catch(function(err) {
+          console.error('[md-quickview] Checkout failed:', err);
+          mdQvCta.disabled = false;
+          mdQvCta.textContent = 'Add to Cart';
+          if (window.djToast) {
+            window.djToast({
+              type: 'error',
+              label: 'Checkout unavailable',
+              message: 'We couldn\u2019t reach the payment server. Please try again or email hello@dreamersjoystudio.com.',
+              duration: 6000,
+            });
+          }
+        });
     });
   }
 
