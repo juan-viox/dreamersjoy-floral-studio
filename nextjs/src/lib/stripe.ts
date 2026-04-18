@@ -21,8 +21,10 @@ function getStripe(): Stripe {
         'Vercel project Environment Variables (production).',
     );
   }
+  // Let the SDK use its default (pinned) API version rather than hardcoding
+  // one here — avoids mismatches between the installed SDK and account
+  // defaults. Upgrade the sdk to bump, not this file.
   cachedStripe = new Stripe(key, {
-    apiVersion: '2026-03-25.dahlia',
     appInfo: {
       name: 'DreamersJoy Floral Studio',
       url: 'https://dreamersjoystudio.com',
