@@ -24,7 +24,12 @@ function getStripe(): Stripe {
   // Let the SDK use its default (pinned) API version rather than hardcoding
   // one here — avoids mismatches between the installed SDK and account
   // defaults. Upgrade the sdk to bump, not this file.
+  //
+  // IMPORTANT: Vercel's Node runtime can fail on the default node-http
+  // transport ("An error occurred with our connection to Stripe"). Forcing
+  // the fetch-based HTTP client fixes it.
   cachedStripe = new Stripe(key, {
+    httpClient: Stripe.createFetchHttpClient(),
     appInfo: {
       name: 'DreamersJoy Floral Studio',
       url: 'https://dreamersjoystudio.com',
