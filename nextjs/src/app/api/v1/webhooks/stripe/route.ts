@@ -23,7 +23,7 @@ export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   const signature = request.headers.get('stripe-signature');
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET?.trim();
 
   if (!signature || !webhookSecret) {
     console.error('[stripe.webhook] Missing signature or webhook secret');
@@ -121,14 +121,18 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
   // existing /api/v1/ingest/lead endpoint. That endpoint already handles
   // organization_id resolution (looks up the API key → site → org), which
   // is a NOT NULL column we can't populate directly from here.
-  const apiKey =
+  // Defensive .trim() on every env var — Vercel occasionally stores values
+  // with trailing whitespace/newlines depending on how they were added.
+  const apiKey = (
     process.env.SITE_API_KEY ||
-    '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa';
+    '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
+  ).trim();
   const origin = new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com',
+    (process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com').trim(),
   ).origin;
-  const notificationEmail =
-    process.env.ORDER_NOTIFICATION_EMAIL || 'hello@dreamersjoystudio.com';
+  const notificationEmail = (
+    process.env.ORDER_NOTIFICATION_EMAIL || 'hello@dreamersjoystudio.com'
+  ).trim();
 
   async function postLead(payload: Record<string, string>) {
     const res = await fetch(`${origin}/api/v1/ingest/lead`, {
