@@ -31,6 +31,8 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { firstName, lastName, phone, description } = body
     const emailAddress = body.emailAddress || body.email || null
+    // Optional source override (e.g. "stripe_order", "stripe_order_notification"). Defaults to "web_form" for backward compat.
+    const sourceTag = (typeof body.source === 'string' && body.source.trim()) ? body.source.trim() : 'web_form'
 
     // Get org ID - try from API key first, fall back to first org
     let orgId = await getOrgIdFromApiKey(supabase, apiKey)
@@ -68,7 +70,7 @@ export async function POST(request: Request) {
             last_name: lastName || '',
             email: emailAddress,
             phone: phone || null,
-            source: 'web_form',
+            source: sourceTag,
             notes: description || null,
           })
           .select('id')
@@ -83,7 +85,7 @@ export async function POST(request: Request) {
           first_name: firstName || 'Unknown',
           last_name: lastName || '',
           phone: phone || null,
-          source: 'web_form',
+          source: sourceTag,
           notes: description || null,
         })
         .select('id')
