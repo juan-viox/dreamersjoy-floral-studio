@@ -143,7 +143,12 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     return res;
   }
 
-  // 1. The customer — create a contact with source=stripe_order
+  // NOTE: The contacts table has a CHECK constraint allowing only
+  // 'manual' | 'newsletter' | 'web_form' for the source column. We use
+  // 'web_form' as the tag here — Stripe orders are uniquely identifiable
+  // because their notes field always begins with "STRIPE ORDER —".
+  //
+  // 1. The customer contact
   if (email) {
     await postLead({
       firstName: firstName || 'Stripe',
@@ -151,18 +156,19 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
       email,
       phone: phone || '',
       description: notes,
-      source: 'stripe_order',
+      source: 'web_form',
     });
   }
 
-  // 2. A notification "lead" to Sarah's inbox (firstName="NEW ORDER" sorts
-  //    to the top of her CRM)
+  // 2. A notification "lead" to Sarah's inbox. firstName="NEW ORDER" so it
+  //    sorts to the top of her CRM — she sees the order without logging
+  //    into Stripe.
   await postLead({
     firstName: 'NEW ORDER',
     lastName: metadata.arrangement_name || 'Arrangement',
     email: notificationEmail,
     phone: '',
     description: notes,
-    source: 'stripe_order_notification',
+    source: 'web_form',
   });
 }
