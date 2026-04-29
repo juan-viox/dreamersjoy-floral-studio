@@ -7,7 +7,7 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.webp</image:loc>
       <image:caption>DreamersJoy Floral Studio — Bergen County, NJ</image:caption>
     </image:image>
   </url>
@@ -17,7 +17,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/palette-softgarden-signature.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/palette-softgarden-signature.webp</image:loc>
       <image:caption>Seasonal floral collections — Soft Garden, Dusty Romantic, Citrus Sculptural</image:caption>
     </image:image>
   </url>
@@ -27,7 +27,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.webp</image:loc>
       <image:caption>Mother's Day — The Spring Edit</image:caption>
     </image:image>
   </url>
@@ -37,7 +37,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.webp</image:loc>
       <image:caption>The Bloom Circle — subscription floral delivery</image:caption>
     </image:image>
   </url>
@@ -47,7 +47,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.webp</image:loc>
       <image:caption>Our Process — design, deliver, elevate</image:caption>
     </image:image>
   </url>
@@ -57,7 +57,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/workshop-spring.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/workshop-spring.webp</image:loc>
       <image:caption>Studio Series — invitation-based floral experiences</image:caption>
     </image:image>
   </url>
@@ -67,7 +67,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-centerpiece.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-centerpiece.webp</image:loc>
       <image:caption>Floral design portfolio</image:caption>
     </image:image>
   </url>
@@ -77,7 +77,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.webp</image:loc>
       <image:caption>About DreamersJoy Floral Studio</image:caption>
     </image:image>
   </url>
@@ -87,7 +87,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png</image:loc>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.webp</image:loc>
       <image:caption>Inquire — start a conversation</image:caption>
     </image:image>
   </url>

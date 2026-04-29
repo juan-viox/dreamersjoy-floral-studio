@@ -659,7 +659,7 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
   border-radius: 2px;
   overflow: hidden;
   position: relative;
-  background-image: url(assets/images/about-studio.png); background-size: cover; background-position: center;
+  background-image: url(assets/images/about-studio.webp); background-size: cover; background-position: center;
 }
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; }
@@ -1462,7 +1462,7 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
   border-radius: 2px;
   overflow: hidden;
   position: relative;
-  background-image: url(assets/images/founder-sarah.png); background-size: cover; background-position: center top;
+  background-image: url(assets/images/founder-sarah.webp); background-size: cover; background-position: center top;
 }
 .founder-image::after {
   content: 'S';
