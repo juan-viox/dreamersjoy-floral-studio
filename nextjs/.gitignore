@@ -43,3 +43,9 @@ next-env.d.ts
 # Drawbridge
 .moat/
 .claude/commands/
+
+# Hero video frames + mp4s — kept on disk for Instagram posts but
+# never deployed (large binaries, not referenced from public site)
+public/cinematic/assets/frames-hero-*
+public/cinematic/assets/hero-video-*.mp4
+public/cinematic/assets/images/_gallery-backup-*
