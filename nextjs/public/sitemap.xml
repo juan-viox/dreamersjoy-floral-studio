@@ -1,52 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://dreamersjoystudio.com/</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png</image:loc>
+      <image:caption>DreamersJoy Floral Studio — Bergen County, NJ</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dreamersjoystudio.com/shop</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dreamersjoystudio.com/subscriptions</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://dreamersjoystudio.com/our-process</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://dreamersjoystudio.com/studio-series</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://dreamersjoystudio.com/gallery</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/palette-softgarden-signature.png</image:loc>
+      <image:caption>Seasonal floral collections — Soft Garden, Dusty Romantic, Citrus Sculptural</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dreamersjoystudio.com/mothers-day</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png</image:loc>
+      <image:caption>Mother's Day — The Spring Edit</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dreamersjoystudio.com/subscriptions</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png</image:loc>
+      <image:caption>The Bloom Circle — subscription floral delivery</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dreamersjoystudio.com/our-process</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.png</image:loc>
+      <image:caption>Our Process — design, deliver, elevate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dreamersjoystudio.com/studio-series</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/workshop-spring.png</image:loc>
+      <image:caption>Studio Series — invitation-based floral experiences</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dreamersjoystudio.com/gallery</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-centerpiece.png</image:loc>
+      <image:caption>Floral design portfolio</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dreamersjoystudio.com/about</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-process-hero.png</image:loc>
+      <image:caption>About DreamersJoy Floral Studio</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dreamersjoystudio.com/inquire</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png</image:loc>
+      <image:caption>Inquire — start a conversation</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dreamersjoystudio.com/delivery</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

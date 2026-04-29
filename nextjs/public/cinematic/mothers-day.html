@@ -11,14 +11,14 @@
 <meta property="og:title" content="Mother's Day &mdash; The Spring Edit | DreamersJoy Floral Studio">
 <meta property="og:description" content="A refined seasonal collection of arrangements and bouquets for Mother's Day. Three palettes: Veiled Citrus, Olive Air, and Quiet Bloom. Hand-delivered in Bergen County NJ. Order by May 8.">
 <meta property="og:url" content="https://dreamersjoystudio.com/mothers-day">
-<meta property="og:image" content="https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png">
+<meta property="og:image" content="https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="DreamersJoy Floral Studio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mother's Day &mdash; The Spring Edit | DreamersJoy Floral Studio">
 <meta name="twitter:description" content="A refined seasonal collection of arrangements and bouquets for Mother's Day. Three palettes: Veiled Citrus, Olive Air, and Quiet Bloom. Hand-delivered in Bergen County NJ. Order by May 8.">
-<meta name="twitter:image" content="https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png">
+<meta name="twitter:image" content="https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png">
 <link rel="icon" type="image/png" href="assets/images/dj-logo.png">
 <link rel="apple-touch-icon" href="assets/images/dj-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,31 +30,84 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FloristService",
-  "name": "DreamersJoy Floral Studio",
-  "description": "Private floral design studio offering seasonal arrangements, curated installations, and invitation-based floral experiences in Bergen County, NJ. By appointment only.",
-  "url": "https://dreamersjoystudio.com",
-  "image": "https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png",
-  "telephone": "+1-551-465-5200",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bergen County",
-    "addressRegion": "NJ",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.9984,
-    "longitude": -74.1718
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Sarah De Jesus"
-  },
-  "areaServed": ["Wyckoff", "Ridgewood", "Franklin Lakes", "Saddle River", "Glen Rock", "Allendale", "Ho-Ho-Kus", "Bergen County"],
-  "priceRange": "$85-$250+",
-  "openingHours": "By Appointment",
-  "sameAs": ["https://www.instagram.com/dreamersjoy", "https://www.facebook.com/DreamersJoyEventsDesign", "https://www.pinterest.com/dreamersjoy", "https://www.tiktok.com/@dreamersjoystudio"]
+  "@graph": [
+    {
+      "@type": "FloristService",
+      "@id": "https://dreamersjoystudio.com/#organization",
+      "name": "DreamersJoy Floral Studio",
+      "description": "Private floral design studio offering seasonal arrangements, subscriptions, and invitation-based experiences in Bergen County, NJ. By appointment only.",
+      "url": "https://dreamersjoystudio.com",
+      "logo": "https://dreamersjoystudio.com/cinematic/assets/images/dj-logo.png",
+      "image": "https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png",
+      "telephone": "+1-551-465-5200",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bergen County",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.9984,
+        "longitude": -74.1718
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Sarah De Jesus"
+      },
+      "areaServed": [
+        "Wyckoff",
+        "Ridgewood",
+        "Franklin Lakes",
+        "Saddle River",
+        "Glen Rock",
+        "Allendale",
+        "Ho-Ho-Kus",
+        "Bergen County"
+      ],
+      "priceRange": "$85-$250+",
+      "openingHours": "By Appointment",
+      "sameAs": [
+        "https://www.instagram.com/dreamersjoystudio",
+        "https://www.facebook.com/DreamersJoyEventsDesign",
+        "https://www.pinterest.com/dreamersjoy",
+        "https://www.tiktok.com/@dreamersjoystudio"
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://dreamersjoystudio.com/mothers-day#webpage",
+      "url": "https://dreamersjoystudio.com/mothers-day",
+      "name": "Mother's Day &mdash; The Spring Edit | DreamersJoy Floral Studio",
+      "description": "A refined seasonal collection of arrangements and bouquets for Mother's Day. Three palettes: Veiled Citrus, Olive Air, and Quiet Bloom. Hand-delivered in Bergen County NJ. Order by May 8.",
+      "isPartOf": {
+        "@id": "https://dreamersjoystudio.com/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://dreamersjoystudio.com/cinematic/assets/images/mothersday-quiet-bloom.png"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dreamersjoystudio.com/mothers-day#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dreamersjoystudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mother's Day",
+          "item": "https://dreamersjoystudio.com/mothers-day"
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>

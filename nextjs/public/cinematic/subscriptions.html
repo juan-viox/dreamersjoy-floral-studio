@@ -11,14 +11,14 @@
 <meta property="og:title" content="Subscriptions &mdash; The Bloom Circle | DreamersJoy Floral Studio">
 <meta property="og:description" content="Subscription floral delivery for homes, offices, and client-facing spaces. Weekly, bi-weekly, or monthly. Designed in seasonal palettes. Bergen County, NJ.">
 <meta property="og:url" content="https://dreamersjoystudio.com/subscriptions">
-<meta property="og:image" content="https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png">
+<meta property="og:image" content="https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="DreamersJoy Floral Studio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Subscriptions &mdash; The Bloom Circle | DreamersJoy Floral Studio">
 <meta name="twitter:description" content="Subscription floral delivery for homes, offices, and client-facing spaces. Weekly, bi-weekly, or monthly. Designed in seasonal palettes. Bergen County, NJ.">
-<meta name="twitter:image" content="https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png">
+<meta name="twitter:image" content="https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png">
 <link rel="icon" type="image/png" href="assets/images/dj-logo.png">
 <link rel="apple-touch-icon" href="assets/images/dj-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,31 +30,84 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FloristService",
-  "name": "DreamersJoy Floral Studio",
-  "description": "Private floral design studio offering seasonal arrangements, curated installations, and invitation-based floral experiences in Bergen County, NJ. By appointment only.",
-  "url": "https://dreamersjoystudio.com",
-  "image": "https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png",
-  "telephone": "+1-551-465-5200",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bergen County",
-    "addressRegion": "NJ",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.9984,
-    "longitude": -74.1718
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Sarah De Jesus"
-  },
-  "areaServed": ["Wyckoff", "Ridgewood", "Franklin Lakes", "Saddle River", "Glen Rock", "Allendale", "Ho-Ho-Kus", "Bergen County"],
-  "priceRange": "$85-$250+",
-  "openingHours": "By Appointment",
-  "sameAs": ["https://www.instagram.com/dreamersjoy", "https://www.facebook.com/DreamersJoyEventsDesign", "https://www.pinterest.com/dreamersjoy", "https://www.tiktok.com/@dreamersjoystudio"]
+  "@graph": [
+    {
+      "@type": "FloristService",
+      "@id": "https://dreamersjoystudio.com/#organization",
+      "name": "DreamersJoy Floral Studio",
+      "description": "Private floral design studio offering seasonal arrangements, subscriptions, and invitation-based experiences in Bergen County, NJ. By appointment only.",
+      "url": "https://dreamersjoystudio.com",
+      "logo": "https://dreamersjoystudio.com/cinematic/assets/images/dj-logo.png",
+      "image": "https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png",
+      "telephone": "+1-551-465-5200",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bergen County",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.9984,
+        "longitude": -74.1718
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Sarah De Jesus"
+      },
+      "areaServed": [
+        "Wyckoff",
+        "Ridgewood",
+        "Franklin Lakes",
+        "Saddle River",
+        "Glen Rock",
+        "Allendale",
+        "Ho-Ho-Kus",
+        "Bergen County"
+      ],
+      "priceRange": "$85-$250+",
+      "openingHours": "By Appointment",
+      "sameAs": [
+        "https://www.instagram.com/dreamersjoystudio",
+        "https://www.facebook.com/DreamersJoyEventsDesign",
+        "https://www.pinterest.com/dreamersjoy",
+        "https://www.tiktok.com/@dreamersjoystudio"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://dreamersjoystudio.com/subscriptions#webpage",
+      "url": "https://dreamersjoystudio.com/subscriptions",
+      "name": "Subscriptions &mdash; The Bloom Circle | DreamersJoy Floral Studio",
+      "description": "Subscription floral delivery for homes, offices, and client-facing spaces. Weekly, bi-weekly, or monthly. Designed in seasonal palettes. Bergen County, NJ.",
+      "isPartOf": {
+        "@id": "https://dreamersjoystudio.com/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://dreamersjoystudio.com/cinematic/assets/images/bloom-biweekly.png"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dreamersjoystudio.com/subscriptions#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dreamersjoystudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Subscriptions",
+          "item": "https://dreamersjoystudio.com/subscriptions"
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>

@@ -1,10 +1,51 @@
+# DreamersJoy Floral Studio
+# https://dreamersjoystudio.com
+
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /(app)/
-Disallow: /(auth)/
-Disallow: /(portal)/
-Disallow: /auth/
-Disallow: /invite/
 
+# CRM / portal / auth — never index private app surfaces
+Disallow: /dashboard
+Disallow: /contacts
+Disallow: /companies
+Disallow: /deals
+Disallow: /leads
+Disallow: /activities
+Disallow: /automations
+Disallow: /calendar
+Disallow: /emails
+Disallow: /invoices
+Disallow: /products
+Disallow: /reports
+Disallow: /settings
+Disallow: /sites
+Disallow: /tasks
+Disallow: /portal
+Disallow: /portal-login
+Disallow: /login
+Disallow: /signup
+
+# Auth + invite + transactional pages
+Disallow: /auth
+Disallow: /auth/
+Disallow: /invite
+Disallow: /invite/
+Disallow: /order/success
+Disallow: /order/cancel
+
+# API + webhooks
+Disallow: /api/
+
+# Cinematic asset folder — canonical URLs are /shop, /mothers-day, etc.
+# (Rewrites serve the underlying files at the public-facing path.)
+Disallow: /cinematic/
+
+# Legacy URLs that 301 → /inquire
+Disallow: /booking
+Disallow: /contact
+
+# Sitemap
 Sitemap: https://dreamersjoystudio.com/sitemap.xml
+
+# Crawl-delay etiquette (not honored by Google but respected by some crawlers)
+Crawl-delay: 1

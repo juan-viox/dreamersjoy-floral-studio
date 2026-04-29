@@ -30,31 +30,78 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FloristService",
-  "name": "DreamersJoy Floral Studio",
-  "description": "Private floral design studio offering seasonal arrangements, curated installations, and invitation-based floral experiences in Bergen County, NJ. By appointment only.",
-  "url": "https://dreamersjoystudio.com",
-  "image": "https://dreamersjoystudio.com/assets/images/gallery-spring-workshop.png",
-  "telephone": "+1-551-465-5200",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bergen County",
-    "addressRegion": "NJ",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.9984,
-    "longitude": -74.1718
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Sarah De Jesus"
-  },
-  "areaServed": ["Wyckoff", "Ridgewood", "Franklin Lakes", "Saddle River", "Glen Rock", "Allendale", "Ho-Ho-Kus", "Bergen County"],
-  "priceRange": "$85-$250+",
-  "openingHours": "By Appointment",
-  "sameAs": ["https://www.instagram.com/dreamersjoy", "https://www.facebook.com/DreamersJoyEventsDesign", "https://www.pinterest.com/dreamersjoy", "https://www.tiktok.com/@dreamersjoystudio"]
+  "@graph": [
+    {
+      "@type": "FloristService",
+      "@id": "https://dreamersjoystudio.com/#organization",
+      "name": "DreamersJoy Floral Studio",
+      "description": "Private floral design studio offering seasonal arrangements, subscriptions, and invitation-based experiences in Bergen County, NJ. By appointment only.",
+      "url": "https://dreamersjoystudio.com",
+      "logo": "https://dreamersjoystudio.com/cinematic/assets/images/dj-logo.png",
+      "image": "https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png",
+      "telephone": "+1-551-465-5200",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bergen County",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.9984,
+        "longitude": -74.1718
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Sarah De Jesus"
+      },
+      "areaServed": [
+        "Wyckoff",
+        "Ridgewood",
+        "Franklin Lakes",
+        "Saddle River",
+        "Glen Rock",
+        "Allendale",
+        "Ho-Ho-Kus",
+        "Bergen County"
+      ],
+      "priceRange": "$85-$250+",
+      "openingHours": "By Appointment",
+      "sameAs": [
+        "https://www.instagram.com/dreamersjoystudio",
+        "https://www.facebook.com/DreamersJoyEventsDesign",
+        "https://www.pinterest.com/dreamersjoy",
+        "https://www.tiktok.com/@dreamersjoystudio"
+      ]
+    },
+    {
+      "@type": "FloristService",
+      "@id": "https://dreamersjoystudio.com/#webpage",
+      "url": "https://dreamersjoystudio.com/",
+      "name": "Private Floral Design Studio | DreamersJoy Floral Studio",
+      "description": "Color-led floral design composed by hand. Seasonal arrangements, hand-tied bouquets, and Studio Series experiences in Bergen County, NJ.",
+      "isPartOf": {
+        "@id": "https://dreamersjoystudio.com/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://dreamersjoystudio.com/cinematic/assets/images/gallery-spring-workshop.png"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dreamersjoystudio.com/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dreamersjoystudio.com/"
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
