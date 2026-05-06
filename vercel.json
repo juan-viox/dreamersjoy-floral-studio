@@ -1,1 +1,12 @@
-{}
+{
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "https://dreamersjoy-crm-app.vercel.app/admin"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://dreamersjoy-crm-app.vercel.app/admin/:path*"
+    }
+  ]
+}
