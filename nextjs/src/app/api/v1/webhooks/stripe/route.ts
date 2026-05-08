@@ -82,7 +82,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
         address.country,
       ]
         .filter(Boolean)
-        .join(' \u2022 ')
+        .join(' • ')
     : '';
 
   // Custom fields (card message, delivery date, recipient name)
@@ -108,7 +108,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     `Total: $${totalDollars} ${(session.currency || 'usd').toUpperCase()}`,
     `Collection: ${metadata.collection || ''}`,
     `Size: ${metadata.size || ''}`,
-    shippingLines ? `Ship to: ${fullName}  \u2022  ${shippingLines}` : '',
+    shippingLines ? `Ship to: ${fullName}  •  ${shippingLines}` : '',
     customFields.recipient_name ? `Recipient: ${customFields.recipient_name}` : '',
     customFields.card_message ? `Card message: "${customFields.card_message}"` : '',
     customFields.delivery_date ? `Requested delivery: ${customFields.delivery_date}` : '',
@@ -123,10 +123,12 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
   // is a NOT NULL column we can't populate directly from here.
   // Defensive .trim() on every env var — Vercel occasionally stores values
   // with trailing whitespace/newlines depending on how they were added.
-  const apiKey = (
-    process.env.SITE_API_KEY ||
-    '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
-  ).trim();
+  const apiKey = process.env.SITE_API_KEY?.trim();
+  if (!apiKey) {
+    throw new Error(
+      'SITE_API_KEY env var is required. Set it in Vercel project Environment Variables (production) or .env.local (local).',
+    );
+  }
   const origin = new URL(
     (process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com').trim(),
   ).origin;
