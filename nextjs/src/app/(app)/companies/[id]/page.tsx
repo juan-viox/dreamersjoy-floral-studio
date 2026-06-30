@@ -8,6 +8,21 @@ import NotesPanel from '@/components/shared/NotesPanel'
 import CustomFieldsRenderer from '@/components/shared/CustomFieldsRenderer'
 import { formatDate, formatCurrency } from '@/lib/utils'
 
+interface CompanyContactRow {
+  id: string
+  first_name: string
+  last_name: string
+  email?: string | null
+  phone?: string | null
+}
+
+interface CompanyDealRow {
+  id: string
+  title: string
+  amount?: number | null
+  stage?: { name?: string | null; color?: string | null } | null
+}
+
 export default async function CompanyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const supabase = await createServerSupabaseClient()
@@ -22,8 +37,8 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
     supabase.from('deals').select('*, stage:deal_stages(name, color)').eq('company_id', id).order('created_at', { ascending: false }),
   ])
 
-  const contacts = contactsRes.data ?? []
-  const deals = dealsRes.data ?? []
+  const contacts = (contactsRes.data ?? []) as CompanyContactRow[]
+  const deals = (dealsRes.data ?? []) as CompanyDealRow[]
 
   return (
     <div>
@@ -80,7 +95,7 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
               <p className="text-sm py-4 text-center" style={{ color: 'var(--muted)' }}>No contacts linked</p>
             ) : (
               <div className="space-y-2">
-                {contacts.map((c: any) => (
+                {contacts.map((c: CompanyContactRow) => (
                   <Link key={c.id} href={`/contacts/${c.id}`} className="flex items-center gap-3 p-3 rounded-lg hover:bg-[var(--surface-2)] transition-colors">
                     <Avatar name={`${c.first_name} ${c.last_name}`} size="sm" />
                     <div>
@@ -99,7 +114,7 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
               <p className="text-sm py-4 text-center" style={{ color: 'var(--muted)' }}>No deals yet</p>
             ) : (
               <div className="space-y-2">
-                {deals.map((deal: any) => (
+                {deals.map((deal: CompanyDealRow) => (
                   <Link key={deal.id} href={`/deals/${deal.id}`} className="flex items-center justify-between p-3 rounded-lg hover:bg-[var(--surface-2)] transition-colors">
                     <div>
                       <p className="text-sm font-medium">{deal.title}</p>
