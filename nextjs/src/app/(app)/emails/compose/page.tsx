@@ -70,7 +70,7 @@ export default function ComposeEmailPage() {
     // Replace variables in subject and body
     const vars: Record<string, string> = {
       '{{first_name}}': contact.first_name,
-      '{{last_name}}': contact.last_name,
+      '{{last_name}}': contact.last_name ?? '',
       '{{email}}': contact.email ?? '',
       '{{company}}': contact.company?.name ?? '',
     }

@@ -139,7 +139,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
   async function postLead(payload: Record<string, string>) {
     const res = await fetch(`${origin}/api/v1/ingest/lead`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey },
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey! },
       body: JSON.stringify(payload),
     });
     if (!res.ok) {
