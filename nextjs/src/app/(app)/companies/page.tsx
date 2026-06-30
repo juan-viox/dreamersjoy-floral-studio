@@ -21,21 +21,19 @@ export default async function CompaniesPage() {
     .select('*, contacts:contacts(count)')
     .order('name')
 
-  const companyRows = (companies ?? []) as CompanyRow[]
-
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Companies</h1>
         <div className="flex items-center gap-3">
-          {companyRows.length > 0 && <CompanyExportButton companies={companyRows} />}
+          {companies && companies.length > 0 && <CompanyExportButton companies={companies} />}
           <Link href="/companies/new" className="btn btn-primary">
             <Plus className="w-4 h-4" /> Add Company
           </Link>
         </div>
       </div>
 
-      {companyRows.length === 0 ? (
+      {!companies || companies.length === 0 ? (
         <EmptyState
           icon={Building2}
           title="No companies yet"
@@ -45,7 +43,7 @@ export default async function CompaniesPage() {
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {companyRows.map((company: CompanyRow) => {
+          {companies.map((company: CompanyRow) => {
             const contactCount = company.contacts?.[0]?.count ?? 0
             return (
               <Link key={company.id} href={`/companies/${company.id}`} className="card hover:border-[var(--accent)] transition-colors">
