@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'Delivery & Service | DreamersJoy Floral Studio',
   description: 'Hand-delivered floral designs throughout Northern New Jersey and the greater New York metropolitan area. Same-day delivery available.',
@@ -29,8 +31,8 @@ export default function DeliveryPage() {
           borderBottom: '1px solid rgba(201,184,168,0.2)',
         }}>
           <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <a href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 400, color: '#334155', textDecoration: 'none' }}>DreamersJoy</a>
-            <a href="/#booking" style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#8B7355', textDecoration: 'none', borderBottom: '1px solid #C9B8A8', paddingBottom: 2 }}>Inquire</a>
+            <Link href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 400, color: '#334155', textDecoration: 'none' }}>DreamersJoy</Link>
+            <Link href="/#booking" style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#8B7355', textDecoration: 'none', borderBottom: '1px solid #C9B8A8', paddingBottom: 2 }}>Inquire</Link>
           </div>
         </nav>
 
@@ -45,9 +47,9 @@ export default function DeliveryPage() {
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 400, marginBottom: 24, color: '#334155' }}>Delivery Options</h2>
           <div style={{ display: 'grid', gap: 0, borderTop: '1px solid rgba(201,184,168,0.3)' }}>
             {[
-              { zone: 'Local Delivery (0\u201310 miles)', price: 'Complimentary on orders over $125', note: '$18 for orders below minimum' },
-              { zone: 'Extended Delivery (10\u201320 miles)', price: '$28\u2013$35', note: '' },
-              { zone: 'Signature Delivery (20\u201330 miles)', price: '$45\u2013$65', note: 'Minimum order of $125 applies' },
+              { zone: 'Local Delivery (0–10 miles)', price: 'Complimentary on orders over $125', note: '$18 for orders below minimum' },
+              { zone: 'Extended Delivery (10–20 miles)', price: '$28–$35', note: '' },
+              { zone: 'Signature Delivery (20–30 miles)', price: '$45–$65', note: 'Minimum order of $125 applies' },
               { zone: 'Concierge Delivery (30+ miles)', price: 'Available upon request', note: 'Please contact us to arrange a private courier service' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, padding: '20px 0', borderBottom: '1px solid rgba(201,184,168,0.15)', alignItems: 'start' }}>
@@ -100,7 +102,7 @@ export default function DeliveryPage() {
 
           {/* CTA */}
           <div style={{ textAlign: 'center' as const, marginTop: 64 }}>
-            <a href="/#offerings" style={{
+            <Link href="/#offerings" style={{
               display: 'inline-block',
               padding: '14px 36px',
               background: '#334155',
@@ -111,7 +113,7 @@ export default function DeliveryPage() {
               letterSpacing: '0.1em',
               textTransform: 'uppercase' as const,
               textDecoration: 'none',
-            }}>View Floral Offerings</a>
+            }}>View Floral Offerings</Link>
           </div>
         </main>
 

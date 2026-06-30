@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { stripe } from '@/lib/stripe';
 
 export const metadata = {
@@ -171,7 +172,7 @@ export default async function OrderSuccessPage({ searchParams }: PageProps) {
               and any final details.
             </p>
 
-            <a
+            <Link
               href="/"
               style={{
                 display: 'inline-block',
@@ -188,7 +189,7 @@ export default async function OrderSuccessPage({ searchParams }: PageProps) {
               }}
             >
               Return to the Studio
-            </a>
+            </Link>
           </div>
         </main>
       </body>

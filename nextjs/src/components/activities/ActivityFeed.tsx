@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Phone, Mail, Calendar, CheckCircle2, FileText, Mic, Plus } from 'lucide-react'
 import { formatRelativeTime, formatDateTime } from '@/lib/utils'
-import ActivityForm from './ActivityForm'
+import ActivityForm, { type ActivityRecord } from './ActivityForm'
 
 const activityIcons: Record<string, typeof Phone> = {
   call: Phone,
@@ -28,7 +28,7 @@ const typeFilters = ['all', 'call', 'email', 'meeting', 'task', 'note', 'voice_a
 export default function ActivityFeed({
   activities: initialActivities,
 }: {
-  activities: any[]
+  activities: ActivityRecord[]
 }) {
   const [filter, setFilter] = useState('all')
   const [showForm, setShowForm] = useState(false)
@@ -85,7 +85,7 @@ export default function ActivityFeed({
             </p>
           </div>
         ) : (
-          filtered.map((a: any) => {
+          filtered.map((a: ActivityRecord) => {
             const Icon = activityIcons[a.type] || FileText
             const color = activityColors[a.type] || 'var(--muted)'
             const contactName = a.contact ? `${a.contact.first_name} ${a.contact.last_name}` : null

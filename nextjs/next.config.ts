@@ -18,17 +18,6 @@ const STATIC_MARKETING_PAGES = [
 ];
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  experimental: {
-    // Prevent pages that use browser APIs from being prerendered at build time
-    missingSuspenseWithCSRBailout: false,
-  },
-
   /**
    * Static rewrites: marketing URLs serve the pre-built HTML directly
    * from the CDN. e.g. /shop → /cinematic/shop.html (no /api/, no

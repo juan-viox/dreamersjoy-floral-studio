@@ -2,6 +2,34 @@ import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { formatCurrency } from '@/lib/utils'
 import DashboardClient from './DashboardClient'
 
+interface StageRow {
+  id: string
+  name: string
+  color: string
+  sort_order: number
+  is_won: boolean
+}
+
+interface RevenueDealRow {
+  amount: number | null
+  created_at: string
+  closed_at: string | null
+  stage_id: string
+}
+
+interface PipelineDealRow {
+  stage_id: string
+  amount: number | null
+}
+
+interface UpcomingTaskRow {
+  id: string
+  title: string
+  type: string
+  due_date: string | null
+  status: string
+}
+
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -41,14 +69,15 @@ export default async function DashboardPage() {
   const totalContacts = contactsRes.count ?? 0
   const openDeals = dealsRes.data ?? []
   const openDealCount = openDeals.length
-  const allDealsForRevenue = wonDealsRes.data ?? []
-  const wonStageIds = new Set((stagesRes.data ?? []).filter((s: any) => s.is_won).map((s: any) => s.id))
-  const wonDeals = allDealsForRevenue.filter((d: any) => wonStageIds.has(d.stage_id))
-  const revenue = wonDeals.reduce((sum: number, d: any) => sum + (d.amount || 0), 0)
+  const allDealsForRevenue = (wonDealsRes.data ?? []) as RevenueDealRow[]
+  const stageRows = (stagesRes.data ?? []) as StageRow[]
+  const wonStageIds = new Set(stageRows.filter((s) => s.is_won).map((s) => s.id))
+  const wonDeals = allDealsForRevenue.filter((d) => wonStageIds.has(d.stage_id))
+  const revenue = wonDeals.reduce((sum: number, d) => sum + (d.amount || 0), 0)
   const tasksDueToday = activitiesRes.count ?? 0
   const recentActivities = recentActivitiesRes.data ?? []
-  const stages = stagesRes.data ?? []
-  const upcomingTasks = upcomingRes.data ?? []
+  const stages = stageRows
+  const upcomingTasks = (upcomingRes.data ?? []) as UpcomingTaskRow[]
 
   // Revenue by month (last 6 months)
   const revenueByMonth: { month: string; revenue: number }[] = []
@@ -73,7 +102,7 @@ export default async function DashboardPage() {
     .select('source')
 
   const sourceCounts: Record<string, number> = {}
-  ;(contactsBySource ?? []).forEach(c => {
+  ;((contactsBySource ?? []) as { source: string | null }[]).forEach(c => {
     const src = c.source || 'unknown'
     sourceCounts[src] = (sourceCounts[src] || 0) + 1
   })
@@ -86,8 +115,10 @@ export default async function DashboardPage() {
     .select('stage_id, amount')
     .is('closed_at', null)
 
+  const pipelineDeals = (dealsWithStages ?? []) as PipelineDealRow[]
+
   const pipelineData = stages.map(stage => {
-    const stDeals = (dealsWithStages ?? []).filter(d => d.stage_id === stage.id)
+    const stDeals = pipelineDeals.filter(d => d.stage_id === stage.id)
     return {
       name: stage.name,
       color: stage.color,
@@ -116,7 +147,7 @@ export default async function DashboardPage() {
         createdAt: a.created_at,
       }))}
       pipelineData={pipelineData}
-      upcomingTasks={upcomingTasks.map((t: any) => ({
+      upcomingTasks={upcomingTasks.map((t) => ({
         id: t.id,
         title: t.title,
         type: t.type,

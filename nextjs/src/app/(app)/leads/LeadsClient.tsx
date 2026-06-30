@@ -142,7 +142,7 @@ export default function LeadsClient({
               sourceIcons[lead.source || 'unknown'] || LinkIcon
             const srcColor =
               sourceColors[lead.source || 'unknown'] || '#8888a0'
-            const status = statusConfig[lead.status] || statusConfig.lead
+            const status = statusConfig[lead.status || 'lead'] || statusConfig.lead
 
             return (
               <div
