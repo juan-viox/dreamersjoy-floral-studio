@@ -161,7 +161,7 @@ export default function ImportPage() {
 
       const { error: insertError } = await supabase
         .from(entityType)
-        .insert(records as any[])
+        .insert(records)
 
       if (insertError) {
         errors += batch.length

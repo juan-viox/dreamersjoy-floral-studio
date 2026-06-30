@@ -1,6 +1,36 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
 import ReportsClient from './ReportsClient'
 
+interface StageRow {
+  id: string
+  name: string
+  color: string
+  sort_order: number
+  is_won: boolean
+  is_lost: boolean
+}
+
+interface DealRow {
+  id: string
+  title: string
+  amount: number
+  probability?: number
+  stage_id: string
+  created_at: string
+  updated_at: string
+  close_date?: string
+  closed_at?: string
+}
+
+interface ProfileRow {
+  id: string
+  full_name: string | null
+}
+
+interface DealCompanyRow {
+  company_id: string
+}
+
 export default async function ReportsPage() {
   const supabase = await createServerSupabaseClient()
 
@@ -41,17 +71,17 @@ export default async function ReportsPage() {
     .not('company_id', 'is', null)
 
   const companyDealCounts: Record<string, number> = {}
-  ;(dealCompanies ?? []).forEach((d) => {
-    const cid = d.company_id as string
+  ;((dealCompanies ?? []) as DealCompanyRow[]).forEach((d) => {
+    const cid = d.company_id
     companyDealCounts[cid] = (companyDealCounts[cid] || 0) + 1
   })
 
   // Compute deal status from stage is_won/is_lost flags
-  const stages = stagesRes.data ?? []
-  const wonStageIds = new Set(stages.filter((s: any) => s.is_won).map((s: any) => s.id))
-  const lostStageIds = new Set(stages.filter((s: any) => s.is_lost).map((s: any) => s.id))
+  const stages = (stagesRes.data ?? []) as StageRow[]
+  const wonStageIds = new Set(stages.filter((s) => s.is_won).map((s) => s.id))
+  const lostStageIds = new Set(stages.filter((s) => s.is_lost).map((s) => s.id))
 
-  const dealsWithStatus = (dealsRes.data ?? []).map((d: any) => ({
+  const dealsWithStatus = ((dealsRes.data ?? []) as DealRow[]).map((d) => ({
     ...d,
     status: wonStageIds.has(d.stage_id) ? 'won'
       : lostStageIds.has(d.stage_id) ? 'lost'
@@ -59,13 +89,13 @@ export default async function ReportsPage() {
   }))
 
   // Transform profiles → teamMembers format
-  const teamMembers = (profilesRes.data ?? []).map((p: any) => ({
+  const teamMembers = ((profilesRes.data ?? []) as ProfileRow[]).map((p) => ({
     id: p.id,
     name: p.full_name || 'Unknown',
   }))
 
   // Transform companies → topCompanies format (sorted by deal count, top 10)
-  const topCompanies = (companies ?? [])
+  const topCompanies = ((companies ?? []) as { id: string; name: string }[])
     .map(c => ({
       name: c.name,
       deals: companyDealCounts[c.id] || 0,
