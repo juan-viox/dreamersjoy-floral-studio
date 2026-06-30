@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 const arrangements = [
   // ═══ MOTHER'S DAY — THE SPRING EDIT ═══
@@ -13,8 +14,8 @@ const arrangements = [
   { id: 'md-quiet-bloom-statement', name: "Mother's Day — Quiet Bloom (Statement)", price: '$195+', desc: 'A sculptural, anchor piece in the Quiet Bloom palette. Designed to elevate and celebrate.', category: "Mother's Day — The Spring Edit" },
   // ═══ HAND-TIED BOUQUETS ═══
   { id: 'small-bouquet', name: 'Small Bouquet', price: '$75+', desc: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.', category: 'Hand-Tied Bouquets' },
-  { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 \u2013 $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.', category: 'Hand-Tied Bouquets' },
-  { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 \u2013 $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.', category: 'Hand-Tied Bouquets' },
+  { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 – $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.', category: 'Hand-Tied Bouquets' },
+  { id: 'large-bouquet', name: 'Large Bouquet', price: '$125 – $165', desc: 'An abundant, expressive bouquet with layered blooms and natural movement.', category: 'Hand-Tied Bouquets' },
   { id: 'signature-bouquet', name: 'Signature Bouquet', price: '$165+', desc: 'A luxurious hand-tied bouquet featuring carefully selected stems. Designed for gifting and special occasions.', category: 'Hand-Tied Bouquets' },
   // ═══ COLLECTION I · SOFT GARDEN ═══
   { id: 'softgarden-petite', name: 'Soft Garden — Petite', price: '$85+', desc: 'Garden roses, ranunculus, sweet pea. Delicate and quietly present. Ivory, blush, pale peach, soft green.', category: 'Collection I — Soft Garden' },
@@ -32,15 +33,15 @@ const arrangements = [
   { id: 'petite', name: 'Petite Arrangement', price: '$85+', desc: 'A refined touch for intimate spaces. Perfect for a bedside, powder room, or thoughtful gesture.', category: 'Seasonal Arrangements' },
   { id: 'signature', name: 'Signature Arrangement', price: '$125+', desc: 'Our most-loved arrangement size. Designed to elevate dining tables, entryways, and everyday living.', category: 'Seasonal Arrangements' },
   { id: 'statement', name: 'Statement Arrangement', price: '$175+', desc: 'Sculptural and expressive. Designed to anchor a space and draw the eye with effortless presence.', category: 'Seasonal Arrangements' },
-  { id: 'collectors', name: "Collector\u2019s Piece", price: '$250+', desc: 'One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.', category: 'Seasonal Arrangements' },
+  { id: 'collectors', name: "Collector’s Piece", price: '$250+', desc: 'One-of-a-kind and highly composed. Designed for those who appreciate exceptional floral work.', category: 'Seasonal Arrangements' },
 ]
 
-const colorOptions = ['Soft & Neutral', 'Romantic Pastels', 'Rich & Moody', "Designer\u2019s Choice"]
+const colorOptions = ['Soft & Neutral', 'Romantic Pastels', 'Rich & Moody', "Designer’s Choice"]
 
 export default function OrderPage() {
   const [step, setStep] = useState(1)
   const [selected, setSelected] = useState('')
-  const [color, setColor] = useState("Designer\u2019s Choice")
+  const [color, setColor] = useState("Designer’s Choice")
   const [form, setForm] = useState({ date: '', recipientName: '', address: '', cardMessage: '', deliveryNotes: '', name: '', email: '', phone: '' })
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
@@ -98,7 +99,7 @@ export default function OrderPage() {
         <div style={{ textAlign: 'center', padding: '120px 24px' }}>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 300, marginBottom: 16 }}>Thank you for your order.</h1>
           <p style={{ fontSize: 16, color: 'rgba(51,65,85,0.6)', lineHeight: 1.7, maxWidth: '50ch', margin: '0 auto' }}>Your arrangement is being thoughtfully prepared using the most beautiful stems available this season. You will receive a confirmation once your delivery is complete.</p>
-          <a href="/" style={{ display: 'inline-block', marginTop: 40, padding: '14px 36px', background: '#334155', color: '#FAFAF8', fontSize: 13, fontWeight: 400, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>Return to Studio</a>
+          <Link href="/" style={{ display: 'inline-block', marginTop: 40, padding: '14px 36px', background: '#334155', color: '#FAFAF8', fontSize: 13, fontWeight: 400, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>Return to Studio</Link>
         </div>
       </Page>
     )
@@ -274,7 +275,7 @@ function Page({ children }: { children: React.ReactNode }) {
       }}>
         <nav style={{ padding: '20px 0', borderBottom: '1px solid rgba(201,184,168,0.2)' }}>
           <div style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <a href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 400, color: '#334155', textDecoration: 'none' }}>DreamersJoy</a>
+            <Link href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 400, color: '#334155', textDecoration: 'none' }}>DreamersJoy</Link>
             <a href="/booking" style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B7355', textDecoration: 'none', borderBottom: '1px solid #C9B8A8', paddingBottom: 2 }}>Inquire Instead</a>
           </div>
         </nav>
