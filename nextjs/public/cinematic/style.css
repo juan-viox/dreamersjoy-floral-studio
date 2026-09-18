@@ -251,6 +251,28 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
   height: 100%;
   object-fit: cover;
 }
+/* Seasonal still hero — scroll-driven slow zoom, swapped each season */
+.hero-still {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url(assets/images/hero-fall-2026.webp);
+  background-size: cover;
+  background-position: center 42%;
+  transform-origin: center 45%;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-still { transform: none !important; }
+}
+/* The still hero is brighter than the old video frames — deepen the scrim
+   so the headline keeps contrast over the blooms. */
+.hero-still ~ .hero-overlay {
+  background: linear-gradient(to bottom,
+    rgba(26,26,46,0.30) 0%,
+    rgba(26,26,46,0.46) 45%,
+    rgba(26,26,46,0.62) 100%);
+}
 .hero-overlay {
   position: absolute;
   inset: 0;
