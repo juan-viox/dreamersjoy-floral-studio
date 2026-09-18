@@ -68,6 +68,17 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Journal posts live a directory deeper, where the :slug*.html
+        // pattern above does not reliably reach them.
+        source: '/cinematic/journal/:slug.html',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
         source: '/cinematic/style.css',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800' },
