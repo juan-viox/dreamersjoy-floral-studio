@@ -24,6 +24,21 @@ def logo_uri():
         return "data:image/png;base64," + base64.b64encode(f.read()).decode()
 
 
+IMG_DIR = os.path.join(os.path.dirname(HERE), "nextjs/public/cinematic/assets/images")
+
+
+def img_uri(filename):
+    """Embed an arrangement image so the HTML/PDF is self-contained."""
+    path = os.path.join(IMG_DIR, filename)
+    if not os.path.exists(path):
+        return None
+    ext = os.path.splitext(filename)[1].lstrip(".").lower()
+    mime = {"webp": "image/webp", "png": "image/png",
+            "jpg": "image/jpeg", "jpeg": "image/jpeg"}.get(ext, "image/webp")
+    with open(path, "rb") as f:
+        return f"data:{mime};base64," + base64.b64encode(f.read()).decode()
+
+
 def money(v):
     return f"${v:,.2f}"
 
@@ -111,6 +126,17 @@ CSS = """
   .kpi .sm{font-size:8px;color:var(--muted);margin-top:3px}
 
   .band{background:var(--band);border-radius:2px;padding:13px 15px;margin-top:12px}
+
+  /* design page header: title left, square arrangement plate right */
+  .dhead{display:flex;align-items:flex-start;gap:24px}
+  .dhead .txt{flex:1;min-width:0}
+  .plates{flex:0 0 auto;display:flex;gap:9px}
+  .plate{width:1.5in}
+  .plate .frame{width:1.5in;height:1.5in;border-radius:3px;overflow:hidden;
+                border:1px solid var(--line);background:#fff}
+  .plate img{width:100%;height:100%;object-fit:cover;display:block}
+  .plate-cap{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+             text-align:center;margin-top:5px;font-weight:500}
 </style>
 """
 
@@ -189,6 +215,16 @@ def cover(season):
 def design_page(season, d, idx):
     sz = sizes_for(d, season)
 
+    shots = []
+    for key, cap in (("image", "Centerpiece"), ("image_bouquet", "Bouquet")):
+        uri = img_uri(d[key]) if d.get(key) else None
+        if uri:
+            shots.append(
+                f'<div class="plate"><div class="frame"><img src="{uri}" '
+                f'alt="{html.escape(d["name"])} {cap.lower()}"></div>'
+                f'<p class="plate-cap">{cap}</p></div>')
+    plate = f'<div class="plates">{"".join(shots)}</div>' if shots else ""
+
     # palette block
     cols = f"grid-template-columns:repeat({len(d['palette'])},1fr)"
     sw = "".join(
@@ -239,12 +275,16 @@ def design_page(season, d, idx):
     return f"""
 <div class="sheet">
   {mast(season, d['name'])}
-  <p class="eyebrow">{html.escape(d['number'])}</p>
-  <h2>{html.escape(d['name'])}</h2>
-  <p style="font-size:10.5px;color:var(--muted);font-style:italic;margin-top:4px">{html.escape(d['tagline'])}</p>
-
-  <div class="sect">Style</div>
-  <p class="lede" style="max-width:none">{html.escape(d['style'])}</p>
+  <div class="dhead">
+    <div class="txt">
+      <p class="eyebrow">{html.escape(d['number'])}</p>
+      <h2>{html.escape(d['name'])}</h2>
+      <p style="font-size:10.5px;color:var(--muted);font-style:italic;margin-top:4px">{html.escape(d['tagline'])}</p>
+      <div class="sect" style="margin-top:15px">Style</div>
+      <p class="lede" style="max-width:none">{html.escape(d['style'])}</p>
+    </div>
+    {plate}
+  </div>
 
   <div class="sect">Colour Palette</div>
   <div class="sw-row" style="{cols}">{sw}</div>

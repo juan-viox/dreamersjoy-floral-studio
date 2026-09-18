@@ -89,6 +89,8 @@ FALL_2026 = {
     "designs": [
         {
             "name": "Burnt Ember",
+            "image": "fall-burnt-ember.webp",
+            "image_bouquet": "fall-bouquet-burnt-ember.webp",
             "number": "Palette I",
             "tagline": "Rust, clay, candied ginger, cream",
             "style": (
@@ -119,6 +121,8 @@ FALL_2026 = {
         },
         {
             "name": "Olive Smoke",
+            "image": "fall-olive-smoke.webp",
+            "image_bouquet": "fall-bouquet-olive-smoke.webp",
             "number": "Palette II",
             "tagline": "Burnt olive, green envy, smoke, cream",
             "style": (
@@ -148,6 +152,8 @@ FALL_2026 = {
         },
         {
             "name": "Mahogany Dusk",
+            "image": "fall-mahogany-dusk.webp",
+            "image_bouquet": "fall-bouquet-mahogany-dusk.webp",
             "number": "Palette III",
             "tagline": "Red mahogany, foxglove, toffee",
             "style": (
@@ -197,6 +203,7 @@ MOTHERS_DAY_2026 = {
     "designs": [
         {
             "name": "Veiled Citrus",
+            "image": "mothersday-veiled-citrus.webp",
             "number": "Palette I",
             "tagline": "Soft yellow, cream, fresh green",
             "style": (
@@ -221,6 +228,7 @@ MOTHERS_DAY_2026 = {
         },
         {
             "name": "Olive Air",
+            "image": "mothersday-olive-air.webp",
             "number": "Palette II",
             "tagline": "Muted olive, ivory, soft white",
             "style": (
@@ -245,6 +253,7 @@ MOTHERS_DAY_2026 = {
         },
         {
             "name": "Quiet Bloom",
+            "image": "mothersday-quiet-bloom.webp",
             "number": "Palette III",
             "tagline": "Blush, dusty rose, soft neutrals",
             "style": (
