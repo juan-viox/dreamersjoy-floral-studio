@@ -49,10 +49,13 @@ STEM_PRICES = {
 }
 
 # ── Hard goods per size (vessel, mechanics, finishing) ─────────────────
+# Vessels are the single biggest hard-goods line and are bought per piece,
+# subject to availability. Costs below are real street prices for the kind of
+# footed ceramics, compotes and pedestal bowls the studio uses.
 HARD_GOODS = {
-    "Petite":    {"Vessel — footed ceramic, 8–10\"": 7.50,  "Mechanics (frog, tape)": 1.50, "Care card": 0.75},
-    "Signature": {"Vessel — footed ceramic, 12–14\"": 12.00, "Mechanics (frog, tape)": 2.25, "Care card": 0.75},
-    "Statement": {"Vessel — low compote, 24–30\"": 16.00,   "Mechanics (pillow, wire)": 3.50, "Care card": 0.75},
+    "Petite":    {"Vessel — small footed ceramic, 4–6\"": 18.00, "Mechanics (frog, tape)": 1.50, "Care card": 0.75},
+    "Signature": {"Vessel — compote / pedestal bowl, 7–9\"": 28.00, "Mechanics (frog, tape)": 2.25, "Care card": 0.75},
+    "Statement": {"Vessel — sculptural, 12–16\"": 38.00, "Mechanics (pillow, wire)": 3.50, "Care card": 0.75},
     "Bouquet":   {"Kraft wrap": 1.25, "Cotton ribbon": 2.00, "Water tube + sleeve": 2.00, "Care card": 0.75},
 }
 
@@ -63,9 +66,9 @@ LABOUR_HOURS = {"Petite": 0.50, "Signature": 0.75, "Statement": 1.25, "Bouquet":
 SIZES = ["Petite", "Signature", "Statement", "Bouquet"]
 
 SIZE_SPECS = {
-    "Petite":    "8–10\" wide · 9\" tall",
-    "Signature": "12–14\" wide · 14\" tall",
-    "Statement": "24–30\" long · low profile",
+    "Petite":    "4–6\" vessel",
+    "Signature": "7–9\" vessel",
+    "Statement": "12–16\" vessel",
     "Bouquet":   "Hand-tied, wrapped",
 }
 
@@ -84,7 +87,8 @@ FALL_2026 = {
     "notes": [
         "Fall stems carry a genuine peak-season premium: September–October is peak Northeast wedding season and dahlias, garden roses and butterfly ranunculus all price up.",
         "Entry price held at $95 to stay under Wyckoff Florist's $150 ceiling; margin recovered at Signature and Statement where the expensive focal stems concentrate.",
-        "Statement is a long, low runner piece — a genuinely larger build than a standard large arrangement, priced accordingly.",
+        "Sizes are stated by VESSEL dimension: Petite 4–6\", Signature 7–9\", Statement 12–16\". Vessels are bought per piece and subject to availability.",
+        "Vessel cost is the largest hard-goods line and materially affects margin — an $18 vessel on a $95 Petite is ~19% of the retail price before a single stem.",
     ],
     "designs": [
         {
