@@ -9,3 +9,6 @@ node_modules/
 season-records/_topdf.js
 season-records/*.html
 season-records/__pycache__/
+season-records/fe-*.png
+season-records/md-*.png
+season-records/_shot2.js
