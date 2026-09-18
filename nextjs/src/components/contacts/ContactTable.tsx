@@ -303,8 +303,8 @@ export default function ContactTable({ contacts }: { contacts: Contact[] }) {
                       <span
                         className="badge badge-dot"
                         style={{
-                          background: statusConfig[c.status]?.bg ?? statusConfig.inactive.bg,
-                          color: statusConfig[c.status]?.color ?? statusConfig.inactive.color,
+                          background: statusConfig[c.status ?? 'inactive']?.bg ?? statusConfig.inactive.bg,
+                          color: statusConfig[c.status ?? 'inactive']?.color ?? statusConfig.inactive.color,
                         }}
                       >
                         {c.status}

@@ -182,8 +182,8 @@ export default function InvoiceDetailPage() {
             <p className="font-semibold">{invoice.contact.first_name} {invoice.contact.last_name}</p>
             {invoice.contact.email && <p className="text-sm" style={{ color: 'var(--muted)' }}>{invoice.contact.email}</p>}
             {invoice.contact.phone && <p className="text-sm" style={{ color: 'var(--muted)' }}>{invoice.contact.phone}</p>}
-            {(invoice.contact as any).company?.name && (
-              <p className="text-sm" style={{ color: 'var(--muted)' }}>{(invoice.contact as any).company.name}</p>
+            {(invoice.contact as { company?: { name?: string } }).company?.name && (
+              <p className="text-sm" style={{ color: 'var(--muted)' }}>{(invoice.contact as { company?: { name?: string } }).company?.name}</p>
             )}
           </div>
         )}

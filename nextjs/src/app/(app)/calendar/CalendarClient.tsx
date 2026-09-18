@@ -60,7 +60,7 @@ interface CalendarActivity {
   title: string
   type: string
   due_date: string | null
-  completed: boolean
+  status: string | null
   created_at: string
   contact_id: string | null
 }
@@ -408,7 +408,7 @@ export default function CalendarClient({
                             style={{ color: 'var(--muted)' }}
                           >
                             {a.type}
-                            {a.completed && ' - Done'}
+                            {a.status === 'completed' && ' - Done'}
                           </p>
                         </div>
                       </div>

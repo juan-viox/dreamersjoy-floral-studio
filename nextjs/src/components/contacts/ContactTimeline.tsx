@@ -70,7 +70,7 @@ export default function ContactTimeline({ activities }: { activities: Activity[]
                     )}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    {a.completed && (
+                    {a.status === 'completed' && (
                       <span className="badge badge-success">Done</span>
                     )}
                     <span

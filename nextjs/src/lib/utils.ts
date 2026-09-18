@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -52,7 +53,7 @@ export function generateApiKey() {
  * Get the current user's organization_id from their profile.
  * Required for all INSERT operations in the multi-tenant schema.
  */
-export async function getOrgId(supabase: any): Promise<string | null> {
+export async function getOrgId(supabase: SupabaseClient): Promise<string | null> {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
 

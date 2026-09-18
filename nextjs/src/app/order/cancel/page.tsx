@@ -65,7 +65,7 @@ export default function OrderCancelPage() {
               margin: '0 auto 40px',
             }}
           >
-            Your order wasn't completed and no payment was taken. If you
+            Your order wasn&apos;t completed and no payment was taken. If you
             need help choosing an arrangement, feel free to reach out.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>

@@ -12,6 +12,7 @@ export interface TaskData {
   description?: string | null
   due_date?: string | null
   completed: boolean
+  status?: string
   type: string
   metadata?: Record<string, unknown> | null
   contact_id?: string | null

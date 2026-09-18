@@ -128,9 +128,11 @@ export default function ContactMergePage() {
     setActivePair(pair)
     // Default: prefer left for all fields
     const defaults: FieldSelection = {}
+    const leftRec = pair.left as unknown as Record<string, unknown>
+    const rightRec = pair.right as unknown as Record<string, unknown>
     MERGE_FIELDS.forEach((f) => {
-      const leftVal = (pair.left as any)[f.key]
-      const rightVal = (pair.right as any)[f.key]
+      const leftVal = leftRec[f.key]
+      const rightVal = rightRec[f.key]
       // Prefer whichever has a value, defaulting to left
       if (!leftVal && rightVal) defaults[f.key] = 'right'
       else defaults[f.key] = 'left'
@@ -143,7 +145,6 @@ export default function ContactMergePage() {
     if (!activePair) return
     setMerging(true)
 
-    const survivorSide = 'left' // Survivor is always left contact
     const survivorId = activePair.left.id
     const duplicateId = activePair.right.id
 
@@ -152,7 +153,7 @@ export default function ContactMergePage() {
     MERGE_FIELDS.forEach((f) => {
       const side = selections[f.key] || 'left'
       const source = side === 'left' ? activePair.left : activePair.right
-      const val = (source as any)[f.key]
+      const val = (source as unknown as Record<string, unknown>)[f.key]
       if (val !== undefined) selectedFields[f.key] = val
     })
 
@@ -182,7 +183,7 @@ export default function ContactMergePage() {
       } else {
         alert(data.error || 'Merge failed')
       }
-    } catch (err) {
+    } catch {
       alert('Network error during merge')
     } finally {
       setMerging(false)
@@ -357,8 +358,8 @@ export default function ContactMergePage() {
 
             {/* Field rows */}
             {MERGE_FIELDS.map((field) => {
-              const leftVal = String((activePair.left as any)[field.key] ?? '')
-              const rightVal = String((activePair.right as any)[field.key] ?? '')
+              const leftVal = String((activePair.left as unknown as Record<string, unknown>)[field.key] ?? '')
+              const rightVal = String((activePair.right as unknown as Record<string, unknown>)[field.key] ?? '')
               const selected = selections[field.key] || 'left'
 
               return (

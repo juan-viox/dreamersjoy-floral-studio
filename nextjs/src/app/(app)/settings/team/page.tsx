@@ -83,7 +83,7 @@ export default function TeamPage() {
 
     const { data: profiles } = await supabase
       .from('profiles')
-      .select('id, full_name, avatar_url, role, created_at')
+      .select('id, full_name, avatar_url, role, created_at, email')
       .order('created_at', { ascending: true })
 
     setMembers(

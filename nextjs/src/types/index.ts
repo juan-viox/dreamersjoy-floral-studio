@@ -37,6 +37,7 @@ export interface Contact {
   phone?: string
   job_title?: string
   source?: 'manual' | 'web_form' | 'newsletter' | 'voice_agent' | 'booking' | 'referral' | 'import'
+  status?: string
   source_site_slug?: string
   avatar_url?: string
   notes?: string

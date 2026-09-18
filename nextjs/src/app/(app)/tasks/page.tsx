@@ -169,7 +169,7 @@ export default function TasksPage() {
     return (t.metadata?.priority as TaskPriority) || 'medium'
   }
 
-  let filtered = tasks.filter((t) => {
+  const filtered = tasks.filter((t) => {
     if (statusFilter !== 'all' && getTaskStatus(t) !== statusFilter) return false
     if (priorityFilter !== 'all' && getTaskPriority(t) !== priorityFilter) return false
     return true

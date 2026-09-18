@@ -84,7 +84,6 @@ export default function FileAttachments({
     setUploading(true)
 
     try {
-      const ext = file.name.split('.').pop()
       const path = `${entityType}/${entityId}/${Date.now()}-${file.name}`
 
       const { error: uploadErr } = await supabase.storage
@@ -106,8 +105,8 @@ export default function FileAttachments({
         file_size: file.size,
       })
       await loadFiles()
-    } catch (err: any) {
-      setError(err.message || 'Upload failed')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Upload failed')
     } finally {
       setUploading(false)
     }

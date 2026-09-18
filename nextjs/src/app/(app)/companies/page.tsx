@@ -5,6 +5,14 @@ import EmptyState from '@/components/shared/EmptyState'
 import Avatar from '@/components/shared/Avatar'
 import CompanyExportButton from '@/components/companies/CompanyExportButton'
 
+interface CompanyRow {
+  id: string
+  name: string
+  industry?: string | null
+  domain?: string | null
+  contacts?: { count: number }[] | null
+}
+
 export default async function CompaniesPage() {
   const supabase = await createServerSupabaseClient()
 
@@ -35,7 +43,7 @@ export default async function CompaniesPage() {
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {companies.map((company: any) => {
+          {companies.map((company: CompanyRow) => {
             const contactCount = company.contacts?.[0]?.count ?? 0
             return (
               <Link key={company.id} href={`/companies/${company.id}`} className="card hover:border-[var(--accent)] transition-colors">

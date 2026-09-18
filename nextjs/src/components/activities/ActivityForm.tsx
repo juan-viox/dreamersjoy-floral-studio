@@ -6,11 +6,22 @@ import { getOrgId } from '@/lib/utils'
 import { Loader2, Save, X } from 'lucide-react'
 import type { Contact, Deal } from '@/types'
 
+export interface ActivityRecord {
+  id: string
+  type: string
+  title: string
+  description?: string | null
+  completed?: boolean | null
+  created_at: string
+  contact?: { first_name: string; last_name: string } | null
+  deal?: { title: string } | null
+}
+
 export default function ActivityForm({
   onCreated,
   onCancel,
 }: {
-  onCreated: (activity: any) => void
+  onCreated: (activity: ActivityRecord) => void
   onCancel: () => void
 }) {
   const [type, setType] = useState('call')
@@ -66,7 +77,7 @@ export default function ActivityForm({
 
     if (insertError) { setError(insertError.message); setLoading(false); return }
 
-    onCreated(data)
+    onCreated(data as ActivityRecord)
   }
 
   return (

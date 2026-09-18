@@ -23,6 +23,7 @@ import { getOrgId } from '@/lib/utils'
 import Avatar from '@/components/shared/Avatar'
 import ContactTimeline from '@/components/contacts/ContactTimeline'
 import { formatDate } from '@/lib/utils'
+import type { Activity, Contact } from '@/types'
 
 export default function LeadDetailClient({
   contact,
@@ -31,8 +32,8 @@ export default function LeadDetailClient({
   firstStageId,
   firstStageName,
 }: {
-  contact: any
-  activities: any[]
+  contact: Contact
+  activities: Activity[]
   hasDeal: boolean
   firstStageId: string | null
   firstStageName: string | null
