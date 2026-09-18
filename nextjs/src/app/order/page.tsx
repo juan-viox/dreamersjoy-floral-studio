@@ -4,14 +4,19 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const arrangements = [
-  // ═══ MOTHER'S DAY — THE SPRING EDIT ═══
-  { id: 'md-veiled-citrus-petite', name: "Mother's Day — Veiled Citrus (Petite)", price: '$95+', desc: 'Soft yellow, cream, fresh green. Ranunculus, sweet pea, jasmine vine. A refined, intimate piece.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-veiled-citrus-signature', name: "Mother's Day — Veiled Citrus (Signature)", price: '$145+', desc: 'Our most-loved size in the Veiled Citrus palette. Garden roses, ranunculus, butter-yellow tulips.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-olive-air-petite', name: "Mother's Day — Olive Air (Petite)", price: '$95+', desc: 'Muted olive, ivory, soft white. Hellebore, white ranunculus, olive branch. Quiet, sculptural, modern.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-olive-air-signature', name: "Mother's Day — Olive Air (Signature)", price: '$145+', desc: 'Signature size in the Olive Air palette. Tonal greens, ivory blooms, refined negative space.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-quiet-bloom-petite', name: "Mother's Day — Quiet Bloom (Petite)", price: '$95+', desc: 'Blush, dusty rose, soft neutrals. Garden roses, lisianthus, scabiosa. Softly romantic.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-quiet-bloom-signature', name: "Mother's Day — Quiet Bloom (Signature)", price: '$145+', desc: 'Signature size in the Quiet Bloom palette. Full, romantic, composed with airy movement.', category: "Mother's Day — The Spring Edit" },
-  { id: 'md-quiet-bloom-statement', name: "Mother's Day — Quiet Bloom (Statement)", price: '$195+', desc: 'A sculptural, anchor piece in the Quiet Bloom palette. Designed to elevate and celebrate.', category: "Mother's Day — The Spring Edit" },
+  // ═══ THE FALL EDIT ═══
+  { id: 'fall-burnt-ember-petite', name: 'Fall Edit — Burnt Ember (Petite Centerpiece)', price: '$95', desc: '8–10" wide · 9" tall. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-burnt-ember-signature', name: 'Fall Edit — Burnt Ember (Signature Centerpiece)', price: '$155', desc: '12–14" wide · 14" tall. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-burnt-ember-statement', name: 'Fall Edit — Burnt Ember (Statement Centerpiece)', price: '$245', desc: '24–30" long · low profile. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-burnt-ember-bouquet', name: 'Fall Edit — Burnt Ember (Hand-Tied Bouquet)', price: '$115', desc: 'Hand-tied, wrapped in unbleached paper. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech.', category: 'The Fall Edit — Hand-Tied Bouquets' },
+  { id: 'fall-olive-smoke-petite', name: 'Fall Edit — Olive Smoke (Petite Centerpiece)', price: '$95', desc: '8–10" wide · 9" tall. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella pods.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-olive-smoke-signature', name: 'Fall Edit — Olive Smoke (Signature Centerpiece)', price: '$155', desc: '12–14" wide · 14" tall. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella pods.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-olive-smoke-statement', name: 'Fall Edit — Olive Smoke (Statement Centerpiece)', price: '$245', desc: '24–30" long · low profile. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella pods.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-olive-smoke-bouquet', name: 'Fall Edit — Olive Smoke (Hand-Tied Bouquet)', price: '$115', desc: 'Hand-tied, wrapped in unbleached paper. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella pods.', category: 'The Fall Edit — Hand-Tied Bouquets' },
+  { id: 'fall-mahogany-dusk-petite', name: 'Fall Edit — Mahogany Dusk (Petite Centerpiece)', price: '$95', desc: '8–10" wide · 9" tall. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-mahogany-dusk-signature', name: 'Fall Edit — Mahogany Dusk (Signature Centerpiece)', price: '$155', desc: '12–14" wide · 14" tall. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-mahogany-dusk-statement', name: 'Fall Edit — Mahogany Dusk (Statement Centerpiece)', price: '$245', desc: '24–30" long · low profile. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa.', category: 'The Fall Edit — Centerpieces' },
+  { id: 'fall-mahogany-dusk-bouquet', name: 'Fall Edit — Mahogany Dusk (Hand-Tied Bouquet)', price: '$115', desc: 'Hand-tied, wrapped in unbleached paper. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa.', category: 'The Fall Edit — Hand-Tied Bouquets' },
   // ═══ HAND-TIED BOUQUETS ═══
   { id: 'small-bouquet', name: 'Small Bouquet', price: '$75+', desc: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures and everyday moments.', category: 'Hand-Tied Bouquets' },
   { id: 'medium-bouquet', name: 'Medium Bouquet', price: '$95 – $125', desc: 'A balanced, fuller bouquet with a curated mix of seasonal florals.', category: 'Hand-Tied Bouquets' },
@@ -45,15 +50,15 @@ export default function OrderPage() {
   const [form, setForm] = useState({ date: '', recipientName: '', address: '', cardMessage: '', deliveryNotes: '', name: '', email: '', phone: '' })
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
-  const [highlightMD, setHighlightMD] = useState(false)
+  const [highlightFall, setHighlightFall] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
-    if (params.get('collection') === 'mothers-day') {
-      setHighlightMD(true)
+    if (params.get('collection') === 'fall-edit') {
+      setHighlightFall(true)
       setTimeout(() => {
-        const el = document.getElementById('md-category')
+        const el = document.getElementById('fall-category')
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 400)
     }
@@ -124,8 +129,8 @@ export default function OrderPage() {
           <div>
             <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6B7C6E', marginBottom: 24 }}>Step 1 &mdash; Select Your Arrangement</p>
             {Array.from(new Set(arrangements.map(a => a.category))).map(category => (
-              <div key={category} id={category.includes("Mother") ? 'md-category' : undefined} style={{ marginBottom: 32, padding: category.includes("Mother") && highlightMD ? '20px 24px' : 0, background: category.includes("Mother") && highlightMD ? 'rgba(139,115,85,0.04)' : 'transparent', border: category.includes("Mother") && highlightMD ? '1px solid rgba(139,115,85,0.2)' : 'none', borderRadius: 4 }}>
-                <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: category.includes("Mother") ? '#8B7355' : 'rgba(51,65,85,0.5)', marginBottom: 14, paddingBottom: 8, borderBottom: '1px solid rgba(201,184,168,0.3)' }}>{category}</p>
+              <div key={category} id={category.includes("Fall Edit") ? 'fall-category' : undefined} style={{ marginBottom: 32, padding: category.includes("Fall Edit") && highlightFall ? '20px 24px' : 0, background: category.includes("Fall Edit") && highlightFall ? 'rgba(139,115,85,0.04)' : 'transparent', border: category.includes("Fall Edit") && highlightFall ? '1px solid rgba(139,115,85,0.2)' : 'none', borderRadius: 4 }}>
+                <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: category.includes("Fall Edit") ? '#8B7355' : 'rgba(51,65,85,0.5)', marginBottom: 14, paddingBottom: 8, borderBottom: '1px solid rgba(201,184,168,0.3)' }}>{category}</p>
                 <div style={{ display: 'grid', gap: 16 }}>
                   {arrangements.filter(a => a.category === category).map(a => (
                     <button key={a.id} id={`arrangement-${a.id}`} onClick={() => setSelected(a.name)} style={{

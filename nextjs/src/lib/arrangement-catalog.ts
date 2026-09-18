@@ -25,7 +25,117 @@ export interface Arrangement {
 const BASE = '/cinematic/assets/images/';
 
 export const CATALOG: Record<string, Arrangement> = {
-  // ═══ MOTHER'S DAY — THE SPRING EDIT ═══
+  // ═══ THE FALL EDIT — CENTERPIECES & BOUQUETS (current season) ═══
+  'fall-burnt-ember-petite': {
+    id: 'fall-burnt-ember-petite',
+    name: 'Fall Edit — Burnt Ember (Petite Centerpiece)',
+    amount: 9500,
+    description: '8–10" wide · 9" tall. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech, chocolate cosmos.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Petite',
+    image: BASE + 'fall-burnt-ember.webp',
+  },
+  'fall-burnt-ember-signature': {
+    id: 'fall-burnt-ember-signature',
+    name: 'Fall Edit — Burnt Ember (Signature Centerpiece)',
+    amount: 15500,
+    description: '12–14" wide · 14" tall. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech, chocolate cosmos.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Signature',
+    image: BASE + 'fall-burnt-ember.webp',
+  },
+  'fall-burnt-ember-statement': {
+    id: 'fall-burnt-ember-statement',
+    name: 'Fall Edit — Burnt Ember (Statement Centerpiece)',
+    amount: 24500,
+    description: '24–30" long · low profile. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech, chocolate cosmos.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Statement',
+    image: BASE + 'fall-burnt-ember.webp',
+  },
+  'fall-burnt-ember-bouquet': {
+    id: 'fall-burnt-ember-bouquet',
+    name: 'Fall Edit — Burnt Ember (Hand-Tied Bouquet)',
+    amount: 11500,
+    description: 'Hand-tied and wrapped in unbleached paper. Rust and café au lait dahlias, terracotta butterfly ranunculus, trailing amaranthus, copper beech, chocolate cosmos.',
+    collection: 'The Fall Edit — Hand-Tied Bouquets',
+    size: 'Hand-Tied',
+    image: BASE + 'fall-bouquet-burnt-ember.webp',
+  },
+  'fall-olive-smoke-petite': {
+    id: 'fall-olive-smoke-petite',
+    name: 'Fall Edit — Olive Smoke (Petite Centerpiece)',
+    amount: 9500,
+    description: '8–10" wide · 9" tall. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella and scabiosa pods.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Petite',
+    image: BASE + 'fall-olive-smoke.webp',
+  },
+  'fall-olive-smoke-signature': {
+    id: 'fall-olive-smoke-signature',
+    name: 'Fall Edit — Olive Smoke (Signature Centerpiece)',
+    amount: 15500,
+    description: '12–14" wide · 14" tall. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella and scabiosa pods.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Signature',
+    image: BASE + 'fall-olive-smoke.webp',
+  },
+  'fall-olive-smoke-statement': {
+    id: 'fall-olive-smoke-statement',
+    name: 'Fall Edit — Olive Smoke (Statement Centerpiece)',
+    amount: 24500,
+    description: '24–30" long · low profile. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella and scabiosa pods.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Statement',
+    image: BASE + 'fall-olive-smoke.webp',
+  },
+  'fall-olive-smoke-bouquet': {
+    id: 'fall-olive-smoke-bouquet',
+    name: 'Fall Edit — Olive Smoke (Hand-Tied Bouquet)',
+    amount: 11500,
+    description: 'Hand-tied and wrapped in unbleached paper. Olive branch, smokebush, green hellebore, white spider chrysanthemum, nigella and scabiosa pods.',
+    collection: 'The Fall Edit — Hand-Tied Bouquets',
+    size: 'Hand-Tied',
+    image: BASE + 'fall-bouquet-olive-smoke.webp',
+  },
+  'fall-mahogany-dusk-petite': {
+    id: 'fall-mahogany-dusk-petite',
+    name: 'Fall Edit — Mahogany Dusk (Petite Centerpiece)',
+    amount: 9500,
+    description: '8–10" wide · 9" tall. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa, astilbe, clematis vine.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Petite',
+    image: BASE + 'fall-mahogany-dusk.webp',
+  },
+  'fall-mahogany-dusk-signature': {
+    id: 'fall-mahogany-dusk-signature',
+    name: 'Fall Edit — Mahogany Dusk (Signature Centerpiece)',
+    amount: 15500,
+    description: '12–14" wide · 14" tall. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa, astilbe, clematis vine.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Signature',
+    image: BASE + 'fall-mahogany-dusk.webp',
+  },
+  'fall-mahogany-dusk-statement': {
+    id: 'fall-mahogany-dusk-statement',
+    name: 'Fall Edit — Mahogany Dusk (Statement Centerpiece)',
+    amount: 24500,
+    description: '24–30" long · low profile. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa, astilbe, clematis vine.',
+    collection: 'The Fall Edit — Centerpieces',
+    size: 'Statement',
+    image: BASE + 'fall-mahogany-dusk.webp',
+  },
+  'fall-mahogany-dusk-bouquet': {
+    id: 'fall-mahogany-dusk-bouquet',
+    name: 'Fall Edit — Mahogany Dusk (Hand-Tied Bouquet)',
+    amount: 11500,
+    description: 'Hand-tied and wrapped in unbleached paper. Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum scabiosa, astilbe, clematis vine.',
+    collection: 'The Fall Edit — Hand-Tied Bouquets',
+    size: 'Hand-Tied',
+    image: BASE + 'fall-bouquet-mahogany-dusk.webp',
+  },
+
+  // ═══ MOTHER'S DAY — THE SPRING EDIT (archived — season ended May 2026) ═══
   'md-veiled-citrus-petite': {
     id: 'md-veiled-citrus-petite',
     name: "Mother's Day — Veiled Citrus (Petite)",
@@ -33,7 +143,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Soft yellow, cream, fresh green. Ranunculus, sweet pea, jasmine vine.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Petite',
-    image: BASE + 'mothersday-veiled-citrus.png',
+    image: BASE + 'mothersday-veiled-citrus.webp',
   },
   'md-veiled-citrus-signature': {
     id: 'md-veiled-citrus-signature',
@@ -42,7 +152,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, ranunculus, butter-yellow tulips.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Signature',
-    image: BASE + 'mothersday-veiled-citrus.png',
+    image: BASE + 'mothersday-veiled-citrus.webp',
   },
   'md-olive-air-petite': {
     id: 'md-olive-air-petite',
@@ -51,7 +161,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Muted olive, ivory, soft white. Hellebore, white ranunculus, olive branch.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Petite',
-    image: BASE + 'mothersday-olive-air.png',
+    image: BASE + 'mothersday-olive-air.webp',
   },
   'md-olive-air-signature': {
     id: 'md-olive-air-signature',
@@ -60,7 +170,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Tonal greens, ivory blooms, refined negative space.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Signature',
-    image: BASE + 'mothersday-olive-air.png',
+    image: BASE + 'mothersday-olive-air.webp',
   },
   'md-quiet-bloom-petite': {
     id: 'md-quiet-bloom-petite',
@@ -69,7 +179,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Blush, dusty rose, soft neutrals. Garden roses, lisianthus, scabiosa.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Petite',
-    image: BASE + 'mothersday-quiet-bloom.png',
+    image: BASE + 'mothersday-quiet-bloom.webp',
   },
   'md-quiet-bloom-signature': {
     id: 'md-quiet-bloom-signature',
@@ -78,7 +188,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Full, romantic, composed with airy movement.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Signature',
-    image: BASE + 'mothersday-quiet-bloom.png',
+    image: BASE + 'mothersday-quiet-bloom.webp',
   },
   'md-quiet-bloom-statement': {
     id: 'md-quiet-bloom-statement',
@@ -87,7 +197,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'A sculptural, anchor piece in the Quiet Bloom palette.',
     collection: "Mother's Day — The Spring Edit",
     size: 'Statement',
-    image: BASE + 'mothersday-quiet-bloom.png',
+    image: BASE + 'mothersday-quiet-bloom.webp',
   },
 
   // ═══ COLLECTION I · SOFT GARDEN ═══

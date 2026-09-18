@@ -8,7 +8,7 @@ import type { NextConfig } from "next";
  */
 const STATIC_MARKETING_PAGES = [
   'shop',
-  'mothers-day',
+  'fall-edit',
   'subscriptions',
   'our-process',
   'studio-series',
@@ -35,6 +35,15 @@ const nextConfig: NextConfig = {
       afterFiles: [],
       fallback: [],
     };
+  },
+
+  /**
+   * Retired seasonal slugs keep their inbound links alive.
+   */
+  async redirects() {
+    return [
+      { source: '/mothers-day', destination: '/fall-edit', permanent: true },
+    ];
   },
 
   /**

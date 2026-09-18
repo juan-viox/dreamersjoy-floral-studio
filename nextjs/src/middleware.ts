@@ -6,11 +6,11 @@ const publicPaths = [
   '/login', '/signup', '/auth/callback', '/portal-login',
   '/order', '/delivery', '/invite',
   // Public marketing pages (multi-page site)
-  '/shop', '/mothers-day', '/studio-series', '/subscriptions',
+  '/shop', '/fall-edit', '/studio-series', '/subscriptions',
   '/gallery', '/about',
   '/inquire', '/our-process',
   // Legacy paths kept for the 301 redirect handler below
-  '/contact', '/booking',
+  '/contact', '/booking', '/mothers-day',
   '/sitemap.xml', '/robots.txt',
 ]
 
@@ -18,6 +18,7 @@ const publicPaths = [
 const redirectMap: Record<string, string> = {
   '/contact': '/inquire',
   '/booking': '/inquire',
+  '/mothers-day': '/fall-edit',
 }
 
 /** CRM route prefixes — require authentication */

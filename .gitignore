@@ -4,3 +4,8 @@ node_modules/
 .env
 *.log
 .vercel
+
+# Season record build artefacts (PDFs are committed, intermediates are not)
+season-records/_topdf.js
+season-records/*.html
+season-records/__pycache__/
