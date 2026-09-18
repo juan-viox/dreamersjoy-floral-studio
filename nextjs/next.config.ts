@@ -15,6 +15,7 @@ const STATIC_MARKETING_PAGES = [
   'gallery',
   'about',
   'inquire',
+  'journal',
 ];
 
 const nextConfig: NextConfig = {
@@ -28,10 +29,14 @@ const nextConfig: NextConfig = {
    */
   async rewrites() {
     return {
-      beforeFiles: STATIC_MARKETING_PAGES.map((slug) => ({
-        source: `/${slug}`,
-        destination: `/cinematic/${slug}.html`,
-      })),
+      beforeFiles: [
+        ...STATIC_MARKETING_PAGES.map((slug) => ({
+          source: `/${slug}`,
+          destination: `/cinematic/${slug}.html`,
+        })),
+        // Journal posts: /journal/<slug> -> /cinematic/journal/<slug>.html
+        { source: '/journal/:slug', destination: '/cinematic/journal/:slug.html' },
+      ],
       afterFiles: [],
       fallback: [],
     };
