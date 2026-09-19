@@ -177,6 +177,25 @@
     });
   }
 
+  // ─── SEASONAL STILL HERO (scroll-driven slow zoom) ───
+  //     Replaced the 122-frame canvas sequence on the homepage: one seasonal
+  //     image, scaled gently on scroll. Same cinematic read, ~34MB lighter.
+  (function() {
+    var still = document.getElementById('heroStill');
+    if (!still) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gsap.fromTo(still, { scale: 1.06 }, {
+      scale: 1.18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.3
+      }
+    });
+  })();
+
   // ─── SCROLL-DRIVEN VIDEO HERO (Canvas Frame Engine) ───
   (function() {
     var canvas = document.getElementById('heroCanvas');

@@ -8,7 +8,7 @@ const publicPaths = [
   // Public marketing pages (multi-page site)
   '/shop', '/fall-edit', '/studio-series', '/subscriptions',
   '/gallery', '/about',
-  '/inquire', '/our-process',
+  '/inquire', '/our-process', '/journal',
   // Legacy paths kept for the 301 redirect handler below
   '/contact', '/booking', '/mothers-day',
   '/sitemap.xml', '/robots.txt',

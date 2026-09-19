@@ -15,6 +15,7 @@ const STATIC_MARKETING_PAGES = [
   'gallery',
   'about',
   'inquire',
+  'journal',
 ];
 
 const nextConfig: NextConfig = {
@@ -28,10 +29,14 @@ const nextConfig: NextConfig = {
    */
   async rewrites() {
     return {
-      beforeFiles: STATIC_MARKETING_PAGES.map((slug) => ({
-        source: `/${slug}`,
-        destination: `/cinematic/${slug}.html`,
-      })),
+      beforeFiles: [
+        ...STATIC_MARKETING_PAGES.map((slug) => ({
+          source: `/${slug}`,
+          destination: `/cinematic/${slug}.html`,
+        })),
+        // Journal posts: /journal/<slug> -> /cinematic/journal/<slug>.html
+        { source: '/journal/:slug', destination: '/cinematic/journal/:slug.html' },
+      ],
       afterFiles: [],
       fallback: [],
     };
@@ -55,6 +60,17 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/cinematic/:slug*.html',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
+        // Journal posts live a directory deeper, where the :slug*.html
+        // pattern above does not reliably reach them.
+        source: '/cinematic/journal/:slug.html',
         headers: [
           {
             key: 'Cache-Control',
