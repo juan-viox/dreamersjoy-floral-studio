@@ -29,7 +29,7 @@ Color first. Flowers second.
 Three palettes for autumn, in the colors that are in season:
 Burnt Ember, Olive Smoke, Mahogany Dusk.
 
-The Fall Edit opens tomorrow.
+The Fall Edit is live now.
 
 #bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #falltablescape
 #colorledfloral #fallcolorpalette #seasonalflowers #editorialfloral
@@ -43,7 +43,7 @@ Every season we set the palette before we touch a stem. We always design with
 the colors that are in season, as well as the blooms. This autumn's three:
 Burnt Ember, Olive Smoke, and Mahogany Dusk.
 
-The Fall Edit opens tomorrow — centerpieces in three sizes and hand-tied
+The Fall Edit is live now — centerpieces in three sizes and hand-tied
 bouquets, hand-delivered across Bergen County.
 
 dreamersjoystudio.com/fall-edit
@@ -56,9 +56,9 @@ dreamersjoystudio.com/fall-edit
 
 **Instagram**
 ```
-The Fall Edit is open.
+First palette: Burnt Ember.
 
-Burnt Ember — rust, clay and candied ginger, warmed through with copper. We
+Rust, clay and candied ginger, warmed through with copper. We
 build it around dahlias and butterfly ranunculus when they're at their best,
 and keep one note of chartreuse so it reads modern rather than harvest.
 
@@ -70,9 +70,9 @@ Petite, Signature, Statement. Link in bio.
 
 **Facebook**
 ```
-The Fall Edit is open.
+The first of the three.
 
-First palette: Burnt Ember. Rust, clay and candied ginger, warm and spiced and
+Burnt Ember — rust, clay and candied ginger, warm and spiced and
 sunlit, with a single chartreuse note to keep it from tipping into harvest
 decor.
 
