@@ -56,6 +56,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // ── 2.25. Always allow the site's own public form routes ──
+  //     /api/public/* carries no credential — it is authenticated by origin
+  //     and rate-limited in the route handlers (see lib/ingest/guard).
+  if (pathname.startsWith('/api/public')) {
+    return NextResponse.next()
+  }
+
   // ── 2.5. Always allow Stripe checkout + webhook routes ──
   //     - /api/v1/checkout/* → used by shop/MD modals, no auth (server creates session)
   //     - /api/v1/webhooks/stripe → verifies via Stripe signature, no Supabase auth

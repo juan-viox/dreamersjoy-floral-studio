@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server'
-import type { SupabaseClient } from '@supabase/supabase-js'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { ingestNewsletter, resolveOrgId } from '@/lib/ingest/store'
+
+/**
+ * Server-to-server newsletter ingest, authenticated with x-api-key.
+ *
+ * The site's own footer form uses /api/public/newsletter instead, which needs
+ * no secret. See the note in ../lead/route.ts.
+ */
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -12,106 +19,33 @@ export async function OPTIONS() {
   return NextResponse.json(null, { headers: corsHeaders })
 }
 
-async function getOrgIdFromApiKey(supabase: SupabaseClient, apiKey: string): Promise<string | null> {
-  const { data } = await supabase
-    .from('cinematic_sites')
-    .select('organization_id')
-    .eq('api_key', apiKey)
-    .single()
-  return data?.organization_id ?? null
-}
-
 export async function POST(request: Request) {
   try {
     const apiKey = request.headers.get('x-api-key')
-    if (!apiKey || apiKey !== process.env.SITE_API_KEY) {
+    const expected = process.env.SITE_API_KEY
+    if (!expected || !apiKey || apiKey !== expected) {
       return NextResponse.json({ error: 'Invalid API key' }, { status: 401, headers: corsHeaders })
     }
 
     const supabase = createAdminClient()
-    const body = await request.json()
-    const { email, firstName } = body
+    const { email, firstName } = await request.json()
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400, headers: corsHeaders })
     }
 
-    // Get org ID
-    let orgId = await getOrgIdFromApiKey(supabase, apiKey)
-    if (!orgId) {
-      const { data: org } = await supabase.from('organizations').select('id').limit(1).single()
-      orgId = org?.id ?? null
-    }
+    const orgId = await resolveOrgId(supabase, apiKey)
     if (!orgId) {
       return NextResponse.json({ error: 'No organization found' }, { status: 500, headers: corsHeaders })
     }
 
-    // Upsert contact
-    const { data: existing } = await supabase
-      .from('contacts')
-      .select('id')
-      .eq('email', email)
-      .eq('organization_id', orgId)
-      .single()
-
-    let contactId: string
-    if (existing) {
-      contactId = existing.id
-      if (firstName) {
-        await supabase.from('contacts').update({ first_name: firstName }).eq('id', contactId)
-      }
-    } else {
-      const { data: newContact } = await supabase
-        .from('contacts')
-        .insert({
-          organization_id: orgId,
-          first_name: firstName || email.split('@')[0],
-          last_name: '',
-          email,
-          source: 'newsletter',
-        })
-        .select('id')
-        .single()
-      contactId = newContact!.id
-    }
-
-    // Add newsletter tag
-    let { data: tag } = await supabase
-      .from('tags')
-      .select('id')
-      .eq('name', 'newsletter')
-      .eq('organization_id', orgId)
-      .single()
-
-    if (!tag) {
-      const { data: newTag } = await supabase
-        .from('tags')
-        .insert({ organization_id: orgId, name: 'newsletter', color: '#fdcb6e' })
-        .select('id')
-        .single()
-      tag = newTag
-    }
-
-    if (tag) {
-      const { data: existingTag } = await supabase
-        .from('entity_tags')
-        .select('id')
-        .eq('tag_id', tag.id)
-        .eq('entity_type', 'contact')
-        .eq('entity_id', contactId)
-        .single()
-
-      if (!existingTag) {
-        await supabase.from('entity_tags').insert({
-          tag_id: tag.id,
-          entity_type: 'contact',
-          entity_id: contactId,
-        })
-      }
-    }
+    const { contactId } = await ingestNewsletter(supabase, orgId, { email, firstName })
 
     return NextResponse.json({ success: true, contactId }, { headers: corsHeaders })
   } catch (err) {
-    return NextResponse.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500, headers: corsHeaders })
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : String(err) },
+      { status: 500, headers: corsHeaders },
+    )
   }
 }

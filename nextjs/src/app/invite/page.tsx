@@ -51,14 +51,14 @@ export default function InvitePage() {
       .join('\n')
 
     try {
-      const res = await fetch('/api/v1/ingest/lead', {
+      const res = await fetch('/api/public/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa',
         },
         body: JSON.stringify({
-          name: `${form.firstName} ${form.lastName}`,
+          firstName: form.firstName,
+          lastName: form.lastName,
           email: form.email,
           phone: form.phone,
           source: 'invitation_request',
