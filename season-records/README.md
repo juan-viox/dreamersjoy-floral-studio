@@ -34,6 +34,15 @@ python3 build_season_record.py
 
 PDFs land in this folder.
 
+## Names held for future seasons
+
+Palette names the studio has chosen but not yet used. Take one when it fits the
+season rather than forcing it.
+
+| Name | Held for | Why |
+|---|---|---|
+| **Olive Ray** | Spring | Named for Sarah's son Oliver. "Ray" reads as light, so it belongs on an olive-and-new-growth spring palette rather than an autumn one. Considered for Fall 2026's Olive Smoke and deliberately saved. |
+
 ## Keeping the costing honest
 
 `STEM_PRICES` ships with **planning estimates**, not invoices. Replace the numbers with
