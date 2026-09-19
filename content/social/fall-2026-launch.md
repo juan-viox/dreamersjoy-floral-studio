@@ -51,9 +51,9 @@ dreamersjoystudio.com/fall-edit
 ```
 The Fall Edit is open.
 
-Burnt Ember — rust dahlias, terracotta butterfly ranunculus, trailing
-amaranthus, copper beech. Warm and spiced, with one note of chartreuse so it
-reads modern rather than harvest.
+Burnt Ember — rust, clay and candied ginger, warmed through with copper. We
+build it around dahlias and butterfly ranunculus when they're at their best,
+and keep one note of chartreuse so it reads modern rather than harvest.
 
 Petite, Signature, Statement. Link in bio.
 
@@ -65,10 +65,13 @@ Petite, Signature, Statement. Link in bio.
 ```
 The Fall Edit is open.
 
-First palette: Burnt Ember. Rust and café au lait dahlias, terracotta
-butterfly ranunculus, trailing amaranthus and copper beech — warm, spiced and
-sunlit, with a single chartreuse bloom to keep it from tipping into harvest
+First palette: Burnt Ember. Rust, clay and candied ginger, warm and spiced and
+sunlit, with a single chartreuse note to keep it from tipping into harvest
 decor.
+
+Dahlias, butterfly ranunculus and copper beech are usually where we start, but
+we compose to whatever is genuinely at its best that week. The palette is the
+promise; the stems are a judgement we make on the day.
 
 Available as a Petite, Signature or Statement centerpiece, or as a hand-tied
 bouquet. Hand-delivered throughout Northern New Jersey.
@@ -85,8 +88,9 @@ dreamersjoystudio.com/fall-edit
 ```
 Olive Smoke — the quiet one.
 
-Olive branch, smokebush, green hellebore, white spider chrysanthemum. Almost
-entirely green and grey, and it lives or dies on the space we leave empty.
+Burnt olive, green envy and smoke. Almost entirely green and grey, and it
+lives or dies on the space we leave empty. Olive branch, smokebush and
+hellebore are where we usually begin.
 
 For the client who doesn't want flowers to announce themselves.
 
@@ -98,9 +102,10 @@ For the client who doesn't want flowers to announce themselves.
 ```
 Olive Smoke is the most restrained palette we've run.
 
-Olive branch, smokebush, green hellebore and white spider chrysanthemum —
-herbal, architectural, almost entirely green and grey. The cream chrysanthemum
-does the work a focal bloom normally would.
+Herbal, architectural, almost entirely green and grey, with a cream note doing
+the work a focal bloom normally would. Olive branch, smokebush, hellebore and
+spider chrysanthemum are the material we reach for first, subject to what the
+market gives us that week.
 
 This one depends on negative space. We deliberately under-fill it.
 
@@ -151,8 +156,8 @@ dreamersjoystudio.com/fall-edit
 ```
 Mahogany Dusk — the evening palette.
 
-Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum
-scabiosa, clematis vine trailing on one side only.
+Red mahogany, foxglove and toffee. Deep maroon carrying the weight, antique
+dusty rose lifting it, and something trailing on one side only.
 
 Built to be read by candlelight.
 
@@ -164,9 +169,9 @@ Built to be read by candlelight.
 ```
 Mahogany Dusk is the evening palette.
 
-Deep maroon dahlias carry the weight; antique dusty-rose garden roses lift it
-so the whole thing doesn't sink into shadow. Astilbe and clematis vine supply
-the movement.
+Deep maroon carries the weight; antique dusty rose lifts it so the whole thing
+doesn't sink into shadow. Dahlias, garden roses and a trailing vine are our
+usual starting point, composed to whatever the week actually offers.
 
 We build this one to hold a candlelit table — the dusty pink stays forward,
 the maroon sits behind it.
@@ -332,7 +337,15 @@ dreamersjoystudio.com/fall-edit
 - **Hashtags:** the local ones (`#bergencountyflorist`, `#wyckoffnj`,
   `#ridgewoodnj`) matter more than the broad ones for a by-appointment studio.
   Keep them.
-- **Imagery caveat:** the Fall Edit photography is AI-generated. Once you
-  build these palettes for real, swap in your own photographs before this
-  campaign runs — the captions describe specific stems and should match what
-  you actually made.
+- **Imagery:** the Fall Edit visuals are rendered, not photographed. They show
+  what a palette can become, which is how they are framed everywhere they
+  appear: the colour direction and the working style are real design
+  decisions, the specific arrangement in frame is not a piece that was
+  delivered to anyone. Captions are written to match — they name a palette and
+  the material we reach for first, never a guarantee of specific stems.
+- **Swap them as you shoot.** Once you build these palettes for real,
+  photograph them and replace the renders. Real work converts better than a
+  render, and it retires the distinction entirely.
+- **Never caption a render as a delivered piece.** "Here's the Burnt Ember
+  that went out Saturday" over a rendered image is the one line that would
+  turn an honest illustration into a false claim.
