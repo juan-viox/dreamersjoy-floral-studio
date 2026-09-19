@@ -6,7 +6,9 @@ Ready-to-paste posts for Instagram and Facebook covering the season
 **Voice reminders:** no exclamation marks, sparing emoji, lowercase hashtags.
 Restraint is the brand — say less than you want to.
 
-**Images** live in `nextjs/public/cinematic/assets/images/`.
+**Images.** Everything named below has been sent as a JPG ready to upload. Instagram
+rejects `.webp`, so always use the JPG versions, never the originals in
+`nextjs/public/cinematic/assets/images/`.
 
 **Link for FB / bio:** `dreamersjoystudio.com/fall-edit`
 
@@ -52,7 +54,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 2 · Opening day
-**Post:** Tue Sept 22, 8:00 AM · **IG + FB** · Image: `fall-burnt-ember.webp`
+**Post:** Tue Sept 22, 8:00 AM · **IG + FB** · Image: `fall-burnt-ember-livingroom.jpg`
 
 **Instagram**
 ```
@@ -89,7 +91,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 3 · Olive Smoke
-**Post:** Fri Sept 25, 5:00 PM · **IG + FB** · Image: `fall-olive-smoke.webp`
+**Post:** Fri Sept 25, 5:00 PM · **IG + FB** · Image: `fall-olive-smoke-kitchen.jpg`
 
 **Instagram**
 ```
@@ -122,7 +124,8 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 4 · The three scales
-**Post:** Tue Sept 29, 12:00 PM · **IG + FB** · Carousel: all three centerpiece images
+**Post:** Tue Sept 29, 12:00 PM · **IG + FB** · Carousel: `fall-burnt-ember.jpg`,
+`fall-olive-smoke.jpg`, `fall-mahogany-dusk.jpg`
 
 **Instagram**
 ```
@@ -157,7 +160,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 5 · Mahogany Dusk
-**Post:** Fri Oct 2, 5:30 PM · **IG + FB** · Image: `fall-mahogany-dusk.webp`
+**Post:** Fri Oct 2, 5:30 PM · **IG + FB** · Image: `fall-mahogany-dusk-dining.jpg`
 
 **Instagram**
 ```
@@ -189,7 +192,8 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 6 · The bouquets
-**Post:** Wed Oct 7, 10:00 AM · **IG + FB** · Image: `fall-bouquet-burnt-ember.webp`
+**Post:** Wed Oct 7, 10:00 AM · **IG + FB** · Carousel: `fall-delivery-burnt-ember.jpg`,
+`fall-delivery-olive-smoke.jpg`, `fall-delivery-mahogany-dusk.jpg`
 
 **Instagram**
 ```
@@ -253,7 +257,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 8 · Peak fall / dinner party
-**Post:** Tue Oct 27, 11:00 AM · **IG + FB** · Image: `fall-mahogany-dusk.webp`
+**Post:** Tue Oct 27, 11:00 AM · **IG + FB** · Image: `fall-mahogany-dusk-dining.jpg`
 
 **Instagram**
 ```
@@ -284,7 +288,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 9 · Thanksgiving — two weeks out
-**Post:** Thu Nov 12, 9:00 AM · **IG + FB** · Image: `fall-burnt-ember.webp`
+**Post:** Thu Nov 12, 9:00 AM · **IG + FB** · Image: `fall-burnt-ember-livingroom.jpg`
 
 **Instagram**
 ```
@@ -313,7 +317,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 10 · Last call
-**Post:** Fri Nov 20, 8:00 AM · **IG + FB** · Image: `fall-bouquet-mahogany-dusk.webp`
+**Post:** Fri Nov 20, 8:00 AM · **IG + FB** · Image: `fall-delivery-mahogany-dusk.jpg`
 
 **Instagram**
 ```
