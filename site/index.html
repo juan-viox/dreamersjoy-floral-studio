@@ -2363,9 +2363,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   });
 
   // ─── VIOX CRM INTEGRATION ───
+  // Superseded prototype — the live site is built from nextjs/ and posts to
+  // the keyless same-origin /api/public/* routes. The API key that used to sit
+  // here has been removed and rotated; do not put a credential in this file.
   var CRM = {
-    apiUrl: 'https://viox-crm.vercel.app/api/v1/ingest',
-    apiKey: '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
+    apiUrl: 'https://viox-crm.vercel.app/api/public'
   };
 
   // Newsletter form → CRM
@@ -2379,7 +2381,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       btn.disabled = true;
       fetch(CRM.apiUrl + '/newsletter', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
       }).then(function() {
         btn.textContent = 'Thank you!';
@@ -2396,7 +2398,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     btn.addEventListener('click', function() {
       fetch(CRM.apiUrl + '/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName: 'Website',
           lastName: 'Visitor',

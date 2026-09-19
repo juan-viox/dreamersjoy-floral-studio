@@ -431,9 +431,11 @@
   });
 
   // ─── VIOX CRM INTEGRATION ───
+  // Same-origin endpoints that carry no credential. This file is served to
+  // every visitor, so anything written here is public by definition — the API
+  // key lives server-side (SITE_API_KEY) and never reaches the browser.
   var CRM = {
-    apiUrl: '/api/v1/ingest',
-    apiKey: '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa'
+    apiUrl: '/api/public'
   };
 
   // Newsletter form → CRM
@@ -447,7 +449,7 @@
       btn.disabled = true;
       fetch(CRM.apiUrl + '/newsletter', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
       }).then(function(res) {
         if (!res.ok) throw new Error('Failed');
@@ -495,7 +497,7 @@
 
       fetch(CRM.apiUrl + '/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': CRM.apiKey },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName: firstName,
           lastName: lastName,

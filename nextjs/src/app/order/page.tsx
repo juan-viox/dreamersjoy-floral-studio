@@ -79,9 +79,9 @@ export default function OrderPage() {
   const handleSubmit = async () => {
     setSubmitting(true)
     try {
-      await fetch('/api/v1/ingest/lead', {
+      const res = await fetch('/api/public/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': '8e2c0eaeca4b01990e4f60b660afa52d7ee93c15c9d1b5a2c8a138b9853f33aa' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName: form.name.split(' ')[0] || 'Order',
           lastName: form.name.split(' ').slice(1).join(' ') || 'Customer',
@@ -91,6 +91,7 @@ export default function OrderPage() {
           source: 'web_form',
         }),
       })
+      if (!res.ok) throw new Error('Request failed')
       setDone(true)
     } catch {
       alert('Something went wrong. Please try again.')

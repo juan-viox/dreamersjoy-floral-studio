@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server'
-import type { SupabaseClient } from '@supabase/supabase-js'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { ingestLead, resolveOrgId } from '@/lib/ingest/store'
+
+/**
+ * Server-to-server lead ingest, authenticated with x-api-key.
+ *
+ * Used by the Stripe webhook and any external integration. The site's own
+ * browser forms do NOT call this — they use /api/public/lead, which needs no
+ * secret. Do not reintroduce a client-side caller here: it would mean shipping
+ * SITE_API_KEY to the browser.
+ */
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -12,110 +21,36 @@ export async function OPTIONS() {
   return NextResponse.json(null, { headers: corsHeaders })
 }
 
-async function getOrgIdFromApiKey(supabase: SupabaseClient, apiKey: string): Promise<string | null> {
-  const { data } = await supabase
-    .from('cinematic_sites')
-    .select('organization_id')
-    .eq('api_key', apiKey)
-    .single()
-  return data?.organization_id ?? null
-}
-
 export async function POST(request: Request) {
   try {
     const apiKey = request.headers.get('x-api-key')
-    if (!apiKey || apiKey !== process.env.SITE_API_KEY) {
+    const expected = process.env.SITE_API_KEY
+    if (!expected || !apiKey || apiKey !== expected) {
       return NextResponse.json({ error: 'Invalid API key' }, { status: 401, headers: corsHeaders })
     }
 
     const supabase = createAdminClient()
     const body = await request.json()
-    const { firstName, lastName, phone, description } = body
-    const emailAddress = body.emailAddress || body.email || null
-    // Optional source override (e.g. "stripe_order", "stripe_order_notification"). Defaults to "web_form" for backward compat.
-    const sourceTag = (typeof body.source === 'string' && body.source.trim()) ? body.source.trim() : 'web_form'
 
-    // Get org ID - try from API key first, fall back to first org
-    let orgId = await getOrgIdFromApiKey(supabase, apiKey)
-    if (!orgId) {
-      const { data: org } = await supabase.from('organizations').select('id').limit(1).single()
-      orgId = org?.id ?? null
-    }
+    const orgId = await resolveOrgId(supabase, apiKey)
     if (!orgId) {
       return NextResponse.json({ error: 'No organization found' }, { status: 500, headers: corsHeaders })
     }
 
-    // Upsert contact
-    let contactId: string
-    if (emailAddress) {
-      const { data: existing } = await supabase
-        .from('contacts')
-        .select('id')
-        .eq('email', emailAddress)
-        .eq('organization_id', orgId)
-        .single()
-
-      if (existing) {
-        contactId = existing.id
-        await supabase.from('contacts').update({
-          first_name: firstName || undefined,
-          last_name: lastName || undefined,
-          phone: phone || undefined,
-        }).eq('id', contactId)
-      } else {
-        const { data: newContact } = await supabase
-          .from('contacts')
-          .insert({
-            organization_id: orgId,
-            first_name: firstName || 'Unknown',
-            last_name: lastName || '',
-            email: emailAddress,
-            phone: phone || null,
-            source: sourceTag,
-            notes: description || null,
-          })
-          .select('id')
-          .single()
-        contactId = newContact!.id
-      }
-    } else {
-      const { data: newContact } = await supabase
-        .from('contacts')
-        .insert({
-          organization_id: orgId,
-          first_name: firstName || 'Unknown',
-          last_name: lastName || '',
-          phone: phone || null,
-          source: sourceTag,
-          notes: description || null,
-        })
-        .select('id')
-        .single()
-      contactId = newContact!.id
-    }
-
-    // Create deal in first stage
-    const { data: firstStage } = await supabase
-      .from('deal_stages')
-      .select('id')
-      .eq('organization_id', orgId)
-      .order('sort_order')
-      .limit(1)
-      .single()
-
-    if (firstStage) {
-      await supabase.from('deals').insert({
-        organization_id: orgId,
-        contact_id: contactId,
-        stage_id: firstStage.id,
-        title: `Lead: ${firstName || ''} ${lastName || ''}`.trim(),
-        amount: 0,
-        notes: description || null,
-      })
-    }
+    const { contactId } = await ingestLead(supabase, orgId, {
+      firstName: body.firstName,
+      lastName: body.lastName,
+      email: body.emailAddress || body.email || null,
+      phone: body.phone,
+      description: body.description,
+      source: body.source,
+    })
 
     return NextResponse.json({ success: true, contactId }, { headers: corsHeaders })
   } catch (err) {
-    return NextResponse.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500, headers: corsHeaders })
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : String(err) },
+      { status: 500, headers: corsHeaders },
+    )
   }
 }
