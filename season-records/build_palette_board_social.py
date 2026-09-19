@@ -14,15 +14,15 @@ LOGO = uri("dj-logo-transparent.png")
 PAL = [
   ("Burnt Ember", "Warm, spiced and sunlit", "fall-burnt-ember.webp", [
     ("#8B4630","Rust","Anchor"), ("#D89B87","Clay","Primary"),
-    ("#C1A18B","Candied Ginger","Bridge"), ("#F0EBE1","Cream","Breath"),
+    ("#C1A18B","Ginger","Bridge"), ("#F0EBE1","Cream","Breath"),
     ("#DDD45F","Chartreuse","Accent")]),
   ("Olive Smoke", "Herbal, architectural, restrained", "fall-olive-smoke.webp", [
-    ("#5A5641","Burnt Olive","Anchor"), ("#9C9426","Moss","Primary"),
+    ("#5A5641","Olive","Anchor"), ("#9C9426","Moss","Primary"),
     ("#918F8C","Smoke","Bridge"), ("#F0EBE1","Cream","Breath"),
-    ("#7C5231","Toffee","Accent")]),
+    ("#7C5231","Chestnut","Accent")]),
   ("Mahogany Dusk", "Deep, candlelit, built for evening", "fall-mahogany-dusk.webp", [
     ("#5B3139","Mahogany","Anchor"), ("#C695A6","Dusty Rose","Primary"),
-    ("#7C5231","Toffee","Bridge"), ("#C1A18B","Tan","Breath"),
+    ("#7C5231","Chestnut","Bridge"), ("#C1A18B","Tan","Breath"),
     ("#9E2469","Fuchsia","Accent")]),
 ]
 
@@ -48,7 +48,7 @@ html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
   body {{ width:1600px; height:2000px; background:#F7F7F5; font-family:'Jost',sans-serif;
           color:#2C3E50; padding:74px 84px 60px; display:flex; flex-direction:column; }}
   header {{ text-align:center; margin-bottom:30px; }}
-  header img {{ width:104px; height:104px; margin-bottom:18px; }}
+  header img {{ width:158px; height:158px; margin-bottom:14px; }}
   .kicker {{ font-size:15px; letter-spacing:.24em; text-transform:uppercase;
              color:#87734C; margin-bottom:14px; }}
   h1 {{ font-family:'Cormorant Garamond',serif; font-size:82px; font-weight:300; line-height:1; }}
