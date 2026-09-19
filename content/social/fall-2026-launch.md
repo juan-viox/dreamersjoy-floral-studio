@@ -13,27 +13,27 @@ Restraint is the brand — say less than you want to.
 ---
 
 ## 1 · Launch teaser — the palette
-**Post:** Mon Sept 21, 9:00 AM · **IG + FB** · Image: `Fall_2026_Palette_Board.png` (in `season-records/`)
+**Post:** Mon Sept 21, 9:00 AM · **IG + FB** · Image: `Fall_2026_Palette_Board_Social.jpg` (in `season-records/`)
 
 **Instagram**
 ```
 Color first. Flowers second.
 
-Three palettes for autumn, drawn from the Pantone Autumn/Winter 2026 report —
+Three palettes for autumn, in the colors that are in season:
 Burnt Ember, Olive Smoke, Mahogany Dusk.
 
 The Fall Edit opens tomorrow.
 
 #bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #falltablescape
-#colorledfloral #pantoneaw26 #seasonalflowers #editorialfloral
+#colorledfloral #fallcolorpalette #seasonalflowers #editorialfloral
 ```
 
 **Facebook**
 ```
 Color first. Flowers second.
 
-Every season we set the palette before we touch a stem. This autumn's three
-come from the Pantone Fashion Color Trend Report for Autumn/Winter 2026:
+Every season we set the palette before we touch a stem. We always design with
+the colors that are in season, as well as the blooms. This autumn's three:
 Burnt Ember, Olive Smoke, and Mahogany Dusk.
 
 The Fall Edit opens tomorrow — centerpieces in three sizes and hand-tied
@@ -88,7 +88,7 @@ dreamersjoystudio.com/fall-edit
 ```
 Olive Smoke — the quiet one.
 
-Burnt olive, green envy and smoke. Almost entirely green and grey, and it
+Olive, moss and smoke. Almost entirely green and grey, and it
 lives or dies on the space we leave empty. Olive branch, smokebush and
 hellebore are where we usually begin.
 
@@ -156,7 +156,7 @@ dreamersjoystudio.com/fall-edit
 ```
 Mahogany Dusk — the evening palette.
 
-Red mahogany, foxglove and toffee. Deep maroon carrying the weight, antique
+Mahogany, dusty rose and chestnut. Deep maroon carrying the weight, antique
 dusty rose lifting it, and something trailing on one side only.
 
 Built to be read by candlelight.
@@ -213,7 +213,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 7 · Behind the palette
-**Post:** Thu Oct 15, 7:00 PM · **IG + FB** · Image: `Fall_2026_Palette_Board.png`
+**Post:** Thu Oct 15, 7:00 PM · **IG + FB** · Image: `Fall_2026_Palette_Board_Social.jpg`
 
 **Instagram**
 ```
@@ -223,9 +223,9 @@ If you start with flowers you end up with whatever the market had that week.
 If you start with color, the market becomes a set of options instead of a
 decision.
 
-Arabian Spice. Burnt Olive. Red Mahogany. Everything else follows.
+Rust. Olive. Mahogany. Everything else follows.
 
-#colortheory #pantone #floraldesign #designprocess #njflorist
+#colortheory #fallcolorpalette #floraldesign #designprocess #njflorist
 #bergencountyflorist #editorialfloral
 ```
 
@@ -233,9 +233,9 @@ Arabian Spice. Burnt Olive. Red Mahogany. Everything else follows.
 ```
 A note on how we work.
 
-We set the palette before we source a single stem. This season's three come
-from the Pantone Fashion Color Trend Report for Autumn/Winter 2026 — Arabian
-Spice, Burnt Olive, Red Mahogany, and the shades that sit around them.
+We set the palette before we source a single stem. We always design with the
+colors that are in season, as well as the blooms — rust, olive and mahogany
+this autumn, and the shades that sit around them.
 
 It means no two arrangements are identical, because we compose to whatever is
 at its best that week. It also means every piece is unmistakably its palette.

@@ -147,7 +147,7 @@ POSTS = [
             ("p", "It also makes consistency impossible. If a client loved what you delivered in April and wants something in that spirit in October, flowers-first has no way to answer that. Colour-first does."),
 
             ("h2", "How a palette actually gets built"),
-            ("p", "Each season we set three. This autumn they came from the Pantone Fashion Color Trend Report for Autumn/Winter 2026, which sounds more corporate than it is; it is simply a well-researched read on where colour is going, and it keeps our seasonal work in conversation with what our clients are already seeing in fashion and interiors."),
+            ("p", "Each season we set three. We always design with the colours that are in season, as well as the blooms: we read where colour is moving in fashion and interiors, and we set our palettes against it, so the work stays in conversation with what our clients are already seeing everywhere else."),
             ("p", "Every palette gets five roles, and each colour is assigned one:"),
             ("ul", [
                 "<strong>Anchor</strong>: the deepest value. Gives the arrangement its weight and usually sits low and centre.",
