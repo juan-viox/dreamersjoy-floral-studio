@@ -80,7 +80,7 @@ html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
   </header>
   {blocks}
   <footer>
-    Three palettes, set before a single stem is sourced, in the colors that are in season.<br>
+    We always design with the colors that are in season, as well as the blooms.<br>
     Every piece is composed from the best material available that week,
     so no two arrangements are identical.
   </footer>
