@@ -33,8 +33,7 @@ Burnt Ember, Olive Smoke, Mahogany Dusk.
 
 The Fall Edit is live now.
 
-#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #falltablescape
-#colorledfloral #fallcolorpalette #seasonalflowers #editorialfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #colorledfloral
 ```
 
 **Facebook**
@@ -66,8 +65,7 @@ and keep one note of chartreuse so it reads modern rather than harvest.
 
 Petite, Signature, Statement. Link in bio.
 
-#fallflorals #dahlias #bergencountyflorist #njflorist #autumnflowers
-#wyckoffnj #franklinlakesnj #centerpiece #colorledfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #fallflorals
 ```
 
 **Facebook**
@@ -103,8 +101,7 @@ hellebore are where we usually begin.
 
 For the client who doesn't want flowers to announce themselves.
 
-#olivebranch #hellebore #minimalfloral #njflorist #bergencountyflorist
-#autumnflorals #greenandwhite #editorialfloral #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #minimalfloral
 ```
 
 **Facebook**
@@ -137,8 +134,7 @@ Statement — 12–16". The anchor piece.
 
 Vessels are chosen per arrangement and vary with what's available.
 
-#floraldesign #centerpiece #njflorist #bergencountyflorist #dinnerparty
-#tablescape #autumntable #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #centerpiece
 ```
 
 **Facebook**
@@ -171,8 +167,7 @@ dusty rose lifting it, and something trailing on one side only.
 
 Built to be read by candlelight.
 
-#burgundydahlia #gardenroses #moodyflorals #njflorist #bergencountyflorist
-#dinnerparty #autumnwedding #chocolatecosmos #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #moodyflorals
 ```
 
 **Facebook**
@@ -204,8 +199,7 @@ straight into a vase.
 
 $115, delivered across Bergen County.
 
-#handtiedbouquet #flowerdelivery #njflorist #bergencountyflorist #wyckoffnj
-#ridgewoodnj #autumnflowers #giftidea
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #flowerdelivery
 ```
 
 **Facebook**
@@ -236,8 +230,7 @@ decision.
 
 Rust. Olive. Mahogany. Everything else follows.
 
-#colortheory #fallcolorpalette #floraldesign #designprocess #njflorist
-#bergencountyflorist #editorialfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #colortheory
 ```
 
 **Facebook**
@@ -267,8 +260,7 @@ We deliver Thursday through Saturday. Order by Wednesday 8 PM for that week.
 
 Low enough to talk across. That part matters.
 
-#dinnerparty #hosting #tablescape #njflorist #bergencountyflorist
-#entertaining #autumntable #wyckoffnj #ridgewoodnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #dinnerparty
 ```
 
 **Facebook**
@@ -297,8 +289,7 @@ Thanksgiving is two weeks out.
 Orders close Monday November 23. Limited quantities — we'd rather turn work
 away than rush it.
 
-#thanksgiving #thanksgivingtable #njflorist #bergencountyflorist
-#autumncenterpiece #wyckoffnj #holidayflorals
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #thanksgivingtable
 ```
 
 **Facebook**
@@ -323,8 +314,7 @@ dreamersjoystudio.com/fall-edit
 ```
 Last call for Thanksgiving. Orders close Monday.
 
-#thanksgiving #lastcall #njflorist #bergencountyflorist #wyckoffnj
-#thanksgivingtable #autumnflowers
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #thanksgiving
 ```
 
 **Facebook**
@@ -345,9 +335,11 @@ dreamersjoystudio.com/fall-edit
   through October, tightening again for Thanksgiving.
 - **Best times** are starting points, not gospel — check your own Instagram
   insights after two weeks and adjust.
-- **Hashtags:** the local ones (`#bergencountyflorist`, `#wyckoffnj`,
-  `#ridgewoodnj`) matter more than the broad ones for a by-appointment studio.
-  Keep them.
+- **Hashtags: five per post, no more.** The same four local tags every time
+  (`#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj`) plus one tag for
+  that post's subject. Using the locals consistently builds the association;
+  broad tags like `#floraldesign` put a by-appointment studio in Bergen County
+  up against the whole world and win nothing.
 - **Imagery:** the Fall Edit visuals are rendered, not photographed. They show
   what a palette can become, which is how they are framed everywhere they
   appear: the colour direction and the working style are real design
