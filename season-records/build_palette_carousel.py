@@ -81,6 +81,23 @@ CSS = """
   .foot img { width:62px; height:62px; }
   .foot span { font-size:22px; letter-spacing:.2em; text-transform:uppercase;
                color:rgba(44,62,80,.45); }
+
+  /* ---- closing slide ---- */
+  .close { flex:1; display:flex; flex-direction:column; align-items:center;
+           justify-content:center; text-align:center; padding:96px 110px; }
+  .close img.logo { width:210px; height:210px; margin-bottom:30px; }
+  .close h1 { font-family:'Cormorant Garamond',serif; font-size:104px; font-weight:300;
+              line-height:1.05; margin:20px 0 22px; }
+  .close .blurb { font-size:31px; line-height:1.62; color:rgba(44,62,80,.68);
+                  max-width:32ch; }
+  .close .bar { display:flex; height:36px; width:100%; border-radius:2px;
+                overflow:hidden; margin:54px 0; }
+  .close .bar span { flex:1; }
+  .close .url { font-family:'Cormorant Garamond',serif; font-size:62px; }
+  .close .meta { margin-top:30px; font-size:28px; line-height:1.9;
+                 color:rgba(44,62,80,.62); }
+  .close .note { margin-top:34px; font-size:23px; letter-spacing:.16em;
+                 text-transform:uppercase; color:#87734C; line-height:1.9; }
 """
 
 HEAD = ("""<!DOCTYPE html><html><head><meta charset="utf-8">
@@ -119,11 +136,30 @@ def palette_slide(i, name, tag, img, cols):
 </div></body></html>"""
 
 
+def closing_slide():
+    bars = "".join(f'<span style="background:{hx}"></span>'
+                   for _n, _t, _i, cols in PALETTES for hx, _cn, _r in cols)
+    return HEAD + f"""
+<div class="close">
+  <img class="logo" src="{LOGO}">
+  <p class="kicker">The Fall Edit &middot; Fall 2026</p>
+  <h1>Order the Fall Edit</h1>
+  <p class="blurb">Centerpieces in three scales and hand-tied bouquets,
+     hand-delivered across Bergen County.</p>
+  <div class="bar">{bars}</div>
+  <p class="url">dreamersjoystudio.com</p>
+  <p class="meta">hello@dreamersjoystudio.com<br>(551) 465-5200</p>
+  <p class="note">Wyckoff, New Jersey &middot; By appointment<br>
+     Delivered Thursday to Saturday</p>
+</div></body></html>"""
+
+
 def main():
     slides = [("01-cover", cover_slide())]
     for i, (name, tag, img, cols) in enumerate(PALETTES, 1):
         slug = name.lower().replace(" ", "-")
         slides.append((f"0{i+1}-{slug}", palette_slide(i, name, tag, img, cols)))
+    slides.append(("05-order", closing_slide()))
 
     out = os.path.join(HERE, "carousel")
     os.makedirs(out, exist_ok=True)
