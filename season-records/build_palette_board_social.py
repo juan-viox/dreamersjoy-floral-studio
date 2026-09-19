@@ -49,28 +49,28 @@ html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
           color:#2C3E50; padding:74px 84px 60px; display:flex; flex-direction:column; }}
   header {{ text-align:center; margin-bottom:30px; }}
   header img {{ width:158px; height:158px; margin-bottom:14px; }}
-  .kicker {{ font-size:15px; letter-spacing:.24em; text-transform:uppercase;
+  .kicker {{ font-size:21px; letter-spacing:.24em; text-transform:uppercase;
              color:#87734C; margin-bottom:14px; }}
   h1 {{ font-family:'Cormorant Garamond',serif; font-size:82px; font-weight:300; line-height:1; }}
-  .sub {{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:31px;
+  .sub {{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px;
           color:rgba(44,62,80,.62); margin-top:14px; }}
   .pal {{ display:flex; gap:48px; align-items:center; padding:52px 0;
           border-top:1px solid rgba(135,115,76,.22); }}
-  .pic {{ width:470px; height:352px; flex:none; background-size:cover;
+  .pic {{ width:430px; height:322px; flex:none; background-size:cover;
           background-position:center; border-radius:3px; }}
   .meta {{ flex:1; }}
-  h2 {{ font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:400; }}
-  .tag {{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:25px;
+  h2 {{ font-family:'Cormorant Garamond',serif; font-size:66px; font-weight:400; }}
+  .tag {{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:34px;
           color:rgba(44,62,80,.6); margin:6px 0 24px; }}
-  .sws {{ display:flex; gap:16px; }}
+  .sws {{ display:flex; gap:12px; }}
   .sw {{ flex:1; }}
-  .sw span {{ display:block; height:112px; border-radius:2px;
+  .sw span {{ display:block; height:150px; border-radius:2px;
               border:1px solid rgba(44,62,80,.09); margin-bottom:10px; }}
-  .sw b {{ display:block; font-size:17px; font-weight:400; }}
-  .sw i {{ display:block; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  .sw b {{ display:block; font-size:27px; font-weight:400; line-height:1.25; }}
+  .sw i {{ display:block; font-size:17px; letter-spacing:.1em; text-transform:uppercase;
            color:#87734C; font-style:normal; margin-top:3px; }}
   footer {{ margin-top:auto; padding-top:26px; border-top:1px solid rgba(135,115,76,.22);
-            text-align:center; font-size:15px; color:rgba(44,62,80,.5); line-height:1.7; }}
+            text-align:center; font-size:25px; color:rgba(44,62,80,.62); line-height:1.65; }}
 </style></head><body>
   <header>
     <img src="{LOGO}">
