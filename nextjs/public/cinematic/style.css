@@ -9,7 +9,12 @@
      Primary anchor is TRUE EDITORIAL NAVY (Brooklyn Vogue direction).
      Zero purple. Zero gradients on dark sections. Flat navy only.       */
   --primary: #2C3E50;     /* Deep blue-gray navy. All text, CTAs, dark sections. */
-  --bg: #F2F2EB;          /* Warm stone — default page background */
+  --bg: #F7F7F5;          /* Neutral off-white — default page background.
+                             Replaced #F2F2EB warm stone, whose yellow cast
+                             read as vintage rather than modern. */
+  --bg-rgb: 247, 247, 245; /* --bg as RGB channels, for rgba() surfaces
+                             (nav blur, overlays, light text on navy).
+                             Keep in sync with --bg. */
   --white: #FFFFFF;       /* Digital use only */
   --accent: #7C8CAB;      /* Soft slate blue — sparing supporting accent */
   --bronze: #87734C;      /* Warm gold/bronze — limited luxury accent */
@@ -90,7 +95,7 @@ html.js-animations-ready .fade-up { opacity: 0; transform: translateY(40px); }
   transition: all 0.4s var(--ease-smooth);
   /* Always-visible guarantee: subtle background even before scroll
      so the nav never overlaps or disappears into light page heroes. */
-  background: rgba(242, 242, 235, 0.92);
+  background: rgba(var(--bg-rgb), 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(44, 62, 80, 0.06);
@@ -103,7 +108,7 @@ body[data-page="home"] .nav:not(.scrolled) {
   border-bottom-color: transparent;
 }
 .nav.scrolled {
-  background: rgba(242, 242, 235, 0.94);
+  background: rgba(var(--bg-rgb), 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 12px 0;
@@ -2942,8 +2947,8 @@ body:not([data-page="home"]) section:first-of-type:not(.hero):not(.nav):not(.her
 }
 .booking-cta { background: var(--primary); color: var(--bg); }
 .booking-cta h2, .booking-cta .section-label { color: var(--bg); }
-.booking-cta .section-label { color: rgba(242, 242, 235, 0.7); }
-.booking-cta p { color: rgba(242, 242, 235, 0.8); }
+.booking-cta .section-label { color: rgba(var(--bg-rgb), 0.7); }
+.booking-cta p { color: rgba(var(--bg-rgb), 0.8); }
 .booking-cta .btn-primary {
   background: var(--bg);
   color: var(--primary);
@@ -2956,7 +2961,7 @@ body:not([data-page="home"]) section:first-of-type:not(.hero):not(.nav):not(.her
 .booking-cta .btn-outline {
   background: transparent;
   color: var(--bg);
-  border: 1px solid rgba(242, 242, 235, 0.5);
+  border: 1px solid rgba(var(--bg-rgb), 0.5);
 }
 .booking-cta .btn-outline:hover {
   background: var(--bg);
@@ -3059,12 +3064,12 @@ body[data-page="subscriptions"] .subs-top-cta-note {
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(242, 242, 235, 0.6);
+  color: rgba(var(--bg-rgb), 0.6);
   margin-top: 16px;
 }
 body[data-page="subscriptions"] .subs-top-cta-sub {
   font-size: 15px;
-  color: rgba(242, 242, 235, 0.75);
+  color: rgba(var(--bg-rgb), 0.75);
   margin-top: 14px;
 }
 body[data-page="subscriptions"] .subs-top-cta-link {
@@ -3177,7 +3182,7 @@ body[data-page="mothers-day"] section.mothers-day {
 
 /* Footer sits on deep primary */
 footer { background: var(--primary) !important; color: var(--bg) !important; }
-footer p, footer a, footer span { color: rgba(242, 242, 235, 0.7) !important; }
+footer p, footer a, footer span { color: rgba(var(--bg-rgb), 0.7) !important; }
 footer a:hover { color: var(--bg) !important; }
 footer p[style*="font-family"] { color: var(--bg) !important; }
 
@@ -3243,7 +3248,7 @@ footer p[style*="font-family"] { color: var(--bg) !important; }
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(242, 242, 235, 0.9);
+  background: rgba(var(--bg-rgb), 0.9);
   border: 1px solid rgba(44, 62, 80, 0.15);
   color: var(--primary);
   font-family: var(--font-body);
