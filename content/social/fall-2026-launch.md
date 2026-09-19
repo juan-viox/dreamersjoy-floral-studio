@@ -13,7 +13,11 @@ Restraint is the brand — say less than you want to.
 ---
 
 ## 1 · Launch teaser — the palette
-**Post:** Mon Sept 21, 9:00 AM · **IG + FB** · Image: `Fall_2026_Palette_Board_Social.jpg` (in `season-records/`)
+**Post:** Mon Sept 21, 9:00 AM · **IG + FB**
+**Image:** `season-records/Fall_2026_Palette_Board_Social.jpg` (single image), **or**
+**Carousel (better):** the four slides in `season-records/carousel/`, in filename order —
+cover, Burnt Ember, Olive Smoke, Mahogany Dusk. Each palette fills the screen instead of
+competing with the other two.
 
 **Instagram**
 ```
