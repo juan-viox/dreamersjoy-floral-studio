@@ -632,6 +632,11 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
   color: rgba(51,65,85,0.45);
   margin-top: 8px;
 }
+/* Home spotlight image row is inline-styled 3-up; stack it on phones so the
+   three arrangements don't shrink to thumbnails. */
+@media (max-width: 768px) {
+  .fe-spot-grid { grid-template-columns: 1fr !important; gap: 16px !important; max-width: 520px !important; }
+}
 @media (max-width: 480px) {
   .md-palette-row { grid-template-columns: 1fr !important; gap: 24px !important; }
   .mothers-day .md-delivery > div { grid-template-columns: repeat(2, 1fr) !important; }
