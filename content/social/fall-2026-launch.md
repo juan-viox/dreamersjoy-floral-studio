@@ -6,37 +6,45 @@ Ready-to-paste posts for Instagram and Facebook covering the season
 **Voice reminders:** no exclamation marks, sparing emoji, lowercase hashtags.
 Restraint is the brand — say less than you want to.
 
-**Images** live in `nextjs/public/cinematic/assets/images/`.
+**Images.** Everything named below has been sent as a JPG ready to upload. Instagram
+rejects `.webp`, so always use the JPG versions, never the originals in
+`nextjs/public/cinematic/assets/images/`.
 
 **Link for FB / bio:** `dreamersjoystudio.com/fall-edit`
 
 ---
 
 ## 1 · Launch teaser — the palette
-**Post:** Mon Sept 21, 9:00 AM · **IG + FB** · Image: `Fall_2026_Palette_Board.png` (in `season-records/`)
+**Post:** Mon Sept 21, 9:00 AM · **IG + FB**
+**Image:** `season-records/Fall_2026_Palette_Board_Social.jpg` (single image), **or**
+**Carousel (better):** the five slides in `season-records/carousel/`, in filename order —
+cover, Burnt Ember, Olive Smoke, Mahogany Dusk, and the order card. Each palette fills the
+screen instead of competing with the other two, and the last slide catches anyone who
+swiped all the way through.
+
+The order card carries no date, so it can close any post in this campaign, not just this one.
 
 **Instagram**
 ```
 Color first. Flowers second.
 
-Three palettes for autumn, drawn from the Pantone Autumn/Winter 2026 report —
+Three palettes for autumn, in the colors that are in season:
 Burnt Ember, Olive Smoke, Mahogany Dusk.
 
-The Fall Edit opens tomorrow.
+The Fall Edit is live now.
 
-#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #falltablescape
-#colorledfloral #pantoneaw26 #seasonalflowers #editorialfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #colorledfloral
 ```
 
 **Facebook**
 ```
 Color first. Flowers second.
 
-Every season we set the palette before we touch a stem. This autumn's three
-come from the Pantone Fashion Color Trend Report for Autumn/Winter 2026:
+Every season we set the palette before we touch a stem. We always design with
+the colors that are in season, as well as the blooms. This autumn's three:
 Burnt Ember, Olive Smoke, and Mahogany Dusk.
 
-The Fall Edit opens tomorrow — centerpieces in three sizes and hand-tied
+The Fall Edit is live now — centerpieces in three sizes and hand-tied
 bouquets, hand-delivered across Bergen County.
 
 dreamersjoystudio.com/fall-edit
@@ -45,30 +53,32 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 2 · Opening day
-**Post:** Tue Sept 22, 8:00 AM · **IG + FB** · Image: `fall-burnt-ember.webp`
+**Post:** Tue Sept 22, 8:00 AM · **IG + FB** · Image: `fall-burnt-ember-livingroom.jpg`
 
 **Instagram**
 ```
-The Fall Edit is open.
+First palette: Burnt Ember.
 
-Burnt Ember — rust dahlias, terracotta butterfly ranunculus, trailing
-amaranthus, copper beech. Warm and spiced, with one note of chartreuse so it
-reads modern rather than harvest.
+Rust, clay and candied ginger, warmed through with copper. We
+build it around dahlias and butterfly ranunculus when they're at their best,
+and keep one note of chartreuse so it reads modern rather than harvest.
 
 Petite, Signature, Statement. Link in bio.
 
-#fallflorals #dahlias #bergencountyflorist #njflorist #autumnflowers
-#wyckoffnj #franklinlakesnj #centerpiece #colorledfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #fallflorals
 ```
 
 **Facebook**
 ```
-The Fall Edit is open.
+The first of the three.
 
-First palette: Burnt Ember. Rust and café au lait dahlias, terracotta
-butterfly ranunculus, trailing amaranthus and copper beech — warm, spiced and
-sunlit, with a single chartreuse bloom to keep it from tipping into harvest
+Burnt Ember — rust, clay and candied ginger, warm and spiced and
+sunlit, with a single chartreuse note to keep it from tipping into harvest
 decor.
+
+Dahlias, butterfly ranunculus and copper beech are usually where we start, but
+we compose to whatever is genuinely at its best that week. The palette is the
+promise; the stems are a judgement we make on the day.
 
 Available as a Petite, Signature or Statement centerpiece, or as a hand-tied
 bouquet. Hand-delivered throughout Northern New Jersey.
@@ -79,28 +89,29 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 3 · Olive Smoke
-**Post:** Fri Sept 25, 5:00 PM · **IG + FB** · Image: `fall-olive-smoke.webp`
+**Post:** Fri Sept 25, 5:00 PM · **IG + FB** · Image: `fall-olive-smoke-kitchen.jpg`
 
 **Instagram**
 ```
 Olive Smoke — the quiet one.
 
-Olive branch, smokebush, green hellebore, white spider chrysanthemum. Almost
-entirely green and grey, and it lives or dies on the space we leave empty.
+Olive, moss and smoke. Almost entirely green and grey, and it
+lives or dies on the space we leave empty. Olive branch, smokebush and
+hellebore are where we usually begin.
 
 For the client who doesn't want flowers to announce themselves.
 
-#olivebranch #hellebore #minimalfloral #njflorist #bergencountyflorist
-#autumnflorals #greenandwhite #editorialfloral #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #minimalfloral
 ```
 
 **Facebook**
 ```
 Olive Smoke is the most restrained palette we've run.
 
-Olive branch, smokebush, green hellebore and white spider chrysanthemum —
-herbal, architectural, almost entirely green and grey. The cream chrysanthemum
-does the work a focal bloom normally would.
+Herbal, architectural, almost entirely green and grey, with a cream note doing
+the work a focal bloom normally would. Olive branch, smokebush, hellebore and
+spider chrysanthemum are the material we reach for first, subject to what the
+market gives us that week.
 
 This one depends on negative space. We deliberately under-fill it.
 
@@ -110,7 +121,8 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 4 · The three scales
-**Post:** Tue Sept 29, 12:00 PM · **IG + FB** · Carousel: all three centerpiece images
+**Post:** Tue Sept 29, 12:00 PM · **IG + FB** · Carousel: `fall-burnt-ember.jpg`,
+`fall-olive-smoke.jpg`, `fall-mahogany-dusk.jpg`
 
 **Instagram**
 ```
@@ -122,8 +134,7 @@ Statement — 12–16". The anchor piece.
 
 Vessels are chosen per arrangement and vary with what's available.
 
-#floraldesign #centerpiece #njflorist #bergencountyflorist #dinnerparty
-#tablescape #autumntable #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #centerpiece
 ```
 
 **Facebook**
@@ -145,28 +156,27 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 5 · Mahogany Dusk
-**Post:** Fri Oct 2, 5:30 PM · **IG + FB** · Image: `fall-mahogany-dusk.webp`
+**Post:** Fri Oct 2, 5:30 PM · **IG + FB** · Image: `fall-mahogany-dusk-dining.jpg`
 
 **Instagram**
 ```
 Mahogany Dusk — the evening palette.
 
-Burgundy dahlias, antique dusty-rose garden roses, chocolate cosmos, plum
-scabiosa, clematis vine trailing on one side only.
+Mahogany, dusty rose and chestnut. Deep maroon carrying the weight, antique
+dusty rose lifting it, and something trailing on one side only.
 
 Built to be read by candlelight.
 
-#burgundydahlia #gardenroses #moodyflorals #njflorist #bergencountyflorist
-#dinnerparty #autumnwedding #chocolatecosmos #wyckoffnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #moodyflorals
 ```
 
 **Facebook**
 ```
 Mahogany Dusk is the evening palette.
 
-Deep maroon dahlias carry the weight; antique dusty-rose garden roses lift it
-so the whole thing doesn't sink into shadow. Astilbe and clematis vine supply
-the movement.
+Deep maroon carries the weight; antique dusty rose lifts it so the whole thing
+doesn't sink into shadow. Dahlias, garden roses and a trailing vine are our
+usual starting point, composed to whatever the week actually offers.
 
 We build this one to hold a candlelit table — the dusty pink stays forward,
 the maroon sits behind it.
@@ -177,7 +187,8 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 6 · The bouquets
-**Post:** Wed Oct 7, 10:00 AM · **IG + FB** · Image: `fall-bouquet-burnt-ember.webp`
+**Post:** Wed Oct 7, 10:00 AM · **IG + FB** · Carousel: `fall-delivery-burnt-ember.jpg`,
+`fall-delivery-olive-smoke.jpg`, `fall-delivery-mahogany-dusk.jpg`
 
 **Instagram**
 ```
@@ -188,8 +199,7 @@ straight into a vase.
 
 $115, delivered across Bergen County.
 
-#handtiedbouquet #flowerdelivery #njflorist #bergencountyflorist #wyckoffnj
-#ridgewoodnj #autumnflowers #giftidea
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #flowerdelivery
 ```
 
 **Facebook**
@@ -208,7 +218,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 7 · Behind the palette
-**Post:** Thu Oct 15, 7:00 PM · **IG + FB** · Image: `Fall_2026_Palette_Board.png`
+**Post:** Thu Oct 15, 7:00 PM · **IG + FB** · Image: `Fall_2026_Palette_Board_Social.jpg`
 
 **Instagram**
 ```
@@ -218,19 +228,18 @@ If you start with flowers you end up with whatever the market had that week.
 If you start with color, the market becomes a set of options instead of a
 decision.
 
-Arabian Spice. Burnt Olive. Red Mahogany. Everything else follows.
+Rust. Olive. Mahogany. Everything else follows.
 
-#colortheory #pantone #floraldesign #designprocess #njflorist
-#bergencountyflorist #editorialfloral
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #colortheory
 ```
 
 **Facebook**
 ```
 A note on how we work.
 
-We set the palette before we source a single stem. This season's three come
-from the Pantone Fashion Color Trend Report for Autumn/Winter 2026 — Arabian
-Spice, Burnt Olive, Red Mahogany, and the shades that sit around them.
+We set the palette before we source a single stem. We always design with the
+colors that are in season, as well as the blooms — rust, olive and mahogany
+this autumn, and the shades that sit around them.
 
 It means no two arrangements are identical, because we compose to whatever is
 at its best that week. It also means every piece is unmistakably its palette.
@@ -241,7 +250,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 8 · Peak fall / dinner party
-**Post:** Tue Oct 27, 11:00 AM · **IG + FB** · Image: `fall-mahogany-dusk.webp`
+**Post:** Tue Oct 27, 11:00 AM · **IG + FB** · Image: `fall-mahogany-dusk-dining.jpg`
 
 **Instagram**
 ```
@@ -251,8 +260,7 @@ We deliver Thursday through Saturday. Order by Wednesday 8 PM for that week.
 
 Low enough to talk across. That part matters.
 
-#dinnerparty #hosting #tablescape #njflorist #bergencountyflorist
-#entertaining #autumntable #wyckoffnj #ridgewoodnj
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #dinnerparty
 ```
 
 **Facebook**
@@ -272,7 +280,7 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 9 · Thanksgiving — two weeks out
-**Post:** Thu Nov 12, 9:00 AM · **IG + FB** · Image: `fall-burnt-ember.webp`
+**Post:** Thu Nov 12, 9:00 AM · **IG + FB** · Image: `fall-burnt-ember-livingroom.jpg`
 
 **Instagram**
 ```
@@ -281,8 +289,7 @@ Thanksgiving is two weeks out.
 Orders close Monday November 23. Limited quantities — we'd rather turn work
 away than rush it.
 
-#thanksgiving #thanksgivingtable #njflorist #bergencountyflorist
-#autumncenterpiece #wyckoffnj #holidayflorals
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #thanksgivingtable
 ```
 
 **Facebook**
@@ -301,14 +308,13 @@ dreamersjoystudio.com/fall-edit
 ---
 
 ## 10 · Last call
-**Post:** Fri Nov 20, 8:00 AM · **IG + FB** · Image: `fall-bouquet-mahogany-dusk.webp`
+**Post:** Fri Nov 20, 8:00 AM · **IG + FB** · Image: `fall-delivery-mahogany-dusk.jpg`
 
 **Instagram**
 ```
 Last call for Thanksgiving. Orders close Monday.
 
-#thanksgiving #lastcall #njflorist #bergencountyflorist #wyckoffnj
-#thanksgivingtable #autumnflowers
+#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj #thanksgiving
 ```
 
 **Facebook**
@@ -329,10 +335,20 @@ dreamersjoystudio.com/fall-edit
   through October, tightening again for Thanksgiving.
 - **Best times** are starting points, not gospel — check your own Instagram
   insights after two weeks and adjust.
-- **Hashtags:** the local ones (`#bergencountyflorist`, `#wyckoffnj`,
-  `#ridgewoodnj`) matter more than the broad ones for a by-appointment studio.
-  Keep them.
-- **Imagery caveat:** the Fall Edit photography is AI-generated. Once you
-  build these palettes for real, swap in your own photographs before this
-  campaign runs — the captions describe specific stems and should match what
-  you actually made.
+- **Hashtags: five per post, no more.** The same four local tags every time
+  (`#bergencountyflorist #njflorist #wyckoffnj #ridgewoodnj`) plus one tag for
+  that post's subject. Using the locals consistently builds the association;
+  broad tags like `#floraldesign` put a by-appointment studio in Bergen County
+  up against the whole world and win nothing.
+- **Imagery:** the Fall Edit visuals are rendered, not photographed. They show
+  what a palette can become, which is how they are framed everywhere they
+  appear: the colour direction and the working style are real design
+  decisions, the specific arrangement in frame is not a piece that was
+  delivered to anyone. Captions are written to match — they name a palette and
+  the material we reach for first, never a guarantee of specific stems.
+- **Swap them as you shoot.** Once you build these palettes for real,
+  photograph them and replace the renders. Real work converts better than a
+  render, and it retires the distinction entirely.
+- **Never caption a render as a delivered piece.** "Here's the Burnt Ember
+  that went out Saturday" over a rendered image is the one line that would
+  turn an honest illustration into a false claim.
