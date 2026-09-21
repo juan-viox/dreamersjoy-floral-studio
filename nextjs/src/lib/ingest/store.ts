@@ -12,10 +12,24 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
 /**
+ * The studio this deployment belongs to. Overridable per-deployment, but it
+ * must always name a real `organizations.slug` — never a positional guess.
+ */
+const SITE_ORG_SLUG = (process.env.SITE_ORG_SLUG ?? 'dreamersjoy').trim()
+
+/**
  * Resolve the organization a write belongs to.
  *
- * Prefers the site registered against `apiKey`; falls back to the first
- * organization, which is the single-tenant case this CRM actually runs in.
+ * Prefers the site registered against `apiKey`, then falls back to looking up
+ * SITE_ORG_SLUG by name.
+ *
+ * It deliberately does NOT fall back to "the first organization in the table".
+ * This database holds more than one org, and `select().limit(1)` without an
+ * ORDER BY returns whichever row Postgres feels like — in practice the VioX AI
+ * org, not the studio. That turned every key mismatch into a silent
+ * misfiling: the visitor saw a thank-you, the lead landed in a different
+ * company's CRM, and nobody found out. Returning null instead makes the
+ * caller fail loudly, which is recoverable; filing leads to a stranger is not.
  */
 export async function resolveOrgId(
   supabase: SupabaseClient,
@@ -25,17 +39,23 @@ export async function resolveOrgId(
     const { data } = await supabase
       .from('cinematic_sites')
       .select('organization_id')
-      .eq('api_key', apiKey)
-      .single()
+      .eq('api_key', apiKey.trim())
+      .maybeSingle()
     if (data?.organization_id) return data.organization_id
+    console.error('[ingest] SITE_API_KEY did not match any cinematic_sites row')
   }
 
   const { data: org } = await supabase
     .from('organizations')
     .select('id')
-    .limit(1)
-    .single()
-  return org?.id ?? null
+    .eq('slug', SITE_ORG_SLUG)
+    .maybeSingle()
+
+  if (!org?.id) {
+    console.error(`[ingest] no organization with slug "${SITE_ORG_SLUG}"`)
+    return null
+  }
+  return org.id
 }
 
 export type LeadInput = {

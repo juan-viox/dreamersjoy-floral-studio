@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { resolveOrgId } from '@/lib/ingest/store'
 
 export async function POST(request: Request) {
   try {
@@ -42,9 +43,10 @@ export async function POST(request: Request) {
       }
     }
 
-    // Get org from first org (admin client)
-    const { data: org } = await supabase.from('organizations').select('id').limit(1).single()
-    const orgId = org?.id
+    // Resolve the studio explicitly. This used to take "the first
+    // organization", which in a database holding more than one org logged
+    // every sent email against whichever row Postgres returned first.
+    const orgId = await resolveOrgId(supabase, process.env.SITE_API_KEY)
 
     // Log email as activity regardless of send status
     await supabase.from('activities').insert({
