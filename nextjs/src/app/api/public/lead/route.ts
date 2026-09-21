@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { guardPublicForm } from '@/lib/ingest/guard'
 import { ingestLead, resolveOrgId } from '@/lib/ingest/store'
+import { notifyNewLead } from '@/lib/ingest/notify'
 
 /**
  * Lead capture for the site's own forms: the booking inquiry on the marketing
@@ -56,13 +57,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'No organization found' }, { status: 500 })
     }
 
-    await ingestLead(supabase, orgId, {
+    const source = sourceTag(body.source)
+    const { contactId } = await ingestLead(supabase, orgId, {
       firstName,
       lastName,
       email,
       phone,
       description,
-      source: sourceTag(body.source),
+      source,
+    })
+
+    // Alerting must never cost us the lead: notifyNewLead swallows its own
+    // failures, and the visitor gets their confirmation either way.
+    await notifyNewLead(supabase, orgId, contactId, {
+      name: [firstName, lastName].filter(Boolean).join(' ') || email || phone || 'Someone',
+      email,
+      phone,
+      description,
+      source,
     })
 
     return NextResponse.json({ success: true })

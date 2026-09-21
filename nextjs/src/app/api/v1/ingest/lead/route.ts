@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { ingestLead, resolveOrgId } from '@/lib/ingest/store'
+import { notifyNewLead } from '@/lib/ingest/notify'
 
 /**
  * Server-to-server lead ingest, authenticated with x-api-key.
@@ -45,6 +46,20 @@ export async function POST(request: Request) {
       description: body.description,
       source: body.source,
     })
+
+    // The Stripe webhook posts a second, synthetic "NEW ORDER" lead addressed
+    // to the studio's own inbox. Alerting on that would just email ourselves
+    // about ourselves, so skip it and alert on the real customer only.
+    const firstName = body.firstName ?? null
+    if (firstName !== 'NEW ORDER') {
+      await notifyNewLead(supabase, orgId, contactId, {
+        name: [firstName, body.lastName].filter(Boolean).join(' ') || body.email || 'Someone',
+        email: body.emailAddress || body.email || null,
+        phone: body.phone ?? null,
+        description: body.description ?? null,
+        source: body.source ?? null,
+      })
+    }
 
     return NextResponse.json({ success: true, contactId }, { headers: corsHeaders })
   } catch (err) {
