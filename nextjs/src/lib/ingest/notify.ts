@@ -12,6 +12,7 @@
  * are trying to fix. Every path is caught and logged.
  */
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { alertRecipients } from './recipients'
 
 export type LeadAlert = {
   name: string
@@ -22,16 +23,6 @@ export type LeadAlert = {
 }
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com').trim()
-
-/**
- * Where the alert goes.
- *
- * Deliberately NOT the order address. `hello@` is the studio's public,
- * order-facing mailbox; a new enquiry needs to reach Sarah directly, so this
- * defaults to her own address and does not fall back to ORDER_NOTIFICATION_EMAIL.
- */
-const alertRecipient = (): string =>
-  (process.env.LEAD_NOTIFICATION_EMAIL || 'sarah@dreamersjoystudio.com').trim()
 
 function plainText(lead: LeadAlert, contactUrl: string): string {
   return [
@@ -120,7 +111,7 @@ async function notifyEmail(contactId: string, lead: LeadAlert): Promise<void> {
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: (process.env.RESEND_FROM_EMAIL || 'DreamersJoy <hello@dreamersjoystudio.com>').trim(),
-      to: [alertRecipient()],
+      to: alertRecipients(),
       reply_to: lead.email || undefined,
       subject: `New enquiry: ${lead.name}`,
       text: plainText(lead, contactUrl),

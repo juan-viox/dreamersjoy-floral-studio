@@ -3,6 +3,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import {
+  businessHoursSince,
+  FIRST_REMINDER_BUSINESS_HOURS,
+  FINAL_REMINDER_BUSINESS_HOURS,
+} from '@/lib/businessHours'
 import { Clock, Check, Loader2 } from 'lucide-react'
 
 /**
@@ -24,15 +29,16 @@ export default function AwaitingReplyBanner({
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const hours = Math.floor((Date.now() - new Date(awaitingSince).getTime()) / 3_600_000)
-  const overdue = hours >= 24
+  // Business hours, matching the reminder emails exactly — a contact should
+  // never look overdue here while the sweep still considers it in time.
+  const hours = businessHoursSince(awaitingSince)
+  const due = hours >= FINAL_REMINDER_BUSINESS_HOURS
+  const overdue = hours >= FIRST_REMINDER_BUSINESS_HOURS
 
   const waited =
     hours < 1
-      ? 'less than an hour ago'
-      : hours < 24
-        ? `${hours} hour${hours === 1 ? '' : 's'} ago`
-        : `${Math.floor(hours / 24)} day${Math.floor(hours / 24) === 1 ? '' : 's'} ago`
+      ? 'less than an hour of working time ago'
+      : `${hours} business hour${hours === 1 ? '' : 's'} ago`
 
   async function markReplied() {
     setSaving(true)
@@ -51,7 +57,8 @@ export default function AwaitingReplyBanner({
     router.refresh()
   }
 
-  const accent = overdue ? '#e17055' : '#fdcb6e'
+  // Three states, three colours: in hand, running late, due now.
+  const accent = due ? '#e17055' : overdue ? '#fdcb6e' : '#8B7355'
 
   return (
     <div
@@ -62,13 +69,19 @@ export default function AwaitingReplyBanner({
         <Clock className="w-5 h-5 shrink-0 mt-0.5" style={{ color: accent }} />
         <div>
           <p className="font-semibold">
-            {overdue ? 'Still waiting on a reply' : 'Waiting on a reply'}
+            {due
+              ? 'This one is due now'
+              : overdue
+                ? 'Still waiting on a reply'
+                : 'Waiting on a reply'}
           </p>
           <p className="text-sm" style={{ color: 'var(--muted)' }}>
             They enquired {waited}.{' '}
-            {overdue
-              ? 'A reminder has gone out.'
-              : 'A reminder goes out at 24 hours if this is still open.'}
+            {due
+              ? `That is the full ${FINAL_REMINDER_BUSINESS_HOURS} business hours — both reminders have gone out.`
+              : overdue
+                ? `A reminder has gone out. The ${FINAL_REMINDER_BUSINESS_HOURS}-hour promise has ${FINAL_REMINDER_BUSINESS_HOURS - hours} business hours left.`
+                : `A reminder goes out after ${FIRST_REMINDER_BUSINESS_HOURS} business hours if this is still open. Weekends don't count.`}
           </p>
           {error && (
             <p className="text-sm mt-1" style={{ color: '#e17055' }}>
