@@ -136,7 +136,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     process.env.ORDER_NOTIFICATION_EMAIL || 'hello@dreamersjoystudio.com'
   ).trim();
 
-  async function postLead(payload: Record<string, string>) {
+  async function postLead(payload: Record<string, string | number | boolean>) {
     const res = await fetch(`${origin}/api/v1/ingest/lead`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey! },
@@ -163,6 +163,10 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
       phone: phone || '',
       description: notes,
       source: 'web_form',
+      // The money Stripe actually took. Without this the deal was created at
+      // zero and the studio's revenue chart read $0 no matter how much sold.
+      amount: totalCents / 100,
+      won: true,
     });
   }
 

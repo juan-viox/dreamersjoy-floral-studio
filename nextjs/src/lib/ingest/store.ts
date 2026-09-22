@@ -66,9 +66,27 @@ export type LeadInput = {
   description?: string | null
   /** e.g. "web_form", "invitation_request", "stripe_order". */
   source?: string | null
+  /**
+   * Deal value in whole currency units. An enquiry has none yet; a paid order
+   * does, and leaving it at zero is what made the revenue chart read $0
+   * however much the studio actually sold.
+   */
+  amount?: number | null
+  /**
+   * True for money already taken — a completed Stripe checkout. The deal then
+   * opens in the "won" stage instead of the first one, because a paid order
+   * is not a lead to be worked; it is revenue.
+   */
+  won?: boolean
 }
 
-/** Upsert the contact, then open a deal in the first stage. */
+/** Whole currency units, never negative, never NaN. */
+function cleanAmount(value: unknown): number {
+  const n = typeof value === 'string' ? Number(value) : typeof value === 'number' ? value : 0
+  return Number.isFinite(n) && n > 0 ? Math.round(n * 100) / 100 : 0
+}
+
+/** Upsert the contact, then open a deal in the right stage. */
 export async function ingestLead(
   supabase: SupabaseClient,
   orgId: string,
@@ -122,21 +140,45 @@ export async function ingestLead(
     contactId = created!.id
   }
 
-  const { data: firstStage } = await supabase
-    .from('deal_stages')
-    .select('id')
-    .eq('organization_id', orgId)
-    .order('sort_order')
-    .limit(1)
-    .single()
+  const amount = cleanAmount(input.amount)
+  const won = input.won === true
 
-  if (firstStage) {
+  // A paid order belongs in the won stage; anything else starts at the front
+  // of the pipeline. Fall back to the first stage if the org has no won stage
+  // configured, so an order still lands somewhere visible.
+  let stageId: string | null = null
+  if (won) {
+    const { data: wonStage } = await supabase
+      .from('deal_stages')
+      .select('id')
+      .eq('organization_id', orgId)
+      .eq('is_won', true)
+      .order('sort_order')
+      .limit(1)
+      .maybeSingle()
+    stageId = wonStage?.id ?? null
+    if (!stageId) console.error('[ingest] no won stage configured — filing the order as a lead')
+  }
+
+  if (!stageId) {
+    const { data: firstStage } = await supabase
+      .from('deal_stages')
+      .select('id')
+      .eq('organization_id', orgId)
+      .order('sort_order')
+      .limit(1)
+      .maybeSingle()
+    stageId = firstStage?.id ?? null
+  }
+
+  if (stageId) {
+    const who = `${firstName || ''} ${lastName || ''}`.trim()
     await supabase.from('deals').insert({
       organization_id: orgId,
       contact_id: contactId,
-      stage_id: firstStage.id,
-      title: `Lead: ${firstName || ''} ${lastName || ''}`.trim(),
-      amount: 0,
+      stage_id: stageId,
+      title: won ? `Order: ${who}`.trim() : `Lead: ${who}`.trim(),
+      amount,
       notes: description || null,
     })
   }

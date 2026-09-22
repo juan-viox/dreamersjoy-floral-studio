@@ -45,6 +45,11 @@ export async function POST(request: Request) {
       phone: body.phone,
       description: body.description,
       source: body.source,
+      // Only the real customer contact carries the money. The synthetic
+      // "NEW ORDER" lead below is a notification, not a second sale — giving
+      // it an amount too would double every order in the revenue figure.
+      amount: body.firstName === 'NEW ORDER' ? null : body.amount,
+      won: body.firstName === 'NEW ORDER' ? false : body.won === true,
     })
 
     // The Stripe webhook posts a second, synthetic "NEW ORDER" lead addressed
