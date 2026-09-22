@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Settings, Kanban, Upload, SlidersHorizontal, UsersRound } from 'lucide-react'
+import { Settings, Kanban, Upload, SlidersHorizontal, UsersRound, KeyRound } from 'lucide-react'
 import crmConfig from '@/crm.config'
 
 export default function SettingsPage() {
@@ -25,6 +25,17 @@ export default function SettingsPage() {
       </div>
 
       <div className="space-y-3">
+        <Link href="/settings/account" className="card flex items-center justify-between hover:border-[var(--accent)] transition-colors">
+          <div className="flex items-center gap-3">
+            <KeyRound className="w-5 h-5" style={{ color: 'var(--accent)' }} />
+            <div>
+              <p className="font-semibold">Account</p>
+              <p className="text-sm" style={{ color: 'var(--muted)' }}>Change your password</p>
+            </div>
+          </div>
+          <span style={{ color: 'var(--muted)' }}>&rarr;</span>
+        </Link>
+
         <Link href="/settings/pipeline" className="card flex items-center justify-between hover:border-[var(--accent)] transition-colors">
           <div className="flex items-center gap-3">
             <Kanban className="w-5 h-5" style={{ color: 'var(--accent)' }} />
