@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import Avatar from '@/components/shared/Avatar'
 import ContactTimeline from '@/components/contacts/ContactTimeline'
+import AwaitingReplyBanner from '@/components/contacts/AwaitingReplyBanner'
 import FileAttachments from '@/components/shared/FileAttachments'
 import NotesPanel from '@/components/shared/NotesPanel'
 import CustomFieldsRenderer from '@/components/shared/CustomFieldsRenderer'
@@ -79,6 +80,13 @@ export default function ContactDetailClient({
       >
         <ArrowLeft className="w-4 h-4" /> Back to contacts
       </Link>
+
+      {contact.awaiting_reply_since && !contact.replied_at && (
+        <AwaitingReplyBanner
+          contactId={contact.id}
+          awaitingSince={contact.awaiting_reply_since}
+        />
+      )}
 
       {/* Hero Header */}
       <div

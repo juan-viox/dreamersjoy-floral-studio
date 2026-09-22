@@ -8,5 +8,11 @@
       "source": "/admin/:path*",
       "destination": "https://dreamersjoy-crm-app.vercel.app/admin/:path*"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/lead-reminders",
+      "schedule": "0 * * * *"
+    }
   ]
 }

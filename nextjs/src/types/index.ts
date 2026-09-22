@@ -41,6 +41,10 @@ export interface Contact {
   source_site_slug?: string
   avatar_url?: string
   notes?: string
+  /** Set when a real enquiry arrives; cleared once someone marks it replied. */
+  awaiting_reply_since?: string | null
+  replied_at?: string | null
+  reminder_sent_at?: string | null
   created_at: string
   updated_at: string
   company?: Company
