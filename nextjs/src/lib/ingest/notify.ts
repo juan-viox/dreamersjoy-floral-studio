@@ -134,6 +134,21 @@ async function notifyEmail(contactId: string, lead: LeadAlert): Promise<void> {
 }
 
 /**
+ * Mark the enquiry as waiting on a human.
+ *
+ * Stamped here rather than at insert time on purpose: this function runs
+ * exactly when a real person needs a reply, so a Stripe order or a newsletter
+ * signup can never end up in the reminder sweep.
+ */
+async function markAwaitingReply(supabase: SupabaseClient, contactId: string): Promise<void> {
+  await supabase
+    .from('contacts')
+    .update({ awaiting_reply_since: new Date().toISOString() })
+    .eq('id', contactId)
+    .is('replied_at', null)
+}
+
+/**
  * Fire both channels. Never throws — callers can await this without wrapping.
  */
 export async function notifyNewLead(
@@ -145,6 +160,7 @@ export async function notifyNewLead(
   const results = await Promise.allSettled([
     notifyInApp(supabase, orgId, contactId, lead),
     notifyEmail(contactId, lead),
+    markAwaitingReply(supabase, contactId),
   ])
 
   for (const r of results) {
