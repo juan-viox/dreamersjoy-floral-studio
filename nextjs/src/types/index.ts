@@ -178,6 +178,13 @@ export interface Invoice {
   tax_amount: number
   total: number
   notes?: string
+  /** Stripe payment link — the "Pay now" button on the emailed invoice. */
+  payment_link_url?: string | null
+  payment_link_id?: string | null
+  /** When the invoice was actually emailed, not merely marked sent. */
+  sent_at?: string | null
+  paid_at?: string | null
+  stripe_payment_intent_id?: string | null
   created_at: string
   updated_at: string
   contact?: Contact
