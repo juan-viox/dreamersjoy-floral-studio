@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { formatCurrency } from '@/lib/utils'
 import DashboardClient from './DashboardClient'
@@ -34,10 +35,19 @@ export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient()
   const { data: { user } } = await supabase.auth.getUser()
 
+  // The layout above also checks this and redirects, but layouts and pages
+  // render in PARALLEL — the layout's redirect does not hold this page back.
+  // Once a session expires, `user` is null here too, and asserting it away
+  // threw a TypeError that surfaced as a blank "Application error" screen on
+  // every refresh-after-being-away. Send her to sign in instead.
+  if (!user) {
+    redirect('/login')
+  }
+
   const { data: profile } = await supabase
     .from('profiles')
     .select('full_name')
-    .eq('id', user!.id)
+    .eq('id', user.id)
     .single()
 
   const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
