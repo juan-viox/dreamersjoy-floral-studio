@@ -1,11 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { getOrgId } from '@/lib/utils'
 import Link from 'next/link'
-import { ArrowLeft, Send, CheckCircle, XCircle, Loader2, Printer, FileDown, Mail } from 'lucide-react'
+import { ArrowLeft, Send, CheckCircle, XCircle, Loader2, FileDown, Mail, Link2, Copy } from 'lucide-react'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import type { Invoice, InvoiceItem } from '@/types'
 
@@ -22,8 +21,10 @@ export default function InvoiceDetailPage() {
   const [items, setItems] = useState<InvoiceItem[]>([])
   const [loading, setLoading] = useState(true)
   const [updating, setUpdating] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendResult, setSendResult] = useState<{ ok: boolean; message: string } | null>(null)
+  const [copied, setCopied] = useState(false)
   const params = useParams()
-  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -52,9 +53,67 @@ export default function InvoiceDetailPage() {
 
   async function updateStatus(status: string) {
     setUpdating(true)
-    await supabase.from('invoices').update({ status }).eq('id', params.id)
+
+    // Cancelling goes through the server so the Stripe payment link is taken
+    // out of service too. A cancelled invoice with a live link is still
+    // payable, which is how you end up refunding money you never wanted.
+    if (status === 'cancelled') {
+      const res = await fetch(`/api/v1/invoices/${params.id}/cancel`, { method: 'POST' })
+      const body = await res.json().catch(() => ({}))
+      setUpdating(false)
+      if (!res.ok) {
+        setSendResult({ ok: false, message: body.error ?? 'Could not cancel that invoice.' })
+        return
+      }
+      await loadInvoice()
+      return
+    }
+
+    const patch: Record<string, unknown> = { status }
+    // Marking paid by hand (cash, cheque, bank transfer) should stamp the same
+    // column the Stripe webhook stamps, so "when was this paid" has one answer.
+    if (status === 'paid') patch.paid_at = new Date().toISOString()
+    await supabase.from('invoices').update(patch).eq('id', params.id)
     setInvoice(prev => prev ? { ...prev, status: status as Invoice['status'] } : null)
     setUpdating(false)
+  }
+
+  /**
+   * Actually email the invoice. The server creates the Stripe payment link,
+   * sends the mail, marks the invoice sent and logs the activity — this just
+   * reports what happened.
+   */
+  async function sendInvoice() {
+    setSending(true)
+    setSendResult(null)
+    try {
+      const res = await fetch(`/api/v1/invoices/${params.id}/send`, { method: 'POST' })
+      const body = await res.json()
+
+      if (!res.ok) {
+        setSendResult({ ok: false, message: body.error ?? 'Could not send that invoice.' })
+        return
+      }
+
+      setSendResult({
+        ok: true,
+        message: body.payUrl
+          ? `Sent to ${body.sentTo} with a Pay now button.`
+          : `Sent to ${body.sentTo}. No payment link was created — they'll need to pay another way.`,
+      })
+      await loadInvoice()
+    } catch {
+      setSendResult({ ok: false, message: 'Could not reach the server. Try again.' })
+    } finally {
+      setSending(false)
+    }
+  }
+
+  async function copyPayLink() {
+    if (!invoice?.payment_link_url) return
+    await navigator.clipboard.writeText(invoice.payment_link_url)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   if (loading) {
@@ -127,37 +186,53 @@ export default function InvoiceDetailPage() {
           >
             <FileDown className="w-4 h-4" /> Print Invoice
           </button>
-          <button
-            onClick={async () => {
-              if (!invoice.contact?.email) {
-                alert('No email address on contact. Activity logged.')
+          {invoice.status !== 'paid' && invoice.status !== 'cancelled' && (
+            <button
+              onClick={sendInvoice}
+              disabled={sending || !invoice.contact?.email}
+              className="btn btn-primary"
+              title={
+                invoice.contact?.email
+                  ? `Email this invoice to ${invoice.contact.email}`
+                  : 'This contact has no email address'
               }
-              const orgId = await getOrgId(supabase)
-              await supabase.from('activities').insert({
-                organization_id: orgId,
-                contact_id: invoice.contact_id,
-                type: 'email',
-                title: `Invoice ${invoice.invoice_number} sent`,
-                description: invoice.contact?.email
-                  ? `Invoice emailed to ${invoice.contact.email}`
-                  : 'Invoice send attempted (no email configured)',
-                status: 'completed',
-                completed_at: new Date().toISOString(),
-                metadata: { invoice_id: invoice.id },
-              })
-              if (invoice.status === 'draft') {
-                await updateStatus('sent')
-              }
-              alert(invoice.contact?.email
-                ? 'Invoice activity logged. Configure email integration to send automatically.'
-                : 'No email on contact. Activity logged.')
-            }}
-            className="btn btn-secondary"
-          >
-            <Mail className="w-4 h-4" /> Send Invoice
-          </button>
+            >
+              {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+              {invoice.sent_at ? 'Send Again' : 'Email Invoice'}
+            </button>
+          )}
         </div>
       </div>
+
+      {sendResult && (
+        <div
+          className="card mb-6 text-sm"
+          style={{
+            borderColor: sendResult.ok ? 'var(--success)' : 'var(--danger)',
+            background: sendResult.ok ? 'rgba(0,184,148,0.08)' : 'rgba(225,112,85,0.08)',
+          }}
+        >
+          {sendResult.message}
+        </div>
+      )}
+
+      {invoice.payment_link_url && (
+        <div className="card mb-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
+          <div className="flex items-start gap-3 min-w-0">
+            <Link2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: 'var(--accent-light)' }} />
+            <div className="min-w-0">
+              <p className="font-semibold">Payment link</p>
+              <p className="text-sm truncate" style={{ color: 'var(--muted)' }}>
+                {invoice.payment_link_url}
+              </p>
+            </div>
+          </div>
+          <button onClick={copyPayLink} className="btn btn-secondary shrink-0">
+            {copied ? <CheckCircle className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+        </div>
+      )}
 
       {/* Invoice preview */}
       <div className="card" id="invoice-preview">

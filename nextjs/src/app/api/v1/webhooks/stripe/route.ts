@@ -52,6 +52,19 @@ export async function POST(request: Request) {
     event.type === 'checkout.session.async_payment_succeeded'
   ) {
     const session = event.data.object as Stripe.Checkout.Session;
+
+    // An invoice paid through its payment link is not a shop order: there is
+    // no arrangement to make and no contact to create — the invoice already
+    // exists and just needs marking paid. Handled first, and exclusively.
+    if (session.payment_link) {
+      try {
+        await handleInvoicePaid(session);
+      } catch (err) {
+        console.error('[stripe.webhook] handleInvoicePaid error:', err);
+      }
+      return NextResponse.json({ received: true });
+    }
+
     try {
       await handleCheckoutComplete(session);
     } catch (err) {
@@ -62,6 +75,69 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ received: true });
+}
+
+/**
+ * A CRM invoice was paid through its Stripe payment link.
+ *
+ * Matched by `payment_link`, not by metadata: the link id is set by Stripe on
+ * every session it produces, whereas metadata can be dropped or overwritten.
+ * The invoice_id in metadata is kept as a cross-check for the logs.
+ *
+ * Idempotent — Stripe delivers a webhook more than once more often than
+ * anyone expects, and an invoice must not be "paid" twice.
+ */
+async function handleInvoicePaid(session: Stripe.Checkout.Session) {
+  const linkId =
+    typeof session.payment_link === 'string'
+      ? session.payment_link
+      : session.payment_link?.id;
+
+  if (!linkId) return;
+
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const { data: invoice } = await supabase
+    .from('invoices')
+    .select('id, invoice_number, status, organization_id, contact_id, total')
+    .eq('payment_link_id', linkId)
+    .maybeSingle();
+
+  if (!invoice) {
+    console.error('[stripe.webhook] no invoice carries payment link', linkId);
+    return;
+  }
+
+  if (invoice.status === 'paid') return; // already handled
+
+  const paidAt = new Date().toISOString();
+  const paymentIntentId =
+    typeof session.payment_intent === 'string'
+      ? session.payment_intent
+      : (session.payment_intent?.id ?? null);
+
+  await supabase
+    .from('invoices')
+    .update({
+      status: 'paid',
+      paid_at: paidAt,
+      stripe_payment_intent_id: paymentIntentId,
+    })
+    .eq('id', invoice.id);
+
+  await supabase.from('activities').insert({
+    organization_id: invoice.organization_id,
+    contact_id: invoice.contact_id,
+    type: 'note',
+    title: `Invoice ${invoice.invoice_number} paid`,
+    description: `Paid online — $${Number(invoice.total).toFixed(2)}.`,
+    status: 'completed',
+    completed_at: paidAt,
+    metadata: { invoice_id: invoice.id, payment_intent: paymentIntentId },
+  });
+
+  console.log('[stripe.webhook] invoice', invoice.invoice_number, 'marked paid');
 }
 
 async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
