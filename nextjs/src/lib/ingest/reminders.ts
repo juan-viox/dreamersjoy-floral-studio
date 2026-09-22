@@ -1,29 +1,41 @@
 /**
- * The second alert.
+ * The two chasing alerts.
  *
- * The first alert fires when an enquiry arrives. This one fires 24 hours
- * later if nobody has marked it replied — leaving a full day of the studio's
- * 48-hour promise still on the clock.
+ * The studio answers everyone inside 48 business hours. Three things happen
+ * on the way there:
+ *
+ *   0h   notifyNewLead fires the moment the enquiry lands.
+ *   24h  first nudge — half the promise spent, still time to be prompt.
+ *   48h  final nudge — the promise is now due.
+ *
+ * After that it stops. An enquiry nobody has answered in two working days is
+ * not going to be rescued by a third email; it needs a person, and by then the
+ * person has been told twice.
+ *
+ * Hours are BUSINESS hours: Saturday and Sunday do not count. An enquiry that
+ * arrives on Friday evening should not turn urgent on Sunday morning, and the
+ * promise made to customers is about working days.
  *
  * An enquiry only enters this sweep if `awaiting_reply_since` was stamped by
  * notifyNewLead, so Stripe orders and newsletter signups are structurally
  * excluded rather than filtered out by guesswork.
- *
- * Each enquiry is reminded at most once: `reminder_sent_at` is written on the
- * way out, and the query skips anything that already carries it.
  */
 import type { SupabaseClient } from '@supabase/supabase-js'
-
-/** Hours an enquiry may sit unanswered before the reminder goes out. */
-const REMIND_AFTER_HOURS = 24
+import {
+  businessHoursSince,
+  FIRST_REMINDER_BUSINESS_HOURS,
+  FINAL_REMINDER_BUSINESS_HOURS,
+} from '../businessHours'
+import { alertRecipients } from './recipients'
 
 /** Past this, the enquiry is stale enough that a nudge is just noise. */
 const GIVE_UP_AFTER_DAYS = 14
 
+const HOUR_MS = 3_600_000
+
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dreamersjoystudio.com').trim()
 
-const alertRecipient = (): string =>
-  (process.env.LEAD_NOTIFICATION_EMAIL || 'sarah@dreamersjoystudio.com').trim()
+type Stage = 'first' | 'final'
 
 type OverdueLead = {
   id: string
@@ -34,6 +46,7 @@ type OverdueLead = {
   phone: string | null
   notes: string | null
   awaiting_reply_since: string
+  reminder_sent_at: string | null
 }
 
 function escapeHtml(s: string): string {
@@ -50,12 +63,30 @@ const displayName = (lead: OverdueLead): string =>
   lead.phone ||
   'Someone'
 
-const hoursWaiting = (lead: OverdueLead): number =>
-  Math.floor((Date.now() - new Date(lead.awaiting_reply_since).getTime()) / 3_600_000)
+/** Which nudge, if any, this enquiry is owed right now. */
+function stageFor(lead: OverdueLead, businessHours: number): Stage | null {
+  if (lead.reminder_sent_at === null) {
+    return businessHours >= FIRST_REMINDER_BUSINESS_HOURS ? 'first' : null
+  }
+  return businessHours >= FINAL_REMINDER_BUSINESS_HOURS ? 'final' : null
+}
 
-function plainText(lead: OverdueLead, hours: number, contactUrl: string): string {
+const headline = (stage: Stage): string =>
+  stage === 'final' ? 'This one is due now' : 'Still waiting on a reply'
+
+const subject = (stage: Stage, name: string): string =>
+  stage === 'final' ? `Due now: ${name} is still waiting` : `Still unanswered: ${name}`
+
+function summary(stage: Stage, hours: number): string {
+  return stage === 'final'
+    ? `It has been ${hours} business hours — the 48-hour promise is up.`
+    : `It has been ${hours} business hours. The 48-hour promise has ${FINAL_REMINDER_BUSINESS_HOURS - hours} left.`
+}
+
+function plainText(lead: OverdueLead, stage: Stage, hours: number, contactUrl: string): string {
   return [
-    `${displayName(lead)} enquired ${hours} hours ago and has not had a reply yet.`,
+    `${displayName(lead)} enquired and has not had a reply yet.`,
+    summary(stage, hours),
     '',
     lead.email ? `Email:  ${lead.email}` : null,
     lead.phone ? `Phone:  ${lead.phone}` : null,
@@ -68,11 +99,13 @@ function plainText(lead: OverdueLead, hours: number, contactUrl: string): string
     .join('\n')
 }
 
-function html(lead: OverdueLead, hours: number, contactUrl: string): string {
+function html(lead: OverdueLead, stage: Stage, hours: number, contactUrl: string): string {
+  const accent = stage === 'final' ? '#e17055' : '#8B7355'
+
   return `<div style="font-family:ui-sans-serif,system-ui,sans-serif;max-width:560px;">
-  <h2 style="font-size:18px;margin:0 0 4px;">Still waiting on a reply</h2>
+  <h2 style="font-size:18px;margin:0 0 4px;color:${accent};">${headline(stage)}</h2>
   <p style="margin:0 0 16px;color:#6b7280;font-size:14px;">
-    <strong>${escapeHtml(displayName(lead))}</strong> enquired ${hours} hours ago.
+    <strong>${escapeHtml(displayName(lead))}</strong> — ${escapeHtml(summary(stage, hours))}
   </p>
   <table style="border-collapse:collapse;margin-bottom:16px;">
     ${lead.email ? `<tr><td style="padding:4px 16px 4px 0;color:#6b7280;font-size:14px;">Email</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(lead.email)}</td></tr>` : ''}
@@ -81,14 +114,19 @@ function html(lead: OverdueLead, hours: number, contactUrl: string): string {
   ${
     lead.notes
       ? `<p style="margin:0 0 4px;color:#6b7280;font-size:14px;">What they wrote</p>
-         <blockquote style="margin:0 0 16px;padding:12px 16px;background:#f9fafb;border-left:3px solid #8B7355;font-size:14px;white-space:pre-wrap;">${escapeHtml(lead.notes)}</blockquote>`
+         <blockquote style="margin:0 0 16px;padding:12px 16px;background:#f9fafb;border-left:3px solid ${accent};font-size:14px;white-space:pre-wrap;">${escapeHtml(lead.notes)}</blockquote>`
       : ''
   }
   <a href="${contactUrl}" style="display:inline-block;padding:10px 18px;background:#334155;color:#fff;text-decoration:none;border-radius:6px;font-size:14px;">Open in the CRM</a>
 </div>`
 }
 
-async function remindByEmail(lead: OverdueLead, hours: number, contactUrl: string): Promise<void> {
+async function remindByEmail(
+  lead: OverdueLead,
+  stage: Stage,
+  hours: number,
+  contactUrl: string,
+): Promise<void> {
   const key = process.env.RESEND_API_KEY?.trim()
   if (!key) {
     console.warn('[reminders] RESEND_API_KEY not set — no reminder email sent')
@@ -100,11 +138,11 @@ async function remindByEmail(lead: OverdueLead, hours: number, contactUrl: strin
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: (process.env.RESEND_FROM_EMAIL || 'DreamersJoy <hello@dreamersjoystudio.com>').trim(),
-      to: [alertRecipient()],
+      to: alertRecipients(),
       reply_to: lead.email || undefined,
-      subject: `Still unanswered: ${displayName(lead)}`,
-      text: plainText(lead, hours, contactUrl),
-      html: html(lead, hours, contactUrl),
+      subject: subject(stage, displayName(lead)),
+      text: plainText(lead, stage, hours, contactUrl),
+      html: html(lead, stage, hours, contactUrl),
     }),
   })
 
@@ -116,6 +154,7 @@ async function remindByEmail(lead: OverdueLead, hours: number, contactUrl: strin
 async function remindInApp(
   supabase: SupabaseClient,
   lead: OverdueLead,
+  stage: Stage,
   hours: number,
 ): Promise<void> {
   const { data: members } = await supabase
@@ -129,8 +168,8 @@ async function remindInApp(
     members.map((m: { id: string }) => ({
       user_id: m.id,
       type: 'new_lead',
-      title: `Still unanswered: ${displayName(lead)}`,
-      message: `Enquired ${hours} hours ago and has not had a reply.`,
+      title: `${headline(stage)}: ${displayName(lead)}`,
+      message: summary(stage, hours),
       entity_type: 'contact',
       entity_id: lead.id,
     })),
@@ -143,15 +182,19 @@ export type ReminderRun = { checked: number; reminded: number; failed: number }
  * Sweep for overdue enquiries and nudge both channels. Never throws.
  */
 export async function sendLeadReminders(supabase: SupabaseClient): Promise<ReminderRun> {
-  const cutoff = new Date(Date.now() - REMIND_AFTER_HOURS * 3_600_000).toISOString()
+  // Cheap prefilter in the database. Business hours can never exceed wall-clock
+  // hours, so nothing due for a nudge can sit newer than this cutoff.
+  const cutoff = new Date(Date.now() - FIRST_REMINDER_BUSINESS_HOURS * HOUR_MS).toISOString()
   const floor = new Date(Date.now() - GIVE_UP_AFTER_DAYS * 86_400_000).toISOString()
 
   const { data, error } = await supabase
     .from('contacts')
-    .select('id, organization_id, first_name, last_name, email, phone, notes, awaiting_reply_since')
+    .select(
+      'id, organization_id, first_name, last_name, email, phone, notes, awaiting_reply_since, reminder_sent_at',
+    )
     .not('awaiting_reply_since', 'is', null)
     .is('replied_at', null)
-    .is('reminder_sent_at', null)
+    .is('final_reminder_sent_at', null)
     .lt('awaiting_reply_since', cutoff)
     .gt('awaiting_reply_since', floor)
     .order('awaiting_reply_since')
@@ -167,12 +210,18 @@ export async function sendLeadReminders(supabase: SupabaseClient): Promise<Remin
   let failed = 0
 
   for (const lead of leads) {
-    const hours = hoursWaiting(lead)
+    const hours = businessHoursSince(lead.awaiting_reply_since)
+    const stage = stageFor(lead, hours)
+
+    // Weekend padding means a row can clear the SQL prefilter and still not be
+    // due. Leave it for a later sweep.
+    if (stage === null) continue
+
     const contactUrl = `${SITE_URL}/contacts/${lead.id}`
 
     const results = await Promise.allSettled([
-      remindInApp(supabase, lead, hours),
-      remindByEmail(lead, hours, contactUrl),
+      remindInApp(supabase, lead, stage, hours),
+      remindByEmail(lead, stage, hours, contactUrl),
     ])
 
     const broke = results.some((r) => r.status === 'rejected')
@@ -181,15 +230,17 @@ export async function sendLeadReminders(supabase: SupabaseClient): Promise<Remin
     }
 
     if (broke) {
-      // Leave reminder_sent_at unset so the next sweep tries again.
+      // Leave the stamp unset so the next sweep tries this stage again.
       failed += 1
       continue
     }
 
-    await supabase
-      .from('contacts')
-      .update({ reminder_sent_at: new Date().toISOString() })
-      .eq('id', lead.id)
+    const stamp =
+      stage === 'first'
+        ? { reminder_sent_at: new Date().toISOString() }
+        : { final_reminder_sent_at: new Date().toISOString() }
+
+    await supabase.from('contacts').update(stamp).eq('id', lead.id)
     reminded += 1
   }
 

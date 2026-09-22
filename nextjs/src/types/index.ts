@@ -45,6 +45,7 @@ export interface Contact {
   awaiting_reply_since?: string | null
   replied_at?: string | null
   reminder_sent_at?: string | null
+  final_reminder_sent_at?: string | null
   created_at: string
   updated_at: string
   company?: Company
