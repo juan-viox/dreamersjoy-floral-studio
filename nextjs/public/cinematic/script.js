@@ -589,6 +589,126 @@
   });
 
   // ─── SHOP LIGHTBOX ───
+
+  // ─── ENCLOSURE CARD PICKER ───
+  // Every arrangement goes out with a handwritten card, so the card has to be
+  // chosen before payment — the checkout API rejects an order without one.
+  //
+  // Injected rather than copied into each page's markup: the shop lightbox
+  // and the Mother's Day quick-view both take money, and shipping the picker
+  // in only one of them is exactly how the Fall Edit ended up with a checkout
+  // that failed server-side validation.
+  //
+  // The list is served from /api/public/occasion-cards so it cannot drift from
+  // the one checkout validates against. But an empty dropdown means an empty
+  // till — nobody can buy anything — so a failed fetch falls back to this copy
+  // rather than taking the shop down. The ids are stable and the server is
+  // still the authority; a stale fallback can only ever be rejected, never
+  // silently accepted.
+  var DJ_FALLBACK_CARDS = [
+    { id: 'happy-birthday', label: 'Happy Birthday' },
+    { id: 'happy-anniversary', label: 'Happy Anniversary' },
+    { id: 'thinking-of-you', label: 'Thinking of You' },
+    { id: 'i-love-you', label: 'I Love You' },
+    { id: 'get-well-soon', label: 'Get Well Soon' },
+    { id: 'congratulations', label: 'Congratulations' },
+    { id: 'thank-you', label: 'Thank You' },
+    { id: 'with-sympathy', label: 'With Sympathy' },
+    { id: 'welcome-baby', label: 'Welcome, Baby' },
+    { id: 'happy-mothers-day', label: 'Happy Mother\u2019s Day' },
+    { id: 'happy-fathers-day', label: 'Happy Father\u2019s Day' },
+    { id: 'happy-valentines', label: 'Happy Valentine\u2019s Day' },
+    { id: 'happy-holidays', label: 'Happy Holidays' },
+    { id: 'welcome-home', label: 'Welcome Home' },
+    { id: 'just-because', label: 'Just Because' },
+    { id: 'blank', label: 'No printed occasion \u2014 blank card' }
+  ];
+
+  var djCardsPromise = null;
+  function djLoadCards() {
+    if (!djCardsPromise) {
+      djCardsPromise = fetch('/api/public/occasion-cards')
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          var cards = data && data.cards;
+          return (cards && cards.length) ? cards : DJ_FALLBACK_CARDS;
+        })
+        .catch(function (err) {
+          console.error('[cards] card list unreachable, using the built-in list:', err);
+          return DJ_FALLBACK_CARDS;
+        });
+    }
+    return djCardsPromise;
+  }
+
+  /**
+   * Put a card picker directly above `actionsEl`, or reuse one already in the
+   * markup. Returns { select, message } — both may be null if the DOM is not
+   * what we expect, and every caller treats that as "cannot sell".
+   */
+  function djAttachCardPicker(actionsEl, idPrefix) {
+    if (!actionsEl || !actionsEl.parentNode) return { select: null, message: null };
+
+    var existing = actionsEl.parentNode.querySelector('.shop-lightbox__card');
+    if (!existing) {
+      existing = document.createElement('div');
+      existing.className = 'shop-lightbox__card';
+
+      var label = document.createElement('p');
+      label.className = 'shop-lightbox__sizes-label';
+      label.textContent = 'Your handwritten card';
+
+      var sel = document.createElement('select');
+      sel.id = idPrefix + 'CardSelect';
+      sel.setAttribute('aria-label', 'Choose your card');
+      sel.setAttribute('required', 'required');
+      var placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = 'Choose your card';
+      sel.appendChild(placeholder);
+
+      var msgLabel = document.createElement('label');
+      msgLabel.className = 'shop-lightbox__msg-label';
+      msgLabel.setAttribute('for', idPrefix + 'Message');
+      msgLabel.textContent = 'Your message';
+
+      var msg = document.createElement('textarea');
+      msg.id = idPrefix + 'Message';
+      msg.rows = 3;
+      msg.maxLength = 240;
+      msg.placeholder = 'We’ll write this inside, by hand. Leave it blank for just the card.';
+
+      var note = document.createElement('p');
+      note.className = 'shop-lightbox__card-note';
+      note.textContent = 'Every arrangement goes out with a card, handwritten by us.';
+
+      existing.appendChild(label);
+      existing.appendChild(sel);
+      existing.appendChild(msgLabel);
+      existing.appendChild(msg);
+      existing.appendChild(note);
+      actionsEl.parentNode.insertBefore(existing, actionsEl);
+    }
+
+    var select = existing.querySelector('select');
+    var message = existing.querySelector('textarea');
+
+    if (select && !select.getAttribute('data-populated')) {
+      select.setAttribute('data-populated', 'true');
+      select.setAttribute('data-empty', 'true');
+      djLoadCards().then(function (cards) {
+        cards.forEach(function (c) {
+          var opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = c.label;
+          select.appendChild(opt);
+        });
+      });
+    }
+
+    return { select: select, message: message };
+  }
+
   // Card click → modal with product details + size selector + Stripe Checkout
   var lightbox = document.getElementById('shopLightbox');
   if (lightbox) {
@@ -602,29 +722,10 @@
     var lbInquire = document.getElementById('shopLightboxInquire');
     var lastTrigger = null;
     var lbSelectedId = null;
-    var lbCardSelect = document.getElementById('shopLightboxCardSelect');
-    var lbMessage = document.getElementById('shopLightboxMessage');
-
-    // The enclosure cards actually in the drawer. Fetched rather than
-    // hard-coded here so this list and the one the checkout validates
-    // against cannot drift apart.
+    var lbPicker = djAttachCardPicker(lbCta.parentNode, 'shopLightbox');
+    var lbCardSelect = lbPicker.select;
+    var lbMessage = lbPicker.message;
     if (lbCardSelect) {
-      lbCardSelect.setAttribute('data-empty', 'true');
-      fetch('/api/public/occasion-cards')
-        .then(function (res) { return res.ok ? res.json() : null; })
-        .then(function (data) {
-          if (!data || !data.cards) return;
-          data.cards.forEach(function (c) {
-            var opt = document.createElement('option');
-            opt.value = c.id;
-            opt.textContent = c.label;
-            lbCardSelect.appendChild(opt);
-          });
-        })
-        .catch(function (err) {
-          console.error('[shop-lightbox] could not load card list:', err);
-        });
-
       lbCardSelect.addEventListener('change', function () {
         lbCardSelect.setAttribute('data-empty', lbCardSelect.value ? 'false' : 'true');
         refreshCta();
@@ -881,8 +982,11 @@
           btn.classList.add('is-selected');
           btn.setAttribute('aria-checked', 'true');
           mdQvSelectedId = s.id;
-          mdQvCta.disabled = false;
-          mdQvHint.textContent = s.label + ' selected \u2014 ' + s.price;
+          // A size alone is no longer enough — the card gates it too.
+          mdQvCta.disabled = !(mdQvCardSelect && mdQvCardSelect.value);
+          mdQvHint.textContent = (mdQvCardSelect && !mdQvCardSelect.value)
+            ? 'Choose a card to continue'
+            : s.label + ' selected \u2014 ' + s.price;
         });
         mdQvSizeList.appendChild(btn);
       });
@@ -915,15 +1019,35 @@
       if (e.key === 'Escape' && mdQv.classList.contains('is-open')) closeMdQv();
     });
 
+    // Same picker, same rule: no card, no checkout.
+    var mdQvPicker = djAttachCardPicker(mdQvCta.parentNode, 'mdQv');
+    var mdQvCardSelect = mdQvPicker.select;
+    var mdQvMessage = mdQvPicker.message;
+    if (mdQvCardSelect) {
+      mdQvCardSelect.addEventListener('change', function() {
+        mdQvCardSelect.setAttribute('data-empty', mdQvCardSelect.value ? 'false' : 'true');
+        mdQvCta.disabled = !(mdQvSelectedId && mdQvCardSelect.value);
+      });
+    }
+
     // CTA → create Stripe Checkout session and redirect to Stripe-hosted checkout
     mdQvCta.addEventListener('click', function() {
       if (!mdQvSelectedId) return;
+      if (mdQvCardSelect && !mdQvCardSelect.value) {
+        mdQvCardSelect.focus();
+        return;
+      }
       mdQvCta.disabled = true;
       mdQvCta.textContent = 'Redirecting to checkout...';
       fetch('/api/v1/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ arrangement_id: mdQvSelectedId, quantity: 1 }),
+        body: JSON.stringify({
+          arrangement_id: mdQvSelectedId,
+          quantity: 1,
+          card_occasion: mdQvCardSelect ? mdQvCardSelect.value : '',
+          card_message: mdQvMessage ? mdQvMessage.value.slice(0, 240) : '',
+        }),
       })
         .then(function(res) {
           if (!res.ok) throw new Error('Checkout session failed');
