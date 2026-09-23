@@ -1,0 +1,445 @@
+<title>Dusty Romantic Signature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    color-scheme: light;
+
+    --ground:   #F7F3ED;
+    --surface:  #FFFCF8;
+    --line:     #E0D6C9;
+    --ink:      #2C3440;
+    --ink-soft: #6B6358;
+    --ink-mute: #938A7D;
+    --gold:     #8B7355;
+    --navy:     #334155;
+    --flag:     #A8543F;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground:   #16181C;
+      --surface:  #1E2126;
+      --line:     #33383F;
+      --ink:      #EDE7DE;
+      --ink-soft: #B3A99B;
+      --ink-mute: #8A8175;
+      --gold:     #C4A47C;
+      --navy:     #A9BBD4;
+      --flag:     #E0907A;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground:   #16181C;
+    --surface:  #1E2126;
+    --line:     #33383F;
+    --ink:      #EDE7DE;
+    --ink-soft: #B3A99B;
+    --ink-mute: #8A8175;
+    --gold:     #C4A47C;
+    --navy:     #A9BBD4;
+    --flag:     #E0907A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'Jost', ui-sans-serif, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding-inline: 18px;
+    padding-block: 32px 64px;
+  }
+
+  h1, h2, .serif {
+    font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+    font-weight: 400;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h1 { font-size: 34px; line-height: 1.12; letter-spacing: .005em; }
+  h2 { font-size: 23px; line-height: 1.2; margin-bottom: 10px; }
+
+  .eyebrow {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--gold);
+    margin: 0 0 7px;
+  }
+
+  .deck {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin: 10px 0 0;
+  }
+
+  section { margin-top: 38px; }
+
+  /* palette ---------------------------------------------------- */
+
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .sw { text-align: center; }
+  .sw i {
+    display: block;
+    height: 46px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .sw span {
+    display: block;
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    letter-spacing: .02em;
+  }
+
+  /* the vessel flag -------------------------------------------- */
+
+  .flag {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border-left: 2px solid var(--flag);
+    border-radius: 0 3px 3px 0;
+  }
+  .flag p { margin: 0; font-size: 14px; }
+  .flag p + p { margin-top: 8px; }
+  .flag strong { color: var(--flag); font-weight: 500; }
+
+  /* shopping --------------------------------------------------- */
+
+  .stop {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-top: 14px;
+  }
+  .stop h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: var(--gold);
+    margin: 0 0 3px;
+  }
+  .stop .why {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin: 0 0 12px;
+  }
+
+  ul.items { list-style: none; margin: 0; padding: 0; }
+  ul.items li + li {
+    margin-top: 2px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  ul.items li { padding-bottom: 8px; }
+
+  label.item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 11px;
+    align-items: baseline;
+    cursor: pointer;
+  }
+  label.item input {
+    width: 17px; height: 17px;
+    accent-color: var(--gold);
+    margin: 0;
+    align-self: center;
+  }
+  .nm { font-size: 14.5px; }
+  .qty {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .sub {
+    grid-column: 2 / -1;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  input:checked ~ .nm { color: var(--ink-mute); text-decoration: line-through; }
+
+  /* build order ------------------------------------------------ */
+
+  ol.build { margin: 0; padding-left: 0; list-style: none; counter-reset: s; }
+  ol.build li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+  }
+  ol.build li:first-child { border-top: 0; }
+  ol.build li::before {
+    content: counter(s);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--gold);
+    line-height: 1.5;
+  }
+  ol.build p { margin: 0; font-size: 14px; }
+  ol.build .t { font-weight: 500; }
+  ol.build .d { color: var(--ink-soft); font-size: 13.5px; margin-top: 1px; }
+
+  /* timeline --------------------------------------------------- */
+
+  .when { display: grid; gap: 10px; margin-top: 4px; }
+  .when div {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .when dt, .when b {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .when p { margin: 0; font-size: 14px; }
+
+  .note {
+    font-size: 13px;
+    color: var(--ink-mute);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 380px) {
+    h1 { font-size: 29px; }
+    .when div { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">Build sheet · Friday 25 September</p>
+  <h1>Dusty Romantic — Signature</h1>
+  <p class="deck">
+    For Aliyah Gluckstadt, 130 East Hamilton Ave, Englewood. Ordered by her
+    mother, Aviva. Sourced at retail — a wholesale box minimum makes no sense
+    for one arrangement.
+  </p>
+
+  <section>
+    <p class="eyebrow">Palette</p>
+    <h2>Mauve, antique rose, muted plum, dusty blush</h2>
+    <p class="deck" style="margin-top:6px;">
+      Your own words for this collection. Swatches below are indicative, not
+      measured — buy to the words, not to the squares.
+    </p>
+    <div class="palette">
+      <div class="sw"><i style="background:#B89BC4"></i><span>Mauve</span></div>
+      <div class="sw"><i style="background:#C08A72"></i><span>Antique rose</span></div>
+      <div class="sw"><i style="background:#5A2E3C"></i><span>Muted plum</span></div>
+      <div class="sw"><i style="background:#D9A898"></i><span>Dusty blush</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Before you buy anything</p>
+    <h2>It isn't a vase</h2>
+    <div class="flag">
+      <p>
+        The product photo is a <strong>low, wide footed bowl</strong> — roughly
+        8–9&nbsp;inches across, 4–5&nbsp;tall, stone or matte ceramic. A compote,
+        not a vase. If you set this in a tall vase it becomes a different piece
+        and the silhouette collapses.
+      </p>
+      <p>
+        Which means mechanics: a <strong>chicken-wire ball</strong> taped in with
+        waterproof tape, or a pin frog. Water to just under the rim.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Shopping</p>
+    <h2>Grouped by stop, not by flower</h2>
+    <p class="deck" style="margin-top:6px;">
+      About 28–36 stems for Signature scale. Tick as you go.
+    </p>
+
+    <div class="stop">
+      <h3>Farmstand or farmers market</h3>
+      <p class="why">Late September is peak dahlia. This is where the moody end of the palette lives — nothing at a supermarket will match it.</p>
+      <ul class="items">
+        <li><label class="item">
+          <input type="checkbox" id="c-dahlia" />
+          <span class="nm">Dahlias — plum, burgundy, café</span>
+          <span class="qty">4–5</span>
+          <span class="sub">Standing in for hellebore, which is a late-winter flower and won't be found this week.</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-cotinus" />
+          <span class="nm">Smoke bush, or any plum-toned foliage</span>
+          <span class="qty">2–3</span>
+          <span class="sub">Carries the depth the hellebore leaves behind. Garden clippings count.</span>
+        </label></li>
+      </ul>
+    </div>
+
+    <div class="stop">
+      <h3>Trader Joe's</h3>
+      <p class="why">Reliable for the soft mass. Pick by colour and walk past anything clear or bright — one true pink breaks the whole palette.</p>
+      <ul class="items">
+        <li><label class="item">
+          <input type="checkbox" id="c-roses" />
+          <span class="nm">Roses — dusty blush through terracotta</span>
+          <span class="qty">5–6</span>
+          <span class="sub">Mixed head sizes if you can. Avoid clear pink and anything red.</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-lisianthus" />
+          <span class="nm">Lisianthus — lavender / mauve</span>
+          <span class="qty">4–5</span>
+          <span class="sub">If none: mauve spray roses do the same job.</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-euc" />
+          <span class="nm">Eucalyptus — willow or parvifolia</span>
+          <span class="qty">2–3</span>
+          <span class="sub">For the long trailing line down one side. Needs real length.</span>
+        </label></li>
+      </ul>
+    </div>
+
+    <div class="stop">
+      <h3>Whole Foods, or a retail florist</h3>
+      <p class="why">The gap-filler stop. Skip it entirely if the first two came through.</p>
+      <ul class="items">
+        <li><label class="item">
+          <input type="checkbox" id="c-scabiosa" />
+          <span class="nm">Scabiosa — burgundy</span>
+          <span class="qty">3–4</span>
+          <span class="sub">These ride above the mass on thin stems; that lift is what makes it read as yours. If unavailable: scabiosa pods, astrantia, or small dahlias left long.</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-texture" />
+          <span class="nm">Plume texture — astilbe if it exists</span>
+          <span class="qty">6–8</span>
+          <span class="sub">Very tail of astilbe season. Dried grasses (already in your Fall Edit) or dusty limonium do the job and suit the month better.</span>
+        </label></li>
+      </ul>
+    </div>
+
+    <div class="stop">
+      <h3>Check at home first</h3>
+      <p class="why">Find the shortfall today, while there's still time to fix it.</p>
+      <ul class="items">
+        <li><label class="item">
+          <input type="checkbox" id="c-vessel" />
+          <span class="nm">Low footed bowl, 8–9″</span>
+          <span class="qty">1</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-wire" />
+          <span class="nm">Chicken wire + waterproof tape</span>
+          <span class="qty">—</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-food" />
+          <span class="nm">Flower food, clean bucket, sharp snips</span>
+          <span class="qty">—</span>
+        </label></li>
+        <li><label class="item">
+          <input type="checkbox" id="c-env" />
+          <span class="nm">A6 or 4×6 envelope — cream or white</span>
+          <span class="qty">1</span>
+          <span class="sub">Staples, same trip as the tag pickup.</span>
+        </label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Build</p>
+    <h2>Thursday evening</h2>
+    <ol class="build">
+      <li><p class="t">Condition first</p><p class="d">Cut on an angle, strip everything below the waterline, two hours minimum in cool water somewhere dark. Non-negotiable if it's travelling Friday.</p></li>
+      <li><p class="t">Wire the bowl</p><p class="d">Chicken-wire ball, waterproof tape across in a cross, water just under the rim.</p></li>
+      <li><p class="t">Greenery sets the shape</p><p class="d">Low and wide. Establish the one long trailing line down a single side — the asymmetry is the whole silhouette.</p></li>
+      <li><p class="t">Roses next</p><p class="d">Asymmetric cluster, varied heights, faces turned differently. Never a dome.</p></li>
+      <li><p class="t">Dahlias recessed</p><p class="d">Set slightly deeper than the roses. That's where the depth comes from.</p></li>
+      <li><p class="t">Lisianthus to bridge</p><p class="d">Between the mass and the air.</p></li>
+      <li><p class="t">Scabiosa last, riding high</p><p class="d">Above the mass on their own stems. Resist tucking them in.</p></li>
+      <li><p class="t">Texture into the gaps</p><p class="d">Fill the negative space without closing it. Stop earlier than feels finished.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Timing</p>
+    <h2>Thursday build, Friday drive</h2>
+    <div class="when">
+      <div><b>Wed</b><p>Shop. Condition everything the moment you're home.</p></div>
+      <div><b>Thu</b><p>Build. Print the card once Aviva confirms the wording. Text Aliyah to lock a morning window.</p></div>
+      <div><b>Thu night</b><p>Somewhere cool and dark, out of any draught.</p></div>
+      <div><b>Fri am</b><p>Load flat and wedged. Twenty minutes to Englewood. Hand over, then text Aviva that it arrived — she's abroad and can't see it.</p></div>
+    </div>
+  </section>
+
+  <p class="note">
+    Your own site says no two arrangements are identical. You are not matching a
+    photograph stem for stem — you're delivering that palette at Signature scale.
+    Aviva bought mauve, antique rose, muted plum and dusty blush. Give her those
+    and she has exactly what she paid for.
+  </p>
+
+</div>
+
+<script>
+  // Tick state survives the walk between shops. Per-browser only, and the
+  // page has to work when storage is blocked, so every touch is guarded.
+  var KEY = 'dj-dusty-romantic-signature';
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function save(state) {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  var state = load();
+  var boxes = document.querySelectorAll('input[type="checkbox"]');
+
+  boxes.forEach(function (box) {
+    if (state[box.id]) box.checked = true;
+    box.addEventListener('change', function () {
+      state[box.id] = box.checked;
+      save(state);
+    });
+  });
+</script>
