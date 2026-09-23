@@ -340,23 +340,32 @@ export function getArrangement(id: string): Arrangement | null {
 export const SHIPPING_OPTIONS = [
   {
     id: 'local',
-    label: 'Local Delivery (0–10 miles)',
-    amount: 1800, // $18
-    detail: 'Bergen County inner ring. Complimentary on orders over $125.',
+    label: 'Local Delivery — complimentary',
+    amount: 0, // free
+    detail: 'Within about 9 miles of the studio. Bergen County inner ring.',
+  },
+  {
+    id: 'nearby',
+    label: 'Nearby Delivery',
+    amount: 1500, // $15
+    detail:
+      'Roughly 10–15 miles. Covers the run east toward the river — Englewood, ' +
+      'Fort Lee and the Palisades — where the traffic, not the distance, is the cost.',
   },
   {
     id: 'extended',
-    label: 'Extended Delivery (10–20 miles)',
-    amount: 3200, // $32
-    detail: 'Bergen County outer + select Passaic / Hudson towns.',
-  },
-  {
-    id: 'signature',
-    label: 'Signature Delivery (20–30 miles)',
-    amount: 5500, // $55
-    detail: 'Northern NJ + Manhattan. Minimum order $125.',
+    label: 'Extended Delivery',
+    amount: 4500, // $45
+    detail: 'Beyond 15 miles — Newark, Jersey City, Hoboken, Manhattan.',
   },
 ];
 
-/** Free-shipping threshold for Local zone (in cents) */
-export const LOCAL_FREE_SHIPPING_THRESHOLD = 12500; // $125
+/**
+ * Kept at 0 deliberately.
+ *
+ * Local delivery is now complimentary outright rather than free above a
+ * spend, so there is no threshold left to clear. The constant stays because
+ * the checkout route still reads it; setting it to zero makes every order
+ * qualify, which is the same thing as the rule no longer existing.
+ */
+export const LOCAL_FREE_SHIPPING_THRESHOLD = 0;

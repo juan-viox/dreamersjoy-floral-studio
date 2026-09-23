@@ -95,6 +95,8 @@ export async function POST(request: Request) {
       : SHIPPING_OPTIONS;
 
     const shippingOptions = offered.map((opt) => {
+      // Local is complimentary outright now, so the old free-over-$125 rule
+      // has nothing left to do; the threshold is 0 and every order clears it.
       const amount =
         opt.id === 'local' && subtotalCents >= LOCAL_FREE_SHIPPING_THRESHOLD
           ? 0
