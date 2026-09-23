@@ -140,13 +140,70 @@
     window.djNavigate(link.href);
   });
 
-  // ─── SAFETY NET: if GSAP/ScrollTrigger fail to load, content stays visible (CSS default) ───
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    return; // fade-up elements remain at opacity:1 per default CSS
+  // ─── SAFETY NET: the site still works without its animation library ───
+  //
+  // GSAP is fetched from a CDN. This block used to `return` when it was
+  // missing, which abandoned the rest of this file — the shop modals, the
+  // checkout, the newsletter form. One bad minute at the CDN and the studio
+  // silently stopped taking orders, with no error a visitor could see.
+  //
+  // Animations are the only thing that genuinely needs GSAP, so when it is
+  // absent we stand in no-op equivalents and carry on. Everything that takes
+  // money keeps working; the page simply doesn't move.
+  var djHasGsap = (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined');
+
+  if (!djHasGsap) {
+    console.warn('[dj] animation library unavailable — running without motion.');
+    // Chainable, so gsap.timeline().to(...).from(...) keeps working.
+    var djNoopTween = {};
+    var djNoopTimeline = {
+      to: function () { return djNoopTimeline; },
+      from: function () { return djNoopTimeline; },
+      fromTo: function () { return djNoopTimeline; },
+      set: function () { return djNoopTimeline; },
+      add: function () { return djNoopTimeline; },
+      call: function () { return djNoopTimeline; },
+      kill: function () { return djNoopTimeline; },
+      play: function () { return djNoopTimeline; },
+      pause: function () { return djNoopTimeline; },
+      progress: function () { return djNoopTimeline; },
+      eventCallback: function () { return djNoopTimeline; }
+    };
+    window.gsap = {
+      registerPlugin: function () {},
+      to: function () { return djNoopTween; },
+      from: function () { return djNoopTween; },
+      fromTo: function () { return djNoopTween; },
+      set: function () { return djNoopTween; },
+      timeline: function () { return djNoopTimeline; },
+      killTweensOf: function () {},
+      utils: {
+        toArray: function (x) {
+          if (typeof x === 'string') return Array.prototype.slice.call(document.querySelectorAll(x));
+          if (!x) return [];
+          return Array.isArray(x) ? x : Array.prototype.slice.call(x.length != null ? x : [x]);
+        },
+        clamp: function (min, max, v) { return Math.min(Math.max(v, min), max); },
+        mapRange: function (a, b, c, d, v) { return c + ((v - a) / (b - a)) * (d - c); },
+        random: function (min, max) { return min + Math.random() * (max - min); }
+      }
+    };
+    window.ScrollTrigger = {
+      create: function () { return { kill: function () {} }; },
+      refresh: function () {},
+      batch: function () {},
+      getAll: function () { return []; },
+      update: function () {}
+    };
   }
-  gsap.registerPlugin(ScrollTrigger);
-  // Tell CSS that JS can handle animations → activates fade-up hiding
-  document.documentElement.classList.add('js-animations-ready');
+
+  if (djHasGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    // Only claim the page can animate when it actually can. This class makes
+    // CSS hide every .fade-up until GSAP reveals it — setting it without a
+    // real GSAP would leave the whole page blank.
+    document.documentElement.classList.add('js-animations-ready');
+  }
 
   // ─── NAV SCROLL ───
   var nav = document.getElementById('mainNav');
@@ -872,6 +929,21 @@
       });
     });
 
+    // ─── The inline ORDER buttons on each card ───
+    // These live in here on purpose. They used to be wired up further down the
+    // file, outside this block, behind a `typeof openLightbox === 'function'`
+    // guard — and because `openLightbox` is declared inside this block, that
+    // guard was never true in strict mode. The button silently did nothing,
+    // while clicking the card's image worked. Same handler, correct scope.
+    document.querySelectorAll('[data-shop-order]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var card = btn.closest('.shop-card');
+        if (card) openLightbox(card);
+      });
+    });
+
     // Close triggers
     lightbox.querySelectorAll('[data-shop-close]').forEach(function(el) {
       el.addEventListener('click', closeLightbox);
@@ -881,20 +953,6 @@
     });
   }
 
-  // ─── SHOP inline Order buttons → open lightbox (let user see details + size
-  //     selector before checkout). No direct-to-cart flow anymore.
-  document.querySelectorAll('[data-shop-order]').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      // Find the parent card and open the lightbox for it
-      var card = btn.closest('.shop-card');
-      if (card && typeof openLightbox === 'function') {
-        // openLightbox is defined inside the lightbox IIFE block above
-        card.click();
-      }
-    });
-  });
 
   // ─── GALLERY LIGHTBOX ───
   var galleryLb = document.getElementById('galleryLightbox');
