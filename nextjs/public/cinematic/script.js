@@ -807,6 +807,11 @@
       });
     }
 
+    // What the chosen size reads as, so the hint can go back to it once the
+    // card question is answered rather than leaving a stale instruction under
+    // a button that is plainly already enabled.
+    var lbSizeSummary = '';
+
     /** The button opens only when there is both a size and a card. */
     function refreshCta() {
       var haveCard = !lbCardSelect || !!lbCardSelect.value;
@@ -816,12 +821,15 @@
         lbHint.textContent = 'Select a size to continue';
       } else if (!haveCard) {
         lbHint.textContent = 'Choose a card to continue';
+      } else {
+        lbHint.textContent = lbSizeSummary;
       }
     }
 
     function openLightbox(card) {
       lastTrigger = card;
       lbSelectedId = null;
+      lbSizeSummary = '';
       if (lbCardSelect) {
         lbCardSelect.value = '';
         lbCardSelect.setAttribute('data-empty', 'true');
@@ -857,7 +865,7 @@
           btn.classList.add('is-selected');
           btn.setAttribute('aria-checked', 'true');
           lbSelectedId = s.id;
-          lbHint.textContent = s.label + ' selected \u2014 ' + s.price;
+          lbSizeSummary = s.label + ' selected \u2014 ' + s.price;
           refreshCta();
         });
         lbSizeList.appendChild(btn);
@@ -876,7 +884,7 @@
       if (sizes.length === 0) {
         // Fallback: no size metadata, use the arrangement id directly
         lbSelectedId = currentId;
-        lbHint.textContent = '';
+        lbSizeSummary = '';
         refreshCta();
       }
 
