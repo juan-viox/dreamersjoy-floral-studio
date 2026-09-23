@@ -20,6 +20,12 @@ import {
   SHIPPING_OPTIONS,
   LOCAL_FREE_SHIPPING_THRESHOLD,
 } from '@/lib/arrangement-catalog';
+import { getOccasionCard } from '@/lib/occasion-cards';
+import {
+  processingFeeCents,
+  PROCESSING_FEE_LABEL,
+  PROCESSING_FEE_PERCENT,
+} from '@/lib/pricing';
 
 export async function POST(request: Request) {
   try {
@@ -28,11 +34,13 @@ export async function POST(request: Request) {
       arrangement_id,
       quantity = 1,
       card_message,
+      card_occasion,
       delivery_date,
     } = body as {
       arrangement_id?: string;
       quantity?: number;
       card_message?: string;
+      card_occasion?: string;
       delivery_date?: string;
     };
 
@@ -40,6 +48,18 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: 'arrangement_id is required' },
         { status: 400 },
+      );
+    }
+
+    // Every arrangement goes out with a handwritten card, so the card is not
+    // optional — and it has to be chosen BEFORE payment, not chased up
+    // afterwards. The browser disables its own button, but that is a
+    // courtesy; this is the check that actually holds.
+    const card = getOccasionCard(card_occasion);
+    if (!card) {
+      return NextResponse.json(
+        { error: 'Choose a card before checking out.' },
+        { status: 422 },
       );
     }
 
@@ -54,6 +74,7 @@ export async function POST(request: Request) {
     // Safety: clamp quantity
     const qty = Math.min(Math.max(1, Number(quantity) || 1), 10);
     const subtotalCents = arrangement.amount * qty;
+    const feeCents = processingFeeCents(subtotalCents);
 
     const origin = new URL(request.url).origin;
 
@@ -110,17 +131,40 @@ export async function POST(request: Request) {
             tax_behavior: 'exclusive',
           },
         },
+        // What Stripe takes, put back on the bill rather than absorbed. Its
+        // own line so the customer can see exactly what it is — the same way
+        // the studio's other shop presents it.
+        ...(feeCents > 0
+          ? [
+              {
+                quantity: 1,
+                price_data: {
+                  currency: 'usd' as const,
+                  product_data: {
+                    name: PROCESSING_FEE_LABEL,
+                    description:
+                      'Covers card processing and secure handling of your order.',
+                    tax_code: 'txcd_99999999',
+                  },
+                  unit_amount: feeCents,
+                  tax_behavior: 'exclusive' as const,
+                },
+              },
+            ]
+          : []),
       ],
       shipping_address_collection: {
         allowed_countries: ['US'],
       },
       shipping_options: shippingOptions,
       phone_number_collection: { enabled: true },
-      // Let customers leave a card message + requested delivery date at checkout
+      // Stripe allows at most three custom fields, and the card occasion is
+      // already chosen on the site before we get here — so these three are
+      // the ones that still need asking.
       custom_fields: [
         {
           key: 'card_message',
-          label: { type: 'custom', custom: 'Card message (optional)' },
+          label: { type: 'custom', custom: `Message for your ${card.label} card` },
           type: 'text',
           optional: true,
           text: { maximum_length: 240 },
@@ -146,7 +190,11 @@ export async function POST(request: Request) {
         collection: arrangement.collection,
         size: arrangement.size,
         card_message: card_message?.slice(0, 240) || '',
+        card_occasion: card.label,
+        card_occasion_id: card.id,
         delivery_date: delivery_date?.slice(0, 24) || '',
+        processing_fee_percent: String(PROCESSING_FEE_PERCENT),
+        processing_fee_cents: String(feeCents),
         source: 'dreamersjoy_web_checkout',
       },
       success_url: `${origin}/order/success?session_id={CHECKOUT_SESSION_ID}`,

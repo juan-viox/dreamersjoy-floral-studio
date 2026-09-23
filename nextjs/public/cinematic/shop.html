@@ -456,6 +456,17 @@
         <div class="shop-lightbox__size-list" id="shopLightboxSizeList" role="radiogroup" aria-label="Arrangement size"></div>
       </div>
 
+      <div class="shop-lightbox__card" id="shopLightboxCard">
+        <p class="shop-lightbox__sizes-label">Your handwritten card</p>
+        <select id="shopLightboxCardSelect" aria-label="Choose your card" required>
+          <option value="">Choose your card</option>
+        </select>
+        <label class="shop-lightbox__msg-label" for="shopLightboxMessage">Your message</label>
+        <textarea id="shopLightboxMessage" rows="3" maxlength="240"
+          placeholder="We&rsquo;ll write this inside, by hand. Leave it blank for just the card."></textarea>
+        <p class="shop-lightbox__card-note">Every arrangement goes out with a card, handwritten by us.</p>
+      </div>
+
       <div class="shop-lightbox__actions">
         <button type="button" class="btn-primary shop-lightbox__cta" id="shopLightboxCta" disabled>Add to Cart</button>
         <a href="/inquire?interest=Custom%20Floral%20Design" class="btn-outline" id="shopLightboxInquire">Ask a Question</a>

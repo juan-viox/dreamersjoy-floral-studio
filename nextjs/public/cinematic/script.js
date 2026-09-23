@@ -602,10 +602,55 @@
     var lbInquire = document.getElementById('shopLightboxInquire');
     var lastTrigger = null;
     var lbSelectedId = null;
+    var lbCardSelect = document.getElementById('shopLightboxCardSelect');
+    var lbMessage = document.getElementById('shopLightboxMessage');
+
+    // The enclosure cards actually in the drawer. Fetched rather than
+    // hard-coded here so this list and the one the checkout validates
+    // against cannot drift apart.
+    if (lbCardSelect) {
+      lbCardSelect.setAttribute('data-empty', 'true');
+      fetch('/api/public/occasion-cards')
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          if (!data || !data.cards) return;
+          data.cards.forEach(function (c) {
+            var opt = document.createElement('option');
+            opt.value = c.id;
+            opt.textContent = c.label;
+            lbCardSelect.appendChild(opt);
+          });
+        })
+        .catch(function (err) {
+          console.error('[shop-lightbox] could not load card list:', err);
+        });
+
+      lbCardSelect.addEventListener('change', function () {
+        lbCardSelect.setAttribute('data-empty', lbCardSelect.value ? 'false' : 'true');
+        refreshCta();
+      });
+    }
+
+    /** The button opens only when there is both a size and a card. */
+    function refreshCta() {
+      var haveCard = !lbCardSelect || !!lbCardSelect.value;
+      var ready = !!lbSelectedId && haveCard;
+      lbCta.disabled = !ready;
+      if (!lbSelectedId) {
+        lbHint.textContent = 'Select a size to continue';
+      } else if (!haveCard) {
+        lbHint.textContent = 'Choose a card to continue';
+      }
+    }
 
     function openLightbox(card) {
       lastTrigger = card;
       lbSelectedId = null;
+      if (lbCardSelect) {
+        lbCardSelect.value = '';
+        lbCardSelect.setAttribute('data-empty', 'true');
+      }
+      if (lbMessage) lbMessage.value = '';
       lbImg.style.backgroundImage = 'url("' + card.getAttribute('data-image') + '")';
       lbCollection.textContent = card.getAttribute('data-collection') || '';
       // Display the palette/collection name as the modal title (size choices below)
@@ -636,8 +681,8 @@
           btn.classList.add('is-selected');
           btn.setAttribute('aria-checked', 'true');
           lbSelectedId = s.id;
-          lbCta.disabled = false;
           lbHint.textContent = s.label + ' selected \u2014 ' + s.price;
+          refreshCta();
         });
         lbSizeList.appendChild(btn);
         // Pre-select the card's own size (so clicking "Signature" card opens with Signature highlighted)
@@ -655,8 +700,8 @@
       if (sizes.length === 0) {
         // Fallback: no size metadata, use the arrangement id directly
         lbSelectedId = currentId;
-        lbCta.disabled = false;
         lbHint.textContent = '';
+        refreshCta();
       }
 
       var interest = encodeURIComponent('Custom Floral Design');
@@ -674,12 +719,22 @@
     // Add to Cart → create Stripe Checkout session → redirect
     lbCta.addEventListener('click', function() {
       if (!lbSelectedId) return;
+      if (lbCardSelect && !lbCardSelect.value) {
+        lbHint.textContent = 'Choose a card to continue';
+        lbCardSelect.focus();
+        return;
+      }
       lbCta.disabled = true;
       lbCta.textContent = 'Redirecting to checkout...';
       fetch('/api/v1/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ arrangement_id: lbSelectedId, quantity: 1 }),
+        body: JSON.stringify({
+          arrangement_id: lbSelectedId,
+          quantity: 1,
+          card_occasion: lbCardSelect ? lbCardSelect.value : '',
+          card_message: lbMessage ? lbMessage.value.slice(0, 240) : '',
+        }),
       })
         .then(function(res) { if (!res.ok) throw new Error('checkout failed'); return res.json(); })
         .then(function(data) {
