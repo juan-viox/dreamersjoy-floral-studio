@@ -12,3 +12,7 @@ season-records/__pycache__/
 season-records/fe-*.png
 season-records/md-*.png
 season-records/_shot2.js
+cards/gf.css
+cards/fonts-inline.css
+cards/print-build-sheet.html
+cards/preview*.png
