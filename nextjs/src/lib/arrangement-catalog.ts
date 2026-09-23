@@ -340,9 +340,11 @@ export function getArrangement(id: string): Arrangement | null {
 export const SHIPPING_OPTIONS = [
   {
     id: 'local',
-    label: 'Local Delivery — complimentary',
-    amount: 0, // free
-    detail: 'Within about 9 miles of the studio. Bergen County inner ring.',
+    label: 'Local Delivery (0–9 miles)',
+    amount: 1800, // $18 — waived on orders over $125
+    detail:
+      'Within about 9 miles of the studio. Bergen County inner ring. ' +
+      'Complimentary on orders over $125.',
   },
   {
     id: 'nearby',
@@ -361,11 +363,10 @@ export const SHIPPING_OPTIONS = [
 ];
 
 /**
- * Kept at 0 deliberately.
+ * Local delivery is waived above this, charged below it.
  *
- * Local delivery is now complimentary outright rather than free above a
- * spend, so there is no threshold left to clear. The constant stays because
- * the checkout route still reads it; setting it to zero makes every order
- * qualify, which is the same thing as the rule no longer existing.
+ * Briefly made complimentary outright, which meant a $75 bouquet bought a
+ * round trip for nothing. The threshold is the thing that stops a small
+ * order costing the studio money to deliver, so it stays.
  */
-export const LOCAL_FREE_SHIPPING_THRESHOLD = 0;
+export const LOCAL_FREE_SHIPPING_THRESHOLD = 12500; // $125

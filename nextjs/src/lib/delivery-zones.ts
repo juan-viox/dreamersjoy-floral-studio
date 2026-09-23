@@ -14,7 +14,7 @@
  * Fort Lee, the Palisades — is barely further than Paramus but takes twice
  * as long, and that traffic is what the middle band is really pricing.
  *
- *   local     0–9 miles     complimentary
+ *   local     0–9 miles     $18, complimentary over $125
  *   nearby    10–15 miles   $15
  *   extended  beyond 15     $45
  *
@@ -28,7 +28,7 @@ export type ZoneId = 'local' | 'nearby' | 'extended'
 
 const ZONE_BY_ZIP: Record<string, ZoneId> = {}
 
-/** Complimentary. Roughly nine miles of the studio, and an easy drive. */
+/** $18, waived over $125. Roughly nine miles, and an easy drive. */
 const LOCAL_TOWNS: Array<[string, string[]]> = [
   ['Wyckoff', ['07481']],
   ['Franklin Lakes', ['07417']],
