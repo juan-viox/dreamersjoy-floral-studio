@@ -14,9 +14,9 @@
  * Fort Lee, the Palisades — is barely further than Paramus but takes twice
  * as long, and that traffic is what the middle band is really pricing.
  *
- *   local     0–9 miles     $18, complimentary over $125
- *   nearby    10–15 miles   $15
- *   extended  beyond 15     $45
+ *   local     0–9 miles     $12, complimentary over $125
+ *   nearby    10–15 miles   $18
+ *   extended  beyond 15     $55
  *
  * An unrecognised postcode is NOT refused: it falls through to `null`, the
  * checkout offers all three zones as before, and the studio confirms by
@@ -28,7 +28,7 @@ export type ZoneId = 'local' | 'nearby' | 'extended'
 
 const ZONE_BY_ZIP: Record<string, ZoneId> = {}
 
-/** $18, waived over $125. Roughly nine miles, and an easy drive. */
+/** $12, waived over $125. Roughly nine miles, and an easy drive. */
 const LOCAL_TOWNS: Array<[string, string[]]> = [
   ['Wyckoff', ['07481']],
   ['Franklin Lakes', ['07417']],
@@ -61,7 +61,7 @@ const LOCAL_TOWNS: Array<[string, string[]]> = [
   ['Wanaque', ['07465']],
 ]
 
-/** $15. Ten to fifteen miles — and, east of here, the traffic. */
+/** $18. Ten to fifteen miles — and, east of here, the traffic. */
 const NEARBY_TOWNS: Array<[string, string[]]> = [
   ['Teaneck', ['07666']],
   ['Bergenfield', ['07621']],
@@ -84,7 +84,7 @@ const NEARBY_TOWNS: Array<[string, string[]]> = [
   ['Montclair', ['07042', '07043', '07044']],
 ]
 
-/** $45. Beyond fifteen miles. */
+/** $55. Beyond fifteen miles. */
 const EXTENDED_TOWNS: Array<[string, string[]]> = [
   ['Newark', ['07102', '07103', '07104', '07105', '07106', '07107', '07108']],
   ['Jersey City', ['07302', '07304', '07305', '07306', '07307', '07310', '07311']],

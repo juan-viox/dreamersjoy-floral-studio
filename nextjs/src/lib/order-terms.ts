@@ -101,9 +101,9 @@ export const ORDER_TERMS: Term[] = [
     heading: 'Prices',
     body:
       'All prices are in US dollars. A processing and handling charge of 3.5% is ' +
-      'added at checkout and shown as its own line. Delivery is $18 within about ' +
-      'nine miles of the studio and complimentary there on orders over $125, $15 ' +
-      'out to roughly fifteen miles, and $45 beyond that. You give us the delivery ' +
+      'added at checkout and shown as its own line. Delivery is $12 within about ' +
+      'nine miles of the studio, and complimentary there on orders over $125; $18 ' +
+      'out to roughly fifteen miles; and $55 beyond that. You give us the delivery ' +
       'postcode and we show you the price — there is nothing to work out.',
   },
 ]

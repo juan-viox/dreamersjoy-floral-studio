@@ -341,24 +341,24 @@ export const SHIPPING_OPTIONS = [
   {
     id: 'local',
     label: 'Local Delivery (0–9 miles)',
-    amount: 1800, // $18 — waived on orders over $125
+    amount: 1200, // $12 — waived on orders over $125
     detail:
       'Within about 9 miles of the studio. Bergen County inner ring. ' +
       'Complimentary on orders over $125.',
   },
   {
     id: 'nearby',
-    label: 'Nearby Delivery',
-    amount: 1500, // $15
+    label: 'Nearby Delivery (10–15 miles)',
+    amount: 1800, // $18
     detail:
-      'Roughly 10–15 miles. Covers the run east toward the river — Englewood, ' +
-      'Fort Lee and the Palisades — where the traffic, not the distance, is the cost.',
+      'Roughly 10–15 miles. The run east toward the river — Englewood, Fort Lee ' +
+      'and the Palisades — where the traffic, not the distance, is the cost.',
   },
   {
     id: 'extended',
-    label: 'Extended Delivery',
-    amount: 4500, // $45
-    detail: 'Beyond 15 miles — Newark, Jersey City, Hoboken, Manhattan.',
+    label: 'Extended Delivery (15+ miles)',
+    amount: 5500, // $55
+    detail: 'Beyond 15 miles. Newark, Jersey City, Hoboken, Manhattan.',
   },
 ];
 
