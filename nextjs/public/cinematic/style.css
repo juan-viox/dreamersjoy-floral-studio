@@ -3493,3 +3493,63 @@ footer p[style*="font-family"] { color: var(--bg) !important; }
   .jr-pager { flex-direction: column; gap: 22px; }
   .jr-nav-link, .jr-nav-link:last-child { max-width: none; text-align: left; }
 }
+
+/* ═══ Enclosure card picker in the shop modal ═══
+   Every arrangement ships with a handwritten card, so choosing one is part
+   of ordering, not an afterthought at the end. Sits between the size
+   choice and the button that takes the money. */
+.shop-lightbox__card {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 184, 168, 0.4);
+}
+
+.shop-lightbox__card select,
+.shop-lightbox__card textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--primary);
+  background: #fff;
+  border: 1px solid rgba(201, 184, 168, 0.7);
+  border-radius: 2px;
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color 160ms ease;
+}
+
+.shop-lightbox__card select:focus,
+.shop-lightbox__card textarea:focus {
+  border-color: var(--accent1);
+}
+
+/* Unanswered and required — say so quietly until it is answered. */
+.shop-lightbox__card select[data-empty="true"] {
+  color: rgba(51, 65, 85, 0.5);
+  border-color: rgba(139, 115, 85, 0.55);
+  background: rgba(139, 115, 85, 0.03);
+}
+
+.shop-lightbox__msg-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(44, 62, 80, 0.6);
+  margin: 18px 0 10px;
+}
+
+.shop-lightbox__card textarea {
+  resize: vertical;
+  min-height: 78px;
+  line-height: 1.6;
+}
+
+.shop-lightbox__card-note {
+  font-size: 13px;
+  color: rgba(51, 65, 85, 0.55);
+  margin-top: 10px;
+  line-height: 1.5;
+}

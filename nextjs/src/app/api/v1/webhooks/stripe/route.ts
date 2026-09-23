@@ -186,7 +186,14 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     `Size: ${metadata.size || ''}`,
     shippingLines ? `Ship to: ${fullName}  •  ${shippingLines}` : '',
     customFields.recipient_name ? `Recipient: ${customFields.recipient_name}` : '',
-    customFields.card_message ? `Card message: "${customFields.card_message}"` : '',
+    // Which printed card to pull from the drawer. Chosen on the site before
+    // payment, so it is always here on a web order.
+    metadata.card_occasion ? `Card: ${metadata.card_occasion}` : '',
+    customFields.card_message
+      ? `Card message: "${customFields.card_message}"`
+      : metadata.card_message
+        ? `Card message: "${metadata.card_message}"`
+        : '',
     customFields.delivery_date ? `Requested delivery: ${customFields.delivery_date}` : '',
     phone ? `Phone: ${phone}` : '',
   ]
