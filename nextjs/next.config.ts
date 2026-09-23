@@ -16,6 +16,7 @@ const STATIC_MARKETING_PAGES = [
   'about',
   'inquire',
   'journal',
+  'terms',
 ];
 
 const nextConfig: NextConfig = {

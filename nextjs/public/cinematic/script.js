@@ -754,11 +754,43 @@
       note.className = 'shop-lightbox__enclosure-note';
       note.textContent = 'Every arrangement goes out with a card, handwritten by us.';
 
+      // Postcode, not a mileage band. Nobody knows how far they are from
+      // Wyckoff; everybody knows their own postcode, and it lets the checkout
+      // show one delivery price instead of three guesses.
+      var zipLabel = document.createElement('label');
+      zipLabel.className = 'shop-lightbox__zip-label';
+      zipLabel.setAttribute('for', idPrefix + 'Zip');
+      zipLabel.textContent = 'Delivering to which ZIP?';
+
+      var zip = document.createElement('input');
+      zip.type = 'text';
+      zip.id = idPrefix + 'Zip';
+      zip.maxLength = 10;
+      zip.setAttribute('inputmode', 'numeric');
+      zip.setAttribute('autocomplete', 'postal-code');
+      zip.placeholder = '07481';
+
+      var zipNote = document.createElement('p');
+      zipNote.className = 'shop-lightbox__zip-note';
+      zipNote.id = idPrefix + 'ZipNote';
+      zipNote.textContent = 'So we can show you the right delivery price.';
+
+      var terms = document.createElement('p');
+      terms.className = 'shop-lightbox__terms';
+      terms.innerHTML =
+        'Made by hand and never identical. We build with what is in season, and ' +
+        'substitute like for like in value and tone when a flower is unavailable. ' +
+        'Vessel sizes are approximate. <a href="/terms">Read our order terms</a>.';
+
       existing.appendChild(label);
       existing.appendChild(sel);
       existing.appendChild(msgLabel);
       existing.appendChild(msg);
       existing.appendChild(note);
+      existing.appendChild(zipLabel);
+      existing.appendChild(zip);
+      existing.appendChild(zipNote);
+      existing.appendChild(terms);
       actionsEl.parentNode.insertBefore(existing, actionsEl);
     }
 
@@ -767,6 +799,8 @@
 
     var select = existing.querySelector('select');
     var message = existing.querySelector('textarea');
+    var postcode = existing.querySelector('input[type="text"]');
+    var postcodeNote = existing.querySelector('.shop-lightbox__zip-note');
 
     if (select && !select.getAttribute('data-populated')) {
       select.setAttribute('data-populated', 'true');
@@ -781,7 +815,7 @@
       });
     }
 
-    return { select: select, message: message };
+    return { select: select, message: message, zip: postcode, zipNote: postcodeNote };
   }
 
   // Card click → modal with product details + size selector + Stripe Checkout
@@ -800,6 +834,8 @@
     var lbPicker = djAttachCardPicker(lbCta.parentNode, 'shopLightbox');
     var lbCardSelect = lbPicker.select;
     var lbMessage = lbPicker.message;
+    var lbZip = lbPicker.zip;
+    var lbZipNote = lbPicker.zipNote;
     if (lbCardSelect) {
       lbCardSelect.addEventListener('change', function () {
         lbCardSelect.setAttribute('data-empty', lbCardSelect.value ? 'false' : 'true');
@@ -835,6 +871,8 @@
         lbCardSelect.setAttribute('data-empty', 'true');
       }
       if (lbMessage) lbMessage.value = '';
+      if (lbZip) lbZip.value = '';
+      if (lbZipNote) lbZipNote.textContent = 'So we can show you the right delivery price.';
       lbImg.style.backgroundImage = 'url("' + card.getAttribute('data-image') + '")';
       lbCollection.textContent = card.getAttribute('data-collection') || '';
       // Display the palette/collection name as the modal title (size choices below)
@@ -918,6 +956,7 @@
           quantity: 1,
           card_occasion: lbCardSelect ? lbCardSelect.value : '',
           card_message: lbMessage ? lbMessage.value.slice(0, 240) : '',
+          delivery_zip: lbZip ? lbZip.value.trim() : '',
         }),
       })
         .then(function(res) { if (!res.ok) throw new Error('checkout failed'); return res.json(); })
@@ -1107,6 +1146,7 @@
     var mdQvPicker = djAttachCardPicker(mdQvCta.parentNode, 'mdQv');
     var mdQvCardSelect = mdQvPicker.select;
     var mdQvMessage = mdQvPicker.message;
+    var mdQvZip = mdQvPicker.zip;
     if (mdQvCardSelect) {
       mdQvCardSelect.addEventListener('change', function() {
         mdQvCardSelect.setAttribute('data-empty', mdQvCardSelect.value ? 'false' : 'true');
@@ -1131,6 +1171,7 @@
           quantity: 1,
           card_occasion: mdQvCardSelect ? mdQvCardSelect.value : '',
           card_message: mdQvMessage ? mdQvMessage.value.slice(0, 240) : '',
+          delivery_zip: mdQvZip ? mdQvZip.value.trim() : '',
         }),
       })
         .then(function(res) {
