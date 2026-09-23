@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DreamersJoy Gift Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ---------------------------------------------------------------
+     DreamersJoy enclosure card — 6 x 4 in at 300 dpi.
+
+     Colours sampled from mothers-day-card.png so this prints as a
+     sibling of the Mother's Day card, not a lookalike:
+       cream  #FAF5EE   frame  #C9B8A8
+       navy   #334155   gold   #8B7355
+     --------------------------------------------------------------- */
+
+  :root {
+    --cream: #FAF5EE;
+    --frame: #C9B8A8;
+    --navy:  #334155;
+    --gold:  #8B7355;
+
+    /* Screen-only chrome. Warm greys so the page around the card
+       doesn't fight the card's own cream. */
+    --page-bg:   #EDE8E1;
+    --chrome-fg: #5B544C;
+    --chrome-mut:#8A8177;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--chrome-fg);
+    font-family: 'Jost', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding-block: 40px;
+    padding-inline: 16px;
+  }
+
+  /* ===== the card itself ===================================== */
+
+  .card {
+    position: relative;
+    width: 6in;
+    height: 4in;
+    max-width: 100%;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(51, 65, 85, 0.13);
+    /* Make the cream actually print rather than dropping to white. */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hairline frame, inset to match the original card. */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0.12in;
+    border: 1px solid var(--frame);
+    pointer-events: none;
+  }
+
+  .occasion,
+  .message,
+  .wordmark {
+    font-family: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+    text-align: center;
+    margin: 0;
+  }
+
+  .occasion {
+    font-weight: 300;
+    font-size: 0.38in;
+    line-height: 1.14;
+    color: var(--navy);
+    text-wrap: balance;
+    max-width: 4.6in;
+    letter-spacing: 0.002em;
+  }
+
+  .rule {
+    width: 0.8in;
+    height: 1px;
+    background: var(--gold);
+    margin: 0.17in 0 0;
+    border: 0;
+  }
+
+  .message {
+    font-weight: 400;
+    font-size: 0.155in;
+    line-height: 1.5;
+    color: var(--navy);
+    max-width: 4.2in;
+    margin-top: 0.17in;
+    white-space: pre-wrap;
+  }
+
+  .wordmark {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.33in;
+    font-weight: 400;
+    font-size: 0.105in;
+    letter-spacing: 0.055em;
+    color: var(--gold);
+  }
+
+  /* ===== editing affordance (screen only) ==================== */
+
+  [contenteditable] {
+    outline: none;
+    border-radius: 2px;
+    transition: background-color 120ms ease;
+  }
+  [contenteditable]:hover { background: rgba(139, 115, 85, 0.07); }
+  [contenteditable]:focus {
+    background: rgba(139, 115, 85, 0.11);
+    outline: 1px dashed var(--gold);
+    outline-offset: 3px;
+  }
+  .message:empty::before {
+    content: attr(data-placeholder);
+    color: var(--chrome-mut);
+  }
+
+  /* ===== instructions ======================================== */
+
+  .chrome {
+    width: 6in;
+    max-width: 100%;
+  }
+
+  .lede {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--chrome-fg);
+    margin: 0 0 14px;
+  }
+  .lede strong { font-weight: 500; }
+
+  ol {
+    margin: 0;
+    padding-left: 1.15em;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--chrome-fg);
+  }
+  li + li { margin-top: 3px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(51, 65, 85, 0.07);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .note {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--chrome-mut);
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(51, 65, 85, 0.12);
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--chrome-mut);
+    margin: 0 0 8px;
+  }
+
+  @media (max-width: 680px) {
+    .card { height: auto; aspect-ratio: 6 / 4; }
+    .occasion { font-size: 8vw; }
+    .message  { font-size: 3.4vw; }
+    .wordmark { font-size: 2.3vw; bottom: 7%; }
+  }
+
+  /* ===== print =============================================== */
+
+  @page { size: 6in 4in; margin: 0; }
+
+  @media print {
+    html, body { background: #fff; }
+    .sheet { min-height: 0; padding: 0; gap: 0; display: block; }
+    .chrome { display: none; }
+    .card {
+      width: 6in;
+      height: 4in;
+      box-shadow: none;
+      break-inside: avoid;
+    }
+    [contenteditable]:hover,
+    [contenteditable]:focus { background: none; outline: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="card">
+    <p class="occasion" contenteditable="true" id="occasion">Happy Anniversary</p>
+    <hr class="rule" />
+    <p class="message" contenteditable="true" id="message" data-placeholder="Love, Ema &amp; Glady">Love, Ema &amp; Glady</p>
+    <p class="wordmark" contenteditable="true" id="wordmark">DreamersJoy Floral Studio</p>
+  </div>
+
+  <div class="chrome">
+    <p class="eyebrow">Enclosure card · 6 × 4 in</p>
+
+    <p class="lede">
+      <strong>Click any line to edit it.</strong> The card is set to the same
+      cream, navy and gold as your Mother's Day card, so a stack of these reads
+      as one family.
+    </p>
+
+    <ol>
+      <li>Type the occasion and the message.</li>
+      <li>Print with <code>⌘ P</code> — choose <strong>4 × 6 photo</strong> paper,
+          or Save&nbsp;as&nbsp;PDF and send it to a print shop.</li>
+      <li>Set scale to <strong>100%</strong>, not "fit to page", or the frame
+          shifts off-centre.</li>
+      <li>Turn on <strong>background graphics</strong> in the print dialog, or
+          the cream drops out and prints white.</li>
+    </ol>
+
+    <p class="note">
+      Reusable — retype the two lines for the baby shower favours, or for any
+      order. Nothing is saved, so each print starts from whatever is on screen.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  // Keep the editable lines as plain text: a paste from Gmail or Notes
+  // otherwise drags its own font and colour onto the card.
+  for (const el of document.querySelectorAll('[contenteditable]')) {
+    el.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text.replace(/\s+$/, ''));
+    });
+    // Enter should break the line, never start a new block element.
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.execCommand('insertLineBreak');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
