@@ -203,7 +203,57 @@
     // CSS hide every .fade-up until GSAP reveals it — setting it without a
     // real GSAP would leave the whole page blank.
     document.documentElement.classList.add('js-animations-ready');
+
+    // Registered HERE, immediately, rather than 280 lines further down where
+    // it used to live. The line above hides every .fade-up on the page;
+    // anything that threw between hiding them and registering the reveal left
+    // the whole page blank with no error a visitor could see. There is no gap
+    // between the two any more.
+    gsap.utils.toArray('.fade-up').forEach(function (el) {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      });
+    });
   }
+
+  // ─── REVEAL FAILSAFE ───
+  // Belt as well as braces: nothing on this site may require an animation in
+  // order to be readable. If an element has been on screen for a moment and is
+  // still invisible — ScrollTrigger misfired, a tween never ran, the page was
+  // restored from the back-forward cache mid-animation — show it.
+  //
+  // It cannot fight a working animation: the tween lasts 0.8s and this looks
+  // after 1.4s, by which time a healthy element is already opaque.
+  (function djRevealFailsafe() {
+    var els = document.querySelectorAll('.fade-up');
+    if (!els.length) return;
+
+    function rescue(el) {
+      var op = parseFloat(getComputedStyle(el).opacity);
+      if (!(op < 0.05)) return;
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      setTimeout(function () {
+        Array.prototype.forEach.call(els, rescue);
+      }, 2000);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el);
+        setTimeout(function () { rescue(el); }, 1400);
+      });
+    }, { rootMargin: '0px 0px -5% 0px' });
+
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+  })();
 
   // ─── NAV SCROLL ───
   var nav = document.getElementById('mainNav');
@@ -479,13 +529,7 @@
     });
   });
 
-  // ─── SCROLL FADE-UPS ───
-  gsap.utils.toArray('.fade-up').forEach(function(el) {
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
-    });
-  });
+  // ─── SCROLL FADE-UPS ─── registered at the top, beside the class that hides them.
 
   // ─── VIOX CRM INTEGRATION ───
   // Same-origin endpoints that carry no credential. This file is served to
