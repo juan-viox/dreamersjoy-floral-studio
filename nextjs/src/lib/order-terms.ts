@@ -16,8 +16,15 @@
  * read once if the studio ever wants certainty rather than clarity.
  */
 
-/** How long before the delivery date an order can still be changed. */
-export const CHANGE_WINDOW_HOURS = 48
+/**
+ * How long before the delivery date an order can still be changed.
+ *
+ * Deliberately longer than the studio's own buying lead time. Stems are
+ * bought roughly two days ahead, so a 48-hour window let a customer cancel
+ * at the exact moment the flowers were being paid for. The window has to
+ * close before the studio spends money, not alongside it.
+ */
+export const CHANGE_WINDOW_HOURS = 72
 
 /** How long after delivery a problem can be reported. */
 export const ISSUE_WINDOW_HOURS = 24
@@ -71,8 +78,10 @@ export const ORDER_TERMS: Term[] = [
     heading: 'Changes and cancellations',
     body:
       `Tell us at least ${CHANGE_WINDOW_HOURS} hours before the delivery date and we ` +
-      'will change or cancel an order without charge. After that the flowers have ' +
-      'been bought and the piece may already be made, so we cannot refund it.',
+      'will change or cancel an order without charge. After that we have bought the ' +
+      'flowers for your piece specifically — they are cut, they are yours, and they ' +
+      'cannot go back — so we are not able to refund it. For larger pieces we buy ' +
+      'further ahead and will say so when we confirm your date.',
   },
   {
     heading: 'If something is not right',
