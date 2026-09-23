@@ -706,7 +706,22 @@
   function djAttachCardPicker(actionsEl, idPrefix) {
     if (!actionsEl || !actionsEl.parentNode) return { select: null, message: null };
 
-    var existing = actionsEl.parentNode.querySelector('.shop-lightbox__enclosure');
+    // Adopt a picker already in the page, and delete any duplicates. A page and
+    // a script can arrive from different deploys while a CDN catches up, and the
+    // failure that caused — two blocks, the populated one hidden behind an empty
+    // one whose dropdown held nothing but the placeholder — must not be
+    // reachable. The legacy class is matched too, so an older page still heals.
+    var found = actionsEl.parentNode.querySelectorAll(
+      '[data-dj-cardpick], .shop-lightbox__enclosure, .shop-lightbox__card-note'
+    );
+    var existing = null;
+    for (var i = 0; i < found.length; i++) {
+      var node = found[i];
+      if (node.className === 'shop-lightbox__card-note') continue;
+      if (!existing) { existing = node; continue; }
+      if (node.parentNode) node.parentNode.removeChild(node);
+    }
+
     if (!existing) {
       existing = document.createElement('div');
       existing.className = 'shop-lightbox__enclosure';
@@ -746,6 +761,9 @@
       existing.appendChild(note);
       actionsEl.parentNode.insertBefore(existing, actionsEl);
     }
+
+    // Stamped so a later pass recognises it regardless of class name.
+    existing.setAttribute('data-dj-cardpick', '');
 
     var select = existing.querySelector('select');
     var message = existing.querySelector('textarea');
