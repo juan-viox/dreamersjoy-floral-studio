@@ -26,6 +26,8 @@ import {
   PROCESSING_FEE_LABEL,
   PROCESSING_FEE_PERCENT,
 } from '@/lib/pricing';
+import { zoneForZip, normalizeZip } from '@/lib/delivery-zones';
+import { TERMS_SUMMARY, INVOICE_FOOTER } from '@/lib/order-terms';
 
 export async function POST(request: Request) {
   try {
@@ -36,12 +38,14 @@ export async function POST(request: Request) {
       card_message,
       card_occasion,
       delivery_date,
+      delivery_zip,
     } = body as {
       arrangement_id?: string;
       quantity?: number;
       card_message?: string;
       card_occasion?: string;
       delivery_date?: string;
+      delivery_zip?: string;
     };
 
     if (!arrangement_id) {
@@ -80,7 +84,17 @@ export async function POST(request: Request) {
 
     // Build shipping options. Local zone gets free-over-$125 treatment by
     // swapping the $18 line item for $0 when subtotal clears the threshold.
-    const shippingOptions = SHIPPING_OPTIONS.map((opt) => {
+    // The customer gave a postcode rather than guessing at a mileage band, so
+    // show them the one rate that applies. An unrecognised postcode falls
+    // through to all three and the studio confirms by email — better a short
+    // conversation than a refused order.
+    const zip = normalizeZip(delivery_zip);
+    const zone = zoneForZip(zip);
+    const offered = zone
+      ? SHIPPING_OPTIONS.filter((o) => o.id === zone)
+      : SHIPPING_OPTIONS;
+
+    const shippingOptions = offered.map((opt) => {
       const amount =
         opt.id === 'local' && subtotalCents >= LOCAL_FREE_SHIPPING_THRESHOLD
           ? 0
@@ -184,8 +198,26 @@ export async function POST(request: Request) {
           text: { maximum_length: 120 },
         },
       ],
+      // A real itemised invoice, emailed the moment the payment succeeds. The
+      // terms ride in its footer, so the customer keeps them with the receipt
+      // rather than having to remember a page they clicked past.
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: `${arrangement.name} — DreamersJoy Floral Studio`,
+          footer: INVOICE_FOOTER,
+          metadata: { arrangement_id: arrangement.id, card_occasion: card.id },
+        },
+      },
+      // Shown directly above the Pay button — the last moment at which a term
+      // can actually set an expectation.
+      custom_text: {
+        submit: { message: TERMS_SUMMARY },
+      },
       metadata: {
         arrangement_id: arrangement.id,
+        delivery_zip: zip ?? '',
+        delivery_zone: zone ?? 'unresolved',
         arrangement_name: arrangement.name,
         collection: arrangement.collection,
         size: arrangement.size,
