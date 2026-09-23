@@ -52,43 +52,47 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * Send Cache-Control headers that match Vercel's edge cache so the
-   * static HTML is held aggressively at the CDN tier (revalidates with
-   * If-None-Match / ETag, never blocks the user).
+   * Cache-Control for the static marketing site.
+   *
+   * The pages, style.css and script.js are served under FIXED filenames —
+   * there is no content hash — so every deploy changes what lives at a URL
+   * someone's browser and the CDN already hold a copy of.
+   *
+   * These three used to carry stale-while-revalidate=604800. That is an
+   * instruction to keep serving the OLD file for up to a week after it
+   * changed, refreshing quietly in the background. It also lets the three
+   * drift out of step: a visitor could be handed fresh HTML and script.js
+   * beside a stylesheet from days earlier, which renders as a page that is
+   * subtly, inexplicably wrong. Fine for assets whose URL changes when they
+   * do. Wrong for these.
+   *
+   * So: still cached at the edge, so pages stay fast, but never knowingly
+   * stale for more than a minute past expiry. Images keep the long immutable
+   * cache — a photograph at a given filename really does not change.
    */
   async headers() {
+    // Cached hard at the CDN, revalidated against ETag, and allowed to serve
+    // stale only for the moment it takes to fetch the new copy.
+    const MUTABLE = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=60';
+
     return [
       {
         source: '/cinematic/:slug*.html',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: MUTABLE }],
       },
       {
         // Journal posts live a directory deeper, where the :slug*.html
         // pattern above does not reliably reach them.
         source: '/cinematic/journal/:slug.html',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: MUTABLE }],
       },
       {
         source: '/cinematic/style.css',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800' },
-        ],
+        headers: [{ key: 'Cache-Control', value: MUTABLE }],
       },
       {
         source: '/cinematic/script.js',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800' },
-        ],
+        headers: [{ key: 'Cache-Control', value: MUTABLE }],
       },
       {
         source: '/cinematic/assets/images/:image*',
