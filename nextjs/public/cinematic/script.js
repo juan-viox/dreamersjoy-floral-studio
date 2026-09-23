@@ -706,10 +706,10 @@
   function djAttachCardPicker(actionsEl, idPrefix) {
     if (!actionsEl || !actionsEl.parentNode) return { select: null, message: null };
 
-    var existing = actionsEl.parentNode.querySelector('.shop-lightbox__card');
+    var existing = actionsEl.parentNode.querySelector('.shop-lightbox__enclosure');
     if (!existing) {
       existing = document.createElement('div');
-      existing.className = 'shop-lightbox__card';
+      existing.className = 'shop-lightbox__enclosure';
 
       var label = document.createElement('p');
       label.className = 'shop-lightbox__sizes-label';
@@ -736,7 +736,7 @@
       msg.placeholder = 'We’ll write this inside, by hand. Leave it blank for just the card.';
 
       var note = document.createElement('p');
-      note.className = 'shop-lightbox__card-note';
+      note.className = 'shop-lightbox__enclosure-note';
       note.textContent = 'Every arrangement goes out with a card, handwritten by us.';
 
       existing.appendChild(label);
