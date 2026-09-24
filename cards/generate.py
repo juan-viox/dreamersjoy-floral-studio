@@ -437,13 +437,63 @@ CARE_CARDS = [
 ]
 
 
-def care_html(title, sub, lines):
+# ---------------------------------------------------------------- small care
+
+# 3.5 x 2 trim + 0.125in bleed = 3.75 x 2.25 document: VistaPrint's standard
+# business card, which is far and away the cheapest way to print these. A care
+# note is reference, not a gift, so it does not need to match the occasion
+# card's size — and at this price it can be reprinted whenever the copy moves.
+# VistaPrint asks for text to sit 0.125in inside the trim, so the safe line is
+# 0.25in from the document edge; the frame sits at 0.28in.
+#
+# Six points do not fit at a legible size on a card this small. Four do, and
+# the two that must survive the edit are the same two either way: keep the
+# water up, and (arrangement) do not recut / (bouquet) always recut.
+CARE_SMALL_CSS = """
+@page { size: 3.75in 2.25in; margin: 0; }
+.face { width:3.75in; height:2.25in; }
+.face::after { inset:0.28in; }
+.care { padding:0.34in 0.36in 0.3in; }
+.care h2 { font-size:0.105in; margin:0 0 0.075in; }
+.care .sub { font-size:0.058in; letter-spacing:.16em; margin:0 0 0.035in; }
+.care ol { padding-left:0.15in; }
+.care li { font-size:0.085in; line-height:1.45; margin-bottom:0.045in; }
+.care .close { display:none; }
+.care .wordmark { bottom:0.3in; font-size:0.072in; }
+.back-foot { bottom:0.34in; }
+.back-foot .n { font-size:0.082in; }
+.back-foot .c { font-size:0.058in; margin-top:0.03in; }
+"""
+
+CARE_CARDS_SMALL = [
+    ("care-arrangement", "Caring for your arrangement", "In a vessel", [
+        "<b>Top up the water daily.</b> It sits on a wire frame and drinks fast &mdash; "
+        "a Signature can take a cupful a day.",
+        "<b>Do not recut or rearrange.</b> Each stem is set into the frame; lifting one "
+        "out is how it comes apart.",
+        "<b>Keep it cool</b> &mdash; out of sun, away from vents and the fruit bowl. "
+        "Ripening fruit ages flowers fastest.",
+        "<b>Lift out anything spent.</b> The rest keeps going and the shape holds.",
+    ]),
+    ("care-bouquet", "Caring for your bouquet", "Hand-tied", [
+        "<b>Unwrap and recut every stem</b> &mdash; an inch, at a sharp angle. This "
+        "matters more than anything else here.",
+        "<b>Clean vase, fresh water</b>, plus the flower food enclosed. A dirty vase is "
+        "the commonest cause of a short life.",
+        "<b>Strip any leaf below the waterline</b>, and change the water every other day.",
+        "<b>Cool, out of the sun, away from ripening fruit.</b>",
+    ]),
+]
+
+
+def care_html(title, sub, lines, small=False):
     items = "".join("<li>%s</li>" % l for l in lines)
     return """<meta charset="utf-8">
 <title>%(t)s</title>
 <style>%(fonts)s
 %(css)s
-%(care)s</style>
+%(care)s
+%(small)s</style>
 <div class="face care">
   <p class="sub">%(sub)s</p>
   <h2>%(t)s</h2>
@@ -457,15 +507,22 @@ def care_html(title, sub, lines):
     <p class="c">%(site)s &nbsp;&middot;&nbsp; %(ig)s</p>
   </div>
 </div>
-""" % dict(fonts=fonts_css(), css=CARD_CSS, care=CARE_CSS, t=title, sub=sub,
+""" % dict(fonts=fonts_css(), css=CARD_CSS, care=CARE_CSS,
+           small=(CARE_SMALL_CSS if small else ""), t=title, sub=sub,
            items=items, studio=e(STUDIO), site=e(SITE), ig=e(INSTAGRAM))
 
 
 def build_care_cards():
+    """Care notes print at business-card size, from VistaPrint.
+
+    Only one size is generated on purpose. Two care cards differing by a size
+    suffix, one of which contradicts the other on whether to recut, is exactly
+    the pile you grab the wrong card from at seven in the morning.
+    """
     made = []
-    for slug, title, sub, lines in CARE_CARDS:
-        pdf = os.path.join(OUT_CARDS, "%s-7x5-front-back.pdf" % slug)
-        if to_pdf(care_html(title, sub, lines), pdf, slug):
+    for slug, title, sub, lines in CARE_CARDS_SMALL:
+        pdf = os.path.join(OUT_CARDS, "%s-3.5x2-front-back.pdf" % slug)
+        if to_pdf(care_html(title, sub, lines, small=True), pdf, slug):
             made.append(pdf)
             print("  care:", slug)
     return made
