@@ -213,8 +213,18 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
   z-index: 999;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 32px;
+  /* Start below the header rather than centring: the list is taller than a
+     phone screen, and centring pushed the first and last links off both ends
+     where the fixed nav (z-index 1000) swallowed the taps. */
+  justify-content: flex-start;
+  gap: clamp(16px, 2.6vh, 30px);
+  padding:
+    calc(var(--dj-nav-h, 96px) + env(safe-area-inset-top, 0px) + 20px)
+    24px
+    calc(env(safe-area-inset-bottom, 0px) + 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s;
@@ -222,10 +232,12 @@ body[data-page="home"] .nav:not(.scrolled) .nav-hamburger span {
 .nav-mobile.open { opacity: 1; pointer-events: all; }
 .nav-mobile a {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: clamp(22px, 4.2vh, 32px);
+  line-height: 1.15;
   font-weight: 300;
   color: var(--primary);
   letter-spacing: 0.02em;
+  padding: 4px 8px;
 }
 
 @media (max-width: 768px) {
