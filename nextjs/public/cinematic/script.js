@@ -267,7 +267,21 @@
   var hamburger = document.getElementById('navHamburger');
   var mobileMenu = document.getElementById('navMobile');
   if (hamburger && mobileMenu) {
+    // The menu clears the header by --dj-nav-h. Measure it rather than
+    // hard-coding: the nav is taller on the pages that carry the full logo.
+    function syncNavHeight() {
+      var bar = document.querySelector('.nav');
+      if (bar) {
+        document.documentElement.style.setProperty(
+          '--dj-nav-h', Math.round(bar.getBoundingClientRect().height) + 'px'
+        );
+      }
+    }
+    syncNavHeight();
+    window.addEventListener('resize', syncNavHeight);
+
     hamburger.addEventListener('click', function() {
+      syncNavHeight();
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('open');
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
