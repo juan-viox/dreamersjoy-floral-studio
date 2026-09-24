@@ -380,6 +380,93 @@ def build_cards():
     return made
 
 
+# ---------------------------------------------------------------- care cards
+
+CARE_CSS = """
+.care { justify-content:flex-start; padding:0.62in 0.7in 0.5in; text-align:left; }
+.care h2 { font-family:'Cormorant Garamond',Garamond,serif; font-weight:400;
+  font-size:0.26in; color:%(navy)s; margin:0 0 0.02in; letter-spacing:.004em; }
+.care .sub { font-family:'Jost',sans-serif; font-size:0.085in; letter-spacing:.14em;
+  text-transform:uppercase; color:%(gold)s; margin:0 0 0.13in; }
+.care ol { margin:0; padding-left:0.22in; }
+.care li { font-family:'Jost',sans-serif; font-size:0.098in; line-height:1.62;
+  color:%(navy)s; margin-bottom:0.055in; }
+.care li b { font-weight:500; }
+.care .close { font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:0.115in; color:%(navy)s; margin:0.13in 0 0; text-align:center; }
+/* The card is left-aligned; the wordmark is not, or it sits on the frame. */
+.care .wordmark { text-align:center; bottom:0.46in; }
+.care .sub, .care h2 { text-align:center; }
+"""  % dict(navy=NAVY, gold=GOLD)
+
+# Two cards, because one instruction contradicts the other.
+#
+# A compote is built on chicken wire: recutting means dismantling it. A
+# hand-tied is loose in the hand and MUST be recut or it will not drink. A
+# single card telling everyone to recut their stems would kill half the work
+# the studio sends out.
+CARE_CARDS = [
+    ("care-arrangement", "Caring for your arrangement", "In a vessel", [
+        "<b>Top up the water every day.</b> The flowers sit on a wire frame and drink "
+        "quickly &mdash; a Signature can take a cupful in a day. Pour gently down the inside.",
+        "<b>Do not recut or rearrange.</b> Each stem is placed into a frame. Lifting one "
+        "out is how an arrangement comes apart.",
+        "<b>Change the water every third day</b> if you can do it without disturbing the "
+        "stems. Cloudy water shortens everything.",
+        "<b>Keep it cool.</b> Out of direct sun, away from radiators and vents. A cool room "
+        "overnight can add days.",
+        "<b>Away from the fruit bowl.</b> Ripening fruit gives off a gas that ages flowers "
+        "faster than anything else in a kitchen.",
+        "<b>Lift out anything spent.</b> The rest will keep going, and the shape holds.",
+    ]),
+    ("care-bouquet", "Caring for your bouquet", "Hand-tied", [
+        "<b>Unwrap it and recut every stem</b> &mdash; about an inch, at a sharp angle, with "
+        "scissors or a knife. This matters more than anything else on this card.",
+        "<b>Into a clean vase</b> with fresh water and the flower food we have enclosed. A "
+        "dirty vase is the commonest cause of a short life.",
+        "<b>Strip any leaf below the waterline.</b> Leaves left in water rot and cloud it.",
+        "<b>Keep the binding point tied</b> if you like the shape as it is &mdash; it is "
+        "spiralled to stand on its own.",
+        "<b>Fresh water every other day</b>, and a quick recut each time if you have a moment.",
+        "<b>Cool, out of the sun, away from ripening fruit.</b>",
+    ]),
+]
+
+
+def care_html(title, sub, lines):
+    items = "".join("<li>%s</li>" % l for l in lines)
+    return """<meta charset="utf-8">
+<title>%(t)s</title>
+<style>%(fonts)s
+%(css)s
+%(care)s</style>
+<div class="face care">
+  <p class="sub">%(sub)s</p>
+  <h2>%(t)s</h2>
+  <ol>%(items)s</ol>
+  <p class="close">Any trouble at all, write to us &mdash; we would always rather know.</p>
+  <p class="wordmark serif">%(studio)s</p>
+</div>
+<div class="face">
+  <div class="back-foot">
+    <p class="n">%(studio)s</p>
+    <p class="c">%(site)s &nbsp;&middot;&nbsp; %(ig)s</p>
+  </div>
+</div>
+""" % dict(fonts=fonts_css(), css=CARD_CSS, care=CARE_CSS, t=title, sub=sub,
+           items=items, studio=e(STUDIO), site=e(SITE), ig=e(INSTAGRAM))
+
+
+def build_care_cards():
+    made = []
+    for slug, title, sub, lines in CARE_CARDS:
+        pdf = os.path.join(OUT_CARDS, "%s-6x4-front-back.pdf" % slug)
+        if to_pdf(care_html(title, sub, lines), pdf, slug):
+            made.append(pdf)
+            print("  care:", slug)
+    return made
+
+
 # ---------------------------------------------------------------- main
 
 if __name__ == "__main__":
@@ -390,5 +477,7 @@ if __name__ == "__main__":
     if what in ("all", "cards"):
         print("Occasion cards:")
         build_cards()
+        print("Care cards:")
+        build_care_cards()
     shutil.rmtree(WORK, ignore_errors=True)
     print("done ->", os.path.join(HERE, "out"))

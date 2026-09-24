@@ -208,7 +208,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, ranunculus, sweet pea. Ivory, blush, pale peach, soft green.',
     collection: 'Collection I — Soft Garden',
     size: 'Petite',
-    image: BASE + 'palette-softgarden-petite.png',
+    image: BASE + 'palette-softgarden-petite.webp',
   },
   'softgarden-signature': {
     id: 'softgarden-signature',
@@ -217,7 +217,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, lisianthus, scabiosa. Fuller presence, airy feel.',
     collection: 'Collection I — Soft Garden',
     size: 'Signature',
-    image: BASE + 'palette-softgarden-signature.png',
+    image: BASE + 'palette-softgarden-signature.webp',
   },
   'softgarden-statement': {
     id: 'softgarden-statement',
@@ -226,7 +226,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, sweet pea, jasmine vine, spirea branches. Sculptural presence.',
     collection: 'Collection I — Soft Garden',
     size: 'Statement',
-    image: BASE + 'palette-softgarden-statement.png',
+    image: BASE + 'palette-softgarden-statement.webp',
   },
 
   // ═══ COLLECTION II · DUSTY ROMANTIC ═══
@@ -237,7 +237,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses in deeper tones, scabiosa, astilbe. Mauve, antique rose, dusty blush.',
     collection: 'Collection II — Dusty Romantic',
     size: 'Petite',
-    image: BASE + 'palette-dustyromantic-petite.png',
+    image: BASE + 'palette-dustyromantic-petite.webp',
   },
   'dustyromantic-signature': {
     id: 'dustyromantic-signature',
@@ -246,7 +246,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, hellebore, scabiosa, astilbe. Rich and textured.',
     collection: 'Collection II — Dusty Romantic',
     size: 'Signature',
-    image: BASE + 'palette-dustyromantic-signature.png',
+    image: BASE + 'palette-dustyromantic-signature.webp',
   },
   'dustyromantic-statement': {
     id: 'dustyromantic-statement',
@@ -255,7 +255,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, scabiosa, astilbe, spirea. Softly dramatic.',
     collection: 'Collection II — Dusty Romantic',
     size: 'Statement',
-    image: BASE + 'palette-dustyromantic-statement.png',
+    image: BASE + 'palette-dustyromantic-statement.webp',
   },
 
   // ═══ COLLECTION III · CITRUS SCULPTURAL ═══
@@ -266,7 +266,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, ranunculus, tulips. Apricot, coral, butter yellow.',
     collection: 'Collection III — Citrus Sculptural',
     size: 'Petite',
-    image: BASE + 'palette-citrussculptural-petite.png',
+    image: BASE + 'palette-citrussculptural-petite.webp',
   },
   'citrussculptural-signature': {
     id: 'citrussculptural-signature',
@@ -275,7 +275,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, ranunculus, select orchid accents. Warm and structural.',
     collection: 'Collection III — Citrus Sculptural',
     size: 'Signature',
-    image: BASE + 'palette-citrussculptural-signature.png',
+    image: BASE + 'palette-citrussculptural-signature.webp',
   },
   'citrussculptural-statement': {
     id: 'citrussculptural-statement',
@@ -284,7 +284,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'Garden roses, tulips, orchids, spirea. Modern and elevated.',
     collection: 'Collection III — Citrus Sculptural',
     size: 'Statement',
-    image: BASE + 'palette-citrussculptural-statement.png',
+    image: BASE + 'palette-citrussculptural-statement.webp',
   },
 
   // ═══ HAND-TIED BOUQUETS (Giftable) ═══
@@ -295,7 +295,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'A delicate, thoughtfully composed bouquet. Perfect for simple gestures.',
     collection: 'Giftable — Hand-Tied Bouquets',
     size: 'Small',
-    image: BASE + 'bouquet-small.png',
+    image: BASE + 'bouquet-small.webp',
   },
   'medium-bouquet': {
     id: 'medium-bouquet',
@@ -304,7 +304,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'A balanced, fuller bouquet with a curated mix of seasonal florals.',
     collection: 'Giftable — Hand-Tied Bouquets',
     size: 'Medium',
-    image: BASE + 'bouquet-medium.png',
+    image: BASE + 'bouquet-medium.webp',
   },
   'large-bouquet': {
     id: 'large-bouquet',
@@ -313,7 +313,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'An abundant, expressive bouquet with layered blooms and natural movement.',
     collection: 'Giftable — Hand-Tied Bouquets',
     size: 'Large',
-    image: BASE + 'bouquet-large.png',
+    image: BASE + 'bouquet-large.webp',
   },
   'signature-bouquet': {
     id: 'signature-bouquet',
@@ -322,7 +322,7 @@ export const CATALOG: Record<string, Arrangement> = {
     description: 'A luxurious hand-tied bouquet featuring carefully selected stems.',
     collection: 'Giftable — Hand-Tied Bouquets',
     size: 'Signature',
-    image: BASE + 'bouquet-signature.png',
+    image: BASE + 'bouquet-signature.webp',
   },
 };
 
