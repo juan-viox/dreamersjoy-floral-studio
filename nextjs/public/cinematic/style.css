@@ -2552,10 +2552,13 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
 .shop-lightbox__card {
   position: relative;
   background: var(--light);
-  width: min(960px, calc(100vw - 32px));
-  max-height: calc(100vh - 32px);
+  width: min(980px, calc(100vw - 32px));
+  max-height: min(calc(100vh - 48px), 760px);
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 0.92fr 1.08fr;
+  /* The row must be allowed to shrink, or the body's auto min-height pushes
+     it past max-height and overflow: hidden eats the Add to Cart button. */
+  grid-template-rows: minmax(0, 1fr);
   overflow: hidden;
   border-radius: 2px;
   box-shadow: 0 40px 120px rgba(26, 26, 46, 0.35);
@@ -2591,7 +2594,9 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
 .shop-lightbox__media {
   background: var(--secondary);
   position: relative;
-  min-height: 340px;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 .shop-lightbox__img {
   position: absolute;
@@ -2600,8 +2605,12 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
   background-position: center;
 }
 .shop-lightbox__body {
-  padding: clamp(32px, 4vw, 48px);
+  padding: clamp(28px, 3.2vw, 40px);
+  padding-bottom: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -2692,12 +2701,30 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
 }
 
 .shop-lightbox__actions {
+  /* Pinned to the foot of the scrolling column: the button is reachable
+     whether or not the customer has scrolled through the card and zip. */
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
   margin-top: auto;
-  padding-top: 20px;
+  padding: 18px 0 clamp(22px, 2.6vw, 30px);
+  background: var(--light);
+  border-top: 1px solid rgba(44, 62, 80, 0.12);
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: stretch;
+}
+/* A short fade above the bar so content reads as scrolling under it. */
+.shop-lightbox__actions::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 20px;
+  background: linear-gradient(to top, rgba(250, 250, 248, 0.92), rgba(250, 250, 248, 0));
+  pointer-events: none;
 }
 .shop-lightbox__cta {
   width: 100%;
@@ -2719,11 +2746,24 @@ body[data-page="home"] .nav:not(.scrolled) .nav-links a.is-active::after {
 }
 
 @media (max-width: 760px) {
+  .shop-lightbox {
+    align-items: flex-end;
+  }
   .shop-lightbox__card {
     grid-template-columns: 1fr;
-    max-height: 90vh;
+    grid-template-rows: auto minmax(0, 1fr);
+    width: 100vw;
+    max-height: 92vh;
+    max-height: 92dvh;
   }
-  .shop-lightbox__media { min-height: 240px; max-height: 40vh; }
+  .shop-lightbox__media {
+    height: 32vh;
+    height: 32dvh;
+    min-height: 200px;
+    max-height: 300px;
+  }
+  .shop-lightbox__title { font-size: 28px; }
+  .shop-lightbox__body { padding: 24px 20px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
