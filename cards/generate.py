@@ -295,32 +295,36 @@ def build_sheets():
 
 # ---------------------------------------------------------------- cards
 
-# 6x4 LANDSCAPE trim + 0.125in bleed on every side = 6.25 x 4.25 document.
+# 7x5 LANDSCAPE trim + 0.125in bleed on every side = 7.25 x 5.25 document.
+# 7x5 is what Staples' Same Day Greeting Cards takes; their uploader shows the
+# document at 7.25 x 5.25 with the safe area 0.25in inside the trim, which is
+# 0.375in in from the document edge. Nothing that must survive the cut goes
+# outside that line — the hairline frame sits at 0.45in, comfortably inside.
 # Landscape to match the studio's existing Mother's Day card, so a stack of
-# these reads as one family. Safety margin is 0.25in inside the trim.
+# these reads as one family.
 CARD_CSS = """
-@page { size: 6.25in 4.25in; margin: 0; }
+@page { size: 7.25in 5.25in; margin: 0; }
 * { box-sizing:border-box; }
 body { margin:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-.face { position:relative; width:6.25in; height:4.25in; background:%(cream)s;
+.face { position:relative; width:7.25in; height:5.25in; background:%(cream)s;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   text-align:center; break-after:page; overflow:hidden; }
 .face:last-child { break-after:auto; }
-/* Hairline frame sits on the TRIM plus a little, never in the bleed. */
-.face::after { content:""; position:absolute; inset:0.38in; border:1px solid %(frame)s;
+/* Hairline frame sits inside the SAFE AREA, never in the bleed. */
+.face::after { content:""; position:absolute; inset:0.45in; border:1px solid %(frame)s;
   pointer-events:none; }
 .serif { font-family:'Cormorant Garamond',Garamond,'Times New Roman',serif;
   font-weight:300; margin:0; color:%(navy)s; }
-.occasion { font-size:0.38in; line-height:1.14; letter-spacing:.004em;
-  max-width:4.5in; text-wrap:balance; }
-.rule { width:0.7in; height:1px; background:%(gold)s; border:0; margin:0.16in 0 0; }
-.wordmark { position:absolute; left:0; right:0; bottom:0.58in;
-  font-family:'Cormorant Garamond',serif; font-size:0.1in; letter-spacing:.055em;
+.occasion { font-size:0.44in; line-height:1.14; letter-spacing:.004em;
+  max-width:5.3in; text-wrap:balance; }
+.rule { width:0.82in; height:1px; background:%(gold)s; border:0; margin:0.19in 0 0; }
+.wordmark { position:absolute; left:0; right:0; bottom:0.68in;
+  font-family:'Cormorant Garamond',serif; font-size:0.117in; letter-spacing:.055em;
   color:%(gold)s; margin:0; }
-.back-foot { position:absolute; left:0; right:0; bottom:0.52in; }
+.back-foot { position:absolute; left:0; right:0; bottom:0.61in; }
 .back-foot p { margin:0; font-family:'Cormorant Garamond',serif; color:%(gold)s; }
-.back-foot .n { font-size:0.105in; letter-spacing:.055em; }
-.back-foot .c { font-size:0.078in; letter-spacing:.05em; margin-top:0.045in; }
+.back-foot .n { font-size:0.123in; letter-spacing:.055em; }
+.back-foot .c { font-size:0.091in; letter-spacing:.05em; margin-top:0.052in; }
 """ % dict(cream=CREAM, frame=FRAME, navy=NAVY, gold=GOLD)
 
 
@@ -371,7 +375,7 @@ def card_html(title):
 def build_cards():
     made = []
     for slug, title in OCCASIONS:
-        pdf = os.path.join(OUT_CARDS, "%s-6x4-front-back.pdf" % slug)
+        pdf = os.path.join(OUT_CARDS, "%s-7x5-front-back.pdf" % slug)
         if to_pdf(card_html(title), pdf, "card-" + slug):
             made.append(pdf)
             print("  card:", slug)
@@ -383,19 +387,19 @@ def build_cards():
 # ---------------------------------------------------------------- care cards
 
 CARE_CSS = """
-.care { justify-content:flex-start; padding:0.62in 0.7in 0.5in; text-align:left; }
+.care { justify-content:flex-start; padding:0.72in 0.82in 0.58in; text-align:left; }
 .care h2 { font-family:'Cormorant Garamond',Garamond,serif; font-weight:400;
-  font-size:0.26in; color:%(navy)s; margin:0 0 0.02in; letter-spacing:.004em; }
-.care .sub { font-family:'Jost',sans-serif; font-size:0.085in; letter-spacing:.14em;
-  text-transform:uppercase; color:%(gold)s; margin:0 0 0.13in; }
-.care ol { margin:0; padding-left:0.22in; }
-.care li { font-family:'Jost',sans-serif; font-size:0.098in; line-height:1.62;
-  color:%(navy)s; margin-bottom:0.055in; }
+  font-size:0.30in; color:%(navy)s; margin:0 0 0.15in; letter-spacing:.004em; }
+.care .sub { font-family:'Jost',sans-serif; font-size:0.10in; letter-spacing:.14em;
+  text-transform:uppercase; color:%(gold)s; margin:0 0 0.15in; }
+.care ol { margin:0; padding-left:0.26in; }
+.care li { font-family:'Jost',sans-serif; font-size:0.115in; line-height:1.62;
+  color:%(navy)s; margin-bottom:0.064in; }
 .care li b { font-weight:500; }
 .care .close { font-family:'Cormorant Garamond',serif; font-style:italic;
-  font-size:0.115in; color:%(navy)s; margin:0.13in 0 0; text-align:center; }
+  font-size:0.135in; color:%(navy)s; margin:0.15in 0 0; text-align:center; }
 /* The card is left-aligned; the wordmark is not, or it sits on the frame. */
-.care .wordmark { text-align:center; bottom:0.46in; }
+.care .wordmark { text-align:center; bottom:0.54in; }
 .care .sub, .care h2 { text-align:center; }
 """  % dict(navy=NAVY, gold=GOLD)
 
@@ -460,7 +464,7 @@ def care_html(title, sub, lines):
 def build_care_cards():
     made = []
     for slug, title, sub, lines in CARE_CARDS:
-        pdf = os.path.join(OUT_CARDS, "%s-6x4-front-back.pdf" % slug)
+        pdf = os.path.join(OUT_CARDS, "%s-7x5-front-back.pdf" % slug)
         if to_pdf(care_html(title, sub, lines), pdf, slug):
             made.append(pdf)
             print("  care:", slug)
