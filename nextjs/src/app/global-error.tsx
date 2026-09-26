@@ -12,7 +12,6 @@ import { useEffect } from 'react'
  */
 export default function GlobalError({
   error,
-  reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
@@ -41,22 +40,52 @@ export default function GlobalError({
             Something went wrong
           </h1>
           <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#6b7280', margin: '0 0 20px' }}>
-            The page couldn&rsquo;t be loaded. Reloading usually clears it.
+            Reloading usually clears it. If it keeps happening, you may have
+            been signed out while you were away.
           </p>
-          <button
-            onClick={reset}
+          <div
             style={{
-              padding: '10px 18px',
-              background: '#334155',
-              color: '#fff',
-              border: 0,
-              borderRadius: '6px',
-              fontSize: '14px',
-              cursor: 'pointer',
+              display: 'flex',
+              gap: '8px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
             }}
           >
-            Reload
-          </button>
+            {/* A full reload, not just reset(). reset() re-renders the same
+                tree, so anything that fails during render fails again
+                identically and the button looks broken. */}
+            <button
+              onClick={() => window.location.reload()}
+              style={{
+                padding: '10px 18px',
+                background: '#334155',
+                color: '#fff',
+                border: 0,
+                borderRadius: '6px',
+                fontSize: '14px',
+                cursor: 'pointer',
+              }}
+            >
+              Reload the page
+            </button>
+            {/* A plain <a>: this boundary renders its own document, outside
+                the router, so next/link has nothing to navigate. */}
+            <a
+              href="/login"
+              style={{
+                padding: '10px 18px',
+                background: 'transparent',
+                color: '#334155',
+                border: '1px solid #cbd5e1',
+                borderRadius: '6px',
+                fontSize: '14px',
+                textDecoration: 'none',
+                display: 'inline-block',
+              }}
+            >
+              Sign in again
+            </a>
+          </div>
           {error.digest && (
             <p style={{ fontSize: '12px', color: '#9ca3af', marginTop: '24px' }}>
               Reference: {error.digest}

@@ -16,7 +16,6 @@ const STORAGE_KEY = 'viox-crm-theme'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('dark')
-  const [mounted, setMounted] = useState(false)
 
   // Read saved theme on mount
   useEffect(() => {
@@ -32,7 +31,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       document.documentElement.setAttribute('data-theme', 'dark')
     }
-    setMounted(true)
   }, [])
 
   const setTheme = useCallback((newTheme: Theme) => {
@@ -49,11 +47,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }, [theme, setTheme])
 
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return <>{children}</>
-  }
-
+  // The context is ALWAYS provided, including on the server.
+  //
+  // This used to return bare `children` until a `mounted` flag flipped in an
+  // effect, meaning that during every server render — i.e. every hard refresh,
+  // every pasted URL, every back-navigation that re-renders — there was no
+  // context at all. `useTheme()` throws when it finds none, and ThemeToggle
+  // lives in the Sidebar and TopBar, which are in the CRM layout. So every
+  // refresh of every CRM page threw inside the layout, escaped the route's
+  // own error boundary (a layout's error does), and landed on the global one:
+  // "Something went wrong". Client-side navigation was fine, because by then
+  // the effect had run.
+  //
+  // It was never protecting against a flash of the wrong theme either. Page
+  // colours come from `data-theme` on <html>, which the inline script in the
+  // root layout sets before first paint. Withholding the context only ever
+  // cost the toggle its context.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
